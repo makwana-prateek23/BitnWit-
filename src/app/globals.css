@@ -92,6 +92,11 @@ a {
 .surface-card { border: 1px solid rgba(226, 232, 240, 0.85); background: rgba(255, 255, 255, 0.88); box-shadow: 0 24px 70px -38px rgba(15, 23, 42, 0.24); backdrop-filter: blur(16px); }
 .eyebrow { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid rgba(30,144,255,.18); border-radius: 999px; background: rgba(30,144,255,.07); padding: .4rem .75rem; color: var(--color-blue); font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 
+.content-image,
+.site-page img:not(.mascot-image) { filter: saturate(1.08) contrast(1.04) brightness(1.02); transform: scale(1.002); transition: filter .35s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
+.group:hover .content-image,
+.site-page .group:hover img:not(.mascot-image) { filter: saturate(1.16) contrast(1.06) brightness(1.03); }
+
 /* ---------------------------------------------------------------- */
 /* Hero: ambient blobs that unify the mascot artwork with the page  */
 /* ---------------------------------------------------------------- */

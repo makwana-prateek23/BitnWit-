@@ -33,7 +33,7 @@ const serviceVisuals: Record<
     caption: 'Search visibility and growth intelligence for your business'
   },
   'branding-strategy': {
-    src: '/services/branding-strategy.png',
+    src: '/services/branding-strategy-v2.png',
     alt: 'White Rabbit mascot holding a brand identity board and colors',
     caption: 'Brand systems designed to cut through the noise'
   },
@@ -72,7 +72,7 @@ export default function ServiceVisual({ slug, className = '' }: ServiceVisualPro
         <img
           src={visual.src}
           alt={visual.alt}
-          className="min-h-[360px] w-full rounded-3xl object-cover"
+          className="content-image min-h-[360px] w-full rounded-3xl object-cover"
           loading="lazy"
           onError={() => setImageError(true)}
         />
