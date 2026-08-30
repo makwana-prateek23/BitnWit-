@@ -32,9 +32,9 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 px-3 pt-3 sm:px-6">
+    <header className="sticky top-0 z-50 px-3 pt-2 sm:px-5">
       <div
-        className={`mx-auto flex max-w-6xl items-center justify-between rounded-2xl border px-4 transition-all duration-300 sm:px-5 ${scrolled ? 'border-slate-200/80 bg-white/90 py-2.5 shadow-xl shadow-slate-900/5 backdrop-blur-xl' : 'border-white/80 bg-white/70 py-3.5 shadow-sm backdrop-blur-xl'}`}
+        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 transition-all duration-300 sm:px-5 ${scrolled ? 'border-slate-200/80 bg-white/90 py-2.5 shadow-xl shadow-slate-900/5 backdrop-blur-xl' : 'border-white/80 bg-white/70 py-3 shadow-sm backdrop-blur-xl'}`}
       >
         <Logo />
 

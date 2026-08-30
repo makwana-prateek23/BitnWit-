@@ -29,7 +29,7 @@ export const projects = [
 
 export const team = [
   { name: 'Sandeep Kumar', role: 'Founder', specialties: ['Frontend development', 'Application development'], phone: '+91 89497 28810', initials: 'SK' },
-  { name: 'Prateek Makwana', role: 'Technical Head', specialties: ['Software development', 'Technical leadership'], phone: '+91 968043734', initials: 'PM' }
+  { name: 'Prateek Makwana', role: 'Technical Head', specialties: ['Software development', 'Technical leadership'], phone: '+91 9680437434', initials: 'PM' }
 ];
 
 export const collaborationProfiles = [

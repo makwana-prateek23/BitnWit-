@@ -88,6 +88,9 @@ a {
 }
 
 .site-page > div, .site-page > article { position: relative; z-index: 1; }
+.site-page .max-w-6xl { max-width: 80rem; }
+.site-page.py-16 { padding-top: 3rem; padding-bottom: 3rem; }
+@media (max-width: 640px) { .site-page.py-16 { padding-top: 2.5rem; padding-bottom: 2.5rem; } }
 .site-page::before { content: ''; position: absolute; inset: 0 0 auto; height: 34rem; pointer-events: none; background: radial-gradient(circle at 50% -10%, rgba(30, 144, 255, 0.16), transparent 62%); }
 .surface-card { border: 1px solid rgba(226, 232, 240, 0.85); background: rgba(255, 255, 255, 0.88); box-shadow: 0 24px 70px -38px rgba(15, 23, 42, 0.24); backdrop-filter: blur(16px); }
 .eyebrow { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid rgba(30,144,255,.18); border-radius: 999px; background: rgba(30,144,255,.07); padding: .4rem .75rem; color: var(--color-blue); font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }

@@ -80,10 +80,10 @@ const stats = [
 
 export default function HomePage() {
   return (
-    <main className="site-page min-h-screen overflow-hidden px-6 py-16 text-ink">
-      <div className="mx-auto max-w-6xl">
+    <main className="site-page min-h-screen overflow-hidden px-4 py-10 text-ink sm:px-6 lg:py-12">
+      <div className="mx-auto max-w-7xl">
         {/* ---------------------------------------------------------- HERO */}
-        <section className="hero-shell grid gap-10 md:grid-cols-[1.3fr_1fr] md:items-center">
+        <section className="hero-shell grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
           <div className="hero-blob hero-blob-blue" aria-hidden />
           <div className="hero-blob hero-blob-red" aria-hidden />
 
@@ -128,7 +128,7 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal direction="left" delay={0.1} className="relative">
-            <div className="mascot-showcase rounded-3xl p-6">
+            <div className="mascot-showcase rounded-3xl p-5">
               <div className="flex items-center gap-4">
                 <RabbitMark size={32} />
                 <div>
@@ -137,7 +137,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="mt-2">
-                <MascotImage />
+                <MascotImage className="max-h-[430px] min-h-[280px]" />
               </div>
               <div className="mt-6 space-y-4 text-sm leading-6 text-slate-700">
                 <p>Ask anything about BITnWIT services, timelines, and budgets.</p>
@@ -158,7 +158,7 @@ export default function HomePage() {
         </section>
 
         {/* ---------------------------------------------------------- MARQUEE */}
-        <Reveal className="marquee-mask mt-16 overflow-hidden rounded-full border border-line bg-white/70 py-4 backdrop-blur">
+        <Reveal className="marquee-mask mt-12 overflow-hidden rounded-full border border-line bg-white/70 py-3 backdrop-blur">
           <div className="marquee-track flex w-max gap-10 whitespace-nowrap">
             {[...marqueeItems, ...marqueeItems].map((item, i) => (
               <span key={`${item}-${i}`} className="flex items-center gap-2 text-sm font-semibold text-slate-500">
@@ -170,7 +170,7 @@ export default function HomePage() {
         </Reveal>
 
         {/* ---------------------------------------------------------- SERVICES */}
-        <section className="mt-16 rounded-3xl bg-white p-8 shadow-sm shadow-slate-200/50 sm:p-10">
+        <section className="mt-12 rounded-3xl bg-white p-7 shadow-sm shadow-slate-200/50 sm:p-9">
           <Reveal>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">What we do</p>
             <h2 className="mt-3 text-2xl font-bold sm:text-3xl">Built for clients who want modern digital products</h2>
@@ -198,7 +198,7 @@ export default function HomePage() {
         </section>
 
         {/* ---------------------------------------------------------- PROCESS */}
-        <section className="mt-16">
+        <section className="mt-12">
           <Reveal className="text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">How we work</p>
             <h2 className="mt-3 text-2xl font-bold sm:text-3xl">From idea to launch, without the guesswork</h2>
@@ -220,7 +220,7 @@ export default function HomePage() {
         </section>
 
         {/* ---------------------------------------------------------- STATS */}
-        <Reveal className="mt-16 grid grid-cols-2 gap-6 rounded-3xl bg-ink p-8 text-white sm:p-10 md:grid-cols-4">
+        <Reveal className="mt-12 grid grid-cols-2 gap-6 rounded-3xl bg-ink p-8 text-white sm:p-9 md:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <Counter value={stat.value} suffix={stat.suffix} className="text-3xl font-extrabold sm:text-4xl" />
@@ -232,7 +232,7 @@ export default function HomePage() {
         </Reveal>
 
         {/* ---------------------------------------------------------- DIFFERENTIATORS */}
-        <section className="mt-16 grid gap-6 md:grid-cols-3">
+        <section className="mt-12 grid gap-6 md:grid-cols-3">
           {differentiators.map((item, i) => (
             <Reveal
               key={item.title}
@@ -249,7 +249,7 @@ export default function HomePage() {
         </section>
 
         {/* ---------------------------------------------------------- CLIENTS & REACH */}
-        <section className="mt-16 grid gap-6 lg:grid-cols-[1.15fr_.85fr]">
+        <section className="mt-12 grid gap-6 lg:grid-cols-[1.15fr_.85fr]">
           <Reveal className="surface-card rounded-3xl p-8 sm:p-10">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">Who we work with</p>
             <h2 className="mt-3 text-2xl font-bold sm:text-3xl">Built for teams ready to move forward.</h2>
@@ -271,7 +271,7 @@ export default function HomePage() {
         </section>
 
         {/* ---------------------------------------------------------- CTA */}
-        <Reveal className="relative mt-16 overflow-hidden rounded-3xl bg-gradient-to-br from-rabbit via-blue-600 to-signal p-10 text-center text-white sm:p-14">
+        <Reveal className="relative mt-12 overflow-hidden rounded-3xl bg-gradient-to-br from-rabbit via-blue-600 to-signal p-9 text-center text-white sm:p-12">
           <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" aria-hidden />
           <div className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" aria-hidden />
           <RabbitMark size={40} className="mx-auto" />
