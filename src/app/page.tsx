@@ -248,6 +248,28 @@ export default function HomePage() {
           ))}
         </section>
 
+        {/* ---------------------------------------------------------- CLIENTS & REACH */}
+        <section className="mt-16 grid gap-6 lg:grid-cols-[1.15fr_.85fr]">
+          <Reveal className="surface-card rounded-3xl p-8 sm:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">Who we work with</p>
+            <h2 className="mt-3 text-2xl font-bold sm:text-3xl">Built for teams ready to move forward.</h2>
+            <p className="mt-4 max-w-2xl leading-7 text-slate-600">From founders validating an MVP to established businesses modernizing their digital operations, we shape the engagement around the problem and the people solving it.</p>
+            <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {['Founders', 'Service teams', 'Growing brands', 'Global teams'].map((client) => (
+                <div key={client} className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-5 text-center text-sm font-semibold text-slate-700">{client}</div>
+              ))}
+            </div>
+            <Link href="/clients" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-rabbit">Explore our collaborations <AiOutlineArrowRight /></Link>
+          </Reveal>
+          <Reveal className="relative overflow-hidden rounded-3xl bg-ink p-8 text-white sm:p-10">
+            <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-rabbit/25 blur-3xl" />
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">Pan-India · Worldwide</p>
+            <h2 className="mt-3 text-2xl font-bold text-white">One workflow across every time zone.</h2>
+            <p className="mt-4 leading-7 text-slate-400">Remote-first delivery, documented decisions, async updates, and planned overlap hours make collaboration straightforward across India and international markets.</p>
+            <div className="mt-7 flex gap-3"><span className="rounded-full bg-white/10 px-4 py-2 text-xs font-semibold">India-wide</span><span className="rounded-full bg-white/10 px-4 py-2 text-xs font-semibold">Global-ready</span></div>
+          </Reveal>
+        </section>
+
         {/* ---------------------------------------------------------- CTA */}
         <Reveal className="relative mt-16 overflow-hidden rounded-3xl bg-gradient-to-br from-rabbit via-blue-600 to-signal p-10 text-center text-white sm:p-14">
           <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" aria-hidden />

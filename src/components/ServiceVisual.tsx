@@ -13,12 +13,12 @@ const serviceVisuals: Record<
     caption: 'Marketing brilliance with every campaign'
   },
   'web-development': {
-    src: '/services/web-development.png',
+    src: '/services/web-development-v2.png',
     alt: 'White Rabbit mascot showing a website design and code screen',
     caption: 'Modern websites built for performance and conversion'
   },
   'app-development': {
-    src: '/services/app-development.png',
+    src: '/services/app-development-v2.png',
     alt: 'White Rabbit mascot building an app with mobile UI screens',
     caption: 'Smart app experiences for web and mobile'
   },
@@ -43,7 +43,7 @@ const serviceVisuals: Record<
     caption: 'Custom code built to fit your product vision'
   },
   'ai-integration': {
-    src: '/services/ai-integration.png',
+    src: '/services/ai-integration-v2.png',
     alt: 'White Rabbit mascot integrating AI and automation into digital workflows',
     caption: 'AI-powered integration for smarter software'
   }
