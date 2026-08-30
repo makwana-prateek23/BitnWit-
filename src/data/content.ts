@@ -29,9 +29,10 @@ export const projects = [
 
 export const team = [
   { name: 'Sandeep Kumar', role: 'Founder', specialties: ['Frontend development', 'Application development'], phone: '+91 89497 28810', initials: 'SK' },
-  { name: 'Prateek Makwana', role: 'Technical Head', specialties: ['Software development', 'Technical leadership'], phone: '+91 9680437434', initials: 'PM' },
-  { name: 'Riya', role: 'Chief Operating Officer (COO)', specialties: ['Head of Business Operations'], phone: '+91 8630886426', initials: 'R' }
+  { name: 'Prateek Makwana', role: 'Technical Head', specialties: ['Software development', 'Technical leadership'], phone: '+91 9680437434', initials: 'PM' }
 ];
+
+export const contactTeam = team;
 
 export const collaborationProfiles = [
   { initials: 'ST', name: 'Service teams', type: 'Web & growth', work: 'Conversion-led websites, campaign systems, and analytics foundations.' },

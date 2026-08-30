@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
 import WhatsAppContactForm from '../../components/WhatsAppContactForm';
-import { team } from '../../data/content';
+import { contactTeam as team } from '../../data/content';
 
 export const metadata: Metadata = { title: 'Contact BITnWIT', description: 'Start a web, app, AI, design, or digital growth project with BITnWIT. Available across India and internationally.', alternates: { canonical: '/contact' } };
 const socials = [{ name: 'LinkedIn', href: 'https://www.linkedin.com/in/sandeep-kumar-0766b7249', icon: AiFillLinkedin }, { name: 'Instagram', href: 'https://www.instagram.com/bitnwit.in', icon: AiFillInstagram }, { name: 'GitHub', href: 'https://github.com/Sandeep1-dev', icon: AiFillGithub }];
