@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { services } from '../../data/content';
+
+export const metadata: Metadata = { title: 'Digital Services', description: 'Explore BITnWIT web development, app development, AI integration, UI/UX, SEO, marketing, branding, and custom software services.', alternates: { canonical: '/services' } };
 
 const phases = [
   { step: '01', title: 'Understand the opportunity', copy: 'We clarify the audience, business goal, constraints, and the result worth pursuing.' },

@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { findService, services } from '../../../data/content';
 
 export const dynamicParams = false;
 export function generateStaticParams() { return services.map(({ slug }) => ({ slug })); }
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata { const service = findService(params.slug); return service ? { title: service.title, description: service.description, alternates: { canonical: `/services/${service.slug}` }, openGraph: { title: service.title, description: service.description, images: [{ url: service.image, alt: service.imageAlt }] } } : {}; }
 
 export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
   const service = findService(params.slug); if (!service) notFound();

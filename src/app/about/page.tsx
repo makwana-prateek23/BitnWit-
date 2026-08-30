@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import MascotImage from '../../components/MascotImage';
 import { team } from '../../data/content';
+
+export const metadata: Metadata = { title: 'About Us', description: 'Meet BITnWIT, our leadership, approach, and remote-first process for delivering digital projects across India and worldwide.', alternates: { canonical: '/about' } };
 
 const principles = [{ title: 'Clarity over complexity', copy: 'We turn broad goals into clear priorities, practical scopes, and decisions everyone can understand.' }, { title: 'Senior attention', copy: 'Strategy, design, and engineering stay close together, with direct access to the people doing the work.' }, { title: 'Visible progress', copy: 'Work moves in focused iterations, so you can review, learn, and adjust before expensive assumptions compound.' }, { title: 'Built for momentum', copy: 'We create reusable foundations that help teams launch today and keep improving tomorrow.' }];
 const process = [{ step: '01', title: 'Discover', copy: 'Goals, users, constraints, and success measures.' }, { step: '02', title: 'Define', copy: 'Strategy, priorities, scope, and delivery roadmap.' }, { step: '03', title: 'Design & build', copy: 'Collaborative iterations with visible progress.' }, { step: '04', title: 'Launch & learn', copy: 'Quality checks, measurement, and optimization.' }];

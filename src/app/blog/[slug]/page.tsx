@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { findPost, posts } from '../../../data/content';
 
 export const dynamicParams = false;
 export function generateStaticParams() { return posts.map(({ slug }) => ({ slug })); }
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata { const post = findPost(params.slug); return post ? { title: post.title, description: post.excerpt, alternates: { canonical: `/blog/${post.slug}` }, openGraph: { type: 'article', title: post.title, description: post.excerpt, images: [{ url: post.image, alt: post.imageAlt }] } } : {}; }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = findPost(params.slug); if (!post) notFound();

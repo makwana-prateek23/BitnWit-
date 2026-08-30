@@ -25,9 +25,9 @@ const columns = [
 ];
 
 const socials = [
-  { icon: AiFillInstagram, href: 'https://instagram.com', label: 'Instagram' },
-  { icon: AiFillLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: AiFillGithub, href: 'https://github.com', label: 'GitHub' }
+  { icon: AiFillInstagram, href: 'https://www.instagram.com/bitnwit.in', label: 'BITnWIT on Instagram' },
+  { icon: AiFillLinkedin, href: 'https://www.linkedin.com/in/sandeep-kumar-0766b7249', label: 'Sandeep Kumar on LinkedIn' },
+  { icon: AiFillGithub, href: 'https://github.com/Sandeep1-dev', label: 'Sandeep Kumar on GitHub' }
 ];
 
 export default function Footer() {

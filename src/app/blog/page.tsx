@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { posts } from '../../data/content';
+
+export const metadata: Metadata = { title: 'Insights', description: 'Practical BITnWIT insights about AI, websites, product strategy, branding, and digital growth.', alternates: { canonical: '/blog' } };
 
 export default function BlogPage() {
   return <main className="site-page min-h-screen px-6 py-10 text-ink"><div className="mx-auto max-w-6xl space-y-10"><section className="rounded-3xl bg-white p-10 shadow-sm"><p className="text-sm uppercase tracking-[0.4em] text-slate-500">Blog</p><h1 className="mt-4 text-4xl font-bold">Insights for smarter digital growth</h1><p className="mt-6 max-w-3xl text-lg leading-8 text-slate-700">Practical ideas on web strategy, AI, branding, and growth for ambitious teams.</p></section><section className="grid gap-6 md:grid-cols-2">{posts.map((post) => <article key={post.slug} className="group overflow-hidden rounded-3xl border border-line bg-white transition hover:-translate-y-1 hover:border-rabbit/80 hover:shadow-xl"><div className="relative aspect-[16/9] overflow-hidden bg-cloud"><Image src={post.image} alt={post.imageAlt} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 768px) 50vw, 100vw" /></div><div className="p-8"><p className="text-xs font-semibold uppercase tracking-[0.2em] text-rabbit">{post.category} · {post.readTime}</p><h2 className="mt-2 text-2xl font-semibold">{post.title}</h2><p className="mt-3 leading-7 text-slate-600">{post.excerpt}</p><Link href={`/blog/${post.slug}`} className="mt-6 inline-flex text-sm font-semibold text-rabbit">Read article →</Link></div></article>)}</section></div></main>;

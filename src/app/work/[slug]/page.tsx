@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { findProject, projects } from '../../../data/content';
 
 export const dynamicParams = false;
 export function generateStaticParams() { return projects.map(({ slug }) => ({ slug })); }
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata { const project = findProject(params.slug); return project ? { title: project.title, description: project.summary, alternates: { canonical: `/work/${project.slug}` }, openGraph: { title: project.title, description: project.summary, images: [{ url: project.image, alt: project.imageAlt }] } } : {}; }
 
 export default function WorkDetailPage({ params }: { params: { slug: string } }) {
   const project = findProject(params.slug); if (!project) notFound();
