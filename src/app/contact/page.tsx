@@ -1,41 +1,8 @@
-export default function ContactPage() {
-  return (
-    <main className="site-page min-h-screen py-10 px-6 text-ink">
-      <div className="mx-auto max-w-5xl space-y-10">
-        <section className="rounded-3xl bg-white p-10 shadow-sm shadow-slate-200/50">
-          <p className="text-sm uppercase tracking-[0.4em] text-slate-500">Contact</p>
-          <h1 className="mt-4 text-4xl font-bold">Start your next project</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700">
-            Share your idea, timeline, and budget. White Rabbit will help qualify your request and send it to the BITnWIT team.
-          </p>
-        </section>
+const inputClass = 'mt-2 w-full rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-3.5 text-ink outline-none transition placeholder:text-slate-400 focus:border-rabbit focus:bg-white focus:ring-4 focus:ring-rabbit/10';
 
-        <section className="rounded-3xl bg-white p-10 shadow-sm shadow-slate-200/50">
-          <form className="grid gap-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-slate-700">
-                Name
-              </label>
-              <input id="name" name="name" type="text" required className="mt-2 w-full rounded-3xl border border-line bg-cloud px-4 py-3 text-ink focus:border-rabbit focus:outline-none focus:ring-2 focus:ring-rabbit/20" />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-slate-700">
-                Email
-              </label>
-              <input id="email" name="email" type="email" required className="mt-2 w-full rounded-3xl border border-line bg-cloud px-4 py-3 text-ink focus:border-rabbit focus:outline-none focus:ring-2 focus:ring-rabbit/20" />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-semibold text-slate-700">
-                Tell us about your project
-              </label>
-              <textarea id="message" name="message" rows={6} required className="mt-2 w-full rounded-3xl border border-line bg-cloud px-4 py-3 text-ink focus:border-rabbit focus:outline-none focus:ring-2 focus:ring-rabbit/20" />
-            </div>
-            <button type="submit" className="inline-flex w-full items-center justify-center rounded-full bg-rabbit px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-rabbit/20 transition hover:bg-blue-600">
-              Send message
-            </button>
-          </form>
-        </section>
-      </div>
-    </main>
-  );
+export default function ContactPage() {
+  return <main className="site-page min-h-screen px-6 py-16 text-ink"><div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[.8fr_1.2fr]">
+    <section className="lg:sticky lg:top-32 lg:self-start"><span className="eyebrow"><span className="h-1.5 w-1.5 rounded-full bg-rabbit" />Start a project</span><h1 className="mt-6 text-4xl font-extrabold tracking-[-0.04em] sm:text-6xl">Tell us what you want to <span className="text-gradient">build.</span></h1><p className="mt-6 text-lg leading-8 text-slate-600">Share the goal, where you are now, and what success looks like. We’ll respond with useful next steps—not a generic sales pitch.</p><div className="mt-10 space-y-5 border-t border-slate-200 pt-8 text-sm text-slate-600"><p className="flex gap-3"><span className="text-rabbit">✓</span>Reply within one business day</p><p className="flex gap-3"><span className="text-rabbit">✓</span>Clear scope, timeline, and recommendation</p><p className="flex gap-3"><span className="text-rabbit">✓</span>No-obligation discovery conversation</p></div></section>
+    <section className="surface-card rounded-[2rem] p-6 sm:p-10"><div className="flex items-center justify-between border-b border-slate-200 pb-6"><div><p className="font-bold">Project brief</p><p className="mt-1 text-sm text-slate-500">Usually takes 3–4 minutes</p></div><span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700"><span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />Available</span></div><form className="mt-7 grid gap-6 sm:grid-cols-2"><label className="text-sm font-semibold text-slate-700">Your name<input name="name" required placeholder="Jane Smith" className={inputClass} /></label><label className="text-sm font-semibold text-slate-700">Work email<input name="email" type="email" required placeholder="jane@company.com" className={inputClass} /></label><label className="text-sm font-semibold text-slate-700 sm:col-span-2">What do you need?<select name="service" className={inputClass} defaultValue=""><option value="" disabled>Select a service</option><option>Website or web app</option><option>Mobile app</option><option>UI/UX and product design</option><option>AI integration</option><option>Marketing, SEO, or branding</option><option>Not sure yet</option></select></label><label className="text-sm font-semibold text-slate-700">Ideal timeline<select name="timeline" className={inputClass} defaultValue=""><option value="" disabled>Select timeline</option><option>As soon as possible</option><option>1–2 months</option><option>3–6 months</option><option>Exploring for later</option></select></label><label className="text-sm font-semibold text-slate-700">Budget range<select name="budget" className={inputClass} defaultValue=""><option value="" disabled>Select budget</option><option>Under $5k</option><option>$5k–$15k</option><option>$15k–$50k</option><option>$50k+</option></select></label><label className="text-sm font-semibold text-slate-700 sm:col-span-2">A little about the project<textarea name="message" rows={5} required placeholder="The goal, the problem, and anything we should know..." className={inputClass} /></label><button type="submit" className="btn-shine rounded-xl bg-rabbit px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-rabbit/20 transition hover:-translate-y-0.5 hover:bg-blue-600 sm:col-span-2">Send project brief →</button></form></section>
+  </div></main>;
 }

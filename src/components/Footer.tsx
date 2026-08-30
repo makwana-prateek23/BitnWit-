@@ -38,7 +38,7 @@ export default function Footer() {
         <div className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-lg font-semibold">Got a project in mind?</p>
-            <p className="mt-1 text-sm text-slate-400">Let's talk it through with White Rabbit.</p>
+            <p className="mt-1 text-sm text-slate-400">Let&apos;s turn it into a focused plan.</p>
           </div>
           <Link
             href="/contact"

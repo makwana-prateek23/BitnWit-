@@ -31,37 +31,22 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header
-      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
-        scrolled
-          ? 'border-line bg-white/85 shadow-sm shadow-slate-200/60 backdrop-blur-lg'
-          : 'border-transparent bg-white/40 backdrop-blur'
-      }`}
-    >
+    <header className="sticky top-0 z-50 px-3 pt-3 sm:px-6">
       <div
-        className={`mx-auto flex max-w-6xl items-center justify-between px-6 transition-[padding] duration-300 ${
-          scrolled ? 'py-3' : 'py-5'
-        }`}
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-2xl border px-4 transition-all duration-300 sm:px-5 ${scrolled ? 'border-slate-200/80 bg-white/90 py-2.5 shadow-xl shadow-slate-900/5 backdrop-blur-xl' : 'border-white/80 bg-white/70 py-3.5 shadow-sm backdrop-blur-xl'}`}
       >
         <Logo />
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-1 rounded-xl bg-slate-100/80 p-1 md:flex">
           {links.map((link) => {
             const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`group relative text-sm font-semibold transition ${
-                  active ? 'text-ink' : 'text-slate-600 hover:text-ink'
-                }`}
+                className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${active ? 'bg-white text-ink shadow-sm' : 'text-slate-600 hover:bg-white/70 hover:text-ink'}`}
               >
                 {link.label}
-                <span
-                  className={`absolute -bottom-1.5 left-0 h-[2px] rounded-full bg-rabbit transition-all duration-300 ${
-                    active ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
-                />
               </Link>
             );
           })}
@@ -70,7 +55,7 @@ export default function Header() {
         <div className="hidden md:block">
           <Link
             href="/contact"
-            className="btn-shine inline-flex items-center justify-center rounded-full bg-rabbit px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-rabbit/20 transition hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-rabbit/40"
+            className="btn-shine inline-flex items-center justify-center rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-ink/15 transition hover:-translate-y-0.5 hover:bg-rabbit"
           >
             Talk to White Rabbit
           </Link>

@@ -1,33 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
-
-const projects = [
-  { title: 'Launch-ready service website', slug: '/work/service-website' },
-  { title: 'App concept MVP', slug: '/work/app-concept' }
-];
+import { projects } from '../../data/content';
 
 export default function WorkPage() {
-  return (
-    <main className="site-page min-h-screen py-10 px-6 text-ink">
-      <div className="mx-auto max-w-6xl space-y-10">
-        <section className="rounded-3xl bg-white p-10 shadow-sm shadow-slate-200/50">
-          <p className="text-sm uppercase tracking-[0.4em] text-slate-500">Work</p>
-          <h1 className="mt-4 text-4xl font-bold">Portfolio and case studies</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-700">
-            A collection of recent work and sample projects that show what BITnWIT can build.
-          </p>
-        </section>
-
-        <section className="grid gap-6 md:grid-cols-2">
-          {projects.map((project) => (
-            <article key={project.slug} className="rounded-3xl border border-line bg-white p-8 transition hover:border-rabbit/80">
-              <h2 className="text-2xl font-semibold text-ink">{project.title}</h2>
-              <Link href={project.slug} className="mt-6 inline-flex text-sm font-semibold text-rabbit hover:text-blue-600">
-                View case study →
-              </Link>
-            </article>
-          ))}
-        </section>
-      </div>
-    </main>
-  );
+  return <main className="site-page min-h-screen px-6 py-10 text-ink"><div className="mx-auto max-w-6xl space-y-10"><section className="rounded-3xl bg-white p-10 shadow-sm"><p className="text-sm uppercase tracking-[0.4em] text-slate-500">Work</p><h1 className="mt-4 text-4xl font-bold">Portfolio and case studies</h1><p className="mt-6 max-w-3xl text-lg leading-8 text-slate-700">See how strategy, design, and engineering come together to solve real business problems.</p></section><section className="grid gap-6 md:grid-cols-2">{projects.map((project) => <article key={project.slug} className="group overflow-hidden rounded-3xl border border-line bg-white transition hover:-translate-y-1 hover:border-rabbit/80 hover:shadow-xl"><div className="relative aspect-[16/9] overflow-hidden bg-cloud"><Image src={project.image} alt={project.imageAlt} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 768px) 50vw, 100vw" /></div><div className="p-8"><p className="text-xs font-semibold uppercase tracking-[0.25em] text-rabbit">{project.category} · {project.year}</p><h2 className="mt-2 text-2xl font-semibold">{project.title}</h2><p className="mt-3 leading-7 text-slate-600">{project.summary}</p><Link href={`/work/${project.slug}`} className="mt-6 inline-flex text-sm font-semibold text-rabbit">View case study →</Link></div></article>)}</section></div></main>;
 }
