@@ -34,11 +34,11 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 px-3 pt-2 sm:px-5">
       <div
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 transition-all duration-300 sm:px-5 ${scrolled ? 'border-slate-200/80 bg-white/90 py-2.5 shadow-xl shadow-slate-900/5 backdrop-blur-xl' : 'border-white/80 bg-white/70 py-3 shadow-sm backdrop-blur-xl'}`}
+        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 transition-[background-color,border-color,box-shadow] duration-300 sm:px-5 ${scrolled ? 'border-slate-200/80 bg-white shadow-xl shadow-slate-900/5' : 'border-transparent bg-transparent shadow-none'}`}
       >
         <Logo />
 
-        <nav className="hidden items-center gap-1 rounded-xl bg-slate-100/80 p-1 md:flex">
+        <nav className={`hidden items-center gap-1 rounded-xl p-1 transition-colors duration-300 md:flex ${scrolled ? 'bg-slate-100/80' : 'bg-transparent'}`}>
           {links.map((link) => {
             const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
