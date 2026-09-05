@@ -6,11 +6,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ink: '#1A1A1A',
-        rabbit: '#1E90FF',
-        signal: '#FF3B5C',
-        cloud: '#F2F4F7',
-        line: '#E6E6E6'
+        ink: '#061B49',
+        rabbit: '#6D1FA2',
+        signal: '#FF5A0A',
+        cloud: '#F7F5FB',
+        line: '#E8E2F0'
       },
       fontFamily: {
         heading: ['var(--font-heading)', 'ui-sans-serif', 'system-ui', 'sans-serif'],

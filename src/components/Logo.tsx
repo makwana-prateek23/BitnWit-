@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface LogoProps {
   withTagline?: boolean;
@@ -7,15 +8,12 @@ interface LogoProps {
 
 export default function Logo({ withTagline = false, className = '' }: LogoProps) {
   return (
-    <Link href="/" className={`inline-flex flex-col ${className}`}>
-      <span className="font-heading text-2xl font-extrabold tracking-tight text-ink">
-        BIT<span className="text-signal">n</span>
-        <span className="text-rabbit">WIT</span>
-      </span>
+    <Link href="/" aria-label="BITnWIT home" className={`inline-flex flex-col ${className}`}>
+      <Image src="/bitnwit-logo.png" alt="BITnWIT" width={190} height={76} priority className="h-10 w-auto object-contain object-left" />
       {withTagline && (
         <span className="mt-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-slate-500">
-          Building <span className="text-rabbit">Intelligence</span> Through{' '}
-          <span className="text-signal">Technology</span>
+          Innovate <span className="text-rabbit">• Build</span>{' '}
+          <span className="text-signal">• Solve</span>
         </span>
       )}
     </Link>

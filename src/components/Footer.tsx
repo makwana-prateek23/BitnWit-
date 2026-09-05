@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin, AiOutlineArrowRight } from 'react-icons/ai';
-import RabbitMark from './RabbitMark';
 
 const columns = [
   {
@@ -52,12 +52,8 @@ export default function Footer() {
 
         <div className="mt-14 grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-4">
-              <RabbitMark size={28} />
-              <span className="font-heading text-2xl font-extrabold tracking-tight">
-                BIT<span className="text-signal">n</span>
-                <span className="text-rabbit">WIT</span>
-              </span>
+            <div className="inline-flex rounded-xl bg-white p-2">
+              <Image src="/bitnwit-logo.png" alt="BITnWIT" width={190} height={76} className="h-10 w-auto object-contain" />
             </div>
             <p className="mt-6 max-w-sm text-lg font-semibold leading-8 text-slate-200">
               We <span className="text-rabbit">build</span>. We <span className="text-signal">think</span>. We{' '}
