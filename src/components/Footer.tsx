@@ -53,7 +53,7 @@ export default function Footer() {
         <div className="mt-14 grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <div className="inline-flex rounded-xl bg-white p-2">
-              <Image src="/bitnwit-logo.png" alt="BITnWIT" width={190} height={76} className="h-10 w-auto object-contain" />
+              <Image src="/bitnwit-logo-transparent.png" alt="BITnWIT" width={1919} height={820} className="h-10 w-auto object-contain" />
             </div>
             <p className="mt-6 max-w-sm text-lg font-semibold leading-8 text-slate-200">
               We <span className="text-rabbit">build</span>. We <span className="text-signal">think</span>. We{' '}

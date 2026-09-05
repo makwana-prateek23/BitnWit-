@@ -9,7 +9,7 @@ interface LogoProps {
 export default function Logo({ withTagline = false, className = '' }: LogoProps) {
   return (
     <Link href="/" aria-label="BITnWIT home" className={`inline-flex flex-col ${className}`}>
-      <Image src="/bitnwit-logo.png" alt="BITnWIT" width={190} height={76} priority className="h-10 w-auto object-contain object-left" />
+      <Image src="/bitnwit-logo-transparent.png" alt="BITnWIT" width={1919} height={820} priority className="h-10 w-auto object-contain object-left" />
       {withTagline && (
         <span className="mt-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-slate-500">
           Innovate <span className="text-rabbit">• Build</span>{' '}
