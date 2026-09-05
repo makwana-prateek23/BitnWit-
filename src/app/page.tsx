@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   AiOutlineArrowRight,
   AiOutlineBulb,
@@ -274,7 +275,13 @@ export default function HomePage() {
         <Reveal className="relative mt-12 overflow-hidden rounded-3xl bg-gradient-to-br from-rabbit via-blue-600 to-signal p-9 text-center text-white sm:p-12">
           <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" aria-hidden />
           <div className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" aria-hidden />
-          <RabbitMark size={40} className="mx-auto" />
+          <Image
+            src="/icon.png"
+            alt="White Rabbit mascot"
+            width={80}
+            height={80}
+            className="mx-auto h-20 w-20 object-contain"
+          />
           <h2 className="mt-6 text-2xl font-bold sm:text-3xl">Ready to build something great?</h2>
           <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-white/85 sm:text-base">
             Tell White Rabbit about your idea and we'll turn it into a plan, a timeline, and a working product.
