@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600'], variabl
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bitnwit.com';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL('https://bitnwit.com'),
   title: { default: 'BITnWIT | Web, App, AI & Digital Growth', template: '%s | BITnWIT' },
   description: 'BITnWIT builds websites, applications, AI workflows, brands, and digital growth systems for clients across India and worldwide.',
   keywords: ['web development India', 'app development company', 'AI integration services', 'UI UX design', 'digital marketing agency India', 'custom software development', 'BITnWIT'],
