@@ -101,10 +101,10 @@ const stats = [
 
 export default function HomePage() {
   return (
-    <main className="site-page min-h-screen overflow-hidden px-4 py-10 text-ink sm:px-6 lg:py-12">
-      <div className="mx-auto max-w-7xl">
+    <main className="site-page min-h-screen overflow-hidden px-4 py-8 text-ink sm:px-8 lg:px-12 2xl:px-16 lg:py-12">
+      <div className="mx-auto w-full max-w-[1720px] space-y-20 lg:space-y-24 2xl:space-y-32">
         {/* ---------------------------------------------------------- HERO */}
-        <section className="hero-shell grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
+        <section className="hero-shell grid gap-8 lg:grid-cols-[1.18fr_.82fr] lg:items-center 2xl:gap-16">
           <div className="hero-blob hero-blob-blue" aria-hidden />
           <div className="hero-blob hero-blob-red" aria-hidden />
 
@@ -113,12 +113,12 @@ export default function HomePage() {
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rabbit" />
               BITnWIT
             </p>
-            <h1 className="mt-5 max-w-xl text-4xl font-bold tracking-tight sm:text-5xl">
+            <h1 className="mt-5 max-w-2xl 2xl:max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08]">
               We <span className="text-gradient">build</span>. We <span className="text-gradient">think</span>.
               <br />
               We <span className="text-gradient">create</span>. We <span className="text-gradient">grow</span>.
             </h1>
-            <p className="mt-6 max-w-lg text-lg leading-8 text-slate-700">
+            <p className="mt-6 max-w-xl 2xl:max-w-2xl text-lg lg:text-xl 2xl:text-2xl leading-relaxed text-slate-700">
               A digital studio for digital marketing, web and app development, UI/UX design, SEO, custom engineering,
               and AI integration with White Rabbit as your guide.
             </p>
@@ -146,7 +146,7 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal direction="left" delay={0.1} className="relative">
-            <div className="mascot-showcase rounded-3xl p-5">
+            <div className="mascot-showcase rounded-3xl 2xl:rounded-[2.5rem] p-6 sm:p-8 2xl:p-10">
               <div className="flex items-center gap-4">
                 <RabbitMark size={32} />
                 <div>
@@ -155,7 +155,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="mt-2">
-                <MascotImage className="max-h-[430px] min-h-[280px]" />
+                <MascotImage className="max-h-[460px] lg:max-h-[520px] 2xl:max-h-[620px] min-h-[280px]" />
               </div>
               <div className="mt-6 space-y-4 text-sm leading-6 text-slate-700">
                 <p>Ask anything about BITnWIT services, timelines, and budgets.</p>
@@ -196,17 +196,17 @@ export default function HomePage() {
         <section className="mt-20">
           {/* Airy Minimalist Header with Service Representation */}
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-            <Reveal className="max-w-2xl">
+            <Reveal className="max-w-3xl 2xl:max-w-4xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-xs">
                 <RabbitMark size={15} />
                 <span>Core Capabilities</span>
                 <span className="text-slate-300">•</span>
                 <span className="font-bold text-rabbit">8 Disciplines</span>
               </div>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl 2xl:text-6xl">
                 Crafted for speed, conversion, and scale.
               </h2>
-              <p className="mt-3 text-base text-slate-600 max-w-xl">
+              <p className="mt-3 text-base lg:text-lg 2xl:text-xl text-slate-600 max-w-2xl 2xl:max-w-3xl">
                 Senior engineering, intuitive design, practical AI, and performance marketing—delivered in focused, milestone-driven sprints.
               </p>
             </Reveal>
@@ -223,28 +223,28 @@ export default function HomePage() {
           </div>
 
           {/* Symmetrical 8-Card Clean Grid (4x2 on desktop, 2x4 on tablet) */}
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 2xl:gap-8">
             {allServices.map((service, i) => {
               const theme = serviceTheme[service.icon];
               return (
                 <Reveal key={service.slug} delay={i * 0.04}>
                   <Link
                     href={service.slug}
-                    className="group flex h-full flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-900/5"
+                    className="group flex h-full flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-7 2xl:p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-900/5"
                   >
                     <div>
                       {/* Premium Dual-Tone Tinted Icon */}
                       <div
-                        className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${theme.border} ${theme.bg} ${theme.text} transition-all duration-300 group-hover:scale-110 group-hover:shadow-md ${theme.glow}`}
+                        className={`flex h-12 w-12 2xl:h-14 2xl:w-14 items-center justify-center rounded-2xl border ${theme.border} ${theme.bg} ${theme.text} transition-all duration-300 group-hover:scale-110 group-hover:shadow-md ${theme.glow}`}
                       >
                         <ServiceIcon name={service.icon} size={22} />
                       </div>
 
-                      <h3 className="mt-5 text-lg font-bold text-ink transition-colors group-hover:text-rabbit">
+                      <h3 className="mt-5 text-lg 2xl:text-xl font-bold text-ink transition-colors group-hover:text-rabbit">
                         {service.title}
                       </h3>
 
-                      <p className="mt-2.5 text-xs leading-relaxed text-slate-600">
+                      <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-slate-600">
                         {service.description}
                       </p>
                     </div>
@@ -279,10 +279,10 @@ export default function HomePage() {
         <section className="mt-20">
           <Reveal className="text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">How we work</p>
-            <h2 className="mt-3 text-2xl font-bold sm:text-3xl">From idea to launch, without the guesswork</h2>
+            <h2 className="mt-3 text-2xl font-bold sm:text-3xl lg:text-4xl 2xl:text-5xl">From idea to launch, without the guesswork</h2>
           </Reveal>
 
-          <div className="relative mt-12 grid gap-8 md:grid-cols-4">
+          <div className="relative mt-14 grid gap-8 md:grid-cols-4 2xl:gap-12">
             <div className="absolute left-0 right-0 top-6 hidden h-px bg-line md:block" aria-hidden />
             {process.map((step, i) => (
               <Reveal key={step.title} delay={i * 0.1} className="relative text-center">
@@ -298,10 +298,10 @@ export default function HomePage() {
         </section>
 
         {/* ---------------------------------------------------------- STATS */}
-        <Reveal className="mt-16 grid grid-cols-2 gap-6 rounded-3xl bg-ink p-8 text-white sm:p-9 md:grid-cols-4">
+        <Reveal className="mt-20 grid grid-cols-2 gap-8 rounded-3xl 2xl:rounded-[2.5rem] bg-ink p-8 sm:p-12 2xl:p-16 text-white md:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <Counter value={stat.value} suffix={stat.suffix} className="text-3xl font-extrabold sm:text-4xl" />
+              <Counter value={stat.value} suffix={stat.suffix} className="text-4xl font-extrabold sm:text-5xl 2xl:text-6xl" />
               <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 sm:text-sm">
                 {stat.label}
               </p>
@@ -310,12 +310,12 @@ export default function HomePage() {
         </Reveal>
 
         {/* ---------------------------------------------------------- DIFFERENTIATORS */}
-        <section className="mt-16 grid gap-6 md:grid-cols-3">
+        <section className="mt-20 grid gap-6 md:grid-cols-3 2xl:gap-8">
           {differentiators.map((item, i) => (
             <Reveal
               key={item.title}
               delay={i * 0.08}
-              className="rounded-3xl border border-line bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/60"
+              className="rounded-3xl border border-line bg-white p-8 2xl:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/60"
             >
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-signal/10 text-signal">
                 <item.icon className="text-lg" />
@@ -327,10 +327,10 @@ export default function HomePage() {
         </section>
 
         {/* ---------------------------------------------------------- CLIENTS & REACH */}
-        <section className="mt-16 grid gap-6 lg:grid-cols-[1.15fr_.85fr]">
-          <Reveal className="surface-card rounded-3xl p-8 sm:p-10">
+        <section className="mt-20 grid gap-8 lg:grid-cols-[1.15fr_.85fr] 2xl:gap-10">
+          <Reveal className="surface-card rounded-3xl 2xl:rounded-[2.5rem] p-8 sm:p-12 2xl:p-14">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">Who we work with</p>
-            <h2 className="mt-3 text-2xl font-bold sm:text-3xl">Built for teams ready to move forward.</h2>
+            <h2 className="mt-3 text-2xl font-bold sm:text-3xl lg:text-4xl">Built for teams ready to move forward.</h2>
             <p className="mt-4 max-w-2xl leading-7 text-slate-600">From founders validating an MVP to established businesses modernizing their digital operations, we shape the engagement around the problem and the people solving it.</p>
             <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {['Founders', 'Service teams', 'Growing brands', 'Global teams'].map((client) => (
@@ -339,17 +339,17 @@ export default function HomePage() {
             </div>
             <Link href="/clients" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-rabbit">Explore our collaborations <AiOutlineArrowRight /></Link>
           </Reveal>
-          <Reveal className="relative overflow-hidden rounded-3xl bg-ink p-8 text-white sm:p-10">
+          <Reveal className="relative overflow-hidden rounded-3xl 2xl:rounded-[2.5rem] bg-ink p-8 text-white sm:p-12 2xl:p-14">
             <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-rabbit/25 blur-3xl" />
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">Pan-India · Worldwide</p>
-            <h2 className="mt-3 text-2xl font-bold text-white">One workflow across every time zone.</h2>
+            <h2 className="mt-3 text-2xl font-bold text-white lg:text-3xl">One workflow across every time zone.</h2>
             <p className="mt-4 leading-7 text-slate-400">Remote-first delivery, documented decisions, async updates, and planned overlap hours make collaboration straightforward across India and international markets.</p>
             <div className="mt-7 flex gap-3"><span className="rounded-full bg-white/10 px-4 py-2 text-xs font-semibold">India-wide</span><span className="rounded-full bg-white/10 px-4 py-2 text-xs font-semibold">Global-ready</span></div>
           </Reveal>
         </section>
 
         {/* ---------------------------------------------------------- REDESIGNED PREMIUM CTA BANNER */}
-        <Reveal className="relative mt-20 overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-[#06122c] via-[#101032] to-[#25083a] p-10 text-center shadow-2xl sm:p-14 lg:p-16">
+        <Reveal className="relative mt-20 2xl:mt-28 overflow-hidden rounded-[2.5rem] 2xl:rounded-[3.5rem] border border-white/10 bg-gradient-to-br from-[#06122c] via-[#101032] to-[#25083a] p-10 text-center shadow-2xl sm:p-14 lg:p-20 2xl:p-24">
           {/* Ambient Lighting & Micro-Grid Texture */}
           <div className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-rabbit/30 blur-[100px]" aria-hidden />
           <div className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-signal/20 blur-[100px]" aria-hidden />
@@ -382,12 +382,12 @@ export default function HomePage() {
             </div>
 
             {/* Crisp High-Contrast Headline */}
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight !text-white sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight !text-white sm:text-4xl lg:text-5xl 2xl:text-6xl">
               Ready to build something <span className="text-gradient">remarkable</span>?
             </h2>
 
             {/* Subtitle */}
-            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+            <p className="mx-auto mt-4 max-w-xl 2xl:max-w-3xl text-base leading-relaxed text-slate-300 sm:text-lg 2xl:text-xl">
               Tell White Rabbit about your idea and we'll turn it into an actionable plan, realistic timeline, and working product.
             </p>
 

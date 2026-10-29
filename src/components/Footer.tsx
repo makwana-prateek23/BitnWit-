@@ -59,9 +59,9 @@ export default function Footer() {
       {/* Subtle Ambient Glow Behind Footer */}
       <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-rabbit/15 blur-[120px]" aria-hidden />
 
-      <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-16 lg:px-8">
+      <div className="relative mx-auto w-full max-w-[1720px] px-6 pb-14 pt-18 sm:px-8 lg:px-12 2xl:px-16">
         {/* ------------------------------------------------------------- MAIN 4-COLUMN PREMIUM GRID */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12 2xl:gap-16">
           {/* Brand & Studio Column (4 cols) */}
           <div className="lg:col-span-4 flex flex-col justify-between">
             <div>
@@ -80,7 +80,7 @@ export default function Footer() {
                 <span className="text-signal">• Solve</span>
               </p>
 
-              <p className="mt-3 max-w-sm text-xs leading-relaxed text-slate-400">
+              <p className="mt-3 max-w-md text-xs sm:text-sm leading-relaxed text-slate-400">
                 A modern digital engineering and growth studio. We design and ship high-performance web applications, mobile platforms, practical AI integrations, and conversion systems.
               </p>
 

@@ -89,7 +89,12 @@ a {
 }
 
 .site-page > div, .site-page > article { position: relative; z-index: 1; }
-.site-page .max-w-6xl { max-width: 80rem; }
+.site-container {
+  width: 100%;
+  max-width: 1720px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .site-page.py-16 { padding-top: 3rem; padding-bottom: 3rem; }
 @media (max-width: 640px) { .site-page.py-16 { padding-top: 2.5rem; padding-bottom: 2.5rem; } }
 .site-page::before { content: ''; position: absolute; inset: 0 0 auto; height: 34rem; pointer-events: none; background: radial-gradient(circle at 50% -10%, rgba(109, 31, 162, 0.17), transparent 62%); }
