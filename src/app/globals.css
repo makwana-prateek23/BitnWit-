@@ -397,3 +397,22 @@ a {
   50% { transform: translateX(0%); }
   100% { transform: translateX(100%); }
 }
+
+
+/* ---------------------------------------------------------------- */
+/* White Rabbit Mascot Face Loader Animation                         */
+/* ---------------------------------------------------------------- */
+
+.rabbit-face-bob {
+  animation: rabbit-bob 1.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes rabbit-bob {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.03);
+  }
+}
