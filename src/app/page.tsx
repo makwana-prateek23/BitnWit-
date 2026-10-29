@@ -13,44 +13,64 @@ import MascotImage from '../components/MascotImage';
 import RabbitMark from '../components/RabbitMark';
 import Reveal from '../components/Reveal';
 import Counter from '../components/Counter';
-import ServiceIcon, { ServiceIconName } from '../components/ServiceIcon';
+import ServiceIcon, { ServiceIconName, serviceTheme } from '../components/ServiceIcon';
+import TalkToRabbitButton from '../components/TalkToRabbitButton';
 
-const services: { title: string; icon: ServiceIconName; slug: string; description: string }[] = [
-  {
-    title: 'Digital Marketing',
-    icon: 'marketing',
-    slug: '/services/digital-marketing',
-    description: 'Brand growth, ads, social, and ROI-driven campaigns.'
-  },
+interface MinimalService {
+  title: string;
+  slug: string;
+  icon: ServiceIconName;
+  description: string;
+}
+
+const allServices: MinimalService[] = [
   {
     title: 'Web Development',
-    icon: 'web',
     slug: '/services/web-development',
-    description: 'Modern websites built for speed, SEO, and conversions.'
+    icon: 'web',
+    description: 'Fast, conversion-tuned web applications engineered with Next.js and sub-second load times.'
   },
   {
-    title: 'App Development',
-    icon: 'app',
+    title: 'Mobile App Development',
     slug: '/services/app-development',
-    description: 'Mobile and web applications designed for usability and scale.'
-  },
-  {
-    title: 'Custom Code',
-    icon: 'code',
-    slug: '/services/custom-code',
-    description: 'Tailor-made software, integrations, and custom engineering solutions.'
+    icon: 'app',
+    description: 'Cross-platform iOS and Android products built with Flutter & React Native for seamless UX.'
   },
   {
     title: 'AI Integration',
-    icon: 'ai',
     slug: '/services/ai-integration',
-    description: 'AI-powered workflows, automation, and smart product features.'
+    icon: 'ai',
+    description: 'Production-ready AI workflows, conversational guides, and custom LLM automations.'
+  },
+  {
+    title: 'Digital Marketing',
+    slug: '/services/digital-marketing',
+    icon: 'marketing',
+    description: 'Growth-first campaigns, paid acquisition funnels, and performance reporting focused on revenue.'
+  },
+  {
+    title: 'UI/UX Design',
+    slug: '/services/ui-ux-design',
+    icon: 'design',
+    description: 'Thoughtful user journeys, interactive Figma prototypes, and scalable design systems.'
+  },
+  {
+    title: 'SEO & Analytics',
+    slug: '/services/seo-analytics',
+    icon: 'seo',
+    description: 'Technical search architecture, schema markup, and attribution tracking to maximize organic leads.'
+  },
+  {
+    title: 'Custom Engineering',
+    slug: '/services/custom-code',
+    icon: 'code',
+    description: 'Bespoke software architecture, internal dashboards, secure APIs, and database engineering.'
   },
   {
     title: 'Branding & Strategy',
-    icon: 'branding',
     slug: '/services/branding-strategy',
-    description: 'Positioning, messaging, and creative systems that resonate.'
+    icon: 'branding',
+    description: 'Distinct visual identity systems, market positioning, and brand guidelines that build authority.'
   }
 ];
 
@@ -103,13 +123,10 @@ export default function HomePage() {
               and AI integration with White Rabbit as your guide.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="btn-shine group inline-flex items-center justify-center gap-2 rounded-full bg-rabbit px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-rabbit/20 transition hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-xl hover:shadow-rabbit/30"
-              >
+              <TalkToRabbitButton className="btn-shine group inline-flex items-center justify-center gap-2 rounded-full bg-rabbit px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-rabbit/20 transition hover:-translate-y-0.5 hover:bg-purple-800 hover:shadow-xl hover:shadow-rabbit/30">
                 Talk to White Rabbit
                 <AiOutlineArrowRight className="transition group-hover:translate-x-1" />
-              </Link>
+              </TalkToRabbitButton>
               <Link
                 href="/services"
                 className="inline-flex items-center justify-center rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-rabbit/40 hover:bg-slate-50"
@@ -142,16 +159,21 @@ export default function HomePage() {
               </div>
               <div className="mt-6 space-y-4 text-sm leading-6 text-slate-700">
                 <p>Ask anything about BITnWIT services, timelines, and budgets.</p>
-                <p>Get help, qualify your idea, and move to a contact conversation quickly.</p>
+                <div className="pt-1">
+                  <TalkToRabbitButton className="inline-flex items-center gap-2 text-xs font-bold text-rabbit hover:underline">
+                    <span>💬 Open AI Assistant</span>
+                    <AiOutlineArrowRight />
+                  </TalkToRabbitButton>
+                </div>
               </div>
             </div>
 
             <div className="floating-chip absolute -top-5 left-8 z-10 hidden rounded-2xl border border-white/60 bg-white/90 px-4 py-2 text-xs font-semibold text-ink shadow-lg shadow-slate-300/40 backdrop-blur sm:block">
               ⚡ Fast delivery
             </div>
-            <div className="floating-chip delay-1 absolute -right-6 top-1/2 z-10 hidden rounded-2xl border border-white/60 bg-white/90 px-4 py-2 text-xs font-semibold text-ink shadow-lg shadow-slate-300/40 backdrop-blur sm:block">
+            <TalkToRabbitButton className="floating-chip delay-1 absolute -right-6 top-1/2 z-10 hidden cursor-pointer rounded-2xl border border-purple-200/80 bg-white/95 px-4 py-2 text-xs font-semibold text-rabbit shadow-lg shadow-purple-200/50 backdrop-blur transition hover:scale-105 hover:border-rabbit sm:block">
               💬 AI chat ready
-            </div>
+            </TalkToRabbitButton>
             <div className="floating-chip delay-2 absolute -bottom-5 left-10 z-10 hidden rounded-2xl border border-white/60 bg-white/90 px-4 py-2 text-xs font-semibold text-ink shadow-lg shadow-slate-300/40 backdrop-blur sm:block">
               🎯 ROI focused
             </div>
@@ -170,36 +192,91 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        {/* ---------------------------------------------------------- SERVICES */}
-        <section className="mt-12 rounded-3xl bg-white p-7 shadow-sm shadow-slate-200/50 sm:p-9">
-          <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">What we do</p>
-            <h2 className="mt-3 text-2xl font-bold sm:text-3xl">Built for clients who want modern digital products</h2>
-          </Reveal>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {services.map((service, i) => (
-              <Reveal key={service.slug} delay={i * 0.07}>
-                <Link
-                  href={service.slug}
-                  className="group block h-full rounded-3xl border border-line bg-cloud p-6 transition duration-300 hover:-translate-y-1.5 hover:border-rabbit/60 hover:bg-white hover:shadow-xl hover:shadow-rabbit/10"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-rabbit/10 text-rabbit transition duration-300 group-hover:scale-110 group-hover:bg-rabbit group-hover:text-white">
-                    <ServiceIcon name={service.icon} />
-                  </div>
-                  <h3 className="mt-4 text-xl font-semibold text-ink">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{service.description}</p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-rabbit">
-                    Learn more
-                    <AiOutlineArrowRight className="transition duration-300 group-hover:translate-x-1" />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
+        {/* ---------------------------------------------------------- MINIMAL & MODERN SERVICES SECTION */}
+        <section className="mt-20">
+          {/* Airy Minimalist Header with Service Representation */}
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+            <Reveal className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-xs">
+                <RabbitMark size={15} />
+                <span>Core Capabilities</span>
+                <span className="text-slate-300">•</span>
+                <span className="font-bold text-rabbit">8 Disciplines</span>
+              </div>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+                Crafted for speed, conversion, and scale.
+              </h2>
+              <p className="mt-3 text-base text-slate-600 max-w-xl">
+                Senior engineering, intuitive design, practical AI, and performance marketing—delivered in focused, milestone-driven sprints.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.1} className="shrink-0">
+              <Link
+                href="/services"
+                className="group inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-ink shadow-xs transition hover:border-slate-400 hover:bg-slate-50"
+              >
+                <span>All Deliverables & Sprints</span>
+                <AiOutlineArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </Reveal>
           </div>
+
+          {/* Symmetrical 8-Card Clean Grid (4x2 on desktop, 2x4 on tablet) */}
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {allServices.map((service, i) => {
+              const theme = serviceTheme[service.icon];
+              return (
+                <Reveal key={service.slug} delay={i * 0.04}>
+                  <Link
+                    href={service.slug}
+                    className="group flex h-full flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-900/5"
+                  >
+                    <div>
+                      {/* Premium Dual-Tone Tinted Icon */}
+                      <div
+                        className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${theme.border} ${theme.bg} ${theme.text} transition-all duration-300 group-hover:scale-110 group-hover:shadow-md ${theme.glow}`}
+                      >
+                        <ServiceIcon name={service.icon} size={22} />
+                      </div>
+
+                      <h3 className="mt-5 text-lg font-bold text-ink transition-colors group-hover:text-rabbit">
+                        {service.title}
+                      </h3>
+
+                      <p className="mt-2.5 text-xs leading-relaxed text-slate-600">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 transition-colors group-hover:text-ink">
+                        <span>Explore</span>
+                        <AiOutlineArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
+                      <span className="font-mono text-xs text-slate-300 transition-colors group-hover:text-rabbit">
+                        0{i + 1}
+                      </span>
+                    </div>
+                  </Link>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          {/* Minimal Assistant Quick-Prompt */}
+          <Reveal delay={0.2} className="mt-10 text-center">
+            <div className="inline-flex flex-wrap items-center justify-center gap-3 rounded-full border border-slate-200/80 bg-white/90 px-6 py-2.5 text-xs text-slate-600 shadow-xs backdrop-blur-md">
+              <span>Unsure which service matches your exact scope?</span>
+              <TalkToRabbitButton className="font-bold text-rabbit hover:underline">
+                💬 Ask White Rabbit to recommend a sprint plan →
+              </TalkToRabbitButton>
+            </div>
+          </Reveal>
         </section>
 
         {/* ---------------------------------------------------------- PROCESS */}
-        <section className="mt-12">
+        <section className="mt-20">
           <Reveal className="text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">How we work</p>
             <h2 className="mt-3 text-2xl font-bold sm:text-3xl">From idea to launch, without the guesswork</h2>
@@ -221,7 +298,7 @@ export default function HomePage() {
         </section>
 
         {/* ---------------------------------------------------------- STATS */}
-        <Reveal className="mt-12 grid grid-cols-2 gap-6 rounded-3xl bg-ink p-8 text-white sm:p-9 md:grid-cols-4">
+        <Reveal className="mt-16 grid grid-cols-2 gap-6 rounded-3xl bg-ink p-8 text-white sm:p-9 md:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <Counter value={stat.value} suffix={stat.suffix} className="text-3xl font-extrabold sm:text-4xl" />
@@ -233,7 +310,7 @@ export default function HomePage() {
         </Reveal>
 
         {/* ---------------------------------------------------------- DIFFERENTIATORS */}
-        <section className="mt-12 grid gap-6 md:grid-cols-3">
+        <section className="mt-16 grid gap-6 md:grid-cols-3">
           {differentiators.map((item, i) => (
             <Reveal
               key={item.title}
@@ -250,7 +327,7 @@ export default function HomePage() {
         </section>
 
         {/* ---------------------------------------------------------- CLIENTS & REACH */}
-        <section className="mt-12 grid gap-6 lg:grid-cols-[1.15fr_.85fr]">
+        <section className="mt-16 grid gap-6 lg:grid-cols-[1.15fr_.85fr]">
           <Reveal className="surface-card rounded-3xl p-8 sm:p-10">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">Who we work with</p>
             <h2 className="mt-3 text-2xl font-bold sm:text-3xl">Built for teams ready to move forward.</h2>
@@ -271,28 +348,80 @@ export default function HomePage() {
           </Reveal>
         </section>
 
-        {/* ---------------------------------------------------------- CTA */}
-        <Reveal className="relative mt-12 overflow-hidden rounded-3xl bg-gradient-to-br from-rabbit via-blue-600 to-signal p-9 text-center text-white sm:p-12">
-          <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" aria-hidden />
-          <div className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" aria-hidden />
-          <Image
-            src="/icon.png"
-            alt="White Rabbit mascot"
-            width={80}
-            height={80}
-            className="mx-auto h-20 w-20 object-contain"
-          />
-          <h2 className="mt-6 text-2xl font-bold sm:text-3xl">Ready to build something great?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-white/85 sm:text-base">
-            Tell White Rabbit about your idea and we'll turn it into a plan, a timeline, and a working product.
-          </p>
-          <Link
-            href="/contact"
-            className="btn-shine mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-ink shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
-          >
-            Start a conversation
-            <AiOutlineArrowRight />
-          </Link>
+        {/* ---------------------------------------------------------- REDESIGNED PREMIUM CTA BANNER */}
+        <Reveal className="relative mt-20 overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-[#06122c] via-[#101032] to-[#25083a] p-10 text-center shadow-2xl sm:p-14 lg:p-16">
+          {/* Ambient Lighting & Micro-Grid Texture */}
+          <div className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-rabbit/30 blur-[100px]" aria-hidden />
+          <div className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-signal/20 blur-[100px]" aria-hidden />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(109,31,162,0.25),transparent_65%)]" aria-hidden />
+          <div className="pointer-events-none absolute inset-0 opacity-15 bg-[radial-gradient(rgba(255,255,255,0.2)_1px,transparent_1px)] [background-size:24px_24px]" aria-hidden />
+
+          {/* White Rabbit Glowing Medallion */}
+          <div className="relative z-10">
+            <div className="relative mx-auto flex h-24 w-24 items-center justify-center rounded-3xl border border-white/20 bg-white/10 p-3 shadow-2xl shadow-purple-900/50 backdrop-blur-xl transition duration-300 hover:scale-105">
+              <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-tr from-rabbit/40 to-signal/30 blur-md" />
+              <Image
+                src="/icon.png"
+                alt="White Rabbit mascot"
+                width={72}
+                height={72}
+                className="h-16 w-16 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)]"
+              />
+              <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-4 w-4 rounded-full border-2 border-slate-900 bg-emerald-500" />
+              </span>
+            </div>
+
+            {/* Availability Eyebrow */}
+            <div className="mt-6 flex justify-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-purple-300/30 bg-purple-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-purple-200">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                Available for New Projects
+              </span>
+            </div>
+
+            {/* Crisp High-Contrast Headline */}
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight !text-white sm:text-4xl lg:text-5xl">
+              Ready to build something <span className="text-gradient">remarkable</span>?
+            </h2>
+
+            {/* Subtitle */}
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+              Tell White Rabbit about your idea and we'll turn it into an actionable plan, realistic timeline, and working product.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <TalkToRabbitButton className="btn-shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-white px-8 py-4 text-sm font-bold text-ink shadow-2xl shadow-white/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-100 hover:shadow-white/20 active:scale-95">
+                <span>Talk to White Rabbit</span>
+                <AiOutlineArrowRight className="text-rabbit transition-transform duration-300 group-hover:translate-x-1" />
+              </TalkToRabbitButton>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-8 py-4 text-sm font-bold text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 active:scale-95"
+              >
+                <span>Send a project brief</span>
+                <span className="text-purple-300">→</span>
+              </Link>
+            </div>
+
+            {/* Value & Trust Signals */}
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-white/10 pt-8 text-xs font-semibold text-slate-400">
+              <span className="inline-flex items-center gap-2">
+                <span className="text-emerald-400">✓</span>
+                Direct founder & tech lead access
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <span className="text-emerald-400">✓</span>
+                Guaranteed response within 24 hours
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <span className="text-emerald-400">✓</span>
+                Transparent sprint deliverables
+              </span>
+            </div>
+          </div>
         </Reveal>
 
       </div>

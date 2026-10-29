@@ -1,65 +1,123 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { AiFillGithub, AiFillInstagram, AiFillLinkedin, AiOutlineArrowRight } from 'react-icons/ai';
+import {
+  AiFillGithub,
+  AiFillInstagram,
+  AiFillLinkedin,
+  AiOutlineWhatsApp,
+  AiOutlineArrowRight
+} from 'react-icons/ai';
+import { LuArrowUp, LuCopy, LuCheck, LuSparkles } from 'react-icons/lu';
+import TalkToRabbitButton from './TalkToRabbitButton';
 
-const columns = [
-  {
-    heading: 'Services',
-    links: [
-      { label: 'Digital Marketing', href: '/services/digital-marketing' },
-      { label: 'Web Development', href: '/services/web-development' },
-      { label: 'App Development', href: '/services/app-development' },
-      { label: 'UI/UX Design', href: '/services/ui-ux-design' }
-    ]
-  },
-  {
-    heading: 'Company',
-    links: [
-      { label: 'About', href: '/about' },
-      { label: 'Work', href: '/work' },
-      { label: 'Clients', href: '/clients' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Contact', href: '/contact' }
-    ]
-  }
+const engineeringServices = [
+  { label: 'Web Development', href: '/services/web-development' },
+  { label: 'Mobile App Development', href: '/services/app-development' },
+  { label: 'AI Integration & Automation', href: '/services/ai-integration' },
+  { label: 'Custom Engineering & APIs', href: '/services/custom-code' }
+];
+
+const growthServices = [
+  { label: 'Digital Marketing & Growth', href: '/services/digital-marketing' },
+  { label: 'UI/UX & Product Design', href: '/services/ui-ux-design' },
+  { label: 'SEO & Growth Analytics', href: '/services/seo-analytics' },
+  { label: 'Branding & Strategy', href: '/services/branding-strategy' }
+];
+
+const companyLinks = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Selected Work & Case Studies', href: '/work' },
+  { label: 'Clients & Collaborations', href: '/clients' },
+  { label: 'Insights & Blog', href: '/blog' },
+  { label: 'Contact & Sprints', href: '/contact' }
 ];
 
 const socials = [
-  { icon: AiFillInstagram, href: 'https://www.instagram.com/bitnwit.in', label: 'BITnWIT on Instagram' },
-  { icon: AiFillLinkedin, href: 'https://www.linkedin.com/in/sandeep-kumar-0766b7249', label: 'Sandeep Kumar on LinkedIn' },
-  { icon: AiFillGithub, href: 'https://github.com/Sandeep1-dev', label: 'Sandeep Kumar on GitHub' }
+  { icon: AiFillInstagram, href: 'https://www.instagram.com/bitnwit.in', label: 'Instagram' },
+  { icon: AiFillLinkedin, href: 'https://www.linkedin.com/in/sandeep-kumar-0766b7249', label: 'LinkedIn' },
+  { icon: AiFillGithub, href: 'https://github.com/Sandeep1-dev', label: 'GitHub' }
 ];
 
 export default function Footer() {
+  const [copied, setCopied] = useState(false);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText('Sanbook1.0.0.0@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <footer className="relative overflow-hidden bg-ink text-white">
-      <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-rabbit/20 blur-3xl" aria-hidden />
+    <footer className="relative overflow-hidden bg-[#040c22] text-white border-t border-white/10">
+      {/* Subtle Ambient Glow Behind Footer */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-rabbit/15 blur-[120px]" aria-hidden />
 
-      <div className="relative mx-auto max-w-6xl px-6 pb-10 pt-16">
-        <div className="flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-lg font-semibold">Got a project in mind?</p>
-              <p className="mt-1 text-sm text-slate-400">Pan-India and international projects welcome.</p>
-          </div>
-          <Link
-            href="/contact"
-            className="btn-shine inline-flex items-center justify-center gap-2 self-start rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:shadow-lg"
-          >
-            Start a conversation
-            <AiOutlineArrowRight />
-          </Link>
-        </div>
+      <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-16 lg:px-8">
+        {/* ------------------------------------------------------------- MAIN 4-COLUMN PREMIUM GRID */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+          {/* Brand & Studio Column (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col justify-between">
+            <div>
+              <Link href="/" className="inline-flex rounded-xl bg-white p-2.5 shadow-md">
+                <Image
+                  src="/bitnwit-logo-transparent.png"
+                  alt="BITnWIT"
+                  width={1919}
+                  height={820}
+                  className="h-8 w-auto object-contain"
+                />
+              </Link>
 
-        <div className="mt-14 grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
-            <div className="inline-flex rounded-xl bg-white p-2">
-              <Image src="/bitnwit-logo-transparent.png" alt="BITnWIT" width={1919} height={820} className="h-10 w-auto object-contain" />
+              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+                Innovate <span className="text-rabbit">• Build</span>{' '}
+                <span className="text-signal">• Solve</span>
+              </p>
+
+              <p className="mt-3 max-w-sm text-xs leading-relaxed text-slate-400">
+                A modern digital engineering and growth studio. We design and ship high-performance web applications, mobile platforms, practical AI integrations, and conversion systems.
+              </p>
+
+              {/* Quick Connect Actions */}
+              <div className="mt-6 flex flex-wrap items-center gap-2.5">
+                <a
+                  href="https://wa.me/918949728810?text=Hi%20BITnWIT!%20I%20would%20like%20to%20discuss%20a%20project."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200 transition hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-400"
+                >
+                  <AiOutlineWhatsApp size={15} className="text-emerald-400" />
+                  <span>WhatsApp Studio</span>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200 transition hover:border-white/30 hover:bg-white/10"
+                >
+                  {copied ? (
+                    <>
+                      <LuCheck size={14} className="text-emerald-400" />
+                      <span className="text-emerald-300">Email Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <LuCopy size={14} className="text-slate-400" />
+                      <span>Copy Email</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
-            <p className="mt-6 max-w-sm text-lg font-semibold leading-8 text-slate-200">
-              We <span className="text-rabbit">build</span>. We <span className="text-signal">think</span>. We{' '}
-              <span className="text-rabbit">create</span>. We <span className="text-signal">grow</span>.
-            </p>
-            <div className="mt-6 flex items-center gap-3">
+
+            {/* Social Icons */}
+            <div className="mt-8 flex items-center gap-2.5">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -67,36 +125,117 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-slate-300 transition hover:-translate-y-0.5 hover:border-rabbit hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:border-purple-400/50 hover:bg-purple-600/20 hover:text-white"
                 >
-                  <Icon />
+                  <Icon size={16} />
                 </a>
               ))}
             </div>
           </div>
 
-          {columns.map((column) => (
-            <div key={column.heading}>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">{column.heading}</p>
-              <ul className="mt-5 space-y-3">
-                {column.links.map((link) => (
+          {/* Column 2: Engineering & AI (3 cols) */}
+          <div className="lg:col-span-3">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
+              Engineering &amp; AI
+            </p>
+            <ul className="mt-4 space-y-2.5">
+              {engineeringServices.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center gap-1.5 text-xs text-slate-300 transition-colors hover:text-white"
+                  >
+                    <span className="relative">
+                      {link.label}
+                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-rabbit transition-all duration-300 group-hover:w-full" />
+                    </span>
+                    <AiOutlineArrowRight className="text-[10px] opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-rabbit" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Design & Growth (3 cols) */}
+          <div className="lg:col-span-3">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
+              Design &amp; Growth
+            </p>
+            <ul className="mt-4 space-y-2.5">
+              {growthServices.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center gap-1.5 text-xs text-slate-300 transition-colors hover:text-white"
+                  >
+                    <span className="relative">
+                      {link.label}
+                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-signal transition-all duration-300 group-hover:w-full" />
+                    </span>
+                    <AiOutlineArrowRight className="text-[10px] opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-signal" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Company & Assistant (2 cols) */}
+          <div className="lg:col-span-2 flex flex-col justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
+                Company
+              </p>
+              <ul className="mt-4 space-y-2.5">
+                {companyLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="group inline-flex items-center gap-1.5 text-sm text-slate-300 transition hover:text-white">
+                    <Link
+                      href={link.href}
+                      className="group inline-flex items-center gap-1.5 text-xs text-slate-300 transition-colors hover:text-white"
+                    >
                       <span className="relative">
                         {link.label}
-                        <span className="absolute -bottom-1 left-0 h-px w-0 bg-rabbit transition-all duration-300 group-hover:w-full" />
+                        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-purple-400 transition-all duration-300 group-hover:w-full" />
                       </span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
-          ))}
+
+            {/* AI Assistant Quick Trigger */}
+            <div className="mt-6 pt-5 border-t border-white/10">
+              <TalkToRabbitButton className="group inline-flex items-center gap-1.5 text-xs font-bold text-purple-300 transition-colors hover:text-white">
+                <LuSparkles size={13} className="text-purple-400 group-hover:scale-110 transition-transform" />
+                <span>Talk to White Rabbit</span>
+              </TalkToRabbitButton>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} BITnWIT. All rights reserved.</p>
-          <p>Building Intelligence Through Technology</p>
+        {/* ------------------------------------------------------------- BOTTOM META BAR */}
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-slate-400 sm:flex-row">
+          <div className="flex flex-col sm:flex-row items-center gap-2.5 text-center sm:text-left">
+            <p>© {new Date().getFullYear()} BITnWIT Technologies. All rights reserved.</p>
+            <span className="hidden sm:inline text-white/20">•</span>
+            <p className="text-slate-500">Building Intelligence Through Technology</p>
+          </div>
+
+          <div className="flex items-center gap-5">
+            <span className="inline-flex items-center gap-1.5 text-slate-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              Pan-India &amp; Global Remote
+            </span>
+
+            {/* Interactive Back to Top */}
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+            >
+              <span>Back to top</span>
+              <LuArrowUp size={12} className="transition-transform group-hover:-translate-y-0.5" />
+            </button>
+          </div>
         </div>
       </div>
     </footer>

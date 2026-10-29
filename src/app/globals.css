@@ -280,3 +280,120 @@ a {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ---------------------------------------------------------------- */
+/* Running Rabbit Page Navigation Loader                             */
+/* ---------------------------------------------------------------- */
+
+.running-rabbit-wrapper {
+  animation: rabbit-gallop 0.42s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform-origin: 50% 80%;
+  will-change: transform;
+}
+
+@keyframes rabbit-gallop {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scaleX(1);
+  }
+  30% {
+    transform: translateY(-16px) rotate(-6deg) scaleX(1.06);
+  }
+  60% {
+    transform: translateY(-24px) rotate(5deg) scaleX(1.1);
+  }
+  85% {
+    transform: translateY(-4px) rotate(-2deg) scaleX(0.96);
+  }
+}
+
+.rabbit-ears {
+  animation: ears-flutter 0.42s ease-in-out infinite;
+  transform-origin: 80px 30px;
+}
+
+@keyframes ears-flutter {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-8deg); }
+}
+
+.rabbit-front-leg {
+  animation: front-leg-run 0.42s ease-in-out infinite;
+  transform-origin: 78px 58px;
+}
+
+@keyframes front-leg-run {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg) translate(3px, -2px); }
+}
+
+.rabbit-back-leg {
+  animation: back-leg-run 0.42s ease-in-out infinite;
+  transform-origin: 36px 56px;
+}
+
+@keyframes back-leg-run {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-24deg) translate(-5px, 2px); }
+}
+
+.rabbit-ground-shadow {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 90px;
+  height: 10px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, transparent 75%);
+  border-radius: 999px;
+  transform: translateX(-50%);
+  animation: shadow-bounce 0.42s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes shadow-bounce {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translateX(-50%) scale(0.55);
+    opacity: 0.2;
+  }
+}
+
+.speed-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  border-radius: 999px;
+  animation: speed-dash 0.5s linear infinite;
+}
+
+.speed-line-1 { top: 22%; left: 0; width: 60px; animation-delay: 0s; }
+.speed-line-2 { top: 46%; left: 20px; width: 90px; animation-delay: -0.18s; }
+.speed-line-3 { top: 68%; left: -10px; width: 50px; animation-delay: -0.32s; }
+.speed-line-4 { top: 34%; right: 10px; width: 70px; animation-delay: -0.09s; }
+
+@keyframes speed-dash {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(-120px);
+    opacity: 0;
+  }
+}
+
+.rabbit-progress-bar {
+  animation: progress-indet 0.75s ease-in-out infinite;
+}
+
+@keyframes progress-indet {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}

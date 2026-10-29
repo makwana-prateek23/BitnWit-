@@ -31,21 +31,35 @@ export default function Header() {
     setOpen(false);
   }, [pathname]);
 
+  const handleOpenChat = () => {
+    window.dispatchEvent(new CustomEvent('open-white-rabbit-chat'));
+  };
+
   return (
-    <header className="sticky top-0 z-50 px-3 pt-2 sm:px-5">
+    <header className="sticky top-0 z-40 px-3 pt-2 sm:px-5">
       <div
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 transition-[background-color,border-color,box-shadow] duration-300 sm:px-5 ${scrolled ? 'border-slate-200/80 bg-white shadow-xl shadow-slate-900/5' : 'border-transparent bg-transparent shadow-none'}`}
+        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 py-3 transition-[background-color,border-color,box-shadow] duration-300 sm:px-5 ${
+          scrolled
+            ? 'border-slate-200/80 bg-white/95 shadow-xl shadow-slate-900/5 backdrop-blur-md'
+            : 'border-transparent bg-transparent shadow-none'
+        }`}
       >
         <Logo />
 
-        <nav className={`hidden items-center gap-1 rounded-xl p-1 transition-colors duration-300 md:flex ${scrolled ? 'bg-slate-100/80' : 'bg-transparent'}`}>
+        <nav
+          className={`hidden items-center gap-1 rounded-xl p-1 transition-colors duration-300 md:flex ${
+            scrolled ? 'bg-slate-100/80' : 'bg-transparent'
+          }`}
+        >
           {links.map((link) => {
             const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${active ? 'bg-white text-ink shadow-sm' : 'text-slate-600 hover:bg-white/70 hover:text-ink'}`}
+                className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
+                  active ? 'bg-white text-ink shadow-sm' : 'text-slate-600 hover:bg-white/70 hover:text-ink'
+                }`}
               >
                 {link.label}
               </Link>
@@ -54,12 +68,13 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Link
-            href="/contact"
-            className="btn-shine inline-flex items-center justify-center rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-ink/15 transition hover:-translate-y-0.5 hover:bg-rabbit"
+          <button
+            type="button"
+            onClick={handleOpenChat}
+            className="btn-shine inline-flex items-center justify-center rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-ink/15 transition hover:-translate-y-0.5 hover:bg-rabbit focus:outline-none focus:ring-2 focus:ring-rabbit/30"
           >
             Talk to White Rabbit
-          </Link>
+          </button>
         </div>
 
         <button
@@ -83,9 +98,9 @@ export default function Header() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="overflow-hidden border-t border-line bg-white md:hidden"
+            className="mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-white/95 shadow-xl backdrop-blur-md md:hidden"
           >
-            <div className="flex flex-col gap-4 px-6 py-4">
+            <div className="flex flex-col gap-4 px-6 py-5">
               {links.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -97,20 +112,23 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setOpen(false)}
                     className={`text-sm font-semibold transition ${
-                      pathname === link.href ? 'text-rabbit' : 'text-slate-600 hover:text-ink'
+                      pathname === link.href ? 'text-rabbit font-bold' : 'text-slate-600 hover:text-ink'
                     }`}
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
-              <Link
-                href="/contact"
-                onClick={() => setOpen(false)}
-                className="mt-2 inline-flex items-center justify-center rounded-full bg-rabbit px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-rabbit/20"
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  handleOpenChat();
+                }}
+                className="mt-2 inline-flex items-center justify-center rounded-full bg-rabbit px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-rabbit/20 transition hover:bg-purple-800"
               >
                 Talk to White Rabbit
-              </Link>
+              </button>
             </div>
           </motion.nav>
         )}
