@@ -191,14 +191,19 @@ export default function ServicesPage() {
             2. EIGHT SERVICE SECTIONS (ALTERNATING EDITORIAL LAYOUT)
         ============================================================== */}
         <section id="all-services" className="space-y-16 lg:space-y-24">
-          <div className="flex flex-col items-start justify-between gap-4 border-b border-[#E8E2D8] pb-8 md:flex-row md:items-end">
-            <div>
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-slate-400">
-                Catalog of Capabilities
-              </span>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl">
-                Eight disciplines. One unified standard.
-              </h2>
+          <div className="flex flex-col items-start justify-between gap-6 border-b border-[#E8E2D8] pb-8 md:flex-row md:items-end">
+            <div className="flex items-center gap-5">
+              <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl border border-[#E8E2D8] bg-[#F5F1EB] p-1 shadow-sm">
+                <Image src="/mascot-services.jpg" alt="Bitty in VR headset orchestrating digital services" width={160} height={160} className="h-full w-full object-contain rounded-xl" />
+              </div>
+              <div>
+                <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#4A101A]">
+                  Catalog of Capabilities • 8 Disciplines
+                </span>
+                <h2 className="mt-1 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl">
+                  Eight disciplines. One unified standard.
+                </h2>
+              </div>
             </div>
             <p className="max-w-md text-sm sm:text-base text-slate-600">
               Each discipline is delivered as an end-to-end sprint with clear artifacts, documented code, and measurable business KPIs.
