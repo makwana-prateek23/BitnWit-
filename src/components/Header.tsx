@@ -5,6 +5,9 @@ import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import Logo from './Logo';
+import SpotlightNavbar from './ui/SpotlightNavbar';
+import AnimatedButton from './ui/AnimatedButton';
+import RabbitMark from './RabbitMark';
 
 const links = [
   { label: 'Services', href: '/services' },
@@ -46,35 +49,19 @@ export default function Header() {
       >
         <Logo />
 
-        <nav
-          className={`hidden items-center gap-1 rounded-xl p-1 transition-colors duration-300 md:flex ${
-            scrolled ? 'bg-slate-100/80' : 'bg-transparent'
-          }`}
-        >
-          {links.map((link) => {
-            const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
-                  active ? 'bg-white text-ink shadow-sm' : 'text-slate-600 hover:bg-white/70 hover:text-ink'
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="hidden md:block">
+          <SpotlightNavbar items={links} />
+        </div>
 
         <div className="hidden md:block">
-          <button
-            type="button"
+          <AnimatedButton
             onClick={handleOpenChat}
-            className="btn-shine inline-flex items-center justify-center rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-ink/15 transition hover:-translate-y-0.5 hover:bg-rabbit focus:outline-none focus:ring-2 focus:ring-rabbit/30"
+            variant="primary"
+            icon={<RabbitMark size={16} />}
+            className="!px-5 !py-2 text-xs font-bold"
           >
             Talk to White Rabbit
-          </button>
+          </AnimatedButton>
         </div>
 
         <button

@@ -15,6 +15,12 @@ import Reveal from '../components/Reveal';
 import Counter from '../components/Counter';
 import ServiceIcon, { ServiceIconName, serviceTheme } from '../components/ServiceIcon';
 import TalkToRabbitButton from '../components/TalkToRabbitButton';
+import AnimatedRays from '../components/ui/AnimatedRays';
+import SpotlightCard from '../components/ui/SpotlightCard';
+import AnimatedButton from '../components/ui/AnimatedButton';
+import ShimmerBadge from '../components/ui/ShimmerBadge';
+import FlipText from '../components/ui/FlipText';
+import ExpandableBentoGrid from '../components/ui/ExpandableBentoGrid';
 
 interface MinimalService {
   title: string;
@@ -104,34 +110,36 @@ export default function HomePage() {
     <main className="site-page min-h-screen overflow-hidden px-4 py-8 text-ink sm:px-8 lg:px-12 2xl:px-16 lg:py-12">
       <div className="mx-auto w-full max-w-[1720px] space-y-20 lg:space-y-24 2xl:space-y-32">
         {/* ---------------------------------------------------------- HERO */}
-        <section className="hero-shell grid gap-8 lg:grid-cols-[1.18fr_.82fr] lg:items-center 2xl:gap-16">
+        <section className="hero-shell relative grid gap-8 lg:grid-cols-[1.18fr_.82fr] lg:items-center 2xl:gap-16">
+          <AnimatedRays className="opacity-60" />
           <div className="hero-blob hero-blob-blue" aria-hidden />
           <div className="hero-blob hero-blob-red" aria-hidden />
 
           <Reveal direction="right">
-            <p className="inline-flex items-center gap-2 rounded-full border border-rabbit/20 bg-rabbit/5 px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.3em] text-rabbit">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rabbit" />
-              BITnWIT
-            </p>
+            <ShimmerBadge pulseDot pulseColor="bg-rabbit" className="text-xs font-bold uppercase tracking-[0.25em]">
+              BITnWIT • Engineering & AI Studio
+            </ShimmerBadge>
             <h1 className="mt-5 max-w-2xl 2xl:max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08]">
-              We <span className="text-gradient">build</span>. We <span className="text-gradient">think</span>.
+              We <FlipText words={['build', 'engineer', 'architect']} />. We <FlipText words={['think', 'strategize', 'solve']} />.
               <br />
-              We <span className="text-gradient">create</span>. We <span className="text-gradient">grow</span>.
+              We <FlipText words={['create', 'design', 'polish']} />. We <FlipText words={['grow', 'accelerate', 'scale']} />.
             </h1>
             <p className="mt-6 max-w-xl 2xl:max-w-2xl text-lg lg:text-xl 2xl:text-2xl leading-relaxed text-slate-700">
               A digital studio for digital marketing, web and app development, UI/UX design, SEO, custom engineering,
               and AI integration with White Rabbit as your guide.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <TalkToRabbitButton className="btn-shine group inline-flex items-center justify-center gap-2 rounded-full bg-rabbit px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-rabbit/20 transition hover:-translate-y-0.5 hover:bg-purple-800 hover:shadow-xl hover:shadow-rabbit/30">
-                Talk to White Rabbit
-                <AiOutlineArrowRight className="transition group-hover:translate-x-1" />
+              <TalkToRabbitButton className="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full bg-rabbit px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-rabbit/25 transition-all duration-300 hover:scale-[1.02] hover:bg-purple-800 active:scale-95">
+                <span>Talk to White Rabbit</span>
+                <AiOutlineArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
               </TalkToRabbitButton>
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-rabbit/40 hover:bg-slate-50"
-              >
-                Explore Services
+              <Link href="/services">
+                <AnimatedButton
+                  variant="secondary"
+                  className="!px-7 !py-3.5 text-sm font-bold"
+                >
+                  Explore Services
+                </AnimatedButton>
               </Link>
             </div>
 
@@ -146,7 +154,12 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal direction="left" delay={0.1} className="relative">
-            <div className="mascot-showcase rounded-3xl 2xl:rounded-[2.5rem] p-6 sm:p-8 2xl:p-10">
+            <SpotlightCard
+              spotlightColor="rgba(109, 31, 162, 0.22)"
+              enableTilt={true}
+              tiltIntensity={7}
+              className="mascot-showcase rounded-3xl 2xl:rounded-[2.5rem] p-6 sm:p-8 2xl:p-10 border-slate-200/90"
+            >
               <div className="flex items-center gap-4">
                 <RabbitMark size={32} />
                 <div>
@@ -166,7 +179,7 @@ export default function HomePage() {
                   </TalkToRabbitButton>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
 
             <div className="floating-chip absolute -top-5 left-8 z-10 hidden rounded-2xl border border-white/60 bg-white/90 px-4 py-2 text-xs font-semibold text-ink shadow-lg shadow-slate-300/40 backdrop-blur sm:block">
               ⚡ Fast delivery
@@ -222,42 +235,45 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          {/* Symmetrical 8-Card Clean Grid (4x2 on desktop, 2x4 on tablet) */}
+          {/* Symmetrical 8-Card Clean Grid (4x2 on desktop, 2x4 on tablet) with Vengeance UI Spotlight Cards */}
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 2xl:gap-8">
             {allServices.map((service, i) => {
               const theme = serviceTheme[service.icon];
               return (
                 <Reveal key={service.slug} delay={i * 0.04}>
-                  <Link
-                    href={service.slug}
-                    className="group flex h-full flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-7 2xl:p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-900/5"
-                  >
-                    <div>
-                      {/* Premium Dual-Tone Tinted Icon */}
-                      <div
-                        className={`flex h-12 w-12 2xl:h-14 2xl:w-14 items-center justify-center rounded-2xl border ${theme.border} ${theme.bg} ${theme.text} transition-all duration-300 group-hover:scale-110 group-hover:shadow-md ${theme.glow}`}
-                      >
-                        <ServiceIcon name={service.icon} size={22} />
+                  <Link href={service.slug} className="block h-full">
+                    <SpotlightCard
+                      enableTilt={true}
+                      tiltIntensity={6}
+                      className="group flex h-full flex-col justify-between p-7 2xl:p-8 hover:-translate-y-1"
+                    >
+                      <div>
+                        {/* Premium Dual-Tone Tinted Icon */}
+                        <div
+                          className={`flex h-12 w-12 2xl:h-14 2xl:w-14 items-center justify-center rounded-2xl border ${theme.border} ${theme.bg} ${theme.text} transition-all duration-300 group-hover:scale-110 group-hover:shadow-md ${theme.glow}`}
+                        >
+                          <ServiceIcon name={service.icon} size={22} />
+                        </div>
+
+                        <h3 className="mt-5 text-lg 2xl:text-xl font-bold text-ink transition-colors group-hover:text-rabbit">
+                          {service.title}
+                        </h3>
+
+                        <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-slate-600">
+                          {service.description}
+                        </p>
                       </div>
 
-                      <h3 className="mt-5 text-lg 2xl:text-xl font-bold text-ink transition-colors group-hover:text-rabbit">
-                        {service.title}
-                      </h3>
-
-                      <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-slate-600">
-                        {service.description}
-                      </p>
-                    </div>
-
-                    <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 transition-colors group-hover:text-ink">
-                        <span>Explore</span>
-                        <AiOutlineArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-                      </span>
-                      <span className="font-mono text-xs text-slate-300 transition-colors group-hover:text-rabbit">
-                        0{i + 1}
-                      </span>
-                    </div>
+                      <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 transition-colors group-hover:text-ink">
+                          <span>Explore</span>
+                          <AiOutlineArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                        </span>
+                        <span className="font-mono text-xs text-slate-300 transition-colors group-hover:text-rabbit">
+                          0{i + 1}
+                        </span>
+                      </div>
+                    </SpotlightCard>
                   </Link>
                 </Reveal>
               );
@@ -275,6 +291,34 @@ export default function HomePage() {
           </Reveal>
         </section>
 
+        {/* ---------------------------------------------------------- VENGEANCE UI EXPANDABLE BENTO SECTION */}
+        <section className="mt-20">
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+            <Reveal className="max-w-3xl 2xl:max-w-4xl">
+              <ShimmerBadge pulseDot pulseColor="bg-purple-500">
+                Interactive Architecture & Deliverables
+              </ShimmerBadge>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+                Engineering in action.
+              </h2>
+              <p className="mt-3 text-base text-slate-600 sm:text-lg">
+                Click any discipline card to inspect the real deliverables, telemetry benchmarks, and sprint turnaround times.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1} className="shrink-0">
+              <Link href="/work">
+                <AnimatedButton variant="secondary">
+                  View Selected Work
+                </AnimatedButton>
+              </Link>
+            </Reveal>
+          </div>
+
+          <div className="mt-10">
+            <ExpandableBentoGrid />
+          </div>
+        </section>
+
         {/* ---------------------------------------------------------- PROCESS */}
         <section className="mt-20">
           <Reveal className="text-center">
@@ -286,12 +330,14 @@ export default function HomePage() {
             <div className="absolute left-0 right-0 top-6 hidden h-px bg-line md:block" aria-hidden />
             {process.map((step, i) => (
               <Reveal key={step.title} delay={i * 0.1} className="relative text-center">
-                <div className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-ink text-white shadow-lg shadow-ink/20">
-                  <step.icon className="text-lg" />
-                </div>
-                <p className="mt-5 text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Step {i + 1}</p>
-                <h3 className="mt-1 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{step.copy}</p>
+                <SpotlightCard enableTilt={true} tiltIntensity={5} className="p-6 h-full text-center">
+                  <div className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-ink text-white shadow-lg shadow-ink/20">
+                    <step.icon className="text-lg" />
+                  </div>
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Step {i + 1}</p>
+                  <h3 className="mt-1 text-lg font-semibold">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{step.copy}</p>
+                </SpotlightCard>
               </Reveal>
             ))}
           </div>
@@ -312,16 +358,14 @@ export default function HomePage() {
         {/* ---------------------------------------------------------- DIFFERENTIATORS */}
         <section className="mt-20 grid gap-6 md:grid-cols-3 2xl:gap-8">
           {differentiators.map((item, i) => (
-            <Reveal
-              key={item.title}
-              delay={i * 0.08}
-              className="rounded-3xl border border-line bg-white p-8 2xl:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/60"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-signal/10 text-signal">
-                <item.icon className="text-lg" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{item.copy}</p>
+            <Reveal key={item.title} delay={i * 0.08}>
+              <SpotlightCard enableTilt={true} tiltIntensity={6} className="p-8 2xl:p-10 hover:-translate-y-1 h-full">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-signal/10 text-signal">
+                  <item.icon className="text-lg" />
+                </div>
+                <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{item.copy}</p>
+              </SpotlightCard>
             </Reveal>
           ))}
         </section>
@@ -350,6 +394,9 @@ export default function HomePage() {
 
         {/* ---------------------------------------------------------- REDESIGNED PREMIUM CTA BANNER */}
         <Reveal className="relative mt-20 2xl:mt-28 overflow-hidden rounded-[2.5rem] 2xl:rounded-[3.5rem] border border-white/10 bg-gradient-to-br from-[#06122c] via-[#101032] to-[#25083a] p-10 text-center shadow-2xl sm:p-14 lg:p-20 2xl:p-24">
+          {/* Vengeance UI Animated Ambient Light Rays */}
+          <AnimatedRays color="rgba(147, 51, 234, 0.45)" secondaryColor="rgba(255, 121, 14, 0.35)" className="opacity-80" />
+
           {/* Ambient Lighting & Micro-Grid Texture */}
           <div className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-rabbit/30 blur-[100px]" aria-hidden />
           <div className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-signal/20 blur-[100px]" aria-hidden />
@@ -373,12 +420,11 @@ export default function HomePage() {
               </span>
             </div>
 
-            {/* Availability Eyebrow */}
+            {/* Availability Eyebrow with Vengeance UI Shimmer */}
             <div className="mt-6 flex justify-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-purple-300/30 bg-purple-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-purple-200">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                Available for New Projects
-              </span>
+              <ShimmerBadge pulseDot pulseColor="bg-emerald-400" className="border-purple-300/30 bg-purple-500/15 text-purple-200">
+                Available for New Sprints & Projects
+              </ShimmerBadge>
             </div>
 
             {/* Crisp High-Contrast Headline */}
@@ -393,13 +439,13 @@ export default function HomePage() {
 
             {/* Action Buttons */}
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <TalkToRabbitButton className="btn-shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-white px-8 py-4 text-sm font-bold text-ink shadow-2xl shadow-white/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-100 hover:shadow-white/20 active:scale-95">
+              <TalkToRabbitButton className="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full bg-white px-8 py-4 text-sm font-bold text-ink shadow-2xl shadow-white/10 transition-all duration-300 hover:scale-[1.02] hover:bg-slate-100 active:scale-95">
                 <span>Talk to White Rabbit</span>
                 <AiOutlineArrowRight className="text-rabbit transition-transform duration-300 group-hover:translate-x-1" />
               </TalkToRabbitButton>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-8 py-4 text-sm font-bold text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 active:scale-95"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-8 py-4 text-sm font-bold text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-[1.02] hover:border-white/50 hover:bg-white/15 active:scale-95"
               >
                 <span>Send a project brief</span>
                 <span className="text-purple-300">→</span>

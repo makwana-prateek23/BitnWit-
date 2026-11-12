@@ -19,6 +19,8 @@ import TalkToRabbitButton from '../../components/TalkToRabbitButton';
 import ServicesHeroMockup from '../../components/ServicesHeroMockup';
 import ServicesProcessStepper from '../../components/ServicesProcessStepper';
 import ServicesFaqAccordion from '../../components/ServicesFaqAccordion';
+import AnimatedRays from '../../components/ui/AnimatedRays';
+import SpotlightCard from '../../components/ui/SpotlightCard';
 
 export const metadata: Metadata = {
   title: 'Digital Engineering & Creative Agency Services | BITnWIT',
@@ -97,7 +99,8 @@ export default function ServicesPage() {
             1. HERO SECTION WITH RESPONSIVE DIGITAL PRODUCT MOCKUP
         ============================================================== */}
         <section className="relative pt-4 sm:pt-8 lg:pt-12">
-          {/* Subtle Ambient Background Warmth */}
+          {/* Subtle Ambient Background Warmth & Vengeance UI Rays */}
+          <AnimatedRays color="rgba(74, 16, 26, 0.25)" secondaryColor="rgba(109, 31, 162, 0.2)" className="opacity-40" />
           <div
             className="pointer-events-none absolute -top-20 left-1/4 h-96 w-96 rounded-full bg-[#4A101A]/5 blur-[120px]"
             aria-hidden="true"
@@ -380,9 +383,11 @@ export default function ServicesPage() {
 
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {featuredProjects.map((project) => (
-              <article
+              <SpotlightCard
                 key={project.slug}
-                className="group flex flex-col justify-between rounded-3xl border border-[#E8E2D8] bg-white p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5"
+                enableTilt={true}
+                tiltIntensity={6}
+                className="group flex flex-col justify-between p-6 hover:-translate-y-1"
               >
                 <div>
                   <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-slate-100">
@@ -437,7 +442,7 @@ export default function ServicesPage() {
                     </a>
                   )}
                 </div>
-              </article>
+              </SpotlightCard>
             ))}
           </div>
         </section>
