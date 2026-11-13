@@ -109,14 +109,15 @@ export default function HomePage() {
   return (
     <main className="site-page min-h-screen overflow-hidden px-4 py-8 text-ink sm:px-8 lg:px-12 2xl:px-16 lg:py-12">
       <div className="mx-auto w-full max-w-[1720px] space-y-20 lg:space-y-24 2xl:space-y-32">
-        {/* ---------------------------------------------------------- HERO */}
-        <section className="hero-shell relative grid gap-8 lg:grid-cols-[1.18fr_.82fr] lg:items-center 2xl:gap-16">
-          <AnimatedRays className="opacity-60" />
+        {/* ---------------------------------------------------------- HERO WITH VENGEANCE UI GLASSMORPHY */}
+        <section className="glass-hero hero-shell relative grid gap-8 rounded-[2.5rem] 2xl:rounded-[3.5rem] p-7 sm:p-10 lg:p-14 2xl:p-20 lg:grid-cols-[1.18fr_.82fr] lg:items-center 2xl:gap-16 overflow-hidden">
+          <AnimatedRays className="opacity-75" />
           <div className="hero-blob hero-blob-blue" aria-hidden />
           <div className="hero-blob hero-blob-red" aria-hidden />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/90 to-transparent" aria-hidden="true" />
 
           <Reveal direction="right">
-            <ShimmerBadge pulseDot pulseColor="bg-rabbit" className="text-xs font-bold uppercase tracking-[0.25em]">
+            <ShimmerBadge pulseDot pulseColor="bg-rabbit" className="glass-chip text-xs font-bold uppercase tracking-[0.25em]">
               BITnWIT • Engineering & AI Studio
             </ShimmerBadge>
             <h1 className="mt-5 max-w-2xl 2xl:max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08]">
@@ -136,7 +137,7 @@ export default function HomePage() {
               <Link href="/services">
                 <AnimatedButton
                   variant="secondary"
-                  className="!px-7 !py-3.5 text-sm font-bold"
+                  className="glass-chip !px-7 !py-3.5 text-sm font-bold"
                 >
                   Explore Services
                 </AnimatedButton>
@@ -158,7 +159,7 @@ export default function HomePage() {
               spotlightColor="rgba(109, 31, 162, 0.22)"
               enableTilt={true}
               tiltIntensity={7}
-              className="mascot-showcase rounded-3xl 2xl:rounded-[2.5rem] p-6 sm:p-8 2xl:p-10 border-slate-200/90"
+              className="mascot-showcase glass-card rounded-3xl 2xl:rounded-[2.5rem] p-6 sm:p-8 2xl:p-10 border-white/70 shadow-2xl"
             >
               <div className="flex items-center gap-4">
                 <RabbitMark size={32} />
@@ -181,13 +182,13 @@ export default function HomePage() {
               </div>
             </SpotlightCard>
 
-            <div className="floating-chip absolute -top-5 left-8 z-10 hidden rounded-2xl border border-white/60 bg-white/90 px-4 py-2 text-xs font-semibold text-ink shadow-lg shadow-slate-300/40 backdrop-blur sm:block">
+            <div className="glass-chip floating-chip absolute -top-5 left-8 z-10 hidden rounded-2xl px-4 py-2 text-xs font-semibold text-ink shadow-lg shadow-purple-900/10 backdrop-blur-xl sm:block">
               ⚡ Fast delivery
             </div>
-            <TalkToRabbitButton className="floating-chip delay-1 absolute -right-6 top-1/2 z-10 hidden cursor-pointer rounded-2xl border border-purple-200/80 bg-white/95 px-4 py-2 text-xs font-semibold text-rabbit shadow-lg shadow-purple-200/50 backdrop-blur transition hover:scale-105 hover:border-rabbit sm:block">
+            <TalkToRabbitButton className="glass-chip floating-chip delay-1 absolute -right-6 top-1/2 z-10 hidden cursor-pointer rounded-2xl px-4 py-2 text-xs font-semibold text-rabbit shadow-lg shadow-purple-900/10 backdrop-blur-xl transition hover:scale-105 hover:border-rabbit sm:block">
               💬 AI chat ready
             </TalkToRabbitButton>
-            <div className="floating-chip delay-2 absolute -bottom-5 left-10 z-10 hidden rounded-2xl border border-white/60 bg-white/90 px-4 py-2 text-xs font-semibold text-ink shadow-lg shadow-slate-300/40 backdrop-blur sm:block">
+            <div className="glass-chip floating-chip delay-2 absolute -bottom-5 left-10 z-10 hidden rounded-2xl px-4 py-2 text-xs font-semibold text-ink shadow-lg shadow-purple-900/10 backdrop-blur-xl sm:block">
               🎯 ROI focused
             </div>
           </Reveal>

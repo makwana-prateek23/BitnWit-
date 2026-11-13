@@ -98,7 +98,70 @@ a {
 .site-page.py-16 { padding-top: 3rem; padding-bottom: 3rem; }
 @media (max-width: 640px) { .site-page.py-16 { padding-top: 2.5rem; padding-bottom: 2.5rem; } }
 .site-page::before { content: ''; position: absolute; inset: 0 0 auto; height: 34rem; pointer-events: none; background: radial-gradient(circle at 50% -10%, rgba(109, 31, 162, 0.17), transparent 62%); }
-.surface-card { border: 1px solid rgba(226, 232, 240, 0.85); background: rgba(255, 255, 255, 0.88); box-shadow: 0 24px 70px -38px rgba(15, 23, 42, 0.24); backdrop-filter: blur(16px); }
+.surface-card {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.52) 100%);
+  box-shadow: 0 20px 50px -25px rgba(109, 31, 162, 0.1), inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* ================================================================= */
+/* Vengeance UI Glassmorphism Design Tokens & Utilities              */
+/* ================================================================= */
+
+.glass-hero {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0.6) 100%);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 30px 80px -25px rgba(109, 31, 162, 0.12),
+    0 10px 25px -10px rgba(15, 23, 42, 0.05),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px 0 rgba(109, 31, 162, 0.05);
+}
+
+.glass-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 
+    0 18px 45px -15px rgba(15, 23, 42, 0.07),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.68) 100%);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 28px 65px -18px rgba(109, 31, 162, 0.16),
+    inset 0 1px 1px 0 #ffffff;
+}
+
+.glass-dark {
+  position: relative;
+  background: linear-gradient(135deg, rgba(16, 16, 50, 0.75) 0%, rgba(6, 18, 44, 0.85) 100%);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 
+    0 35px 80px -25px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 0 24px 0 rgba(109, 31, 162, 0.25);
+}
+
+.glass-chip {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px -6px rgba(109, 31, 162, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
 .eyebrow { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid rgba(109,31,162,.2); border-radius: 999px; background: rgba(109,31,162,.08); padding: .4rem .75rem; color: var(--color-purple); font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 
 .content-image,

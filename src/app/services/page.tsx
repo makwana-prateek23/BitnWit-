@@ -96,24 +96,25 @@ export default function ServicesPage() {
     <main className="site-page min-h-screen px-4 py-8 text-ink sm:px-8 lg:px-12 2xl:px-16 lg:py-12">
       <div className="mx-auto w-full max-w-[1720px] space-y-24 lg:space-y-32">
         {/* ==============================================================
-            1. HERO SECTION WITH RESPONSIVE DIGITAL PRODUCT MOCKUP
+            1. HERO SECTION WITH VENGEANCE UI GLASSMORPHY & RESPONSIVE MOCKUP
         ============================================================== */}
-        <section className="relative pt-4 sm:pt-8 lg:pt-12">
+        <section className="glass-hero relative overflow-hidden rounded-[2.5rem] 2xl:rounded-[3.5rem] p-7 sm:p-11 lg:p-14 2xl:p-20">
           {/* Subtle Ambient Background Warmth & Vengeance UI Rays */}
-          <AnimatedRays color="rgba(74, 16, 26, 0.25)" secondaryColor="rgba(109, 31, 162, 0.2)" className="opacity-40" />
+          <AnimatedRays color="rgba(74, 16, 26, 0.35)" secondaryColor="rgba(109, 31, 162, 0.25)" className="opacity-60" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" aria-hidden="true" />
           <div
-            className="pointer-events-none absolute -top-20 left-1/4 h-96 w-96 rounded-full bg-[#4A101A]/5 blur-[120px]"
+            className="pointer-events-none absolute -top-20 left-1/4 h-96 w-96 rounded-full bg-[#4A101A]/10 blur-[120px]"
             aria-hidden="true"
           />
           <div
-            className="pointer-events-none absolute top-40 right-10 h-80 w-80 rounded-full bg-rabbit/5 blur-[100px]"
+            className="pointer-events-none absolute top-40 right-10 h-80 w-80 rounded-full bg-rabbit/10 blur-[100px]"
             aria-hidden="true"
           />
 
           <div className="grid gap-12 lg:grid-cols-[1.1fr_.9fr] lg:items-center 2xl:gap-16">
             {/* Left Column: Editorial Headline & Actions */}
             <div>
-              <div className="inline-flex items-center gap-2.5 rounded-full border border-[#4A101A]/20 bg-[#4A101A]/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-[#4A101A]">
+              <div className="glass-chip inline-flex items-center gap-2.5 rounded-full border border-[#4A101A]/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-[#4A101A]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#4A101A]" />
                 <span>BITnWIT Core Disciplines</span>
               </div>
@@ -130,7 +131,7 @@ export default function ServicesPage() {
 
               {/* CTAs */}
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <TalkToRabbitButton className="btn-shine group inline-flex items-center justify-center gap-2 rounded-full bg-[#4A101A] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#4A101A]/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#360A11] hover:shadow-xl">
+                <TalkToRabbitButton className="btn-shine group inline-flex items-center justify-center gap-2 rounded-full bg-[#4A101A] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#4A101A]/20 transition-all duration-300 hover:scale-[1.02] hover:bg-[#360A11] hover:shadow-xl">
                   <LuSparkles size={15} className="text-amber-300" />
                   <span>Talk to White Rabbit</span>
                   <LuArrowRight className="transition-transform group-hover:translate-x-1" />
@@ -138,7 +139,7 @@ export default function ServicesPage() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#E8E2D8] bg-white px-7 py-3.5 text-sm font-bold text-ink shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-400 hover:bg-[#FAF8F5]"
+                  className="glass-chip inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-ink shadow-xs transition-all duration-300 hover:scale-[1.02] hover:bg-white"
                 >
                   <span>Start a Project Brief</span>
                   <span className="text-slate-400">→</span>
@@ -169,7 +170,7 @@ export default function ServicesPage() {
           </div>
 
           {/* Quick Filter Navigation Bar */}
-          <div className="mt-16 rounded-2xl border border-[#E8E2D8] bg-[#FAF8F5] p-3 shadow-xs">
+          <div className="glass-chip mt-16 rounded-2xl border border-white/60 p-3 shadow-xs">
             <div className="flex items-center justify-between gap-4 overflow-x-auto px-2 py-1 scrollbar-none">
               <span className="hidden font-mono text-xs font-bold uppercase tracking-wider text-slate-400 lg:inline-block shrink-0">
                 Jump to Discipline:

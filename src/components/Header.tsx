@@ -41,10 +41,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 px-3 pt-2 sm:px-6 lg:px-8">
       <div
-        className={`mx-auto flex w-full max-w-[1720px] items-center justify-between rounded-2xl border px-5 py-3.5 transition-[background-color,border-color,box-shadow] duration-300 sm:px-8 lg:px-10 ${
+        className={`mx-auto flex w-full max-w-[1720px] items-center justify-between rounded-2xl border px-5 py-3.5 transition-all duration-300 sm:px-8 lg:px-10 ${
           scrolled
-            ? 'border-slate-200/80 bg-white/95 shadow-xl shadow-slate-900/5 backdrop-blur-md'
-            : 'border-transparent bg-transparent shadow-none'
+            ? 'glass-hero !bg-white/85 !border-white/90 shadow-2xl shadow-purple-900/10 backdrop-blur-2xl'
+            : 'border-white/30 bg-white/45 shadow-xs backdrop-blur-lg hover:border-white/60 hover:bg-white/60'
         }`}
       >
         <Logo />
@@ -85,7 +85,7 @@ export default function Header() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-white/95 shadow-xl backdrop-blur-md md:hidden"
+            className="glass-card mt-2 overflow-hidden rounded-2xl border border-white/80 shadow-2xl backdrop-blur-2xl md:hidden"
           >
             <div className="flex flex-col gap-4 px-6 py-5">
               {links.map((link, i) => (

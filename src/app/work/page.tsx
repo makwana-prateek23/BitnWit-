@@ -19,31 +19,32 @@ export default function WorkPage() {
   return (
     <main className="site-page min-h-screen px-4 py-10 text-ink sm:px-8 lg:px-12 2xl:px-16">
       <div className="mx-auto w-full max-w-[1720px] space-y-16 2xl:space-y-24">
-        {/* Header with Vengeance UI Animated Ambient Light Rays */}
-        <header className="relative grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-end overflow-hidden pt-4 pb-8">
-          <AnimatedRays className="opacity-35" />
+        {/* Header with Vengeance UI Glassmorphic Hero & Animated Rays */}
+        <header className="glass-hero relative grid gap-8 rounded-[2.5rem] 2xl:rounded-[3.5rem] p-8 sm:p-12 lg:p-16 2xl:p-20 lg:grid-cols-[1.2fr_.8fr] lg:items-end overflow-hidden">
+          <AnimatedRays className="opacity-55" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" aria-hidden="true" />
           <div className="relative z-10">
-            <ShimmerBadge pulseDot pulseColor="bg-rabbit" className="text-xs font-bold uppercase tracking-[0.2em]">
+            <ShimmerBadge pulseDot pulseColor="bg-rabbit" className="glass-chip text-xs font-bold uppercase tracking-[0.2em]">
               Selected Work & Portfolio
             </ShimmerBadge>
             <h1 className="mt-5 text-4xl font-extrabold tracking-[-.04em] sm:text-6xl 2xl:text-7xl">
               Problems solved. Systems shipped. <span className="text-gradient">Value created.</span>
             </h1>
           </div>
-          <p className="relative z-10 text-lg 2xl:text-xl leading-8 text-slate-600">
+          <p className="relative z-10 text-lg 2xl:text-xl leading-8 text-slate-700">
             Representative case studies across product, web, AI, marketing, brand, and custom software.
             Each one starts with the problem—not a predetermined deliverable.
           </p>
         </header>
 
-        {/* Interactive Case Studies Grid with 3D Spotlight Cards */}
+        {/* Interactive Case Studies Grid with 3D Spotlight Glass Cards */}
         <section className="grid gap-8 md:grid-cols-2 2xl:gap-10">
           {projects.map((project, index) => (
             <SpotlightCard
               key={project.slug}
               enableTilt={true}
               tiltIntensity={6}
-              className={`group overflow-hidden rounded-[2rem] 2xl:rounded-[2.5rem] border border-slate-200/90 bg-white transition-all duration-300 hover:-translate-y-1 ${
+              className={`glass-card group overflow-hidden rounded-[2rem] 2xl:rounded-[2.5rem] transition-all duration-300 hover:-translate-y-1 ${
                 index === 0 ? 'md:col-span-2 md:grid md:grid-cols-2' : ''
               }`}
             >
@@ -95,8 +96,8 @@ export default function WorkPage() {
           ))}
         </section>
 
-        {/* Bottom Banner with Rocket Launch Mascot & Animated Rays */}
-        <section className="relative overflow-hidden rounded-[2rem] 2xl:rounded-[2.5rem] bg-ink p-8 text-white sm:p-12 2xl:p-16">
+        {/* Bottom Banner with Rocket Launch Mascot & Glass Dark Surface */}
+        <section className="glass-dark relative overflow-hidden rounded-[2.5rem] 2xl:rounded-[3.5rem] p-8 text-white sm:p-12 2xl:p-16">
           <AnimatedRays color="rgba(109, 31, 162, 0.45)" secondaryColor="rgba(255, 121, 14, 0.35)" className="opacity-70" />
           <div className="relative z-10 grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-8">
