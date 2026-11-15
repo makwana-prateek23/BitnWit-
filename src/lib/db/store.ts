@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { Db } from 'mongodb';
 import {
   AdminUser,
   Lead,
@@ -21,11 +22,13 @@ import {
 } from './types';
 import { hashPassword } from './auth';
 import { services, projects, team, posts } from '../../data/content';
+import { isMongoConfigured, getMongoDb } from './mongodb';
 
 const DATA_DIR = path.join(process.cwd(), '.data');
 const DB_FILE = path.join(DATA_DIR, 'bitnwit-db.json');
 
 let dbCache: DatabaseStore | null = null;
+let mongoSeeded = false;
 
 function normalizeLead(l: any): Lead {
   return {
@@ -164,7 +167,7 @@ function normalizeTeamMember(t: any): TeamMember {
 function normalizeSeo(s: any): SeoMetadata {
   return {
     ...s,
-    id: s.id || `seo_${s.pageRoute.replace(/[^a-z0-9]/gi, '_')}`,
+    id: s.id || `seo_${(s.pageRoute || '/').replace(/[^a-z0-9]/gi, '_')}`,
     pageRoute: s.pageRoute || '/',
     pageTitle: s.pageTitle || s.metaTitle || 'BITnWit Technologies',
     metaTitle: s.metaTitle || s.pageTitle || 'BITnWit Technologies',
@@ -180,7 +183,7 @@ function normalizeSeo(s: any): SeoMetadata {
   };
 }
 
-function createInitialDatabase(): DatabaseStore {
+export function createInitialDatabase(): DatabaseStore {
   const defaultAdminPassword = process.env.INITIAL_ADMIN_PASSWORD || 'BitnWit@2026!';
   const { hash, salt } = hashPassword(defaultAdminPassword);
 
@@ -510,38 +513,6 @@ function createInitialDatabase(): DatabaseStore {
       createdAt: new Date(Date.now() - 86400000 * 1).toISOString(),
       updatedAt: new Date().toISOString(),
     }),
-    normalizeLead({
-      id: 'lead_seed_02',
-      fullName: 'Dr. Ananya Roy',
-      email: 'ananya@medpulse-health.org',
-      phone: '+91 94140 88765',
-      companyName: 'MedPulse Diagnostics',
-      serviceInterest: 'App Development',
-      budgetRange: '₹1,50,000 - ₹3,00,000',
-      message:
-        'Looking for an Android and iOS application for diagnostic appointment booking and report delivery with secure SMS/WhatsApp verification.',
-      leadSource: 'WEBSITE',
-      status: 'NEW',
-      dateReceived: new Date(Date.now() - 3600000 * 4).toISOString(),
-      createdAt: new Date(Date.now() - 3600000 * 4).toISOString(),
-      updatedAt: new Date().toISOString(),
-    }),
-    normalizeLead({
-      id: 'lead_seed_03',
-      fullName: 'Kunal Deshmukh',
-      email: 'kunal@deshmukhindustries.in',
-      phone: '+91 91660 33445',
-      companyName: 'Deshmukh Precision Tools',
-      serviceInterest: 'Web Development',
-      budgetRange: '₹75,000 - ₹1,50,000',
-      message:
-        'Need modern redesign of our industrial manufacturing catalogue website with fast page speeds and export enquiry forms.',
-      leadSource: 'WHATSAPP',
-      status: 'CONTACTED',
-      dateReceived: new Date(Date.now() - 86400000 * 3).toISOString(),
-      createdAt: new Date(Date.now() - 86400000 * 3).toISOString(),
-      updatedAt: new Date().toISOString(),
-    }),
   ];
 
   return {
@@ -563,11 +534,56 @@ function createInitialDatabase(): DatabaseStore {
         adminName: initialSuperAdmin.fullName,
         action: 'SYSTEM_INIT',
         entityType: 'SYSTEM',
-        details: 'BITnWit Enterprise Admin Panel database initialized and seeded',
+        details: 'BITnWit Enterprise database initialized',
         createdAt: new Date().toISOString(),
       },
     ],
   };
+}
+
+async function ensureMongoSeeded(db: Db): Promise<void> {
+  if (mongoSeeded) return;
+  try {
+    const adminCount = await db.collection('admin_users').countDocuments();
+    if (adminCount === 0) {
+      const initial = createInitialDatabase();
+      if (initial.adminUsers.length > 0) {
+        await db.collection('admin_users').insertMany(initial.adminUsers as any[]);
+      }
+      if (initial.services.length > 0) {
+        await db.collection('services').insertMany(initial.services as any[]);
+      }
+      if (initial.projects.length > 0) {
+        await db.collection('projects').insertMany(initial.projects as any[]);
+      }
+      if (initial.blogs.length > 0) {
+        await db.collection('blogs').insertMany(initial.blogs as any[]);
+      }
+      if (initial.testimonials.length > 0) {
+        await db.collection('testimonials').insertMany(initial.testimonials as any[]);
+      }
+      if (initial.mediaFiles.length > 0) {
+        await db.collection('media_files').insertMany(initial.mediaFiles as any[]);
+      }
+      if (initial.teamMembers.length > 0) {
+        await db.collection('team_members').insertMany(initial.teamMembers as any[]);
+      }
+      if (initial.leads.length > 0) {
+        await db.collection('leads').insertMany(initial.leads as any[]);
+      }
+      const settingsList = Object.values(initial.websiteSettings);
+      if (settingsList.length > 0) {
+        await db.collection('website_settings').insertMany(settingsList as any[]);
+      }
+      const seoList = Object.values(initial.seoMetadata);
+      if (seoList.length > 0) {
+        await db.collection('seo_metadata').insertMany(seoList as any[]);
+      }
+    }
+    mongoSeeded = true;
+  } catch (err) {
+    console.error('Failed to auto-seed MongoDB collections:', err);
+  }
 }
 
 export function getDb(): DatabaseStore {
@@ -610,20 +626,37 @@ export function saveDb(database: DatabaseStore): void {
 }
 
 // ------------------------------------------------------------------
-// REPOSITORIES
+// REPOSITORIES (DUAL: MONGODB + LOCAL FILE FALLBACK)
 // ------------------------------------------------------------------
 
 // Admin Users
 export async function findAdminByEmail(email: string): Promise<AdminUser | null> {
+  const normalizedEmail = email.toLowerCase().trim();
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const found = await mongo.collection<AdminUser>('admin_users').findOne({ email: normalizedEmail });
+      if (found) return { ...found, name: found.name || found.fullName };
+    }
+  }
+
   const db = getDb();
-  const found = db.adminUsers.find(
-    (u) => u.email.toLowerCase() === email.toLowerCase().trim()
-  );
+  const found = db.adminUsers.find((u) => u.email.toLowerCase() === normalizedEmail);
   if (!found) return null;
   return { ...found, name: found.name || found.fullName };
 }
 
 export async function getAdminUser(id: string): Promise<AdminUser | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const found = await mongo.collection<AdminUser>('admin_users').findOne({ id });
+      if (found) return { ...found, name: found.name || found.fullName };
+    }
+  }
+
   const db = getDb();
   const found = db.adminUsers.find((u) => u.id === id);
   if (!found) return null;
@@ -631,6 +664,15 @@ export async function getAdminUser(id: string): Promise<AdminUser | null> {
 }
 
 export async function updateAdminUser(id: string, updates: Partial<AdminUser>): Promise<AdminUser | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection<AdminUser>('admin_users').updateOne({ id }, { $set: updates });
+      return getAdminUser(id);
+    }
+  }
+
   const db = getDb();
   const index = db.adminUsers.findIndex((u) => u.id === id);
   if (index === -1) return null;
@@ -653,15 +695,34 @@ export async function getLeads(options?: {
   page?: number;
   limit?: number;
 }): Promise<{ items: Lead[]; totalCount: number; page: number; limit: number; totalPages: number }> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const query: Record<string, any> = {};
+      if (options?.status) query.status = options.status;
+      if (options?.service && options.service !== 'All Services') query.interestedService = options.service;
+      if (options?.search) {
+        const regex = new RegExp(options.search, 'i');
+        query.$or = [{ fullName: regex }, { email: regex }, { phone: regex }, { companyName: regex }];
+      }
+
+      const totalCount = await mongo.collection('leads').countDocuments(query);
+      const page = Math.max(1, options?.page || 1);
+      const limit = options?.limit || 20;
+      const totalPages = Math.ceil(totalCount / limit) || 1;
+      const skip = (page - 1) * limit;
+
+      const items = (await mongo.collection<Lead>('leads').find(query).sort({ dateReceived: -1 }).skip(skip).limit(limit).toArray()).map(normalizeLead);
+      return { items, totalCount, page, limit, totalPages };
+    }
+  }
+
   const db = getDb();
   let list = db.leads.map(normalizeLead);
 
-  if (options?.status) {
-    list = list.filter((l) => l.status === options.status);
-  }
-  if (options?.service && options.service !== 'All Services') {
-    list = list.filter((l) => l.interestedService === options.service);
-  }
+  if (options?.status) list = list.filter((l) => l.status === options.status);
+  if (options?.service && options.service !== 'All Services') list = list.filter((l) => l.interestedService === options.service);
   if (options?.search) {
     const q = options.search.toLowerCase();
     list = list.filter(
@@ -684,13 +745,21 @@ export async function getLeads(options?: {
 }
 
 export async function getLead(id: string): Promise<Lead | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const lead = await mongo.collection<Lead>('leads').findOne({ id });
+      return lead ? normalizeLead(lead) : null;
+    }
+  }
+
   const db = getDb();
   const lead = db.leads.find((l) => l.id === id);
   return lead ? normalizeLead(lead) : null;
 }
 
 export async function createLead(data: Partial<Lead>): Promise<Lead> {
-  const db = getDb();
   const newLead = normalizeLead({
     ...data,
     id: `lead_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
@@ -698,26 +767,56 @@ export async function createLead(data: Partial<Lead>): Promise<Lead> {
     updatedAt: new Date().toISOString(),
     dateReceived: new Date().toISOString(),
   });
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('leads').insertOne(newLead as any);
+      return newLead;
+    }
+  }
+
+  const db = getDb();
   db.leads.unshift(newLead);
   saveDb(db);
   return newLead;
 }
 
 export async function updateLead(id: string, updates: Partial<Lead>): Promise<Lead | null> {
+  const updatedData = { ...updates, updatedAt: new Date().toISOString() };
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('leads').updateOne({ id }, { $set: updatedData });
+      return getLead(id);
+    }
+  }
+
   const db = getDb();
   const index = db.leads.findIndex((l) => l.id === id);
   if (index === -1) return null;
 
   db.leads[index] = normalizeLead({
     ...db.leads[index],
-    ...updates,
-    updatedAt: new Date().toISOString(),
+    ...updatedData,
   });
   saveDb(db);
   return db.leads[index];
 }
 
 export async function deleteLead(id: string): Promise<boolean> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const res = await mongo.collection('leads').deleteOne({ id });
+      return (res.deletedCount || 0) > 0;
+    }
+  }
+
   const db = getDb();
   const initialLen = db.leads.length;
   db.leads = db.leads.filter((l) => l.id !== id);
@@ -731,10 +830,6 @@ export async function addLeadNote(
   authorName: string,
   content: string
 ): Promise<LeadNote | null> {
-  const db = getDb();
-  const lead = db.leads.find((l) => l.id === leadId);
-  if (!lead) return null;
-
   const note: LeadNote = {
     id: `note_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
     leadId,
@@ -743,6 +838,19 @@ export async function addLeadNote(
     content,
     createdAt: new Date().toISOString(),
   };
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('leads').updateOne({ id: leadId }, { $push: { notes: note } as any, $set: { updatedAt: new Date().toISOString() } });
+      return note;
+    }
+  }
+
+  const db = getDb();
+  const lead = db.leads.find((l) => l.id === leadId);
+  if (!lead) return null;
 
   if (!lead.notes) lead.notes = [];
   lead.notes.push(note);
@@ -753,47 +861,90 @@ export async function addLeadNote(
 
 // Services
 export async function getServices(options?: { publishedOnly?: boolean }): Promise<ServiceItem[]> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const query = options?.publishedOnly ? { isPublished: true } : {};
+      const list = await mongo.collection<ServiceItem>('services').find(query).sort({ displayOrder: 1 }).toArray();
+      return list.map(normalizeService);
+    }
+  }
+
   const db = getDb();
   let list = db.services.map(normalizeService);
-  if (options?.publishedOnly) {
-    list = list.filter((s) => s.isPublished);
-  }
+  if (options?.publishedOnly) list = list.filter((s) => s.isPublished);
   return list.sort((a, b) => a.displayOrder - b.displayOrder);
 }
 
 export async function getService(id: string): Promise<ServiceItem | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const s = await mongo.collection<ServiceItem>('services').findOne({ $or: [{ id }, { slug: id }] });
+      return s ? normalizeService(s) : null;
+    }
+  }
+
   const db = getDb();
   const s = db.services.find((x) => x.id === id || x.slug === id);
   return s ? normalizeService(s) : null;
 }
 
 export async function createService(data: Partial<ServiceItem>): Promise<ServiceItem> {
-  const db = getDb();
   const s = normalizeService({
     ...data,
     id: `srv_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
     updatedAt: new Date().toISOString(),
   });
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('services').insertOne(s as any);
+      return s;
+    }
+  }
+
+  const db = getDb();
   db.services.push(s);
   saveDb(db);
   return s;
 }
 
 export async function updateService(id: string, updates: Partial<ServiceItem>): Promise<ServiceItem | null> {
+  const updated = { ...updates, updatedAt: new Date().toISOString() };
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('services').updateOne({ id }, { $set: updated });
+      return getService(id);
+    }
+  }
+
   const db = getDb();
   const index = db.services.findIndex((s) => s.id === id);
   if (index === -1) return null;
 
-  db.services[index] = normalizeService({
-    ...db.services[index],
-    ...updates,
-    updatedAt: new Date().toISOString(),
-  });
+  db.services[index] = normalizeService({ ...db.services[index], ...updated });
   saveDb(db);
   return db.services[index];
 }
 
 export async function deleteService(id: string): Promise<boolean> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const res = await mongo.collection('services').deleteOne({ id });
+      return (res.deletedCount || 0) > 0;
+    }
+  }
+
   const db = getDb();
   const initialLen = db.services.length;
   db.services = db.services.filter((s) => s.id !== id);
@@ -807,14 +958,26 @@ export async function getProjects(options?: {
   featuredOnly?: boolean;
   limit?: number;
 }): Promise<{ items: ProjectItem[]; totalCount: number }> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const query: Record<string, any> = {};
+      if (options?.category && options.category !== 'ALL') query.category = options.category;
+      if (options?.featuredOnly) query.isFeatured = true;
+
+      const totalCount = await mongo.collection('projects').countDocuments(query);
+      let cursor = mongo.collection<ProjectItem>('projects').find(query).sort({ displayOrder: 1 });
+      if (options?.limit) cursor = cursor.limit(options.limit);
+      const items = (await cursor.toArray()).map(normalizeProject);
+      return { items, totalCount };
+    }
+  }
+
   const db = getDb();
   let list = db.projects.map(normalizeProject);
-  if (options?.category && options.category !== 'ALL') {
-    list = list.filter((p) => p.category === options.category);
-  }
-  if (options?.featuredOnly) {
-    list = list.filter((p) => p.isFeatured);
-  }
+  if (options?.category && options.category !== 'ALL') list = list.filter((p) => p.category === options.category);
+  if (options?.featuredOnly) list = list.filter((p) => p.isFeatured);
   const totalCount = list.length;
   list.sort((a, b) => a.displayOrder - b.displayOrder);
   if (options?.limit) list = list.slice(0, options.limit);
@@ -822,23 +985,51 @@ export async function getProjects(options?: {
 }
 
 export async function getProject(id: string): Promise<ProjectItem | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const p = await mongo.collection<ProjectItem>('projects').findOne({ $or: [{ id }, { slug: id }] });
+      return p ? normalizeProject(p) : null;
+    }
+  }
+
   const db = getDb();
   const p = db.projects.find((x) => x.id === id || x.slug === id);
   return p ? normalizeProject(p) : null;
 }
 
 export async function createProject(data: Partial<ProjectItem>): Promise<ProjectItem> {
-  const db = getDb();
   const p = normalizeProject({
     ...data,
     id: `prj_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
   });
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('projects').insertOne(p as any);
+      return p;
+    }
+  }
+
+  const db = getDb();
   db.projects.push(p);
   saveDb(db);
   return p;
 }
 
 export async function updateProject(id: string, updates: Partial<ProjectItem>): Promise<ProjectItem | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('projects').updateOne({ id }, { $set: updates });
+      return getProject(id);
+    }
+  }
+
   const db = getDb();
   const index = db.projects.findIndex((p) => p.id === id);
   if (index === -1) return null;
@@ -849,6 +1040,15 @@ export async function updateProject(id: string, updates: Partial<ProjectItem>): 
 }
 
 export async function deleteProject(id: string): Promise<boolean> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const res = await mongo.collection('projects').deleteOne({ id });
+      return (res.deletedCount || 0) > 0;
+    }
+  }
+
   const db = getDb();
   const initialLen = db.projects.length;
   db.projects = db.projects.filter((p) => p.id !== id);
@@ -861,11 +1061,26 @@ export async function getBlogPosts(options?: {
   status?: BlogStatus;
   search?: string;
 }): Promise<{ items: BlogPost[]; totalCount: number }> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const query: Record<string, any> = {};
+      if (options?.status) query.status = options.status;
+      if (options?.search) {
+        const regex = new RegExp(options.search, 'i');
+        query.$or = [{ title: regex }, { category: regex }];
+      }
+
+      const totalCount = await mongo.collection('blogs').countDocuments(query);
+      const items = (await mongo.collection<BlogPost>('blogs').find(query).sort({ publishedAt: -1 }).toArray()).map(normalizeBlogPost);
+      return { items, totalCount };
+    }
+  }
+
   const db = getDb();
   let list = db.blogs.map(normalizeBlogPost);
-  if (options?.status) {
-    list = list.filter((b) => b.status === options.status);
-  }
+  if (options?.status) list = list.filter((b) => b.status === options.status);
   if (options?.search) {
     const q = options.search.toLowerCase();
     list = list.filter((b) => b.title.toLowerCase().includes(q) || b.category.toLowerCase().includes(q));
@@ -874,24 +1089,52 @@ export async function getBlogPosts(options?: {
 }
 
 export async function getBlogPost(id: string): Promise<BlogPost | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const b = await mongo.collection<BlogPost>('blogs').findOne({ $or: [{ id }, { slug: id }] });
+      return b ? normalizeBlogPost(b) : null;
+    }
+  }
+
   const db = getDb();
   const b = db.blogs.find((x) => x.id === id || x.slug === id);
   return b ? normalizeBlogPost(b) : null;
 }
 
 export async function createBlogPost(data: Partial<BlogPost>): Promise<BlogPost> {
-  const db = getDb();
   const b = normalizeBlogPost({
     ...data,
     id: `blg_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
     publishedAt: data.publishedAt || new Date().toISOString(),
   });
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('blogs').insertOne(b as any);
+      return b;
+    }
+  }
+
+  const db = getDb();
   db.blogs.unshift(b);
   saveDb(db);
   return b;
 }
 
 export async function updateBlogPost(id: string, updates: Partial<BlogPost>): Promise<BlogPost | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('blogs').updateOne({ id }, { $set: updates });
+      return getBlogPost(id);
+    }
+  }
+
   const db = getDb();
   const index = db.blogs.findIndex((b) => b.id === id);
   if (index === -1) return null;
@@ -902,6 +1145,15 @@ export async function updateBlogPost(id: string, updates: Partial<BlogPost>): Pr
 }
 
 export async function deleteBlogPost(id: string): Promise<boolean> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const res = await mongo.collection('blogs').deleteOne({ id });
+      return (res.deletedCount || 0) > 0;
+    }
+  }
+
   const db = getDb();
   const initialLen = db.blogs.length;
   db.blogs = db.blogs.filter((b) => b.id !== id);
@@ -911,32 +1163,68 @@ export async function deleteBlogPost(id: string): Promise<boolean> {
 
 // Testimonials
 export async function getTestimonials(options?: { featuredOnly?: boolean }): Promise<TestimonialItem[]> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const query = options?.featuredOnly ? { isFeaturedOnHomepage: true } : {};
+      const list = await mongo.collection<TestimonialItem>('testimonials').find(query).sort({ displayOrder: 1 }).toArray();
+      return list.map(normalizeTestimonial);
+    }
+  }
+
   const db = getDb();
   let list = db.testimonials.map(normalizeTestimonial);
-  if (options?.featuredOnly) {
-    list = list.filter((t) => t.isFeaturedOnHomepage);
-  }
+  if (options?.featuredOnly) list = list.filter((t) => t.isFeaturedOnHomepage);
   return list.sort((a, b) => a.displayOrder - b.displayOrder);
 }
 
 export async function getTestimonial(id: string): Promise<TestimonialItem | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const t = await mongo.collection<TestimonialItem>('testimonials').findOne({ id });
+      return t ? normalizeTestimonial(t) : null;
+    }
+  }
+
   const db = getDb();
   const t = db.testimonials.find((x) => x.id === id);
   return t ? normalizeTestimonial(t) : null;
 }
 
 export async function createTestimonial(data: Partial<TestimonialItem>): Promise<TestimonialItem> {
-  const db = getDb();
   const t = normalizeTestimonial({
     ...data,
     id: `tst_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
   });
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('testimonials').insertOne(t as any);
+      return t;
+    }
+  }
+
+  const db = getDb();
   db.testimonials.push(t);
   saveDb(db);
   return t;
 }
 
 export async function updateTestimonial(id: string, updates: Partial<TestimonialItem>): Promise<TestimonialItem | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('testimonials').updateOne({ id }, { $set: updates });
+      return getTestimonial(id);
+    }
+  }
+
   const db = getDb();
   const index = db.testimonials.findIndex((t) => t.id === id);
   if (index === -1) return null;
@@ -947,6 +1235,15 @@ export async function updateTestimonial(id: string, updates: Partial<Testimonial
 }
 
 export async function deleteTestimonial(id: string): Promise<boolean> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const res = await mongo.collection('testimonials').deleteOne({ id });
+      return (res.deletedCount || 0) > 0;
+    }
+  }
+
   const db = getDb();
   const initialLen = db.testimonials.length;
   db.testimonials = db.testimonials.filter((t) => t.id !== id);
@@ -956,11 +1253,24 @@ export async function deleteTestimonial(id: string): Promise<boolean> {
 
 // Media
 export async function getMediaFiles(options?: { folder?: MediaFolder; search?: string }): Promise<MediaFile[]> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const query: Record<string, any> = {};
+      if (options?.folder) query.folder = options.folder;
+      if (options?.search) {
+        const regex = new RegExp(options.search, 'i');
+        query.$or = [{ name: regex }, { filename: regex }];
+      }
+      const list = await mongo.collection<MediaFile>('media_files').find(query).sort({ uploadedAt: -1 }).toArray();
+      return list.map(normalizeMediaFile);
+    }
+  }
+
   const db = getDb();
   let list = db.mediaFiles.map(normalizeMediaFile);
-  if (options?.folder) {
-    list = list.filter((m) => m.folder === options.folder);
-  }
+  if (options?.folder) list = list.filter((m) => m.folder === options.folder);
   if (options?.search) {
     const q = options.search.toLowerCase();
     list = list.filter((m) => m.filename?.toLowerCase().includes(q) || m.name?.toLowerCase().includes(q));
@@ -969,24 +1279,52 @@ export async function getMediaFiles(options?: { folder?: MediaFolder; search?: s
 }
 
 export async function getMediaFile(id: string): Promise<MediaFile | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const m = await mongo.collection<MediaFile>('media_files').findOne({ id });
+      return m ? normalizeMediaFile(m) : null;
+    }
+  }
+
   const db = getDb();
   const m = db.mediaFiles.find((x) => x.id === id);
   return m ? normalizeMediaFile(m) : null;
 }
 
 export async function registerMediaFile(data: Partial<MediaFile>): Promise<MediaFile> {
-  const db = getDb();
   const m = normalizeMediaFile({
     ...data,
     id: `med_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
     uploadedAt: new Date().toISOString(),
   });
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('media_files').insertOne(m as any);
+      return m;
+    }
+  }
+
+  const db = getDb();
   db.mediaFiles.unshift(m);
   saveDb(db);
   return m;
 }
 
 export async function deleteMediaFile(id: string): Promise<boolean> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const res = await mongo.collection('media_files').deleteOne({ id });
+      return (res.deletedCount || 0) > 0;
+    }
+  }
+
   const db = getDb();
   const initialLen = db.mediaFiles.length;
   db.mediaFiles = db.mediaFiles.filter((m) => m.id !== id);
@@ -996,35 +1334,71 @@ export async function deleteMediaFile(id: string): Promise<boolean> {
 
 // Team
 export async function getTeamMembers(options?: { department?: string; activeOnly?: boolean }): Promise<TeamMember[]> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const query: Record<string, any> = {};
+      if (options?.department) query.department = options.department;
+      if (options?.activeOnly) query.isActive = true;
+      const list = await mongo.collection<TeamMember>('team_members').find(query).sort({ displayOrder: 1 }).toArray();
+      return list.map(normalizeTeamMember);
+    }
+  }
+
   const db = getDb();
   let list = db.teamMembers.map(normalizeTeamMember);
-  if (options?.department) {
-    list = list.filter((t) => t.department === options.department);
-  }
-  if (options?.activeOnly) {
-    list = list.filter((t) => t.isActive);
-  }
+  if (options?.department) list = list.filter((t) => t.department === options.department);
+  if (options?.activeOnly) list = list.filter((t) => t.isActive);
   return list.sort((a, b) => a.displayOrder - b.displayOrder);
 }
 
 export async function getTeamMember(id: string): Promise<TeamMember | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const t = await mongo.collection<TeamMember>('team_members').findOne({ id });
+      return t ? normalizeTeamMember(t) : null;
+    }
+  }
+
   const db = getDb();
   const t = db.teamMembers.find((x) => x.id === id);
   return t ? normalizeTeamMember(t) : null;
 }
 
 export async function createTeamMember(data: Partial<TeamMember>): Promise<TeamMember> {
-  const db = getDb();
   const t = normalizeTeamMember({
     ...data,
     id: `team_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
   });
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('team_members').insertOne(t as any);
+      return t;
+    }
+  }
+
+  const db = getDb();
   db.teamMembers.push(t);
   saveDb(db);
   return t;
 }
 
 export async function updateTeamMember(id: string, updates: Partial<TeamMember>): Promise<TeamMember | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('team_members').updateOne({ id }, { $set: updates });
+      return getTeamMember(id);
+    }
+  }
+
   const db = getDb();
   const index = db.teamMembers.findIndex((t) => t.id === id);
   if (index === -1) return null;
@@ -1035,6 +1409,15 @@ export async function updateTeamMember(id: string, updates: Partial<TeamMember>)
 }
 
 export async function deleteTeamMember(id: string): Promise<boolean> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const res = await mongo.collection('team_members').deleteOne({ id });
+      return (res.deletedCount || 0) > 0;
+    }
+  }
+
   const db = getDb();
   const initialLen = db.teamMembers.length;
   db.teamMembers = db.teamMembers.filter((t) => t.id !== id);
@@ -1044,6 +1427,19 @@ export async function deleteTeamMember(id: string): Promise<boolean> {
 
 // Settings
 export async function getAllSettings(): Promise<Record<string, string>> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const items = await mongo.collection<WebsiteSetting>('website_settings').find({}).toArray();
+      const result: Record<string, string> = {};
+      for (const item of items) {
+        result[item.key] = String(item.value);
+      }
+      return result;
+    }
+  }
+
   const db = getDb();
   const result: Record<string, string> = {};
   for (const [key, item] of Object.entries(db.websiteSettings)) {
@@ -1053,18 +1449,37 @@ export async function getAllSettings(): Promise<Record<string, string>> {
 }
 
 export async function getSetting(key: string): Promise<string | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const item = await mongo.collection<WebsiteSetting>('website_settings').findOne({ key });
+      return item ? String(item.value) : null;
+    }
+  }
+
   const db = getDb();
   return db.websiteSettings[key] ? String(db.websiteSettings[key].value) : null;
 }
 
 export async function setSetting(key: string, value: string): Promise<WebsiteSetting> {
-  const db = getDb();
   const setting: WebsiteSetting = {
     key,
     value,
     category: key.startsWith('social_') ? 'SOCIAL' : key.includes('email') || key.includes('phone') || key.includes('address') ? 'CONTACT' : 'GENERAL',
     updatedAt: new Date().toISOString(),
   };
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('website_settings').updateOne({ key }, { $set: setting }, { upsert: true });
+      return setting;
+    }
+  }
+
+  const db = getDb();
   db.websiteSettings[key] = setting;
   saveDb(db);
   return setting;
@@ -1072,24 +1487,52 @@ export async function setSetting(key: string, value: string): Promise<WebsiteSet
 
 // SEO
 export async function getAllSeo(): Promise<SeoMetadata[]> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const list = await mongo.collection<SeoMetadata>('seo_metadata').find({}).toArray();
+      return list.map(normalizeSeo);
+    }
+  }
+
   const db = getDb();
   return Object.values(db.seoMetadata).map(normalizeSeo);
 }
 
 export async function getSeo(pageRoute: string): Promise<SeoMetadata | null> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const seo = await mongo.collection<SeoMetadata>('seo_metadata').findOne({ pageRoute });
+      return seo ? normalizeSeo(seo) : null;
+    }
+  }
+
   const db = getDb();
   const seo = db.seoMetadata[pageRoute];
   return seo ? normalizeSeo(seo) : null;
 }
 
 export async function upsertSeo(data: Partial<SeoMetadata> & { pageRoute: string }): Promise<SeoMetadata> {
-  const db = getDb();
-  const existing = db.seoMetadata[data.pageRoute] || { pageRoute: data.pageRoute };
+  const existing = await getSeo(data.pageRoute) || { pageRoute: data.pageRoute, metaTitle: '', metaDescription: '', ogImageUrl: '', canonicalUrl: '', updatedAt: '' };
   const updated = normalizeSeo({
     ...existing,
     ...data,
     updatedAt: new Date().toISOString(),
   });
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      await mongo.collection('seo_metadata').updateOne({ pageRoute: data.pageRoute }, { $set: updated }, { upsert: true });
+      return updated;
+    }
+  }
+
+  const db = getDb();
   db.seoMetadata[data.pageRoute] = updated;
   saveDb(db);
   return updated;
@@ -1097,6 +1540,14 @@ export async function upsertSeo(data: Partial<SeoMetadata> & { pageRoute: string
 
 // Activity Logs
 export async function getActivityLogs(limit = 50): Promise<ActivityLog[]> {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      return mongo.collection<ActivityLog>('activity_logs').find({}).sort({ createdAt: -1 }).limit(limit).toArray();
+    }
+  }
+
   const db = getDb();
   return [...db.activityLogs]
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
@@ -1112,7 +1563,6 @@ export async function logActivity(
   details = '',
   ipAddress?: string
 ): Promise<ActivityLog> {
-  const db = getDb();
   const log: ActivityLog = {
     id: `act_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
     adminId,
@@ -1124,6 +1574,16 @@ export async function logActivity(
     ipAddress,
     createdAt: new Date().toISOString(),
   };
+
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await mongo.collection('activity_logs').insertOne(log as any);
+      return log;
+    }
+  }
+
+  const db = getDb();
   db.activityLogs.unshift(log);
   if (db.activityLogs.length > 500) {
     db.activityLogs = db.activityLogs.slice(0, 500);
@@ -1134,6 +1594,28 @@ export async function logActivity(
 
 // Overview Telemetry
 export async function getOverviewStats() {
+  if (isMongoConfigured()) {
+    const mongo = await getMongoDb();
+    if (mongo) {
+      await ensureMongoSeeded(mongo);
+      const totalLeads = await mongo.collection('leads').countDocuments();
+      const newLeads = await mongo.collection('leads').countDocuments({ status: 'NEW' });
+      const activeProjects = await mongo.collection('projects').countDocuments({ publicationStatus: 'PUBLISHED' });
+      const completedProjects = await mongo.collection('projects').countDocuments();
+      const publishedBlogs = await mongo.collection('blogs').countDocuments({ status: 'PUBLISHED' });
+      const totalServices = await mongo.collection('services').countDocuments({ isPublished: true });
+
+      return {
+        totalLeads,
+        newLeads,
+        activeProjects,
+        completedProjects,
+        publishedBlogs,
+        totalServices,
+      };
+    }
+  }
+
   const db = getDb();
   const leads = db.leads.map(normalizeLead);
   const projectsList = db.projects.map(normalizeProject);
