@@ -544,42 +544,64 @@ export function createInitialDatabase(): DatabaseStore {
 async function ensureMongoSeeded(db: Db): Promise<void> {
   if (mongoSeeded) return;
   try {
+    const initial = createInitialDatabase();
+
     const adminCount = await db.collection('admin_users').countDocuments();
-    if (adminCount === 0) {
-      const initial = createInitialDatabase();
-      if (initial.adminUsers.length > 0) {
-        await db.collection('admin_users').insertMany(initial.adminUsers as any[]);
-      }
-      if (initial.services.length > 0) {
-        await db.collection('services').insertMany(initial.services as any[]);
-      }
-      if (initial.projects.length > 0) {
-        await db.collection('projects').insertMany(initial.projects as any[]);
-      }
-      if (initial.blogs.length > 0) {
-        await db.collection('blogs').insertMany(initial.blogs as any[]);
-      }
-      if (initial.testimonials.length > 0) {
-        await db.collection('testimonials').insertMany(initial.testimonials as any[]);
-      }
-      if (initial.mediaFiles.length > 0) {
-        await db.collection('media_files').insertMany(initial.mediaFiles as any[]);
-      }
-      if (initial.teamMembers.length > 0) {
-        await db.collection('team_members').insertMany(initial.teamMembers as any[]);
-      }
-      if (initial.leads.length > 0) {
-        await db.collection('leads').insertMany(initial.leads as any[]);
-      }
+    if (adminCount === 0 && initial.adminUsers.length > 0) {
+      await db.collection('admin_users').insertMany(initial.adminUsers as any[]);
+    }
+
+    const servicesCount = await db.collection('services').countDocuments();
+    if (servicesCount === 0 && initial.services.length > 0) {
+      await db.collection('services').insertMany(initial.services as any[]);
+    }
+
+    const projectsCount = await db.collection('projects').countDocuments();
+    if (projectsCount === 0 && initial.projects.length > 0) {
+      await db.collection('projects').insertMany(initial.projects as any[]);
+    }
+
+    const blogsCount = await db.collection('blogs').countDocuments();
+    if (blogsCount === 0 && initial.blogs.length > 0) {
+      await db.collection('blogs').insertMany(initial.blogs as any[]);
+    }
+
+    const testimonialsCount = await db.collection('testimonials').countDocuments();
+    if (testimonialsCount === 0 && initial.testimonials.length > 0) {
+      await db.collection('testimonials').insertMany(initial.testimonials as any[]);
+    }
+
+    const mediaCount = await db.collection('media_files').countDocuments();
+    if (mediaCount === 0 && initial.mediaFiles.length > 0) {
+      await db.collection('media_files').insertMany(initial.mediaFiles as any[]);
+    }
+
+    const teamCount = await db.collection('team_members').countDocuments();
+    if (teamCount === 0 && initial.teamMembers.length > 0) {
+      await db.collection('team_members').insertMany(initial.teamMembers as any[]);
+    }
+
+    const leadsCount = await db.collection('leads').countDocuments();
+    if (leadsCount === 0 && initial.leads.length > 0) {
+      await db.collection('leads').insertMany(initial.leads as any[]);
+    }
+
+    const settingsCount = await db.collection('website_settings').countDocuments();
+    if (settingsCount === 0) {
       const settingsList = Object.values(initial.websiteSettings);
       if (settingsList.length > 0) {
         await db.collection('website_settings').insertMany(settingsList as any[]);
       }
+    }
+
+    const seoCount = await db.collection('seo_metadata').countDocuments();
+    if (seoCount === 0) {
       const seoList = Object.values(initial.seoMetadata);
       if (seoList.length > 0) {
         await db.collection('seo_metadata').insertMany(seoList as any[]);
       }
     }
+
     mongoSeeded = true;
   } catch (err) {
     console.error('Failed to auto-seed MongoDB collections:', err);

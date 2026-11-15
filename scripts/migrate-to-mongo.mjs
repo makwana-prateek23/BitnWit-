@@ -1,6 +1,12 @@
 import fs from 'fs';
 import path from 'path';
+import dns from 'dns';
 import { MongoClient } from 'mongodb';
+
+// Ensure reliable DNS resolution for MongoDB SRV records on Windows
+try {
+  dns.setServers(['8.8.8.8', '1.1.1.1']);
+} catch {}
 
 const DATA_DIR = path.join(process.cwd(), '.data');
 const DB_FILE = path.join(DATA_DIR, 'bitnwit-db.json');

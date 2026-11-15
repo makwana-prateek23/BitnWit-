@@ -1,4 +1,12 @@
 import { MongoClient, Db } from 'mongodb';
+import dns from 'dns';
+
+// Ensure reliable DNS resolution for MongoDB SRV records on Windows environments
+try {
+  dns.setServers(['8.8.8.8', '1.1.1.1']);
+} catch {
+  // Ignore in environments where setting DNS servers is not allowed
+}
 
 const options = {};
 
