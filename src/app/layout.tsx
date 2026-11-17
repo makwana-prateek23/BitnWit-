@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans, Sora } from 'next/font/google';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WhiteRabbitChat from '../components/WhiteRabbitChat';
@@ -7,8 +7,27 @@ import RunningRabbitLoader from '../components/RunningRabbitLoader';
 import { ThemeProvider } from '../components/ThemeProvider';
 import './globals.css';
 
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['500', '600', '700', '800'], variable: '--font-heading' });
-const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-body' });
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-primary',
+});
+
+const sora = Sora({
+  subsets: ['latin'],
+  weight: ['700', '800'],
+  display: 'swap',
+  variable: '--font-display',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-admin',
+});
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://bitnwit.com';
 
 export const metadata: Metadata = {
@@ -71,8 +90,12 @@ const businessJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${inter.variable}`} suppressHydrationWarning>
-      <body className="bg-neu-bg text-neu-text antialiased transition-colors duration-300">
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} ${sora.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="bg-neu-bg text-neu-text antialiased transition-colors duration-300 font-sans">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd).replace(/</g, '\\u003c') }}

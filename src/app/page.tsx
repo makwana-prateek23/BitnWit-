@@ -192,7 +192,7 @@ export default function HomePage() {
               BITnWIT • Engineering &amp; AI Studio
             </NeuBadge>
 
-            <h1 className="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08] text-neu-text">
+            <h1 className="mt-6 font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08] text-neu-text">
               We <FlipText words={['engineer', 'architect', 'build']} />. We <FlipText words={['solve', 'strategize', 'think']} />.
               <br />
               We <FlipText words={['design', 'polish', 'create']} />. We <FlipText words={['scale', 'accelerate', 'grow']} />.

@@ -24,6 +24,16 @@
   --neu-shadow-raised-lg: -12px -12px 28px rgba(255, 255, 255, 0.9), 12px 12px 28px rgba(163, 177, 198, 0.65);
   --neu-shadow-pressed: inset 5px 5px 10px rgba(163, 177, 198, 0.45), inset -5px -5px 10px rgba(255, 255, 255, 0.8);
   --neu-shadow-recessed: inset 3px 3px 6px rgba(163, 177, 198, 0.5), inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+
+  /* Responsive Fluid Type Scales using CSS clamp() */
+  --text-hero: clamp(2.35rem, 5.2vw + 0.8rem, 4.5rem);
+  --text-hero-lead: clamp(1.1rem, 1.2vw + 0.8rem, 1.35rem);
+  --text-h1: clamp(1.85rem, 3.5vw + 0.6rem, 3.25rem);
+  --text-h2: clamp(1.45rem, 2.2vw + 0.5rem, 2.35rem);
+  --text-h3: clamp(1.2rem, 1.4vw + 0.35rem, 1.65rem);
+  --text-h4: clamp(1.05rem, 0.8vw + 0.3rem, 1.25rem);
+  --text-body: clamp(0.925rem, 0.35vw + 0.825rem, 1.0625rem);
+  --text-body-sm: clamp(0.8125rem, 0.2vw + 0.75rem, 0.875rem);
 }
 
 .dark {
@@ -55,9 +65,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================================================================= */
+/* BITnWIT Master Typography System                                  */
+/* Primary: Plus Jakarta Sans | Display: Sora | Admin: Inter         */
+/* ================================================================= */
+
 html {
   scroll-behavior: smooth;
-  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -66,6 +84,10 @@ body {
   background-color: var(--neu-bg);
   color: var(--neu-text);
   overflow-x: hidden;
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.65;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -73,6 +95,7 @@ body {
   box-sizing: border-box;
 }
 
+/* Headings base */
 h1,
 h2,
 h3,
@@ -80,13 +103,142 @@ h4,
 h5,
 h6 {
   color: var(--neu-text);
-  font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
+  text-wrap: balance;
+}
+
+/* Hero headings: Sora, weight 700-800 */
+.hero-heading,
+.font-display,
+h1.hero-heading {
+  font-family: var(--font-display), 'Sora', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+/* Page headings: Plus Jakarta Sans, weight 700 */
+h1:not(.hero-heading),
+.page-heading,
+.text-h1 {
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-h1);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+/* Section headings: Plus Jakarta Sans, weight 700 */
+h2,
+.section-heading,
+.text-h2 {
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-h2);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+/* Subsection headings */
+h3,
+.text-h3 {
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-h3);
+  line-height: 1.25;
   letter-spacing: -0.02em;
 }
 
+h4,
+.text-h4 {
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: var(--text-h4);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+/* Body text: Plus Jakarta Sans, weight 400-500 */
+p,
+.body-text {
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.65;
+  max-width: 72ch;
+  color: var(--neu-text-sec);
+}
+
+p.lead,
+.lead-text {
+  font-size: var(--text-hero-lead);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+strong,
+b {
+  font-weight: 600;
+  color: var(--neu-text);
+}
+
+/* Navigation: Plus Jakarta Sans, weight 600 */
+nav,
+.nav-link,
+header nav a {
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Buttons: Plus Jakarta Sans, weight 600-700 */
 button,
-a {
-  font: inherit;
+a.neu-btn,
+.neu-button {
+  font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Admin Dashboard: Inter, weight 400-600 */
+.font-admin,
+.admin-shell,
+.admin-shell * {
+  font-family: var(--font-admin), 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+.admin-shell h1,
+.admin-shell h2,
+.admin-shell h3,
+.admin-shell h4 {
+  font-family: var(--font-admin), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.admin-shell table,
+.admin-shell th,
+.admin-shell td {
+  font-family: var(--font-admin), 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+.admin-shell th {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.admin-shell td {
+  font-weight: 400;
+}
+
+/* Labels and metadata: Inter, weight 500 */
+.neu-badge,
+.metadata-label,
+.admin-label,
+label {
+  font-family: var(--font-admin), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 ::selection {

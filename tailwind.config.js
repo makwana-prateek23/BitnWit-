@@ -33,8 +33,12 @@ module.exports = {
         'neu-recessed': 'var(--neu-shadow-recessed)',
       },
       fontFamily: {
-        heading: ['var(--font-heading)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        body: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        sans: ['var(--font-primary)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        primary: ['var(--font-primary)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-primary)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        admin: ['var(--font-admin)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-primary)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        body: ['var(--font-primary)', 'ui-sans-serif', 'system-ui', 'sans-serif']
       }
     }
   },
