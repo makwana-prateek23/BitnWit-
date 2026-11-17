@@ -12,6 +12,8 @@ import {
   FiShield,
   FiCheckCircle,
 } from 'react-icons/fi';
+import NeuThemeToggle from '../ui/NeuThemeToggle';
+import NeuBadge from '../ui/NeuBadge';
 
 interface HeaderProps {
   onOpenMobile: () => void;
@@ -68,7 +70,7 @@ const titlesByPath: Record<string, { title: string; subtitle: string }> = {
   },
   '/admin/analytics': {
     title: 'Website Analytics',
-    subtitle: 'Inquiry conversion rates and performance tracking',
+    subtitle: 'Visitor telemetry and Google Analytics 4 integration',
   },
   '/admin/profile': {
     title: 'Admin Profile',
@@ -87,91 +89,83 @@ export default function AdminHeader({
   useEffect(() => {
     const now = new Date();
     setCurrentDate(
-      now.toLocaleDateString('en-IN', {
+      now.toLocaleDateString('en-US', {
         weekday: 'short',
-        day: 'numeric',
         month: 'short',
+        day: 'numeric',
         year: 'numeric',
       })
     );
   }, []);
 
-  const meta = titlesByPath[pathname] || {
+  const pageInfo = titlesByPath[pathname] || {
     title: 'Admin Console',
-    subtitle: 'BITnWit Technologies Platform',
+    subtitle: 'BITnWit Technologies Administration',
   };
 
   return (
-    <header className="sticky top-0 z-10 bg-white/90 backdrop-blur-md border-b border-purple-100/80 px-4 sm:px-8 py-3.5 flex items-center justify-between">
-      {/* Left: Mobile Trigger & Page Heading */}
-      <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-        <button
-          onClick={onOpenMobile}
-          className="md:hidden p-2 -ml-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
-          aria-label="Open mobile menu"
-        >
-          <FiMenu className="w-5 h-5" />
-        </button>
+    <header className="sticky top-0 z-20 bg-neu-surface/90 backdrop-blur-md border-b border-neu-border px-4 sm:px-8 py-3.5 transition-colors duration-300">
+      <div className="flex items-center justify-between gap-4 max-w-7xl mx-auto w-full">
+        {/* Left Side: Mobile Toggle & Page Title */}
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={onOpenMobile}
+            className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl neu-raised text-neu-text transition hover:text-neu-purple"
+            aria-label="Open sidebar navigation"
+          >
+            <FiMenu size={20} />
+          </button>
 
-        <div className="min-w-0">
-          <h1 className="text-lg sm:text-xl font-bold text-[#271044] truncate font-display">
-            {meta.title}
-          </h1>
-          <p className="hidden sm:block text-xs text-[#77717F] truncate">
-            {meta.subtitle}
-          </p>
+          <div>
+            <h1 className="text-lg sm:text-xl font-extrabold text-neu-text tracking-tight">
+              {pageInfo.title}
+            </h1>
+            <p className="hidden sm:block text-xs text-neu-textSec">
+              {pageInfo.subtitle}
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* Right: Date, Quick Actions, Profile Pill */}
-      <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
-        {/* Date Display */}
-        {currentDate && (
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#F8F7FA] border border-slate-200/60 text-xs font-medium text-slate-600">
-            <FiCalendar className="w-3.5 h-3.5 text-[#7025B9]" />
-            <span>{currentDate}</span>
+        {/* Right Side: Theme Toggle, Date & Admin User Pill */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          <NeuThemeToggle />
+
+          {/* Date Chip */}
+          <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-xl neu-recessed text-xs font-semibold text-neu-textSec">
+            <FiCalendar size={13} className="text-neu-purple" />
+            <span>{currentDate || 'Today'}</span>
           </div>
-        )}
 
-        {/* Quick Lead Button */}
-        <Link
-          href="/admin/leads?action=new"
-          className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-[#FF790E] to-[#FF933B] hover:from-[#e66c0b] hover:to-[#FF790E] shadow-sm transition-all"
-        >
-          <FiPlus className="w-3.5 h-3.5" />
-          <span>New Lead</span>
-        </Link>
-
-        {/* Leads Notification Icon */}
-        <Link
-          href="/admin/leads"
-          className="relative p-2 rounded-xl text-slate-600 hover:text-[#271044] hover:bg-slate-100 transition-colors"
-          title={`${newLeadsCount} uncontacted leads`}
-        >
-          <FiBell className="w-4 h-4" />
+          {/* Notification / Leads Indicator */}
           {newLeadsCount > 0 && (
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#FF790E] ring-2 ring-white animate-pulse" />
+            <Link
+              href="/admin/leads"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl neu-recessed text-xs font-bold text-orange-600 dark:text-orange-400 hover:neu-raised transition-all"
+            >
+              <FiBell size={13} className="animate-bounce" />
+              <span>{newLeadsCount} New</span>
+            </Link>
           )}
-        </Link>
 
-        {/* Profile Pill */}
-        <Link
-          href="/admin/profile"
-          className="flex items-center gap-2.5 pl-2 pr-3 py-1 rounded-2xl bg-[#F8F7FA] hover:bg-purple-50/60 border border-slate-200/80 transition-colors group"
-        >
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#271044] to-[#7025B9] text-white flex items-center justify-center font-bold text-xs shadow-sm">
-            {adminUser?.name ? adminUser.name.charAt(0).toUpperCase() : 'A'}
-          </div>
-          <div className="hidden sm:block text-left">
-            <div className="text-xs font-bold text-[#171225] group-hover:text-[#7025B9] transition-colors leading-tight">
-              {adminUser?.name || 'Administrator'}
+          {/* Admin Profile Pill */}
+          <Link
+            href="/admin/profile"
+            className="flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-2xl neu-raised hover:neu-raised-lg transition-all"
+          >
+            <div className="h-7 w-7 rounded-xl neu-recessed flex items-center justify-center text-neu-purple font-bold text-xs">
+              {(adminUser?.name || 'Admin').slice(0, 2).toUpperCase()}
             </div>
-            <div className="text-[10px] text-[#77717F] font-mono leading-tight flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
-              <span>{adminUser?.role || 'SUPER_ADMIN'}</span>
+            <div className="hidden sm:block text-left">
+              <span className="block text-xs font-bold text-neu-text leading-tight">
+                {adminUser?.name || 'Administrator'}
+              </span>
+              <span className="block text-[10px] font-mono text-neu-purple">
+                {adminUser?.role === 'SUPER_ADMIN' ? 'Super Admin' : 'Admin'}
+              </span>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
     </header>
   );

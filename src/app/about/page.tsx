@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import MascotImage from '../../components/MascotImage';
-import GlassHero from '../../components/ui/GlassHero';
-import SpotlightCard from '../../components/ui/SpotlightCard';
-import AnimatedButton from '../../components/ui/AnimatedButton';
-import ShimmerBadge from '../../components/ui/ShimmerBadge';
+import NeuSurface from '../../components/ui/NeuSurface';
+import NeuCard from '../../components/ui/NeuCard';
+import NeuBadge from '../../components/ui/NeuBadge';
+import NeuButton from '../../components/ui/NeuButton';
 import { team } from '../../data/content';
+import { AiOutlineCheckCircle, AiOutlinePhone, AiOutlineArrowRight } from 'react-icons/ai';
+import { LuCompass, LuLayers, LuSparkles, LuGlobe, LuCpu, LuShield } from 'react-icons/lu';
 
 export const metadata: Metadata = {
   title: 'About Us | BITnWIT',
@@ -17,164 +20,208 @@ export const metadata: Metadata = {
 const principles = [
   {
     title: 'Clarity over complexity',
-    copy: 'We turn broad goals into clear priorities, practical scopes, and decisions everyone can understand.'
+    copy: 'We turn broad business goals into clear sprint priorities, practical scopes, and architectural decisions everyone can understand.'
   },
   {
     title: 'Senior attention',
-    copy: 'Strategy, design, and engineering stay close together, with direct access to the people doing the work.'
+    copy: 'Strategy, design, and engineering stay close together, with direct access to the technical founders doing the work.'
   },
   {
     title: 'Visible progress',
-    copy: 'Work moves in focused iterations, so you can review, learn, and adjust before expensive assumptions compound.'
+    copy: 'Work moves in focused iterations with deployable staging builds, so you can review and adjust before expensive assumptions compound.'
   },
   {
     title: 'Built for momentum',
-    copy: 'We create reusable foundations that help teams launch today and keep improving tomorrow.'
+    copy: 'We create clean, modular, reusable code foundations that help your team launch today and scale smoothly tomorrow.'
   }
 ];
 
-const process = [
-  { step: '01', title: 'Discover', copy: 'Goals, users, constraints, and success measures.' },
-  { step: '02', title: 'Define', copy: 'Strategy, priorities, scope, and delivery roadmap.' },
-  { step: '03', title: 'Design & build', copy: 'Collaborative iterations with visible progress.' },
-  { step: '04', title: 'Launch & learn', copy: 'Quality checks, measurement, and optimization.' }
+const processSteps = [
+  { step: '01', title: 'Discover', copy: 'Goals, audience research, technical constraints, and measurable success metrics.' },
+  { step: '02', title: 'Define', copy: 'Architecture blueprints, priorities, milestone scope, and sprint roadmap.' },
+  { step: '03', title: 'Design & Build', copy: 'Collaborative two-week sprints with visible staging deployments and tests.' },
+  { step: '04', title: 'Launch & Scale', copy: 'Production deployment, Core Web Vitals optimization, and post-launch analytics tuning.' }
 ];
 
 export default function AboutPage() {
   return (
-    <main className="site-page min-h-screen px-4 py-10 text-ink sm:px-8 lg:px-12 2xl:px-16">
+    <main className="min-h-screen px-4 py-10 sm:px-8 lg:px-12 2xl:px-16 transition-colors duration-300">
       <div className="mx-auto w-full max-w-[1720px] space-y-16 2xl:space-y-24">
-        {/* Vengeance UI Glassmorphic Hero */}
-        <GlassHero
-          badge={
-            <ShimmerBadge pulseDot pulseColor="bg-rabbit" className="glass-chip text-xs font-bold uppercase tracking-[0.25em]">
-              About BITnWIT
-            </ShimmerBadge>
-          }
-          title={
-            <>
-              A technology partner built for <span className="text-gradient">forward motion.</span>
-            </>
-          }
-          description="BITnWIT combines product thinking, design, software, marketing, and practical AI. We work with founders and growing teams across India and internationally—from first idea to launch and continued growth."
-          actions={
-            <>
+
+        {/* HERO SECTION */}
+        <section className="neu-raised rounded-[2.5rem] 2xl:rounded-[3.5rem] p-8 sm:p-12 lg:p-16 2xl:p-20 grid lg:grid-cols-[1.2fr_.8fr] gap-10 items-center overflow-hidden">
+          <div className="space-y-6">
+            <NeuBadge color="purple" variant="recessed" pulseDot>
+              About BITnWIT Technologies
+            </NeuBadge>
+
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-neu-text leading-[1.1]">
+              A digital engineering partner built for <span className="text-gradient">forward motion.</span>
+            </h1>
+
+            <p className="text-lg lg:text-xl text-neu-textSec leading-relaxed max-w-2xl">
+              BITnWIT combines product strategy, design systems, software engineering, and practical AI automation. Headquartered in India and working with founders and growing teams globally—from first concept to launch and scale.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link href="/contact">
-                <AnimatedButton variant="primary">Work with us</AnimatedButton>
+                <NeuButton variant="purple" size="lg">
+                  Work With Us →
+                </NeuButton>
               </Link>
               <Link href="/work">
-                <AnimatedButton variant="secondary" className="glass-chip">Explore work</AnimatedButton>
+                <NeuButton variant="default" size="lg">
+                  Explore Selected Work
+                </NeuButton>
               </Link>
-            </>
-          }
-          visual={
-            <SpotlightCard
-              enableTilt={true}
-              tiltIntensity={7}
-              className="glass-card relative overflow-hidden rounded-[2.5rem] p-6 2xl:p-8"
-            >
-              <div className="absolute inset-x-8 top-8 h-36 rounded-full bg-rabbit/20 blur-3xl" />
+            </div>
+          </div>
+
+          {/* Mascot Showcase Card */}
+          <div className="relative">
+            <NeuSurface variant="raised-lg" className="p-8 rounded-[2rem] text-center">
+              <div className="mb-4">
+                <NeuBadge color="yellow" variant="recessed">
+                  Bitty · Mascot &amp; AI Guide
+                </NeuBadge>
+              </div>
               <MascotImage
                 src="/mascot-about.jpg"
                 alt="Bitty ideating with tablet and lightbulb"
-                className="max-h-[460px] 2xl:max-h-[580px] rounded-2xl"
+                className="max-h-[380px] lg:max-h-[440px] rounded-2xl mx-auto"
               />
-            </SpotlightCard>
-          }
-        />
+              <p className="mt-4 text-xs font-semibold text-neu-textSec">
+                "We innovate with purpose, build with precision, and solve with empathy."
+              </p>
+            </NeuSurface>
+          </div>
+        </section>
 
-        {/* Why Choose Us: Glass Cards Grid */}
-        <section>
-          <p className="text-sm font-bold uppercase tracking-[.24em] text-rabbit">Why choose us</p>
-          <h2 className="mt-3 max-w-3xl text-3xl font-bold sm:text-4xl 2xl:text-5xl">
-            Small enough to care. Experienced enough to deliver.
-          </h2>
-          <div className="mt-9 grid gap-6 sm:grid-cols-2 2xl:gap-8">
+        {/* OPERATING PRINCIPLES */}
+        <section className="space-y-8">
+          <div>
+            <NeuBadge color="maroon" variant="recessed">
+              Why Choose BITnWIT
+            </NeuBadge>
+            <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+              Small enough to care. Experienced enough to deliver.
+            </h2>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2">
             {principles.map((item, i) => (
-              <SpotlightCard
-                key={item.title}
-                enableTilt={true}
-                tiltIntensity={5}
-                className="glass-card rounded-2xl 2xl:rounded-3xl p-7 2xl:p-9 hover:-translate-y-1"
-              >
-                <span className="text-xs font-bold text-rabbit font-mono">0{i + 1}</span>
-                <h3 className="mt-5 text-xl 2xl:text-2xl font-bold">{item.title}</h3>
-                <p className="mt-3 text-base 2xl:text-lg leading-7 text-slate-600">{item.copy}</p>
-              </SpotlightCard>
+              <NeuCard key={item.title} variant="raised" className="space-y-3">
+                <span className="font-mono text-xs font-bold text-neu-purple px-2.5 py-1 rounded-md neu-recessed inline-block">
+                  0{i + 1}
+                </span>
+                <h3 className="text-xl font-bold text-neu-text">{item.title}</h3>
+                <p className="text-sm sm:text-base leading-relaxed text-neu-textSec">{item.copy}</p>
+              </NeuCard>
             ))}
           </div>
         </section>
 
-        {/* How We Work: Glass Dark Surface */}
-        <section className="glass-dark rounded-[2.5rem] 2xl:rounded-[3.5rem] p-8 text-white sm:p-12 2xl:p-16">
-          <p className="text-sm font-bold uppercase tracking-[.24em] text-rabbit">How we work</p>
-          <h2 className="mt-3 text-3xl 2xl:text-4xl font-bold text-white">
-            One transparent process from question to outcome.
-          </h2>
-          <div className="mt-10 grid gap-4 md:grid-cols-4 2xl:gap-6">
-            {process.map((item) => (
-              <div
-                key={item.step}
-                className="rounded-2xl border border-white/15 bg-white/5 p-6 2xl:p-8 backdrop-blur-md transition hover:bg-white/10"
-              >
-                <span className="text-xs font-bold text-rabbit font-mono">{item.step}</span>
-                <h3 className="mt-5 font-bold text-white text-lg 2xl:text-xl">{item.title}</h3>
-                <p className="mt-2 text-sm 2xl:text-base leading-6 text-slate-400">{item.copy}</p>
-              </div>
+        {/* HOW WE WORK (METHODOLOGY) */}
+        <section className="space-y-8">
+          <div>
+            <NeuBadge color="purple" variant="recessed">
+              Our Methodology
+            </NeuBadge>
+            <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+              One transparent process from discovery to outcome.
+            </h2>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((item) => (
+              <NeuCard key={item.step} variant="raised" className="space-y-3">
+                <span className="font-mono text-xs font-bold text-neu-purple px-2.5 py-1 rounded-md neu-recessed inline-block">
+                  {item.step}
+                </span>
+                <h3 className="text-lg font-bold text-neu-text">{item.title}</h3>
+                <p className="text-xs sm:text-sm leading-relaxed text-neu-textSec">{item.copy}</p>
+              </NeuCard>
             ))}
           </div>
         </section>
 
-        {/* Leadership: Glass Cards */}
-        <section>
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        {/* LEADERSHIP SECTION */}
+        <section className="space-y-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[.24em] text-rabbit">Leadership</p>
-              <h2 className="mt-3 text-3xl 2xl:text-4xl font-bold">People behind the work.</h2>
+              <NeuBadge color="yellow" variant="recessed">
+                Engineering Leadership
+              </NeuBadge>
+              <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+                The practitioners behind the work.
+              </h2>
             </div>
-            <p className="max-w-md 2xl:max-w-lg text-slate-600 2xl:text-lg">
-              Direct collaboration with technical leaders—without layers of account management.
+            <p className="text-sm text-neu-textSec max-w-md">
+              Direct technical collaboration without the dilution of non-technical middlemen.
             </p>
           </div>
-          <div className="mt-8 grid gap-6 md:grid-cols-2 2xl:gap-8">
+
+          <div className="grid gap-6 md:grid-cols-2">
             {team.map((person) => (
-              <SpotlightCard
-                key={person.name}
-                enableTilt={true}
-                tiltIntensity={5}
-                className="glass-card flex gap-5 rounded-2xl 2xl:rounded-3xl p-7 2xl:p-9 hover:-translate-y-1"
-              >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-rabbit text-lg font-bold text-white shadow-md shadow-rabbit/20">
+              <NeuCard key={person.name} variant="raised" className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                <div className="h-16 w-16 rounded-2xl neu-recessed flex items-center justify-center text-xl font-extrabold text-neu-purple shrink-0">
                   {person.initials}
                 </div>
-                <div>
-                  <h3 className="text-xl 2xl:text-2xl font-bold">{person.name}</h3>
-                  <p className="mt-1 text-sm font-semibold text-rabbit">{person.role}</p>
-                  <p className="mt-3 text-sm 2xl:text-base text-slate-600">
-                    {person.specialties.join(' · ')}
+
+                <div className="space-y-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-xl font-bold text-neu-text">{person.name}</h3>
+                    <NeuBadge color="purple" variant="recessed">
+                      {person.role}
+                    </NeuBadge>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-neu-textSec">
+                    {person.specialties.join(' • ')}
                   </p>
+
                   <a
                     href={`tel:${person.phone.replace(/\s/g, '')}`}
-                    className="mt-4 inline-flex text-sm font-semibold text-ink hover:text-rabbit"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-neu-text hover:text-neu-purple transition-colors pt-1"
                   >
-                    {person.phone}
+                    <AiOutlinePhone size={13} className="text-neu-purple" />
+                    <span>{person.phone}</span>
                   </a>
                 </div>
-              </SpotlightCard>
+              </NeuCard>
             ))}
           </div>
         </section>
 
-        {/* Pan-India Global Reach: Glass Hero Container */}
-        <section className="glass-hero grid overflow-hidden rounded-[2.5rem] 2xl:rounded-[3.5rem] border border-rabbit/20 lg:grid-cols-2">
-          <div className="p-8 sm:p-12 2xl:p-16">
-            <p className="text-sm font-bold uppercase tracking-[.24em] text-rabbit">Pan-India. Global-ready.</p>
-            <h2 className="mt-4 text-3xl 2xl:text-4xl font-bold">Great work does not depend on a pin code.</h2>
+        {/* PAN-INDIA & GLOBAL REACH */}
+        <section className="neu-raised rounded-[2.5rem] p-8 sm:p-12 lg:p-16 grid lg:grid-cols-2 gap-8 items-center">
+          <div className="space-y-4">
+            <NeuBadge color="green" variant="recessed">
+              Pan-India • Global-Ready
+            </NeuBadge>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-neu-text">
+              Great software engineering does not depend on a pin code.
+            </h2>
           </div>
-          <div className="border-rabbit/15 p-8 text-lg 2xl:text-xl leading-8 text-slate-600 lg:border-l sm:p-12 2xl:p-16 bg-white/40 backdrop-blur-md">
-            Our remote-first process supports teams across India and international markets. Clear documentation, async updates, planned overlap hours, and flexible collaboration keep projects moving across locations and time zones.
+
+          <div className="p-6 sm:p-8 rounded-2xl neu-recessed text-sm sm:text-base leading-relaxed text-neu-textSec space-y-4">
+            <p>
+              Our remote-first delivery model supports client teams across India and international markets. Clear asynchronous updates, daily communication on private Slack or WhatsApp channels, and weekly milestone staging reviews ensure you are never in the dark.
+            </p>
+            <div className="flex flex-wrap gap-2 pt-2">
+              <span className="px-3 py-1 rounded-lg neu-raised text-xs font-bold text-neu-text">
+                ✓ Async Pull Requests
+              </span>
+              <span className="px-3 py-1 rounded-lg neu-raised text-xs font-bold text-neu-text">
+                ✓ Timezone Overlap Hours
+              </span>
+              <span className="px-3 py-1 rounded-lg neu-raised text-xs font-bold text-neu-text">
+                ✓ Staging Previews on Vercel
+              </span>
+            </div>
           </div>
         </section>
+
       </div>
     </main>
   );

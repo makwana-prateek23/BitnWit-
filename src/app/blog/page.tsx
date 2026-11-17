@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import GlassHero from '../../components/ui/GlassHero';
-import SpotlightCard from '../../components/ui/SpotlightCard';
-import ShimmerBadge from '../../components/ui/ShimmerBadge';
 import { posts } from '../../data/content';
+import NeuSurface from '../../components/ui/NeuSurface';
+import NeuCard from '../../components/ui/NeuCard';
+import NeuBadge from '../../components/ui/NeuBadge';
+import NeuButton from '../../components/ui/NeuButton';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import { LuClock, LuBookOpen } from 'react-icons/lu';
 
 export const metadata: Metadata = {
   title: 'Insights & Engineering Blog | BITnWIT',
@@ -16,69 +18,78 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <main className="site-page min-h-screen px-4 py-10 text-ink sm:px-8 lg:px-12 2xl:px-16">
-      <div className="mx-auto w-full max-w-[1720px] space-y-12 2xl:space-y-16">
-        {/* Vengeance UI Glassmorphic Hero */}
-        <GlassHero
-          badge={
-            <ShimmerBadge pulseDot pulseColor="bg-rabbit" className="glass-chip text-xs font-bold uppercase tracking-[0.25em]">
-              Editorial & Engineering Insights
-            </ShimmerBadge>
-          }
-          title={
-            <>
-              Insights for smarter <span className="text-gradient">digital growth.</span>
-            </>
-          }
-          description="Practical strategies, architectural patterns, and honest perspectives on web engineering, AI automation, branding, and growth for ambitious companies."
-        />
+    <main className="min-h-screen px-4 py-8 sm:px-8 lg:px-12 2xl:px-16 lg:py-12 transition-colors duration-300">
+      <div className="mx-auto w-full max-w-[1720px] space-y-16 lg:space-y-24">
 
-        {/* Blog Posts in 3D Spotlight Glass Cards */}
-        <section className="grid gap-8 md:grid-cols-2 2xl:grid-cols-3 2xl:gap-10">
+        {/* HERO */}
+        <section className="neu-raised rounded-[2.5rem] 2xl:rounded-[3.5rem] p-8 sm:p-12 lg:p-16 2xl:p-20 overflow-hidden space-y-6">
+          <NeuBadge color="purple" variant="recessed" pulseDot>
+            Editorial &amp; Engineering Insights
+          </NeuBadge>
+
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08] max-w-4xl">
+            Insights for smarter <span className="text-gradient">digital growth.</span>
+          </h1>
+
+          <p className="max-w-2xl text-base sm:text-lg 2xl:text-xl text-neu-textSec leading-relaxed">
+            Practical strategies, architectural patterns, and honest perspectives on web engineering, AI workflow automation, branding systems, and conversion funnels for ambitious companies.
+          </p>
+        </section>
+
+        {/* BLOG POSTS GRID */}
+        <section className="grid gap-8 md:grid-cols-2 2xl:grid-cols-3">
           {posts.map((post) => (
-            <SpotlightCard
+            <NeuCard
               key={post.slug}
-              enableTilt={true}
-              tiltIntensity={5}
-              className="glass-card group overflow-hidden rounded-3xl 2xl:rounded-[2.5rem] transition hover:-translate-y-1"
+              variant="raised"
+              interactive
+              className="flex flex-col justify-between overflow-hidden !p-0 group hover:-translate-y-1.5"
             >
-              <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-neu-surfaceSec">
                 <Image
                   src={post.image}
                   alt={post.imageAlt}
                   fill
-                  className="object-cover transition duration-700 ease-out group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   sizes="(min-width: 768px) 50vw, 100vw"
                 />
-                <span className="absolute top-3 left-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-slate-800 shadow-sm backdrop-blur-sm">
-                  {post.category}
-                </span>
+                <div className="absolute top-3 left-3">
+                  <NeuBadge color="purple" variant="raised">
+                    {post.category}
+                  </NeuBadge>
+                </div>
               </div>
-              <div className="p-7 2xl:p-10 flex flex-col justify-between">
-                <div>
-                  <p className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-rabbit">
-                    {post.readTime}
-                  </p>
-                  <h2 className="mt-2 text-xl 2xl:text-2xl font-bold text-ink transition-colors group-hover:text-rabbit">
+
+              <div className="p-7 2xl:p-10 flex-1 flex flex-col justify-between space-y-6">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-neu-purple">
+                    <LuClock size={13} />
+                    <span>{post.readTime}</span>
+                  </div>
+
+                  <h2 className="text-xl 2xl:text-2xl font-bold text-neu-text group-hover:text-neu-purple transition-colors">
                     {post.title}
                   </h2>
-                  <p className="mt-3 text-sm 2xl:text-base leading-relaxed text-slate-600">
+
+                  <p className="text-xs sm:text-sm text-neu-textSec leading-relaxed">
                     {post.excerpt}
                   </p>
                 </div>
-                <div className="mt-6 border-t border-slate-100 pt-4">
+
+                <div className="pt-4 border-t border-neu-border">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs 2xl:text-sm font-bold text-rabbit hover:underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-neu-purple hover:underline"
                   >
-                    <span>Read article</span>
-                    <AiOutlineArrowRight className="transition-transform group-hover:translate-x-1" />
+                    <span>Read Full Article</span>
+                    <AiOutlineArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>
-            </SpotlightCard>
+            </NeuCard>
           ))}
         </section>
+
       </div>
     </main>
   );

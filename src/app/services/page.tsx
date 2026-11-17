@@ -19,8 +19,10 @@ import TalkToRabbitButton from '../../components/TalkToRabbitButton';
 import ServicesHeroMockup from '../../components/ServicesHeroMockup';
 import ServicesProcessStepper from '../../components/ServicesProcessStepper';
 import ServicesFaqAccordion from '../../components/ServicesFaqAccordion';
-import AnimatedRays from '../../components/ui/AnimatedRays';
-import SpotlightCard from '../../components/ui/SpotlightCard';
+import NeuSurface from '../../components/ui/NeuSurface';
+import NeuButton from '../../components/ui/NeuButton';
+import NeuCard from '../../components/ui/NeuCard';
+import NeuBadge from '../../components/ui/NeuBadge';
 
 export const metadata: Metadata = {
   title: 'Digital Engineering & Creative Agency Services | BITnWIT',
@@ -88,481 +90,288 @@ const serviceMeta: Record<
   }
 };
 
-// Selected Genuine Case Studies from content.ts
 const featuredProjects = projects.slice(0, 3);
 
 export default function ServicesPage() {
   return (
-    <main className="site-page min-h-screen px-4 py-8 text-ink sm:px-8 lg:px-12 2xl:px-16 lg:py-12">
-      <div className="mx-auto w-full max-w-[1720px] space-y-24 lg:space-y-32">
-        {/* ==============================================================
-            1. HERO SECTION WITH VENGEANCE UI GLASSMORPHY & RESPONSIVE MOCKUP
-        ============================================================== */}
-        <section className="glass-hero relative overflow-hidden rounded-[2.5rem] 2xl:rounded-[3.5rem] p-7 sm:p-11 lg:p-14 2xl:p-20">
-          {/* Subtle Ambient Background Warmth & Vengeance UI Rays */}
-          <AnimatedRays color="rgba(74, 16, 26, 0.35)" secondaryColor="rgba(109, 31, 162, 0.25)" className="opacity-60" />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" aria-hidden="true" />
-          <div
-            className="pointer-events-none absolute -top-20 left-1/4 h-96 w-96 rounded-full bg-[#4A101A]/10 blur-[120px]"
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute top-40 right-10 h-80 w-80 rounded-full bg-rabbit/10 blur-[100px]"
-            aria-hidden="true"
-          />
+    <main className="min-h-screen px-4 py-8 sm:px-8 lg:px-12 2xl:px-16 lg:py-12 transition-colors duration-300">
+      <div className="mx-auto w-full max-w-[1720px] space-y-20 lg:space-y-28">
 
+        {/* 1. HERO SECTION */}
+        <section className="neu-raised rounded-[2.5rem] 2xl:rounded-[3.5rem] p-7 sm:p-12 lg:p-16 2xl:p-20 overflow-hidden">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_.9fr] lg:items-center 2xl:gap-16">
-            {/* Left Column: Editorial Headline & Actions */}
-            <div>
-              <div className="glass-chip inline-flex items-center gap-2.5 rounded-full border border-[#4A101A]/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-[#4A101A]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#4A101A]" />
-                <span>BITnWIT Core Disciplines</span>
-              </div>
+            <div className="space-y-6">
+              <NeuBadge color="purple" variant="recessed" pulseDot>
+                BITnWIT Core Disciplines
+              </NeuBadge>
 
-              <h1 className="mt-6 max-w-2xl text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08] text-ink">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08] text-neu-text">
                 Engineering precision. <br />
                 <span className="text-gradient">Creative clarity.</span>
               </h1>
 
-              <p className="mt-6 max-w-xl text-base sm:text-lg 2xl:text-xl leading-relaxed text-slate-700">
+              <p className="max-w-xl text-base sm:text-lg 2xl:text-xl leading-relaxed text-neu-textSec">
                 We design and ship high-performance digital products, practical AI workflows, modern web platforms,
                 and targeted growth systems—delivered through milestone-backed sprints.
               </p>
 
               {/* CTAs */}
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <TalkToRabbitButton className="btn-shine group inline-flex items-center justify-center gap-2 rounded-full bg-[#4A101A] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#4A101A]/20 transition-all duration-300 hover:scale-[1.02] hover:bg-[#360A11] hover:shadow-xl">
-                  <LuSparkles size={15} className="text-amber-300" />
-                  <span>Talk to White Rabbit</span>
-                  <LuArrowRight className="transition-transform group-hover:translate-x-1" />
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center pt-2">
+                <TalkToRabbitButton className="inline-flex">
+                  <NeuButton variant="purple" size="lg" icon={<LuSparkles size={16} />}>
+                    Talk to White Rabbit
+                  </NeuButton>
                 </TalkToRabbitButton>
 
-                <Link
-                  href="/contact"
-                  className="glass-chip inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-ink shadow-xs transition-all duration-300 hover:scale-[1.02] hover:bg-white"
-                >
-                  <span>Start a Project Brief</span>
-                  <span className="text-slate-400">→</span>
+                <Link href="/contact">
+                  <NeuButton variant="default" size="lg">
+                    Start a Project Brief →
+                  </NeuButton>
                 </Link>
               </div>
 
-              {/* Trust & Craft Indicators */}
-              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs sm:text-sm font-semibold text-slate-600">
+              {/* Trust Indicators */}
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-xs sm:text-sm font-semibold text-neu-textSec pt-4">
                 <span className="inline-flex items-center gap-2">
-                  <LuCheck className="text-emerald-600" />
+                  <LuCheck className="text-emerald-500" />
                   100% Client Code Ownership
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <LuCheck className="text-emerald-600" />
+                  <LuCheck className="text-emerald-500" />
                   Fixed-Scope Milestones
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <LuCheck className="text-emerald-600" />
+                  <LuCheck className="text-emerald-500" />
                   Senior Engineering Craft
                 </span>
               </div>
             </div>
 
-            {/* Right Column: Digital Product Mockup */}
+            {/* Right Column: Digital Product Mockup in Raised Plate */}
             <div className="relative">
-              <ServicesHeroMockup />
-            </div>
-          </div>
-
-          {/* Quick Filter Navigation Bar */}
-          <div className="glass-chip mt-16 rounded-2xl border border-white/60 p-3 shadow-xs">
-            <div className="flex items-center justify-between gap-4 overflow-x-auto px-2 py-1 scrollbar-none">
-              <span className="hidden font-mono text-xs font-bold uppercase tracking-wider text-slate-400 lg:inline-block shrink-0">
-                Jump to Discipline:
-              </span>
-              <div className="flex flex-nowrap items-center gap-2">
-                {services.map((item, i) => (
-                  <a
-                    key={item.slug}
-                    href={`#${item.slug}`}
-                    className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-xl border border-transparent bg-white px-3 py-1.5 text-xs font-bold text-slate-700 shadow-xs transition hover:border-[#4A101A]/30 hover:text-[#4A101A]"
-                  >
-                    <span className="font-mono text-[10px] text-slate-400">0{i + 1}</span>
-                    <span>{item.title}</span>
-                  </a>
-                ))}
-              </div>
+              <NeuSurface variant="raised-lg" className="p-4 sm:p-8 rounded-[2rem] overflow-hidden">
+                <ServicesHeroMockup />
+              </NeuSurface>
             </div>
           </div>
         </section>
 
-        {/* ==============================================================
-            2. EIGHT SERVICE SECTIONS (ALTERNATING EDITORIAL LAYOUT)
-        ============================================================== */}
-        <section id="all-services" className="space-y-16 lg:space-y-24">
-          <div className="flex flex-col items-start justify-between gap-6 border-b border-[#E8E2D8] pb-8 md:flex-row md:items-end">
-            <div className="flex items-center gap-5">
-              <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl border border-[#E8E2D8] bg-[#F5F1EB] p-1 shadow-sm">
-                <Image src="/mascot-services.jpg" alt="Bitty in VR headset orchestrating digital services" width={160} height={160} className="h-full w-full object-contain rounded-xl" />
-              </div>
-              <div>
-                <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#4A101A]">
-                  Catalog of Capabilities • 8 Disciplines
-                </span>
-                <h2 className="mt-1 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl">
-                  Eight disciplines. One unified standard.
-                </h2>
-              </div>
-            </div>
-            <p className="max-w-md text-sm sm:text-base text-slate-600">
-              Each discipline is delivered as an end-to-end sprint with clear artifacts, documented code, and measurable business KPIs.
+        {/* 2. THE 8 SERVICES IN NEUMORPHIC CARDS */}
+        <section className="space-y-12">
+          <div className="max-w-3xl space-y-3">
+            <NeuBadge color="yellow" variant="recessed">
+              Sprint Catalog
+            </NeuBadge>
+            <h2 className="text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+              All Eight Disciplines &amp; Deliverables
+            </h2>
+            <p className="text-base text-neu-textSec">
+              Each discipline is shaped around a concrete business outcome, built with production-grade engineering, and transferred with full IP ownership.
             </p>
           </div>
 
-          {/* 8 Alternating Cards */}
-          <div className="space-y-16 lg:space-y-24">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 2xl:gap-10">
             {services.map((service, index) => {
-              const meta = serviceMeta[service.slug] ?? {
-                iconName: 'web' as ServiceIconName,
+              const meta = serviceMeta[service.slug] || {
+                iconName: 'code',
                 stack: ['TypeScript', 'Next.js'],
-                turnaround: '3–6 weeks',
-                targetOutcome: 'Production results'
+                turnaround: '2–4 weeks',
+                targetOutcome: 'High performance scalable system'
               };
-              const theme = serviceTheme[meta.iconName];
-              const isEven = index % 2 === 0;
 
               return (
-                <article
+                <NeuCard
                   key={service.slug}
-                  id={service.slug}
-                  className="group relative overflow-hidden rounded-[2.5rem] border border-[#E8E2D8] bg-white p-6 sm:p-10 lg:p-12 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-slate-900/5"
+                  variant="raised"
+                  interactive
+                  className="flex flex-col justify-between h-full group hover:-translate-y-1.5"
                 >
-                  <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
-                    {/* Visual Column */}
-                    <div
-                      className={`lg:col-span-6 ${
-                        isEven ? 'lg:order-last' : 'lg:order-first'
-                      }`}
-                    >
-                      <div className="relative overflow-hidden rounded-3xl border border-[#E8E2D8] bg-[#F5F1EB] p-3 sm:p-4 shadow-inner">
-                        <div className="relative aspect-[16/11] min-h-[300px] sm:min-h-[360px] overflow-hidden rounded-2xl bg-[#EFEAE2]">
-                          <Image
-                            src={service.image}
-                            alt={service.imageAlt}
-                            fill
-                            sizes="(min-width: 1024px) 50vw, 100vw"
-                            className="content-image object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                          />
-
-                          {/* Subtle White Rabbit Signature Hallmark */}
-                          <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/80 bg-white/95 px-3 py-1 shadow-sm backdrop-blur-sm">
-                            <span className="font-mono text-xs font-bold text-slate-400">0{index + 1}</span>
-                            <span className="text-slate-300">•</span>
-                            <span className="text-xs font-bold text-ink">{service.title}</span>
-                          </div>
-
-                          <div className="absolute bottom-4 right-4 rounded-xl border border-white/60 bg-white/90 px-3 py-1.5 text-[11px] font-semibold text-slate-700 shadow-sm backdrop-blur-sm">
-                            ⚡ {meta.turnaround}
-                          </div>
-                        </div>
+                  <div className="space-y-5">
+                    {/* Header: Icon & Order */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl neu-recessed text-neu-purple group-hover:text-neu-text transition-colors">
+                        <ServiceIcon name={meta.iconName} size={22} />
                       </div>
+                      <span className="font-mono text-xs font-bold text-neu-purple px-2 py-1 rounded-md neu-recessed">
+                        0{index + 1}
+                      </span>
                     </div>
 
-                    {/* Text & Deliverables Column */}
-                    <div className="lg:col-span-6 flex flex-col justify-between">
-                      <div>
-                        {/* Eyebrow & Icon */}
-                        <div className="flex items-center gap-3">
-                          <div
-                            className={`flex h-11 w-11 items-center justify-center rounded-xl border ${theme.border} ${theme.bg} ${theme.text}`}
-                          >
-                            <ServiceIcon name={meta.iconName} size={20} />
-                          </div>
-                          <div>
-                            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#4A101A]">
-                              {service.eyebrow}
-                            </p>
-                            <p className="text-xs font-medium text-slate-500">
-                              Discipline 0{index + 1} of 08
-                            </p>
-                          </div>
-                        </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-neu-text group-hover:text-neu-purple transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="mt-2 text-xs sm:text-sm text-neu-textSec leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
 
-                        {/* Title & Description */}
-                        <h3 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-ink">
-                          {service.title}
-                        </h3>
+                    {/* Deliverables Pills */}
+                    <div className="space-y-2 pt-2 border-t border-neu-border">
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-neu-textSec">
+                        Key Deliverables:
+                      </p>
+                      <ul className="space-y-1.5">
+                        {service.deliverables.slice(0, 3).map((d) => (
+                          <li key={d} className="flex items-start gap-2 text-xs text-neu-text">
+                            <LuCheck size={14} className="text-neu-purple shrink-0 mt-0.5" />
+                            <span>{d}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                        <p className="mt-3 text-base sm:text-lg leading-relaxed text-slate-600">
-                          {service.description}
-                        </p>
-
-                        {/* Target Business Outcome Highlight */}
-                        <div className="mt-5 rounded-2xl border border-amber-600/15 bg-[#FBF7EE] p-4 text-xs sm:text-sm">
-                          <span className="font-bold text-amber-900">Primary Value Outcome: </span>
-                          <span className="text-amber-800 font-medium">{meta.targetOutcome}</span>
-                        </div>
-
-                        {/* Deliverables Checklist */}
-                        <div className="mt-6">
-                          <p className="font-mono text-xs font-bold uppercase tracking-wider text-slate-400">
-                            Core Deliverables Included
-                          </p>
-                          <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
-                            {service.deliverables.map((item) => (
-                              <div
-                                key={item}
-                                className="flex items-start gap-2 text-xs sm:text-sm text-slate-700"
-                              >
-                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 font-bold text-xs mt-0.5">
-                                  ✓
-                                </span>
-                                <span>{item}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Technology Stack Pills */}
-                        <div className="mt-6 flex flex-wrap items-center gap-1.5">
-                          <span className="text-xs font-bold text-slate-400 mr-1.5">Stack:</span>
-                          {meta.stack.map((tech) => (
-                            <span
-                              key={tech}
-                              className="rounded-lg border border-[#E8E2D8] bg-[#FAF8F5] px-2.5 py-1 text-[11px] font-semibold text-slate-700"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Service Links & Actions */}
-                      <div className="mt-8 flex flex-wrap items-center gap-4 pt-6 border-t border-[#E8E2D8]">
-                        <Link
-                          href={`/services/${service.slug}`}
-                          className="inline-flex items-center gap-2 rounded-xl bg-ink px-6 py-3 text-sm font-bold text-white transition hover:bg-[#4A101A]"
-                        >
-                          <span>Explore {service.title} Specs</span>
-                          <LuArrowRight size={14} />
-                        </Link>
-
-                        <Link
-                          href="/contact"
-                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#4A101A] transition hover:underline"
-                        >
-                          <span>Book this sprint</span>
-                          <LuArrowUpRight size={14} />
-                        </Link>
-                      </div>
+                    {/* Tech Badges */}
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {meta.stack.slice(0, 3).map((tech) => (
+                        <span key={tech} className="text-[10px] font-semibold text-neu-textSec px-2 py-0.5 rounded neu-recessed">
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                </article>
+
+                  {/* Footer Action */}
+                  <div className="mt-6 pt-4 border-t border-neu-border flex items-center justify-between">
+                    <span className="text-xs font-bold text-neu-textSec">
+                      ⏱ {meta.turnaround}
+                    </span>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-neu-purple hover:underline"
+                    >
+                      <span>Explore Sprint</span>
+                      <LuArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                </NeuCard>
               );
             })}
           </div>
         </section>
 
-        {/* ==============================================================
-            3. SELECTED WORK CASE STUDIES SPOTLIGHT
-        ============================================================== */}
-        <section className="relative overflow-hidden rounded-[2.5rem] border border-[#E8E2D8] bg-[#FAF8F5] p-6 sm:p-10 lg:p-14">
-          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+        {/* 3. SPRINT PROCESS STEPPER */}
+        <section className="space-y-8">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <NeuBadge color="purple" variant="recessed">
+              Sprint Execution
+            </NeuBadge>
+            <h2 className="text-3xl font-extrabold sm:text-4xl text-neu-text">
+              How our service sprints run from start to handoff
+            </h2>
+          </div>
+
+          <NeuSurface variant="raised" className="p-6 sm:p-12 rounded-[2rem]">
+            <ServicesProcessStepper />
+          </NeuSurface>
+        </section>
+
+        {/* 4. GENUINE CASE STUDIES SHOWCASE */}
+        <section className="space-y-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-rabbit/20 bg-rabbit/5 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-rabbit">
-                <LuFolderCheck size={14} />
-                <span>Selected Work</span>
-              </div>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl">
-                Systems shipped. Real outcomes.
+              <NeuBadge color="yellow" variant="recessed">
+                Proof of Delivery
+              </NeuBadge>
+              <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+                Featured Case Studies
               </h2>
             </div>
-
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 rounded-xl border border-[#E8E2D8] bg-white px-5 py-2.5 text-sm font-bold text-ink shadow-xs transition hover:border-slate-400 hover:bg-[#F5F1EB]"
-            >
-              <span>View All Case Studies</span>
-              <LuArrowRight size={14} />
+            <Link href="/work">
+              <NeuButton variant="default" size="sm">
+                View All Case Studies →
+              </NeuButton>
             </Link>
           </div>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-3">
-            {featuredProjects.map((project) => (
-              <SpotlightCard
-                key={project.slug}
-                enableTilt={true}
-                tiltIntensity={6}
-                className="group flex flex-col justify-between p-6 hover:-translate-y-1"
-              >
-                <div>
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-slate-100">
+          <div className="grid gap-6 md:grid-cols-3">
+            {featuredProjects.map((p) => (
+              <Link key={p.slug} href={`/work/${p.slug}`} className="block group h-full">
+                <NeuCard variant="raised" interactive className="h-full flex flex-col justify-between overflow-hidden !p-0">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-neu-surfaceSec">
                     <Image
-                      src={project.image}
-                      alt={project.imageAlt}
+                      src={p.image}
+                      alt={p.imageAlt}
                       fill
-                      sizes="(min-width: 768px) 33vw, 100vw"
-                      className="content-image object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <span className="absolute top-3 left-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-slate-800 shadow-sm backdrop-blur-sm">
-                      {project.category}
+                    <div className="absolute top-3 left-3">
+                      <NeuBadge color="purple" variant="raised">
+                        {p.category}
+                      </NeuBadge>
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex-1 flex flex-col justify-between space-y-3">
+                    <div>
+                      <h3 className="text-lg font-bold text-neu-text group-hover:text-neu-purple transition-colors">
+                        {p.title}
+                      </h3>
+                      <p className="mt-1 text-xs text-neu-textSec line-clamp-2">
+                        {p.summary}
+                      </p>
+                    </div>
+
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-neu-purple pt-2 border-t border-neu-border">
+                      <span>Read Case Study</span>
+                      <LuArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
                     </span>
                   </div>
-
-                  <h3 className="mt-5 text-xl font-bold text-ink transition-colors group-hover:text-[#4A101A]">
-                    {project.title}
-                  </h3>
-
-                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600 line-clamp-2">
-                    {project.summary}
-                  </p>
-
-                  <div className="mt-4 rounded-xl border border-emerald-600/20 bg-emerald-50/60 p-3">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-800">
-                      Primary Outcome
-                    </p>
-                    <p className="mt-0.5 text-xs font-semibold text-emerald-950">
-                      {project.results[0]}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-6 flex items-center justify-between border-t border-[#E8E2D8] pt-4">
-                  <Link
-                    href={`/work/${project.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#4A101A] hover:underline"
-                  >
-                    <span>Read case study</span>
-                    <LuArrowRight size={13} />
-                  </Link>
-
-                  {'liveUrl' in project && project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500 hover:text-ink"
-                    >
-                      <span>Live App</span>
-                      <LuArrowUpRight size={12} />
-                    </a>
-                  )}
-                </div>
-              </SpotlightCard>
+                </NeuCard>
+              </Link>
             ))}
           </div>
         </section>
 
-        {/* ==============================================================
-            4. ACCESSIBLE INTERACTIVE 4-STEP PROCESS STEPPER
-        ============================================================== */}
-        <ServicesProcessStepper />
-
-        {/* ==============================================================
-            5. CONCISE FAQS ACCORDION
-        ============================================================== */}
+        {/* 5. SERVICES FAQ ACCORDION */}
         <section className="space-y-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-slate-400">
-              Clear Answers
-            </span>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-              Frequently asked questions
+          <div className="text-center max-w-xl mx-auto space-y-3">
+            <NeuBadge color="purple" variant="recessed">
+              Sprint FAQs
+            </NeuBadge>
+            <h2 className="text-3xl font-extrabold sm:text-4xl text-neu-text">
+              Frequently Asked Questions About Our Sprints
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-slate-600">
-              Everything you need to know about working with BITnWIT, our sprint model, and code delivery.
-            </p>
           </div>
 
-          <ServicesFaqAccordion />
+          <NeuSurface variant="raised" className="p-6 sm:p-10 rounded-[2rem] max-w-4xl mx-auto">
+            <ServicesFaqAccordion />
+          </NeuSurface>
         </section>
 
-        {/* ==============================================================
-            6. PREMIUM FINAL PROJECT ENQUIRY SECTION
-        ============================================================== */}
-        <section className="relative overflow-hidden rounded-[2.5rem] 2xl:rounded-[3.5rem] border border-[#5A1822]/40 bg-gradient-to-br from-[#360A11] via-[#4A101A] to-[#1E080C] p-10 sm:p-14 lg:p-20 text-white shadow-2xl text-center">
-          {/* Ambient Warm Maroon Lighting Glows */}
-          <div
-            className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-[#D97706]/15 blur-[100px]"
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-rabbit/20 blur-[100px]"
-            aria-hidden="true"
-          />
+        {/* 6. WHATSAPP & SPRINT CONVERSION CTA */}
+        <section className="neu-raised-lg rounded-[2.5rem] p-8 sm:p-14 text-center max-w-4xl mx-auto space-y-6">
+          <NeuBadge color="green" variant="recessed" pulseDot>
+            Ready to Sprint
+          </NeuBadge>
 
-          <div className="relative z-10 max-w-3xl mx-auto">
-            {/* White Rabbit Mascot Glowing Seal */}
-            <div className="relative mx-auto flex h-24 w-24 items-center justify-center rounded-3xl border border-white/20 bg-white/10 p-3 shadow-2xl backdrop-blur-xl">
-              <Image
-                src="/icon.png"
-                alt="White Rabbit mascot seal"
-                width={72}
-                height={72}
-                className="h-16 w-16 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)]"
-              />
-              <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-4 w-4 rounded-full border-2 border-slate-900 bg-emerald-500" />
-              </span>
-            </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-neu-text tracking-tight">
+            Need a custom technical roadmap?
+          </h2>
 
-            {/* Availability Pill */}
-            <div className="mt-6 flex justify-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-amber-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-amber-200">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                Now Booking Next Sprint Cycle
-              </span>
-            </div>
+          <p className="text-sm sm:text-base text-neu-textSec max-w-2xl mx-auto leading-relaxed">
+            Send us your scope or connect directly on WhatsApp with our technical heads. We will review your requirements and provide an estimated budget and milestone breakdown.
+          </p>
 
-            {/* Editorial Headline */}
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl !text-white leading-tight">
-              Ready to engineer your next <span className="text-amber-300">digital breakthrough</span>?
-            </h2>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <a
+              href="https://wa.me/918949728810?text=Hi%20BITnWIT!%20I%20would%20like%20to%20discuss%20a%20service%20sprint."
+              target="_blank"
+              rel="noreferrer"
+            >
+              <NeuButton variant="purple" size="lg" icon={<AiOutlineWhatsApp size={18} />}>
+                Chat on WhatsApp
+              </NeuButton>
+            </a>
 
-            <p className="mt-4 text-base sm:text-lg 2xl:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              Tell White Rabbit about your idea or send us a direct message. We’ll review your goals and deliver a
-              tangible sprint roadmap within 24 hours.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <TalkToRabbitButton className="btn-shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-white px-8 py-4 text-sm font-bold text-ink shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#FAF8F5] active:scale-95">
-                <LuSparkles size={16} className="text-[#4A101A]" />
-                <span>Talk to White Rabbit</span>
-                <LuArrowRight className="text-[#4A101A] transition-transform duration-300 group-hover:translate-x-1" />
-              </TalkToRabbitButton>
-
-              <a
-                href="https://wa.me/918949728810?text=Hi%20BITnWIT!%20I%20would%20like%20to%20discuss%20a%20project%20sprint."
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/15 px-8 py-4 text-sm font-bold text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-500/25 active:scale-95"
-              >
-                <AiOutlineWhatsApp size={17} className="text-emerald-400" />
-                <span>WhatsApp Studio Lead</span>
-              </a>
-
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-4 text-sm font-bold text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-white/10 active:scale-95"
-              >
-                <span>Send Detailed RFP →</span>
-              </Link>
-            </div>
-
-            {/* Guarantees & Trust Signals */}
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-white/10 pt-8 text-xs font-semibold text-slate-300">
-              <span className="inline-flex items-center gap-2">
-                <LuShieldCheck className="text-emerald-400" size={15} />
-                Direct Senior Engineering Access
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <LuZap className="text-amber-400" size={15} />
-                Guaranteed Response &lt; 24h
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <LuCode className="text-purple-300" size={15} />
-                Full IP &amp; Repository Handover
-              </span>
-            </div>
+            <Link href="/contact">
+              <NeuButton variant="default" size="lg">
+                Submit Online Brief →
+              </NeuButton>
+            </Link>
           </div>
         </section>
+
       </div>
     </main>
   );

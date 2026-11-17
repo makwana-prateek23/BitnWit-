@@ -57,10 +57,10 @@ export default function ServicesFaqAccordion() {
         return (
           <div
             key={faq.id}
-            className={`overflow-hidden rounded-2xl border transition-all duration-200 ${
+            className={`overflow-hidden rounded-2xl transition-all duration-200 ${
               isOpen
-                ? 'border-[#4A101A]/30 bg-white shadow-md shadow-[#4A101A]/5'
-                : 'border-[#E8E2D8] bg-[#FAF8F5] hover:border-slate-300 hover:bg-white'
+                ? 'neu-pressed border border-neu-purple/40'
+                : 'neu-raised hover:neu-raised-lg'
             }`}
           >
             <button
@@ -69,22 +69,22 @@ export default function ServicesFaqAccordion() {
               aria-expanded={isOpen}
               aria-controls={`faq-panel-${faq.id}`}
               onClick={() => toggleFaq(faq.id)}
-              className="flex w-full items-center justify-between gap-4 p-5 sm:p-6 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A101A] focus-visible:ring-inset"
+              className="flex w-full items-center justify-between gap-4 p-5 sm:p-6 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neu-purple"
             >
               <span className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold text-slate-400">
+                <span className="font-mono text-xs font-bold text-neu-purple">
                   0{index + 1}
                 </span>
-                <span className="text-base sm:text-lg font-bold text-ink">
+                <span className="text-base sm:text-lg font-bold text-neu-text">
                   {faq.question}
                 </span>
               </span>
 
               <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-transform duration-300 ${
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 ${
                   isOpen
-                    ? 'rotate-180 border-[#4A101A] bg-[#4A101A] text-white'
-                    : 'border-[#E8E2D8] bg-white text-slate-500'
+                    ? 'rotate-180 bg-neu-purple text-white shadow-sm'
+                    : 'neu-recessed text-neu-textSec'
                 }`}
               >
                 <LuChevronDown size={16} />
@@ -100,8 +100,8 @@ export default function ServicesFaqAccordion() {
               }`}
             >
               <div className="overflow-hidden">
-                <div className="border-t border-[#E8E2D8] px-5 sm:px-6 pb-6 pt-4">
-                  <p className="text-sm sm:text-base leading-relaxed text-slate-600">
+                <div className="border-t border-neu-border/60 px-5 sm:px-6 pb-6 pt-4">
+                  <p className="text-sm sm:text-base leading-relaxed text-neu-textSec">
                     {faq.answer}
                   </p>
                 </div>

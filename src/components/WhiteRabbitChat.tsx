@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import {
@@ -151,6 +152,7 @@ Would you like to send your project brief directly to WhatsApp or have a quick 1
 }
 
 export default function WhiteRabbitChat() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [input, setInput] = useState('');
@@ -231,6 +233,10 @@ export default function WhiteRabbitChat() {
       }
     ]);
   };
+
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   return (
     <>

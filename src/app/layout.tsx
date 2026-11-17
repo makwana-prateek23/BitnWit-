@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WhiteRabbitChat from '../components/WhiteRabbitChat';
 import RunningRabbitLoader from '../components/RunningRabbitLoader';
+import { ThemeProvider } from '../components/ThemeProvider';
+import InteractiveCursorSpotlight from '../components/ui/InteractiveCursorSpotlight';
 import './globals.css';
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['500', '600', '700', '800'], variable: '--font-heading' });
@@ -70,17 +72,20 @@ const businessJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
-      <body>
+    <html lang="en" className={`${jakarta.variable} ${inter.variable}`} suppressHydrationWarning>
+      <body className="bg-neu-bg text-neu-text antialiased transition-colors duration-300">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd).replace(/</g, '\\u003c') }}
         />
-        <RunningRabbitLoader />
-        <Header />
-        {children}
-        <Footer />
-        <WhiteRabbitChat />
+        <ThemeProvider>
+          <InteractiveCursorSpotlight />
+          <RunningRabbitLoader />
+          <Header />
+          {children}
+          <Footer />
+          <WhiteRabbitChat />
+        </ThemeProvider>
       </body>
     </html>
   );

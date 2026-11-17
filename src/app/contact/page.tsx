@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
+import { AiFillGithub, AiFillInstagram, AiFillLinkedin, AiOutlinePhone, AiOutlineWhatsApp } from 'react-icons/ai';
 import WhatsAppContactForm from '../../components/WhatsAppContactForm';
 import TalkToRabbitButton from '../../components/TalkToRabbitButton';
-import GlassHero from '../../components/ui/GlassHero';
-import SpotlightCard from '../../components/ui/SpotlightCard';
-import AnimatedButton from '../../components/ui/AnimatedButton';
-import ShimmerBadge from '../../components/ui/ShimmerBadge';
+import NeuSurface from '../../components/ui/NeuSurface';
+import NeuCard from '../../components/ui/NeuCard';
+import NeuBadge from '../../components/ui/NeuBadge';
+import NeuButton from '../../components/ui/NeuButton';
 import { contactTeam as team } from '../../data/content';
+import { LuSparkles, LuClock, LuGlobe, LuShieldCheck } from 'react-icons/lu';
 
 export const metadata: Metadata = {
-  title: 'Contact BITnWIT',
+  title: 'Contact BITnWIT | Start a Project',
   description:
     'Start a web, app, AI, design, or digital growth project with BITnWIT. Available across India and internationally.',
   alternates: { canonical: '/contact' }
@@ -24,123 +25,133 @@ const socials = [
 
 export default function ContactPage() {
   return (
-    <main className="site-page min-h-screen px-4 py-10 text-ink sm:px-8 lg:px-12 2xl:px-16">
-      <div className="mx-auto w-full max-w-[1720px] space-y-16 2xl:space-y-20">
-        {/* Vengeance UI Glassmorphic Hero */}
-        <GlassHero
-          badge={
-            <ShimmerBadge pulseDot pulseColor="bg-rabbit" className="glass-chip text-xs font-bold uppercase tracking-[0.25em]">
+    <main className="min-h-screen px-4 py-8 sm:px-8 lg:px-12 2xl:px-16 lg:py-12 transition-colors duration-300">
+      <div className="mx-auto w-full max-w-[1720px] space-y-16 lg:space-y-24">
+
+        {/* HERO SECTION */}
+        <section className="neu-raised rounded-[2.5rem] 2xl:rounded-[3.5rem] p-8 sm:p-12 lg:p-16 2xl:p-20 grid lg:grid-cols-[1.15fr_.85fr] gap-10 items-center overflow-hidden">
+          <div className="space-y-6">
+            <NeuBadge color="purple" variant="recessed" pulseDot>
               Contact BITnWIT
-            </ShimmerBadge>
-          }
-          title={
-            <>
-              Let’s start with a <span className="text-gradient">conversation.</span>
-            </>
-          }
-          description="Based in India and available Pan-India and internationally. Call a team lead directly or send a project brief through WhatsApp."
-          actions={
-            <div className="flex flex-wrap items-center gap-4">
+            </NeuBadge>
+
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-neu-text leading-[1.08]">
+              Let’s start with an honest <span className="text-gradient">conversation.</span>
+            </h1>
+
+            <p className="max-w-xl text-base sm:text-lg text-neu-textSec leading-relaxed">
+              Based in India and operating Pan-India and internationally. Call our technical founders directly or submit your project brief below to receive an architectural estimate.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <a href="https://wa.me/918949728810" target="_blank" rel="noreferrer">
-                <AnimatedButton variant="glow" className="!px-7 !py-3.5 text-sm font-bold">
+                <NeuButton variant="purple" size="lg" icon={<AiOutlineWhatsApp size={18} />}>
                   Chat on WhatsApp
-                </AnimatedButton>
+                </NeuButton>
               </a>
+
               <TalkToRabbitButton className="inline-flex">
-                <AnimatedButton variant="secondary" className="glass-chip !px-7 !py-3.5 text-sm font-bold">
-                  Talk to White Rabbit
-                </AnimatedButton>
+                <NeuButton variant="default" size="lg" icon={<LuSparkles size={16} />}>
+                  Talk to Bitty AI
+                </NeuButton>
               </TalkToRabbitButton>
             </div>
-          }
-          visual={
-            <SpotlightCard
-              enableTilt={true}
-              tiltIntensity={6}
-              className="glass-card rounded-3xl p-6 text-center shadow-xl"
-            >
-              <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-2xl">
+          </div>
+
+          {/* Bitty Mascot Assistant Card */}
+          <div className="relative">
+            <NeuSurface variant="raised-lg" className="p-8 rounded-[2rem] text-center space-y-3">
+              <div className="relative mx-auto h-40 w-40 overflow-hidden rounded-2xl">
                 <Image
                   src="/mascot-contact.jpg"
                   alt="Bitty AI Assistant ready to help"
-                  width={320}
-                  height={320}
+                  width={280}
+                  height={280}
                   className="h-full w-full object-contain"
                 />
               </div>
-              <p className="mt-3 text-xs font-bold uppercase tracking-wider text-rabbit">
-                Instant AI Assistant
-              </p>
-              <p className="mt-1 text-base font-bold text-ink">Prefer a quick chat?</p>
-              <p className="mt-1 text-xs text-slate-500">
+
+              <NeuBadge color="yellow" variant="recessed">
+                Instant AI Guidance
+              </NeuBadge>
+              <h2 className="text-lg font-bold text-neu-text">Prefer a quick inquiry?</h2>
+              <p className="text-xs text-neu-textSec">
                 Bitty can answer questions about budgets, timelines, and sprint scopes right now.
               </p>
-              <TalkToRabbitButton className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-purple-100 px-5 py-2.5 text-xs font-bold text-rabbit hover:bg-purple-200 transition">
-                <span>Open Bitty Chat</span> →
-              </TalkToRabbitButton>
-            </SpotlightCard>
-          }
-        />
-
-        {/* Team Leadership Direct Access Cards */}
-        <section className="grid gap-6 md:grid-cols-2 2xl:gap-8">
-          {team.map((person) => (
-            <SpotlightCard
-              key={person.name}
-              enableTilt={true}
-              tiltIntensity={5}
-              className="glass-card rounded-2xl 2xl:rounded-3xl p-7 2xl:p-9 hover:-translate-y-1"
-            >
-              <div className="flex items-center gap-4">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-rabbit font-bold text-white shadow-md shadow-rabbit/20">
-                  {person.initials}
-                </span>
-                <div>
-                  <h2 className="font-bold text-xl">{person.name}</h2>
-                  <p className="text-sm font-semibold text-rabbit">{person.role}</p>
-                </div>
+              <div className="pt-2">
+                <TalkToRabbitButton className="inline-flex">
+                  <NeuButton variant="default" size="sm">
+                    Open Bitty Chat →
+                  </NeuButton>
+                </TalkToRabbitButton>
               </div>
-              <p className="mt-5 text-sm 2xl:text-base text-slate-600">
-                {person.specialties.join(' · ')}
-              </p>
-              <a
-                href={`tel:${person.phone.replace(/\s/g, '')}`}
-                className="mt-4 inline-flex text-lg font-bold text-ink hover:text-rabbit transition-colors"
-              >
-                {person.phone}
-              </a>
-            </SpotlightCard>
-          ))}
+            </NeuSurface>
+          </div>
         </section>
 
-        {/* Contact Layout: Sidebar & Form */}
-        <div className="grid gap-8 lg:grid-cols-[.72fr_1.28fr] 2xl:gap-12">
-          <aside className="space-y-6">
-            <div className="glass-dark rounded-2xl 2xl:rounded-3xl p-8 2xl:p-10 text-white">
-              <p className="text-xs font-bold uppercase tracking-[.2em] text-rabbit font-mono">
-                Office & availability
-              </p>
-              <h2 className="mt-4 text-2xl 2xl:text-3xl font-bold text-white">
-                India · Remote-first
-              </h2>
-              <p className="mt-3 text-sm 2xl:text-base leading-7 text-slate-400">
-                Serving clients across India and international markets through planned remote collaboration.
-              </p>
-              <p className="mt-6 text-sm font-semibold text-white">Monday–Saturday</p>
-              <p className="mt-1 text-sm text-slate-400">IST hours · Global overlap by appointment</p>
-              <a
-                href="https://wa.me/918949728810"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 inline-flex rounded-xl bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-[#1EBE5D]"
-              >
-                Chat on WhatsApp
-              </a>
-            </div>
+        {/* DIRECT LEADERSHIP CARDS */}
+        <section className="space-y-6">
+          <div className="max-w-xl space-y-2">
+            <NeuBadge color="maroon" variant="recessed">
+              Direct Contact
+            </NeuBadge>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-neu-text tracking-tight">
+              Connect Directly With Technical Leadership
+            </h2>
+          </div>
 
-            <SpotlightCard className="glass-card rounded-2xl 2xl:rounded-3xl p-8">
-              <h2 className="font-bold text-lg">Connect socially</h2>
-              <div className="mt-4 flex gap-3">
+          <div className="grid gap-6 md:grid-cols-2">
+            {team.map((person) => (
+              <NeuCard key={person.name} variant="raised" className="flex items-center gap-5">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl neu-recessed font-extrabold text-lg text-neu-purple">
+                  {person.initials}
+                </span>
+
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-bold text-lg text-neu-text">{person.name}</h3>
+                    <span className="text-xs font-semibold text-neu-purple px-2 py-0.5 rounded neu-recessed">
+                      {person.role}
+                    </span>
+                  </div>
+                  <p className="text-xs text-neu-textSec">
+                    {person.specialties.join(' · ')}
+                  </p>
+                  <a
+                    href={`tel:${person.phone.replace(/\s/g, '')}`}
+                    className="inline-flex items-center gap-1.5 text-sm font-bold text-neu-text hover:text-neu-purple transition-colors pt-1"
+                  >
+                    <AiOutlinePhone size={14} className="text-neu-purple" />
+                    <span>{person.phone}</span>
+                  </a>
+                </div>
+              </NeuCard>
+            ))}
+          </div>
+        </section>
+
+        {/* MAIN CONTACT FORM & ASIDE LAYOUT */}
+        <div className="grid gap-8 lg:grid-cols-[.7fr_1.3fr]">
+          <aside className="space-y-6">
+            <NeuCard variant="raised" className="space-y-4">
+              <NeuBadge color="purple" variant="recessed">
+                Operating Hours
+              </NeuBadge>
+              <h3 className="text-xl font-bold text-neu-text">
+                India · Remote-First Studio
+              </h3>
+              <p className="text-xs sm:text-sm text-neu-textSec leading-relaxed">
+                Serving clients across India and international time zones through structured remote collaboration.
+              </p>
+              <div className="p-4 rounded-xl neu-recessed text-xs space-y-1 font-semibold text-neu-text">
+                <p>🗓 Monday – Saturday</p>
+                <p className="text-neu-textSec">9:00 AM – 7:00 PM IST (Global overlap by appointment)</p>
+              </div>
+            </NeuCard>
+
+            <NeuCard variant="raised" className="space-y-4">
+              <h3 className="font-bold text-base text-neu-text">Connect Socially</h3>
+              <div className="flex gap-3">
                 {socials.map(({ name, href, icon: Icon }) => (
                   <a
                     key={name}
@@ -148,29 +159,31 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={name}
-                    className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/60 bg-white/80 text-xl text-slate-600 shadow-sm backdrop-blur-md transition hover:border-rabbit hover:text-rabbit hover:scale-105"
+                    className="flex h-11 w-11 items-center justify-center rounded-xl neu-raised text-lg text-neu-textSec hover:text-neu-purple transition-all duration-200 hover:-translate-y-1"
                   >
                     <Icon />
                   </a>
                 ))}
               </div>
-            </SpotlightCard>
+            </NeuCard>
           </aside>
 
-          {/* Form wrapped in glass-card */}
-          <section className="glass-card rounded-[2rem] 2xl:rounded-[2.5rem] p-6 sm:p-10 2xl:p-14 shadow-xl">
-            <div className="flex items-center justify-between border-b border-slate-200/60 pb-6">
+          {/* Contact Form in Raised Neumorphic Card */}
+          <NeuCard variant="raised" className="space-y-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-neu-border pb-5">
               <div>
-                <p className="font-bold text-xl">Send a project brief</p>
-                <p className="mt-1 text-sm text-slate-500">Your details open securely in WhatsApp</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-neu-text">Submit Project Brief</h2>
+                <p className="text-xs text-neu-textSec mt-1">Guaranteed response and scope estimation within 24 hours</p>
               </div>
-              <span className="rounded-full bg-emerald-50 px-3.5 py-1 text-xs font-semibold text-emerald-700 border border-emerald-200">
-                ● Free Consultation
-              </span>
+              <NeuBadge color="green" variant="recessed" pulseDot>
+                Free Discovery Call Included
+              </NeuBadge>
             </div>
+
             <WhatsAppContactForm />
-          </section>
+          </NeuCard>
         </div>
+
       </div>
     </main>
   );

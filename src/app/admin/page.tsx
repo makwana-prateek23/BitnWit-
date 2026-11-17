@@ -17,6 +17,10 @@ import {
   FiActivity,
 } from 'react-icons/fi';
 import AdminLoadingScreen from '@/components/admin/AdminLoadingScreen';
+import NeuSurface from '@/components/ui/NeuSurface';
+import NeuTiltCard from '@/components/ui/NeuTiltCard';
+import NeuButton from '@/components/ui/NeuButton';
+import NeuBadge from '@/components/ui/NeuBadge';
 
 interface OverviewData {
   stats: {
@@ -54,14 +58,14 @@ interface OverviewData {
   }>;
 }
 
-const statusColors: Record<string, { bg: string; text: string; border: string }> = {
-  NEW: { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200' },
-  CONTACTED: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200' },
-  QUALIFIED: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-200' },
-  PROPOSAL_SENT: { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-200' },
-  NEGOTIATION: { bg: 'bg-indigo-50', text: 'text-indigo-700', border: 'border-indigo-200' },
-  CONVERTED: { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200' },
-  LOST: { bg: 'bg-slate-50', text: 'text-slate-600', border: 'border-slate-200' },
+const statusBadgeColor: Record<string, 'yellow' | 'purple' | 'green' | 'maroon' | 'default'> = {
+  NEW: 'yellow',
+  CONTACTED: 'purple',
+  QUALIFIED: 'purple',
+  PROPOSAL_SENT: 'yellow',
+  NEGOTIATION: 'purple',
+  CONVERTED: 'green',
+  LOST: 'default',
 };
 
 export default function AdminOverviewPage() {
@@ -98,6 +102,51 @@ export default function AdminOverviewPage() {
     totalServices: 0,
   };
 
+  const statItems = [
+    {
+      label: 'Total Leads',
+      value: stats.totalLeads,
+      icon: FiUsers,
+      sub: 'Direct client inquiries',
+      color: 'text-neu-purple',
+    },
+    {
+      label: 'New Inquiries',
+      value: stats.newLeads,
+      icon: FiInbox,
+      sub: 'Pending initial outreach',
+      color: 'text-neu-yellow',
+    },
+    {
+      label: 'Active Projects',
+      value: stats.activeProjects,
+      icon: FiActivity,
+      sub: 'In development sprint',
+      color: 'text-emerald-500',
+    },
+    {
+      label: 'Delivered',
+      value: stats.completedProjects,
+      icon: FiCheckCircle,
+      sub: 'Completed milestones',
+      color: 'text-blue-500',
+    },
+    {
+      label: 'Articles',
+      value: stats.publishedBlogs,
+      icon: FiFileText,
+      sub: 'Published insights',
+      color: 'text-violet-500',
+    },
+    {
+      label: 'Services',
+      value: stats.totalServices,
+      icon: FiLayers,
+      sub: 'Active disciplines',
+      color: 'text-amber-500',
+    },
+  ];
+
   const maxMonthCount = Math.max(
     1,
     ...(data?.monthlyLeads.map((m) => m.count) || [1])
@@ -105,213 +154,156 @@ export default function AdminOverviewPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
-      {/* 1. Top Section / Welcome Banner */}
-      <div className="bg-gradient-to-r from-[#271044] via-[#431872] to-[#7025B9] rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#FF790E]/20 via-transparent to-transparent pointer-events-none" />
+      {/* 1. Top Section / Welcome Banner in Raised Neumorphic Container */}
+      <NeuSurface
+        variant="raised-lg"
+        className="p-6 sm:p-8 rounded-3xl relative overflow-hidden bg-gradient-to-r from-neu-surface via-neu-surface to-neu-surfaceSec border border-neu-border"
+      >
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-neu-purple/15 via-transparent to-transparent pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#FFB51B] bg-white/10 px-3 py-1 rounded-full inline-block mb-3">
+          <div className="space-y-2">
+            <NeuBadge color="yellow" variant="recessed">
               Operations Center
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-display">
-              Welcome to BITnWit Command
+            </NeuBadge>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-neu-text tracking-tight">
+              Welcome to BITnWIT Command
             </h2>
-            <p className="mt-1 text-sm text-purple-200 max-w-xl">
+            <p className="text-sm text-neu-textSec max-w-xl leading-relaxed">
               Monitor incoming client inquiries, update project portfolios, and keep services aligned with business growth.
             </p>
           </div>
 
           {/* Quick Action Buttons */}
-          <div className="flex flex-wrap items-center gap-2.5">
-            <Link
-              href="/admin/leads?action=new"
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-[#FF790E] hover:bg-[#e66c0b] shadow-md shadow-orange-500/20 transition-all"
-            >
-              <FiPlus className="w-4 h-4" />
-              <span>Add Lead</span>
+          <div className="flex flex-wrap items-center gap-3">
+            <Link href="/admin/leads?action=new">
+              <NeuButton variant="purple" size="sm" icon={<FiPlus size={16} />}>
+                Add Lead
+              </NeuButton>
             </Link>
-            <Link
-              href="/admin/projects?action=new"
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
-            >
-              <FiPlus className="w-4 h-4" />
-              <span>Add Project</span>
+            <Link href="/admin/projects?action=new">
+              <NeuButton variant="default" size="sm" icon={<FiPlus size={16} />}>
+                Add Project
+              </NeuButton>
             </Link>
-            <Link
-              href="/admin/blogs?action=new"
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
-            >
-              <FiPlus className="w-4 h-4" />
-              <span>New Blog</span>
+            <Link href="/admin/blogs?action=new">
+              <NeuButton variant="default" size="sm" icon={<FiPlus size={16} />}>
+                New Blog
+              </NeuButton>
             </Link>
           </div>
         </div>
-      </div>
+      </NeuSurface>
 
-      {/* 2. Core Statistics Grid */}
+      {/* 2. Core Statistics Grid with 3D Cursor Tilt Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-5">
-        {/* Total Leads */}
-        <div className="bg-white p-5 rounded-2xl border border-purple-100/70 shadow-sm hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-[#77717F]">Total Leads</span>
-            <div className="p-2 rounded-xl bg-purple-50 text-[#7025B9]">
-              <FiUsers className="w-4 h-4" />
+        {statItems.map((item) => (
+          <NeuTiltCard
+            key={item.label}
+            maxTilt={6}
+            scale={1.03}
+            elevation="raised"
+            className="p-5 flex flex-col justify-between cursor-default group"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-xs font-semibold text-neu-textSec">{item.label}</span>
+              <div className={`p-2 rounded-xl neu-recessed ${item.color} group-hover:scale-110 transition-transform duration-200`}>
+                <item.icon className="w-4 h-4" />
+              </div>
             </div>
-          </div>
-          <div className="text-2xl sm:text-3xl font-bold text-[#271044] font-display">
-            {stats.totalLeads}
-          </div>
-          <div className="mt-1 text-[11px] text-[#77717F]">Direct client records</div>
-        </div>
-
-        {/* New Inquiries */}
-        <div className="bg-white p-5 rounded-2xl border border-purple-100/70 shadow-sm hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-[#77717F]">New Inquiries</span>
-            <div className="p-2 rounded-xl bg-orange-50 text-[#FF790E]">
-              <FiInbox className="w-4 h-4" />
+            <div className={`text-2xl sm:text-3xl font-extrabold text-neu-text tracking-tight group-hover:${item.color} transition-colors`}>
+              {item.value}
             </div>
-          </div>
-          <div className="text-2xl sm:text-3xl font-bold text-[#FF790E] font-display">
-            {stats.newLeads}
-          </div>
-          <div className="mt-1 text-[11px] text-[#77717F]">Pending response</div>
-        </div>
-
-        {/* Active Projects */}
-        <div className="bg-white p-5 rounded-2xl border border-purple-100/70 shadow-sm hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-[#77717F]">Active Projects</span>
-            <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600">
-              <FiActivity className="w-4 h-4" />
-            </div>
-          </div>
-          <div className="text-2xl sm:text-3xl font-bold text-[#271044] font-display">
-            {stats.activeProjects}
-          </div>
-          <div className="mt-1 text-[11px] text-[#77717F]">Under development</div>
-        </div>
-
-        {/* Completed Projects */}
-        <div className="bg-white p-5 rounded-2xl border border-purple-100/70 shadow-sm hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-[#77717F]">Delivered</span>
-            <div className="p-2 rounded-xl bg-blue-50 text-blue-600">
-              <FiCheckCircle className="w-4 h-4" />
-            </div>
-          </div>
-          <div className="text-2xl sm:text-3xl font-bold text-[#271044] font-display">
-            {stats.completedProjects}
-          </div>
-          <div className="mt-1 text-[11px] text-[#77717F]">Published portfolio</div>
-        </div>
-
-        {/* Published Blogs */}
-        <div className="bg-white p-5 rounded-2xl border border-purple-100/70 shadow-sm hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-[#77717F]">Articles</span>
-            <div className="p-2 rounded-xl bg-violet-50 text-violet-600">
-              <FiFileText className="w-4 h-4" />
-            </div>
-          </div>
-          <div className="text-2xl sm:text-3xl font-bold text-[#271044] font-display">
-            {stats.publishedBlogs}
-          </div>
-          <div className="mt-1 text-[11px] text-[#77717F]">Published posts</div>
-        </div>
-
-        {/* Total Services */}
-        <div className="bg-white p-5 rounded-2xl border border-purple-100/70 shadow-sm hover:shadow-md transition-shadow">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-[#77717F]">Services</span>
-            <div className="p-2 rounded-xl bg-amber-50 text-[#FFB51B]">
-              <FiLayers className="w-4 h-4" />
-            </div>
-          </div>
-          <div className="text-2xl sm:text-3xl font-bold text-[#271044] font-display">
-            {stats.totalServices}
-          </div>
-          <div className="mt-1 text-[11px] text-[#77717F]">Active offerings</div>
-        </div>
+            <div className="mt-1 text-[11px] text-neu-textSec/80">{item.sub}</div>
+          </NeuTiltCard>
+        ))}
       </div>
 
       {/* 3. Visual Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Monthly Leads Bar Chart (Accessible SVG) */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-3xl border border-purple-100/70 shadow-sm">
+        {/* Monthly Leads Bar Chart in Raised Surface */}
+        <NeuTiltCard
+          maxTilt={3}
+          scale={1.01}
+          elevation="raised"
+          className="lg:col-span-2 p-6 sm:p-8 flex flex-col justify-between"
+        >
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-base font-bold text-[#271044] font-display">
+              <h3 className="text-base sm:text-lg font-bold text-neu-text">
                 Inquiry Inflow (Past 6 Months)
               </h3>
-              <p className="text-xs text-[#77717F]">
+              <p className="text-xs text-neu-textSec mt-1">
                 Verified inbound leads received through website and CRM
               </p>
             </div>
-            <div className="p-2 rounded-xl bg-purple-50 text-[#7025B9]">
+            <div className="p-2.5 rounded-xl neu-recessed text-neu-purple">
               <FiTrendingUp className="w-4 h-4" />
             </div>
           </div>
 
-          <div className="h-56 flex items-end justify-between gap-4 pt-4 border-b border-slate-100 px-2">
+          <div className="h-56 flex items-end justify-between gap-4 pt-4 border-b border-neu-border px-2">
             {data?.monthlyLeads.map((item, idx) => {
               const heightPercent = Math.max(12, Math.round((item.count / maxMonthCount) * 100));
               return (
-                <div key={idx} className="flex-1 flex flex-col items-center gap-2 group h-full justify-end">
-                  <span className="text-xs font-bold text-[#7025B9] opacity-0 group-hover:opacity-100 transition-opacity">
+                <div key={idx} className="flex-1 flex flex-col items-center gap-2 group h-full justify-end cursor-pointer">
+                  <span className="text-xs font-bold text-neu-purple opacity-0 group-hover:opacity-100 transition-opacity">
                     {item.count}
                   </span>
                   <div
                     style={{ height: `${heightPercent}%` }}
-                    className="w-full max-w-[48px] rounded-t-xl bg-gradient-to-t from-[#7025B9] to-[#FF790E] transition-all group-hover:brightness-110 shadow-sm"
+                    className="w-full max-w-[48px] rounded-t-xl bg-gradient-to-t from-neu-purple to-purple-400 group-hover:from-neu-purple group-hover:to-neu-yellow transition-all duration-300 shadow-md"
                   />
-                  <span className="text-[11px] font-semibold text-slate-500 mt-2 truncate w-full text-center">
+                  <span className="text-[11px] font-semibold text-neu-textSec mt-2 truncate w-full text-center">
                     {item.month}
                   </span>
                 </div>
               );
             })}
           </div>
-        </div>
+        </NeuTiltCard>
 
         {/* Lead Status Distribution Pipeline */}
-        <div className="bg-white p-6 rounded-3xl border border-purple-100/70 shadow-sm flex flex-col justify-between">
+        <NeuTiltCard
+          maxTilt={4}
+          scale={1.015}
+          elevation="raised"
+          className="p-6 sm:p-8 flex flex-col justify-between"
+        >
           <div>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-base font-bold text-[#271044] font-display">
+            <div className="flex items-center justify-between mb-5">
+              <h3 className="text-base sm:text-lg font-bold text-neu-text">
                 Pipeline Stages
               </h3>
-              <span className="text-xs font-mono text-[#77717F]">
+              <span className="text-xs font-mono font-bold text-neu-purple px-2 py-0.5 rounded neu-recessed">
                 {stats.totalLeads} Total
               </span>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-3.5">
               {Object.entries(data?.statusDistribution || {}).map(([status, count]) => {
                 const total = stats.totalLeads || 1;
                 const percent = Math.round((count / total) * 100);
-                const style = statusColors[status] || statusColors.NEW;
 
                 return (
-                  <div key={status} className="space-y-1">
+                  <div key={status} className="space-y-1.5 group">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-semibold text-slate-700 capitalize">
+                      <span className="font-semibold text-neu-text capitalize">
                         {status.replace('_', ' ').toLowerCase()}
                       </span>
-                      <span className="font-mono text-slate-500">
+                      <span className="font-mono text-neu-textSec">
                         {count} ({percent}%)
                       </span>
                     </div>
-                    <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                    <div className="w-full h-2.5 rounded-full neu-recessed overflow-hidden p-0.5">
                       <div
                         style={{ width: `${percent}%` }}
-                        className={`h-full rounded-full ${
+                        className={`h-full rounded-full transition-all duration-500 ${
                           status === 'CONVERTED'
                             ? 'bg-emerald-500'
                             : status === 'NEW'
-                            ? 'bg-[#FF790E]'
-                            : 'bg-[#7025B9]'
+                            ? 'bg-neu-yellow'
+                            : 'bg-neu-purple'
                         }`}
                       />
                     </div>
@@ -323,30 +315,33 @@ export default function AdminOverviewPage() {
 
           <Link
             href="/admin/leads"
-            className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-[#7025B9] hover:text-[#271044] transition-colors"
+            className="mt-6 pt-4 border-t border-neu-border flex items-center justify-between text-xs font-bold text-neu-purple hover:underline"
           >
             <span>Open Leads CRM</span>
-            <FiArrowRight className="w-3.5 h-3.5" />
+            <FiArrowRight className="w-4 h-4" />
           </Link>
-        </div>
+        </NeuTiltCard>
       </div>
 
       {/* 4. Recent Inquiries & Projects Split */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Latest Leads Table */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-3xl border border-purple-100/70 shadow-sm">
-          <div className="flex items-center justify-between mb-4">
+        {/* Latest Leads Table in Raised Container */}
+        <NeuSurface
+          variant="raised"
+          className="lg:col-span-2 p-6 sm:p-8 rounded-3xl space-y-4"
+        >
+          <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-base font-bold text-[#271044] font-display">
+              <h3 className="text-base sm:text-lg font-bold text-neu-text">
                 Latest Client Inquiries
               </h3>
-              <p className="text-xs text-[#77717F]">
+              <p className="text-xs text-neu-textSec mt-0.5">
                 Newest form submissions awaiting communication
               </p>
             </div>
             <Link
               href="/admin/leads"
-              className="text-xs font-semibold text-[#7025B9] hover:text-[#271044] flex items-center gap-1"
+              className="text-xs font-bold text-neu-purple hover:underline inline-flex items-center gap-1"
             >
               <span>View All</span>
               <FiArrowRight className="w-3.5 h-3.5" />
@@ -357,7 +352,7 @@ export default function AdminOverviewPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="border-b border-slate-100 text-slate-400 font-semibold uppercase tracking-wider">
+                  <tr className="border-b border-neu-border text-neu-textSec font-semibold uppercase tracking-wider">
                     <th className="py-2.5 px-3">Client</th>
                     <th className="py-2.5 px-3">Service</th>
                     <th className="py-2.5 px-3">Date</th>
@@ -365,37 +360,35 @@ export default function AdminOverviewPage() {
                     <th className="py-2.5 px-3 text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-neu-border/50">
                   {data.recentLeads.map((lead) => {
-                    const badge = statusColors[lead.status] || statusColors.NEW;
+                    const badgeColor = statusBadgeColor[lead.status] || 'yellow';
                     const dateFormatted = new Date(lead.dateReceived).toLocaleDateString(
                       'en-IN',
                       { day: 'numeric', month: 'short' }
                     );
 
                     return (
-                      <tr key={lead.id} className="hover:bg-slate-50/80 transition-colors">
+                      <tr key={lead.id} className="hover:bg-neu-surfaceSec/60 transition-colors">
                         <td className="py-3 px-3">
-                          <div className="font-semibold text-slate-900">{lead.fullName}</div>
-                          <div className="text-[11px] text-slate-500">{lead.email}</div>
+                          <div className="font-bold text-neu-text">{lead.fullName}</div>
+                          <div className="text-[11px] text-neu-textSec">{lead.email}</div>
                         </td>
-                        <td className="py-3 px-3 font-medium text-slate-700">
+                        <td className="py-3 px-3 font-medium text-neu-text">
                           {lead.interestedService}
                         </td>
-                        <td className="py-3 px-3 text-slate-500 whitespace-nowrap">
+                        <td className="py-3 px-3 text-neu-textSec whitespace-nowrap">
                           {dateFormatted}
                         </td>
                         <td className="py-3 px-3">
-                          <span
-                            className={`inline-flex px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${badge.bg} ${badge.text} ${badge.border}`}
-                          >
+                          <NeuBadge color={badgeColor} variant="raised" size="sm">
                             {lead.status.replace('_', ' ')}
-                          </span>
+                          </NeuBadge>
                         </td>
                         <td className="py-3 px-3 text-right">
                           <Link
                             href={`/admin/leads?id=${lead.id}`}
-                            className="font-semibold text-[#7025B9] hover:underline"
+                            className="font-bold text-neu-purple hover:underline"
                           >
                             Manage
                           </Link>
@@ -407,20 +400,25 @@ export default function AdminOverviewPage() {
               </table>
             </div>
           ) : (
-            <div className="py-10 text-center text-xs text-slate-500">
+            <div className="py-10 text-center text-xs text-neu-textSec">
               No recent inquiries recorded yet.
             </div>
           )}
-        </div>
+        </NeuSurface>
 
-        {/* Recent Audit & System Activity */}
-        <div className="bg-white p-6 rounded-3xl border border-purple-100/70 shadow-sm flex flex-col justify-between">
+        {/* Recent Audit & System Activity in Raised Container */}
+        <NeuSurface
+          variant="raised"
+          className="p-6 sm:p-8 rounded-3xl flex flex-col justify-between"
+        >
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-base font-bold text-[#271044] font-display">
+              <h3 className="text-base sm:text-lg font-bold text-neu-text">
                 Audit Trail
               </h3>
-              <FiClock className="w-4 h-4 text-slate-400" />
+              <div className="p-2 rounded-xl neu-recessed text-neu-purple">
+                <FiClock className="w-4 h-4" />
+              </div>
             </div>
 
             <div className="space-y-4">
@@ -432,37 +430,37 @@ export default function AdminOverviewPage() {
                   });
 
                   return (
-                    <div key={log.id} className="flex items-start gap-3 text-xs">
-                      <div className="w-2 h-2 rounded-full bg-[#7025B9] mt-1.5 shrink-0" />
+                    <div key={log.id} className="flex items-start gap-3 text-xs p-2.5 rounded-xl neu-recessed">
+                      <div className="w-2 h-2 rounded-full bg-neu-purple mt-1.5 shrink-0" />
                       <div className="min-w-0 flex-1">
-                        <div className="font-semibold text-slate-800 truncate">
+                        <div className="font-bold text-neu-text truncate">
                           {log.userName} •{' '}
-                          <span className="font-mono text-[10px] text-purple-700">
+                          <span className="font-mono text-[10px] text-neu-purple">
                             {log.action}
                           </span>
                         </div>
-                        <div className="text-[11px] text-slate-500 truncate">
+                        <div className="text-[11px] text-neu-textSec truncate">
                           {log.details}
                         </div>
                       </div>
-                      <div className="text-[10px] font-mono text-slate-400 shrink-0">
+                      <div className="text-[10px] font-mono text-neu-textSec/70 shrink-0">
                         {time}
                       </div>
                     </div>
                   );
                 })
               ) : (
-                <div className="py-8 text-center text-xs text-slate-400">
+                <div className="py-8 text-center text-xs text-neu-textSec">
                   No activity recorded yet.
                 </div>
               )}
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-slate-100 text-[11px] text-slate-400 text-center">
+          <div className="mt-6 pt-4 border-t border-neu-border text-[11px] text-neu-textSec text-center">
             All administrative actions are cryptographically logged.
           </div>
-        </div>
+        </NeuSurface>
       </div>
     </div>
   );

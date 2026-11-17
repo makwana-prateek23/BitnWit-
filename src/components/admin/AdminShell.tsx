@@ -83,7 +83,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F7FA] text-[#171225] flex flex-row font-sans selection:bg-[#7025B9] selection:text-white">
+    <div className="min-h-screen bg-neu-bg text-neu-text flex flex-row font-sans selection:bg-neu-purple selection:text-white transition-colors duration-300">
       {/* Sidebar (Desktop persistent + Mobile drawer) */}
       <AdminSidebar
         mobileOpen={mobileOpen}

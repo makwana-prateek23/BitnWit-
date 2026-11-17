@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import {
   AiFillGithub,
   AiFillInstagram,
@@ -43,6 +44,12 @@ const socials = [
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
+  const pathname = usePathname();
+
+  // Hide footer on administrative console routes
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -55,12 +62,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-[#040c22] text-white border-t border-white/10">
+    <footer className="relative mt-20 overflow-hidden bg-[#141522] text-[#F5F5FA] border-t border-white/5 transition-colors duration-300">
       {/* Subtle Ambient Glow Behind Footer */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-rabbit/15 blur-[120px]" aria-hidden />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-neu-purple/15 blur-[120px]" aria-hidden="true" />
 
-      <div className="relative mx-auto w-full max-w-[1720px] px-6 pb-14 pt-18 sm:px-8 lg:px-12 2xl:px-16">
-        {/* ------------------------------------------------------------- MAIN 4-COLUMN PREMIUM GRID */}
+      <div className="relative mx-auto w-full max-w-[1720px] px-6 pb-14 pt-16 sm:px-8 lg:px-12 2xl:px-16">
+        {/* MAIN 4-COLUMN NEUMORPHIC GRID */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12 2xl:gap-16">
           {/* Brand & Studio Column (4 cols) */}
           <div className="lg:col-span-4 flex flex-col justify-between">
@@ -75,22 +82,22 @@ export default function Footer() {
                 />
               </Link>
 
-              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
-                Innovate <span className="text-rabbit">• Build</span>{' '}
-                <span className="text-signal">• Solve</span>
+              <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-neu-purple">
+                Innovate <span className="text-white">• Build</span>{' '}
+                <span className="text-[#FF790E]">• Solve</span>
               </p>
 
               <p className="mt-3 max-w-md text-xs sm:text-sm leading-relaxed text-slate-400">
                 A modern digital engineering and growth studio. We design and ship high-performance web applications, mobile platforms, practical AI integrations, and conversion systems.
               </p>
 
-              {/* Quick Connect Actions */}
+              {/* Quick Connect Actions with Neumorphic tactile buttons */}
               <div className="mt-6 flex flex-wrap items-center gap-2.5">
                 <a
                   href="https://wa.me/918949728810?text=Hi%20BITnWIT!%20I%20would%20like%20to%20discuss%20a%20project."
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200 transition hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-400"
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold text-slate-200 transition hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-400"
                 >
                   <AiOutlineWhatsApp size={15} className="text-emerald-400" />
                   <span>WhatsApp Studio</span>
@@ -99,7 +106,7 @@ export default function Footer() {
                 <button
                   type="button"
                   onClick={copyEmail}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-3.5 py-2 text-xs font-semibold text-slate-200 transition hover:border-white/30 hover:bg-white/10"
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold text-slate-200 transition hover:border-white/20 hover:bg-white/10"
                 >
                   {copied ? (
                     <>
@@ -125,7 +132,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-400 transition-all duration-300 hover:-translate-y-1 hover:border-purple-400/50 hover:bg-purple-600/20 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-400 transition-all duration-200 hover:-translate-y-1 hover:border-neu-purple/50 hover:bg-neu-purple/20 hover:text-white"
                 >
                   <Icon size={16} />
                 </a>
@@ -147,9 +154,9 @@ export default function Footer() {
                   >
                     <span className="relative">
                       {link.label}
-                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-rabbit transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-neu-purple transition-all duration-300 group-hover:w-full" />
                     </span>
-                    <AiOutlineArrowRight className="text-[10px] opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-rabbit" />
+                    <AiOutlineArrowRight className="text-[10px] opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-neu-purple" />
                   </Link>
                 </li>
               ))}
@@ -170,9 +177,9 @@ export default function Footer() {
                   >
                     <span className="relative">
                       {link.label}
-                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-signal transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#FF790E] transition-all duration-300 group-hover:w-full" />
                     </span>
-                    <AiOutlineArrowRight className="text-[10px] opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-signal" />
+                    <AiOutlineArrowRight className="text-[10px] opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#FF790E]" />
                   </Link>
                 </li>
               ))}
@@ -194,7 +201,7 @@ export default function Footer() {
                     >
                       <span className="relative">
                         {link.label}
-                        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-purple-400 transition-all duration-300 group-hover:w-full" />
+                        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-neu-purple transition-all duration-300 group-hover:w-full" />
                       </span>
                     </Link>
                   </li>
@@ -205,19 +212,19 @@ export default function Footer() {
             {/* AI Assistant Quick Trigger */}
             <div className="mt-6 pt-5 border-t border-white/10">
               <TalkToRabbitButton className="group inline-flex items-center gap-1.5 text-xs font-bold text-purple-300 transition-colors hover:text-white">
-                <LuSparkles size={13} className="text-purple-400 group-hover:scale-110 transition-transform" />
+                <LuSparkles size={13} className="text-neu-purple group-hover:scale-110 transition-transform" />
                 <span>Talk to White Rabbit</span>
               </TalkToRabbitButton>
             </div>
           </div>
         </div>
 
-        {/* ------------------------------------------------------------- BOTTOM META BAR */}
+        {/* BOTTOM META BAR */}
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-slate-400 sm:flex-row">
           <div className="flex flex-col sm:flex-row items-center gap-2.5 text-center sm:text-left">
-            <p>© {new Date().getFullYear()} BITnWIT Technologies. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} BITnWIT Technologies Pvt. Ltd. All rights reserved.</p>
             <span className="hidden sm:inline text-white/20">•</span>
-            <p className="text-slate-500">Building Intelligence Through Technology</p>
+            <p className="text-slate-500">INNOVATE • BUILD • SOLVE</p>
           </div>
 
           <div className="flex items-center gap-5">
@@ -230,7 +237,7 @@ export default function Footer() {
             <button
               type="button"
               onClick={scrollToTop}
-              className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+              className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
             >
               <span>Back to top</span>
               <LuArrowUp size={12} className="transition-transform group-hover:-translate-y-0.5" />

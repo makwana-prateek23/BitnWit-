@@ -20,6 +20,7 @@ import {
   FiExternalLink,
   FiX,
 } from 'react-icons/fi';
+import NeuBadge from '../ui/NeuBadge';
 
 interface SidebarProps {
   mobileOpen?: boolean;
@@ -30,7 +31,7 @@ interface SidebarProps {
 
 export const navItems = [
   { label: 'Overview', href: '/admin', icon: FiGrid },
-  { label: 'Leads & Inquiries', href: '/admin/leads', icon: FiInbox, badgeKey: 'leads' },
+  { label: 'Leads & CRM', href: '/admin/leads', icon: FiInbox, badgeKey: 'leads' },
   { label: 'Services', href: '/admin/services', icon: FiLayers },
   { label: 'Portfolio', href: '/admin/projects', icon: FiBriefcase },
   { label: 'Blog Posts', href: '/admin/blogs', icon: FiFileText },
@@ -62,104 +63,94 @@ export default function AdminSidebar({
   };
 
   const content = (
-    <div className="flex flex-col h-full bg-[#271044] text-white">
+    <div className="flex flex-col h-full bg-neu-surface border-r border-neu-border text-neu-text transition-colors duration-300">
       {/* Brand Header */}
-      <div className="flex items-center justify-between px-6 py-5 border-b border-purple-900/60">
+      <div className="flex items-center justify-between px-6 py-5 border-b border-neu-border">
         <Link href="/admin" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-white/10 p-1 flex items-center justify-center border border-white/10 group-hover:border-[#FF790E] transition-colors">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden neu-raised p-1 flex items-center justify-center shrink-0">
             <Image
               src="/bitty-mascot.png"
-              alt="BITnWit Bitty Mascot"
+              alt="Bitty — Mascot"
               width={34}
               height={34}
               className="object-contain"
             />
           </div>
           <div>
-            <div className="font-bold tracking-tight text-base font-display text-white group-hover:text-[#FF790E] transition-colors flex items-center gap-1.5">
-              <span>BITnWit</span>
-              <span className="text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded bg-[#FF790E] text-white tracking-widest">
-                Admin
-              </span>
-            </div>
-            <p className="text-[10px] text-purple-300/70 font-mono tracking-wider">
-              v2.4 • SECURE PORTAL
-            </p>
+            <span className="font-extrabold text-base tracking-tight text-neu-text group-hover:text-neu-purple transition-colors">
+              BITnWIT
+            </span>
+            <span className="block text-[10px] uppercase font-bold tracking-widest text-neu-purple">
+              Admin Console
+            </span>
           </div>
         </Link>
-        {onCloseMobile && (
+
+        {mobileOpen && (
           <button
+            type="button"
             onClick={onCloseMobile}
-            className="md:hidden p-2 text-purple-300 hover:text-white rounded-lg hover:bg-white/10"
-            aria-label="Close sidebar"
+            className="md:hidden p-2 rounded-lg neu-raised text-neu-textSec hover:text-neu-text"
+            aria-label="Close menu"
           >
-            <FiX className="w-5 h-5" />
+            <FiX size={18} />
           </button>
         )}
       </div>
 
-      {/* Navigation Section */}
-      <div className="flex-1 overflow-y-auto px-4 py-5 space-y-1 scrollbar-thin scrollbar-thumb-purple-900/50">
-        <div className="px-3 pb-2 text-[10px] font-bold uppercase tracking-wider text-purple-300/60 font-mono">
-          Core Operations
-        </div>
-
+      {/* Navigation Links */}
+      <nav className="flex-1 overflow-y-auto px-4 py-5 space-y-1.5" aria-label="Admin Sections">
         {navItems.map((item) => {
+          const isActive = pathname === item.href;
           const Icon = item.icon;
-          const isActive =
-            item.href === '/admin'
-              ? pathname === '/admin'
-              : pathname.startsWith(item.href);
+          const showBadge = item.badgeKey === 'leads' && newLeadsCount > 0;
 
           return (
             <Link
               key={item.href}
               href={item.href}
               onClick={onCloseMobile}
-              className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all group ${
+              className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 select-none ${
                 isActive
-                  ? 'bg-gradient-to-r from-[#7025B9] to-[#8C3BE0] text-white shadow-lg shadow-purple-950/40'
-                  : 'text-purple-200/80 hover:text-white hover:bg-white/5'
+                  ? 'neu-pressed text-neu-purple shadow-inner font-extrabold'
+                  : 'text-neu-textSec hover:text-neu-text hover:neu-raised'
               }`}
             >
               <div className="flex items-center gap-3">
-                <Icon
-                  className={`w-4 h-4 transition-transform group-hover:scale-110 ${
-                    isActive ? 'text-[#FFB51B]' : 'text-purple-300/70'
-                  }`}
-                />
+                <Icon size={16} className={isActive ? 'text-neu-purple' : 'text-neu-textSec'} />
                 <span>{item.label}</span>
               </div>
-              {item.badgeKey === 'leads' && newLeadsCount > 0 && (
-                <span className="px-2 py-0.5 text-[11px] font-bold rounded-full bg-[#FF790E] text-white shadow-sm">
+
+              {showBadge && (
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 text-[10px] font-extrabold text-white shadow-sm">
                   {newLeadsCount}
                 </span>
               )}
             </Link>
           );
         })}
-      </div>
+      </nav>
 
-      {/* Footer Utility Actions */}
-      <div className="p-4 border-t border-purple-900/60 space-y-2 bg-[#1f0c36]/40">
-        <a
+      {/* Sidebar Footer */}
+      <div className="p-4 border-t border-neu-border space-y-2">
+        <Link
           href="/"
           target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-purple-200/80 hover:text-white hover:bg-white/5 transition-colors"
+          className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-semibold text-neu-textSec hover:text-neu-text hover:neu-raised transition-all"
         >
-          <div className="flex items-center gap-2.5">
-            <FiExternalLink className="w-4 h-4 text-purple-400" />
-            <span>View Public Website</span>
-          </div>
-          <span className="text-[10px] text-purple-400 font-mono">↗</span>
-        </a>
+          <span className="flex items-center gap-2">
+            <FiExternalLink size={14} />
+            <span>View Live Website</span>
+          </span>
+          <span className="text-[10px] uppercase font-bold text-neu-purple">PROD</span>
+        </Link>
 
         <button
+          type="button"
           onClick={handleLogout}
-          className="w-full flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-rose-300 hover:text-rose-100 hover:bg-rose-950/40 transition-colors"
+          className="w-full flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-red-500 hover:bg-red-500/10 transition-colors"
         >
-          <FiLogOut className="w-4 h-4 text-rose-400" />
+          <FiLogOut size={14} />
           <span>Sign Out</span>
         </button>
       </div>
@@ -169,18 +160,18 @@ export default function AdminSidebar({
   return (
     <>
       {/* Desktop Persistent Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 shrink-0 h-screen sticky top-0 border-r border-purple-950/20 shadow-xl z-20">
+      <aside className="hidden md:flex flex-col w-64 shrink-0 h-screen sticky top-0 z-30">
         {content}
       </aside>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-50 md:hidden flex">
+        <div className="fixed inset-0 z-50 flex md:hidden" role="dialog" aria-modal="true">
           <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+            className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity"
             onClick={onCloseMobile}
           />
-          <div className="relative flex flex-col w-72 max-w-[85vw] h-full shadow-2xl z-10 animate-in slide-in-from-left duration-200">
+          <div className="relative flex flex-col w-72 max-w-[85vw] h-full shadow-2xl">
             {content}
           </div>
         </div>
