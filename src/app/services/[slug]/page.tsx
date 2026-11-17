@@ -326,7 +326,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
               </NeuBadge>
             </div>
 
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl 2xl:text-6xl text-neu-text leading-[1.1]">
+            <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl 2xl:text-6xl text-neu-text leading-[1.1]">
               {service.title}
             </h1>
 

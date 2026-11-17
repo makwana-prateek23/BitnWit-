@@ -52,7 +52,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             </span>
           </div>
 
-          <h1 className="mx-auto max-w-4xl text-3xl font-extrabold tracking-tight sm:text-4xl 2xl:text-5xl text-neu-text leading-[1.15]">
+          <h1 className="font-display hero-heading mx-auto max-w-4xl text-3xl font-extrabold tracking-tight sm:text-4xl 2xl:text-5xl text-neu-text leading-[1.15]">
             {post.title}
           </h1>
 

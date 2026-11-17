@@ -50,7 +50,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
             </Link>
           </div>
 
-          <h1 className="max-w-5xl text-4xl font-extrabold tracking-tight sm:text-5xl 2xl:text-6xl text-neu-text leading-[1.1]">
+          <h1 className="font-display hero-heading max-w-5xl text-4xl font-extrabold tracking-tight sm:text-5xl 2xl:text-6xl text-neu-text leading-[1.1]">
             {project.title}
           </h1>
 

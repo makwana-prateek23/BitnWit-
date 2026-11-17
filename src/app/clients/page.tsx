@@ -25,7 +25,7 @@ export default function ClientsPage() {
             Client Collaborations
           </NeuBadge>
 
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08] max-w-4xl">
+          <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08] max-w-4xl">
             Built around the people and teams we <span className="text-gradient">work with.</span>
           </h1>
 

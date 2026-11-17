@@ -54,7 +54,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neu-bg text-neu-text flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden font-sans transition-colors duration-300">
+    <div className="min-h-screen bg-neu-bg text-neu-text flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden font-admin transition-colors duration-300">
       {/* Top Controls */}
       <div className="absolute top-6 right-6">
         <NeuThemeToggle showLabel />

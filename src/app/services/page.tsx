@@ -105,7 +105,7 @@ export default function ServicesPage() {
                 BITnWIT Core Disciplines
               </NeuBadge>
 
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08] text-neu-text">
+              <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08] text-neu-text">
                 Engineering precision. <br />
                 <span className="text-gradient">Creative clarity.</span>
               </h1>

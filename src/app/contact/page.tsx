@@ -35,7 +35,7 @@ export default function ContactPage() {
               Contact BITnWIT
             </NeuBadge>
 
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-neu-text leading-[1.08]">
+            <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-neu-text leading-[1.08]">
               Let’s start with an honest <span className="text-gradient">conversation.</span>
             </h1>
 

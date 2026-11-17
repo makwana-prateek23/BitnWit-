@@ -27,7 +27,7 @@ export default function WorkPage() {
             <NeuBadge color="purple" variant="recessed" pulseDot>
               Selected Work &amp; Portfolio
             </NeuBadge>
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08]">
+            <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08]">
               Problems solved. Systems shipped. <span className="text-gradient">Value created.</span>
             </h1>
           </div>
