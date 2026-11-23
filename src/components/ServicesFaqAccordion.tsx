@@ -32,7 +32,7 @@ const faqs: FaqItem[] = [
     id: 'faq-remote',
     question: 'How do you collaborate with remote teams across India and worldwide?',
     answer:
-      'We are remote-first by design. We maintain documented async updates, private preview environments, and scheduled weekly milestone reviews. We plan overlapping working hours across Indian Standard Time (IST), GMT, and US time zones to keep collaboration seamless.'
+      'We are remote-first by design. We maintain documented async updates, private preview environments, and scheduled weekly milestone reviews. We plan overlapping working hours across Indian Standard Time (IST), GMT, and US time zones to keep collaboration smooth and transparent.'
   },
   {
     id: 'faq-takeover',

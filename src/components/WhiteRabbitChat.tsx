@@ -97,8 +97,8 @@ You get direct async updates and a live staging preview to track progress in rea
   {
     keywords: ['team', 'founder', 'sandeep', 'prateek', 'who are you', 'about', 'leadership', 'contact'],
     reply: `BITnWIT is led by technical practitioners, not account managers:
-• **Sandeep Kumar** (Founder) — Frontend engineering, mobile applications & product delivery (+91 89497 28810).
-• **Prateek Makwana** (Technical Head) — Software architecture, backend systems & technical strategy (+91 96804 37434).
+• **Sandeep Kumar** (Founder): Frontend engineering, mobile applications & product delivery (+91 89497 28810).
+• **Prateek Makwana** (Technical Head): Software architecture, backend systems & technical strategy (+91 96804 37434).
 
 When you work with BITnWIT, you collaborate directly with the senior engineers building your project.`,
     suggestions: ['📞 Call Sandeep directly', '💬 Chat on WhatsApp', '🛠 What services do you offer?'],

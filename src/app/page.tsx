@@ -123,7 +123,7 @@ const process = [
 
 const differentiators = [
   { icon: AiOutlineThunderbolt, title: 'Built for Speed', copy: 'Lean sprint methodology with zero agency bloat. Most projects launch within 3 to 6 weeks.' },
-  { icon: AiOutlineCheckCircle, title: 'Senior Engineering', copy: 'Collaborate directly with the engineers and designers building your product—no account managers.' },
+  { icon: AiOutlineCheckCircle, title: 'Senior Engineering', copy: 'Collaborate directly with the engineers and designers building your product, with zero account managers.' },
   { icon: LuCpu, title: 'AI-Native Workflow', copy: 'Bitty and modern AI tooling integrated into how we architect, automate, and support your systems.' },
   { icon: AiOutlineSafety, title: '100% Code Ownership', copy: 'Full ownership of all repositories, database schemas, and Figma files transferred to you.' }
 ];
@@ -626,7 +626,7 @@ export default function HomePage() {
                   Remote-first delivery across all time zones.
                 </h3>
                 <p className="mt-3 text-sm sm:text-base text-neu-textSec leading-relaxed">
-                  Headquartered in India with remote engineering operations. We maintain structured overlap hours, async pull requests, and automated testing pipelines for seamless international collaboration.
+                  Headquartered in India with remote engineering operations. We maintain structured overlap hours, async pull requests, and automated testing pipelines for coordinated international collaboration.
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-2.5">

@@ -12,7 +12,7 @@
   --neu-surface: #E9EAF0;
   --neu-surface-sec: #F2F3F7;
   --neu-text: #252638;
-  --neu-text-sec: #73758A;
+  --neu-text-sec: #525468;
   --neu-accent-purple: #8B7CF6;
   --neu-accent-maroon: #642E42;
   --neu-accent-yellow: #F5C84C;
@@ -93,6 +93,48 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+/* ================================================================= */
+/* Anti-Slop Affordances & Accessibility (R-32, R-39)                */
+/* ================================================================= */
+
+a[href],
+button:not(:disabled),
+summary,
+select:not(:disabled),
+label[for],
+input[type='checkbox']:not(:disabled),
+input[type='radio']:not(:disabled),
+[role='button'],
+[role='tab'],
+[role='switch'] {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+}
+
+/* R-32: Visible Focus Rings */
+:focus-visible {
+  outline: 2px solid var(--neu-accent-purple);
+  outline-offset: 3px;
+}
+
+/* R-39: Motion sensitivity support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Headings base */

@@ -75,7 +75,7 @@ const steps: ProcessStep[] = [
     id: 'step-launch',
     number: '04',
     title: 'Launch & Scale',
-    tagline: 'Day one is launch — we tune conversion and growth after.',
+    tagline: 'Day one is launch; we tune conversion and growth after.',
     icon: LuRocket,
     duration: 'Week 6+',
     description:
@@ -204,7 +204,7 @@ export default function ServicesProcessStepper() {
             </div>
 
             <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold text-ink">
-              {activeStep.title} — {activeStep.tagline}
+              {activeStep.title}: {activeStep.tagline}
             </h3>
 
             <p className="mt-4 text-base leading-relaxed text-slate-600">

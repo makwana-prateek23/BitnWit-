@@ -5,7 +5,7 @@ interface RabbitMarkProps {
 }
 
 /**
- * Placeholder mark for the White Rabbit mascot — simple line art standing in
+ * Placeholder mark for the White Rabbit mascot: simple line art standing in
  * for the full illustrated character until real artwork assets are supplied.
  */
 export default function RabbitMark({ size = 48, className = '', badge = true }: RabbitMarkProps) {

@@ -17,7 +17,7 @@ export default function MascotImage({
   directions = '/mascots/bitty-directions.webp',
   reactions = '/mascots/bitty-reactions.webp',
   size = 260,
-  alt = 'Bitty — Official BITnWIT Mascot',
+  alt = 'Bitty: Official BITnWIT Mascot',
   className = ''
 }: MascotImageProps) {
   const [error, setError] = useState(false);

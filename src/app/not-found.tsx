@@ -8,7 +8,7 @@ export default function NotFound() {
         <div className="relative mx-auto h-48 w-48 sm:h-56 sm:w-56 overflow-hidden rounded-2xl">
           <Image
             src="/mascot-404.jpg"
-            alt="Bitty looking puzzled — Page Not Found"
+            alt="Bitty looking puzzled: Page Not Found"
             width={512}
             height={512}
             priority

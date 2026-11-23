@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     siteName: 'BITnWIT',
     title: 'BITnWIT | Innovate, Build, Solve',
     description: 'Web, app, AI, design, and digital growth services across India and worldwide.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'BITnWIT — Innovate • Build • Solve' }]
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'BITnWIT: Innovate • Build • Solve' }]
   },
   twitter: {
     card: 'summary_large_image',
