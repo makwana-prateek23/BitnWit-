@@ -244,8 +244,15 @@ export default function HomePage() {
                 </NeuBadge>
               </div>
 
-              <div className="py-4 relative group cursor-pointer">
-                <MascotImage className="max-h-[380px] lg:max-h-[440px] min-h-[260px] mx-auto transition-transform duration-500 ease-out group-hover:scale-105 group-hover:-translate-y-2 drop-shadow-2xl" />
+              <div className="py-5 relative flex flex-col items-center justify-center">
+                <MascotImage
+                  size={260}
+                  className="mx-auto drop-shadow-2xl"
+                />
+                <span className="mt-2 text-[11px] font-bold uppercase tracking-wider text-neu-purple inline-flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-neu-purple animate-pulse" />
+                  Boop Bitty • Watch the cursor
+                </span>
               </div>
 
               <div className="p-4 rounded-xl neu-recessed text-left space-y-2 transition-all duration-200 hover:neu-raised">

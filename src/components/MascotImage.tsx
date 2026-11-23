@@ -1,40 +1,50 @@
 'use client';
 
 import { useState } from 'react';
-import RabbitMark from './RabbitMark';
+import { Mascot } from './ui/Mascot';
 
 interface MascotImageProps {
   src?: string;
+  directions?: string;
+  reactions?: string;
+  size?: number;
   alt?: string;
   className?: string;
 }
 
 export default function MascotImage({
-  src = '/rabbit-mascot.png',
+  src,
+  directions = '/mascots/bitty-directions.webp',
+  reactions = '/mascots/bitty-reactions.webp',
+  size = 260,
   alt = 'Bitty — Official BITnWIT Mascot',
   className = ''
 }: MascotImageProps) {
   const [error, setError] = useState(false);
 
-  if (error) {
+  // If a specific static image source is requested (e.g. custom about banner)
+  if (src && !error) {
     return (
-      <div className={`flex min-h-[320px] flex-col items-center justify-center rounded-3xl border border-line bg-cloud p-8 text-center ${className}`}>
-        <RabbitMark size={72} className="text-rabbit" badge={false} />
-        <p className="mt-6 text-lg font-semibold text-ink">Bitty mascot</p>
-        <p className="mt-3 text-sm leading-6 text-slate-600">
-          Place your generated mascot file at <span className="font-mono text-sm text-ink">{src}</span>.
-        </p>
+      <div className={`mascot-frame ${className}`}>
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-auto object-contain rounded-2xl mx-auto"
+          onError={() => setError(true)}
+        />
       </div>
     );
   }
 
+  // Default interactive cursor-tracking & boop-reactive Mascot
   return (
-    <div className="mascot-frame">
-      <img
-        src={src}
-        alt={alt}
-        className={`mascot-image relative max-h-[520px] min-h-[320px] w-full object-contain object-center ${className}`}
-        onError={() => setError(true)}
+    <div className={`mascot-frame flex flex-col items-center justify-center ${className}`}>
+      <Mascot
+        directions={directions}
+        reactions={reactions}
+        size={size}
+        label={alt}
+        className="transition-transform duration-300 hover:scale-105"
       />
     </div>
   );
