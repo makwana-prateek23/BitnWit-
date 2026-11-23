@@ -35,8 +35,8 @@ export default function ContactPage() {
               Contact BITnWIT
             </NeuBadge>
 
-            <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-neu-text leading-[1.08]">
-              Let’s start with an honest <span className="text-gradient">conversation.</span>
+            <h1 className="font-display hero-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-neu-text leading-[1.08]">
+              Let’s start with an honest <span className="text-neu-purple">conversation.</span>
             </h1>
 
             <p className="max-w-xl text-base sm:text-lg text-neu-textSec leading-relaxed">
@@ -81,7 +81,7 @@ export default function ContactPage() {
               <div className="pt-2">
                 <TalkToRabbitButton className="inline-flex">
                   <NeuButton variant="default" size="sm">
-                    Open Bitty Chat →
+                    Open Bitty Chat
                   </NeuButton>
                 </TalkToRabbitButton>
               </div>
@@ -95,7 +95,7 @@ export default function ContactPage() {
             <NeuBadge color="maroon" variant="recessed">
               Direct Contact
             </NeuBadge>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-neu-text tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold text-neu-text tracking-tight">
               Connect Directly With Technical Leadership
             </h2>
           </div>
@@ -103,7 +103,7 @@ export default function ContactPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {team.map((person) => (
               <NeuCard key={person.name} variant="raised" className="flex items-center gap-5">
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl neu-recessed font-extrabold text-lg text-neu-purple">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl neu-recessed font-bold text-lg text-neu-purple">
                   {person.initials}
                 </span>
 
@@ -144,8 +144,8 @@ export default function ContactPage() {
                 Serving clients across India and international time zones through structured remote collaboration.
               </p>
               <div className="p-4 rounded-xl neu-recessed text-xs space-y-1 font-semibold text-neu-text">
-                <p>🗓 Monday – Saturday</p>
-                <p className="text-neu-textSec">9:00 AM – 7:00 PM IST (Global overlap by appointment)</p>
+                <p>Monday to Saturday</p>
+                <p className="text-neu-textSec">9:00 AM to 7:00 PM IST (Global overlap by appointment)</p>
               </div>
             </NeuCard>
 

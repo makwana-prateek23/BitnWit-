@@ -198,8 +198,9 @@ export default function AdminLoginPage() {
 
           {/* Security Note */}
           <div className="mt-6 pt-5 border-t border-neu-border text-center">
-            <span className="text-[11px] font-semibold text-neu-textSec">
-              🔒 256-bit encrypted administrative session · IP logged
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-neu-textSec">
+              <FiLock size={12} className="text-neu-purple" />
+              <span>256-bit encrypted administrative session · IP logged</span>
             </span>
           </div>
         </NeuSurface>

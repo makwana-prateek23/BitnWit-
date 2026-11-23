@@ -46,11 +46,11 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
               {project.category} · {project.year}
             </NeuBadge>
             <Link href="/work" className="text-xs font-bold text-neu-purple hover:underline">
-              ← Back to All Case Studies
+              Back to All Case Studies
             </Link>
           </div>
 
-          <h1 className="font-display hero-heading max-w-5xl text-4xl font-extrabold tracking-tight sm:text-5xl 2xl:text-6xl text-neu-text leading-[1.1]">
+          <h1 className="font-display hero-heading max-w-5xl text-4xl font-bold tracking-tight sm:text-5xl 2xl:text-6xl text-neu-text leading-[1.1]">
             {project.title}
           </h1>
 
@@ -73,7 +73,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
             <div className="pt-3">
               <a href={project.liveUrl} target="_blank" rel="noreferrer">
                 <NeuButton variant="purple" size="md" icon={<LuExternalLink size={16} />}>
-                  View Live Application ↗
+                  View Live Application
                 </NeuButton>
               </a>
             </div>
@@ -123,7 +123,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
             <NeuBadge color="yellow" variant="recessed">
               Impact &amp; Metrics
             </NeuBadge>
-            <h2 className="mt-2 text-3xl 2xl:text-4xl font-extrabold text-neu-text">
+            <h2 className="mt-2 text-3xl 2xl:text-4xl font-bold text-neu-text">
               What Changed Post-Deployment
             </h2>
           </div>
@@ -132,7 +132,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
             {project.results.map((result, i) => (
               <div key={result} className="rounded-2xl neu-recessed p-6 space-y-3">
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-bold text-sm">
-                  ✓
+                  <LuCheck size={16} />
                 </span>
                 <p className="text-sm sm:text-base font-semibold leading-relaxed text-neu-text">
                   {result}
@@ -144,7 +144,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
           <div className="pt-4 flex flex-wrap items-center gap-4">
             <Link href="/contact">
               <NeuButton variant="purple" size="lg">
-                Build Something Similar →
+                Build Something Similar
               </NeuButton>
             </Link>
             <Link href="/work">

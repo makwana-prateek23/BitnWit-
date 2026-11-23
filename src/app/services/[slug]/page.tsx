@@ -15,7 +15,8 @@ import {
   LuLightbulb,
   LuLayers,
   LuClock,
-  LuTarget
+  LuTarget,
+  LuX
 } from 'react-icons/lu';
 import { FiAlertCircle } from 'react-icons/fi';
 import { AiOutlineWhatsApp } from 'react-icons/ai';
@@ -172,7 +173,7 @@ const serviceExtras: Record<string, ServiceDetailExtras> = {
     solutions: [
       'Customer journey mapping and high-fidelity clickable prototypes in Figma.',
       'Comprehensive Neumorphic and modern design systems with reusable components and tokens.',
-      'WCAG AA accessible typography and contrast ratios for seamless multi-device usage.'
+      'WCAG AA accessible typography and contrast ratios for reliable multi-device usage.'
     ],
     techStack: ['Figma', 'FigJam', 'Interactive Prototypes', 'Design Tokens', 'Tailwind Config', 'User Testing'],
     turnaround: '2–4 weeks',
@@ -322,11 +323,11 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                 {service.eyebrow}
               </NeuBadge>
               <NeuBadge color="yellow" variant="raised">
-                ⏱ {extras.turnaround} Sprint
+                {extras.turnaround} Sprint
               </NeuBadge>
             </div>
 
-            <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl 2xl:text-6xl text-neu-text leading-[1.1]">
+            <h1 className="font-display hero-heading text-4xl font-bold tracking-tight sm:text-5xl 2xl:text-6xl text-neu-text leading-[1.1]">
               {service.title}
             </h1>
 
@@ -338,7 +339,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link href="/contact">
                 <NeuButton variant="purple" size="lg">
-                  Start This Sprint →
+                  Start This Sprint
                 </NeuButton>
               </Link>
               <a
@@ -385,7 +386,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
             <ul className="space-y-3.5 pt-2">
               {extras.problems.map((prob, i) => (
                 <li key={i} className="flex items-start gap-3 p-4 rounded-xl neu-recessed text-sm text-neu-text leading-relaxed">
-                  <span className="font-mono text-xs font-bold text-red-500 shrink-0 mt-0.5">✕</span>
+                  <LuX size={15} className="text-red-500 shrink-0 mt-0.5" />
                   <span>{prob}</span>
                 </li>
               ))}
@@ -421,7 +422,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
             <NeuBadge color="purple" variant="recessed">
               Scope &amp; Artifacts
             </NeuBadge>
-            <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+            <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-neu-text tracking-tight">
               Sprint Deliverables &amp; What You Receive
             </h2>
           </div>
@@ -447,7 +448,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
             <NeuBadge color="yellow" variant="recessed">
               Tech Stack
             </NeuBadge>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-neu-text">
+            <h2 className="mt-2 text-2xl sm:text-3xl font-bold text-neu-text">
               Technologies &amp; Libraries Used
             </h2>
           </div>
@@ -471,7 +472,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
             <NeuBadge color="maroon" variant="recessed">
               Sprint Flow
             </NeuBadge>
-            <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+            <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-neu-text tracking-tight">
               How This Sprint Progresses
             </h2>
           </div>
@@ -495,7 +496,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
             <NeuBadge color="purple" variant="recessed">
               Got Questions?
             </NeuBadge>
-            <h2 className="mt-3 text-3xl font-extrabold text-neu-text tracking-tight">
+            <h2 className="mt-3 text-3xl font-bold text-neu-text tracking-tight">
               Frequently Asked Questions About {service.title}
             </h2>
           </div>
@@ -521,7 +522,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
             Sprint Kickoff
           </NeuBadge>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-neu-text tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-neu-text tracking-tight">
             Ready to start your {service.title} project?
           </h2>
 
@@ -532,7 +533,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <Link href="/contact">
               <NeuButton variant="purple" size="lg">
-                Submit Project Brief →
+                Submit Project Brief
               </NeuButton>
             </Link>
 

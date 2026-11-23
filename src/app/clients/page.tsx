@@ -25,8 +25,8 @@ export default function ClientsPage() {
             Client Collaborations
           </NeuBadge>
 
-          <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08] max-w-4xl">
-            Built around the people and teams we <span className="text-gradient">work with.</span>
+          <h1 className="font-display hero-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08] max-w-4xl">
+            Built around the people and teams we <span className="text-neu-purple">work with.</span>
           </h1>
 
           <p className="max-w-2xl text-base sm:text-lg 2xl:text-xl text-neu-textSec leading-relaxed">
@@ -36,7 +36,7 @@ export default function ClientsPage() {
           <div className="pt-2">
             <Link href="/contact">
               <NeuButton variant="purple" size="lg">
-                Start a Collaboration →
+                Start a Collaboration
               </NeuButton>
             </Link>
           </div>
@@ -53,7 +53,7 @@ export default function ClientsPage() {
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl neu-recessed text-lg font-extrabold text-neu-purple">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl neu-recessed text-lg font-bold text-neu-purple">
                     {client.initials}
                   </div>
                   <NeuBadge color="purple" variant="recessed">
@@ -86,22 +86,22 @@ export default function ClientsPage() {
               <NeuBadge color="green" variant="recessed">
                 Where We Collaborate
               </NeuBadge>
-              <h2 className="text-3xl 2xl:text-4xl font-extrabold text-neu-text">
+              <h2 className="text-3xl 2xl:text-4xl font-bold text-neu-text">
                 Across India and around the globe.
               </h2>
               <p className="text-sm sm:text-base leading-relaxed text-neu-textSec">
-                Remote-first delivery gives every client a predictable operating rhythm—with daily progress check-ins, documented PRs, and overlap hours across Indian Standard Time (IST), GMT, and US time zones.
+                Remote-first delivery gives every client a predictable operating rhythm, with daily progress check-ins, documented PRs, and overlap hours across Indian Standard Time (IST), GMT, and US time zones.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-2xl neu-recessed p-6 sm:p-8 space-y-2 text-center">
-                <p className="text-2xl 2xl:text-3xl font-extrabold text-neu-purple">🇮🇳 Pan-India</p>
+                <p className="text-2xl 2xl:text-3xl font-bold text-neu-purple">Pan-India</p>
                 <p className="text-xs sm:text-sm text-neu-textSec">Startups &amp; enterprises nationwide</p>
               </div>
 
               <div className="rounded-2xl neu-recessed p-6 sm:p-8 space-y-2 text-center">
-                <p className="text-2xl 2xl:text-3xl font-extrabold text-neu-yellow">🌍 Worldwide</p>
+                <p className="text-2xl 2xl:text-3xl font-bold text-neu-yellow">Worldwide</p>
                 <p className="text-xs sm:text-sm text-neu-textSec">International async-ready delivery</p>
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function ClientsPage() {
           <NeuBadge color="purple" variant="recessed" pulseDot>
             Next Steps
           </NeuBadge>
-          <h2 className="text-3xl 2xl:text-4xl font-extrabold text-neu-text">
+          <h2 className="text-3xl 2xl:text-4xl font-bold text-neu-text">
             Ready to explore a sprint together?
           </h2>
           <p className="mx-auto max-w-xl text-sm sm:text-base text-neu-textSec leading-relaxed">
@@ -122,7 +122,7 @@ export default function ClientsPage() {
           <div className="pt-2">
             <Link href="/contact">
               <NeuButton variant="purple" size="lg">
-                Start a Conversation →
+                Start a Conversation
               </NeuButton>
             </Link>
           </div>

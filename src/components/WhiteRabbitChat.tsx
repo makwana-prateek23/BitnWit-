@@ -28,10 +28,10 @@ interface Message {
 }
 
 const INITIAL_SUGGESTIONS = [
-  '🚀 What does an MVP cost?',
-  '🛠 What services do you offer?',
-  '⏱ What are your project timelines?',
-  '🤝 Connect directly with the team'
+  'What does an MVP cost?',
+  'What services do you offer?',
+  'What are your project timelines?',
+  'Connect directly with the team'
 ];
 
 const KNOWLEDGE_RESPONSES: {
@@ -49,7 +49,7 @@ const KNOWLEDGE_RESPONSES: {
 • **Dedicated Retainer:** Ongoing engineering, AI integration, and growth sprints.
 
 Every quote includes fixed deliverables, milestones, and direct access to our technical leadership.`,
-    suggestions: ['⏱ What are your project timelines?', '🤝 Get an exact quote on WhatsApp'],
+    suggestions: ['What are your project timelines?', 'Get an exact quote on WhatsApp'],
     action: {
       type: 'whatsapp',
       label: 'Get a custom quote on WhatsApp',
@@ -65,7 +65,7 @@ Every quote includes fixed deliverables, milestones, and direct access to our te
 • **Custom Software & AI Systems:** 4–8 weeks depending on integration complexity.
 
 You get direct async updates and a live staging preview to track progress in real time.`,
-    suggestions: ['🚀 What does an MVP cost?', '🛠 What services do you offer?']
+    suggestions: ['What does an MVP cost?', 'What services do you offer?']
   },
   {
     keywords: ['service', 'services', 'what do you do', 'offer', 'skills', 'capabilities'],
@@ -78,7 +78,7 @@ You get direct async updates and a live staging preview to track progress in rea
 6. **Custom Code:** Internal tooling, API integrations, and robust backend services.
 7. **Branding & Strategy:** Visual identity, messaging, and market positioning.
 8. **Digital Marketing:** Lead-generation campaigns and growth funnels.`,
-    suggestions: ['🤖 How do you use AI?', '🚀 What does an MVP cost?', '🤝 Talk to White Rabbit on WhatsApp']
+    suggestions: ['How do you use AI?', 'What does an MVP cost?', 'Talk to White Rabbit on WhatsApp']
   },
   {
     keywords: ['ai', 'artificial intelligence', 'assistant', 'chatbot', 'llm', 'automation', 'claude', 'openai', 'gpt'],
@@ -87,7 +87,7 @@ You get direct async updates and a live staging preview to track progress in rea
 • **Workflow Automation:** Replacing repetitive manual tasks with smart automations.
 • **Intelligent Search & RAG:** Searching company knowledge bases, PDFs, and internal documents.
 • **AI-Enhanced Products:** Building features with OpenAI, Anthropic Claude, and open-source models.`,
-    suggestions: ['🛠 What services do you offer?', '🤝 Build an AI solution for my team'],
+    suggestions: ['What services do you offer?', 'Build an AI solution for my team'],
     action: {
       type: 'whatsapp',
       label: 'Discuss an AI Project',
@@ -101,7 +101,7 @@ You get direct async updates and a live staging preview to track progress in rea
 • **Prateek Makwana** (Technical Head): Software architecture, backend systems & technical strategy (+91 96804 37434).
 
 When you work with BITnWIT, you collaborate directly with the senior engineers building your project.`,
-    suggestions: ['📞 Call Sandeep directly', '💬 Chat on WhatsApp', '🛠 What services do you offer?'],
+    suggestions: ['Call Sandeep directly', 'Chat on WhatsApp', 'What services do you offer?'],
     action: {
       type: 'whatsapp',
       label: 'Connect with Leadership',
@@ -113,7 +113,7 @@ When you work with BITnWIT, you collaborate directly with the senior engineers b
     reply: `We are a remote-first technology studio based in India, operating Pan-India and internationally!
 • **Pan-India Coverage:** Serving startups, businesses, and agencies across all states.
 • **Worldwide Delivery:** Async-friendly documentation, daily updates, and dedicated overlap hours for international clients across Europe, the US, and Asia.`,
-    suggestions: ['🚀 What does an MVP cost?', '🤝 Start a conversation']
+    suggestions: ['What does an MVP cost?', 'Start a conversation']
   },
   {
     keywords: ['portfolio', 'work', 'projects', 'case study', 'examples', 'resumeiq'],
@@ -124,7 +124,7 @@ When you work with BITnWIT, you collaborate directly with the senior engineers b
 • **AI Support Automations:** Self-hosted knowledge assistants and workflow pipelines.
 
 You can inspect all case studies in our /work section!`,
-    suggestions: ['🛠 What services do you offer?', '🤝 Discuss my project']
+    suggestions: ['What services do you offer?', 'Discuss my project']
   }
 ];
 
@@ -142,7 +142,7 @@ function matchResponse(query: string) {
     reply: `That sounds like an exciting opportunity! While I'm sharing the essentials here, Sandeep and Prateek can give you exact technical recommendations and an actionable delivery plan.
 
 Would you like to send your project brief directly to WhatsApp or have a quick 15-minute discovery call?`,
-    suggestions: ['💬 Chat on WhatsApp', '🚀 What does an MVP cost?', '🛠 What services do you offer?'],
+    suggestions: ['Chat on WhatsApp', 'What does an MVP cost?', 'What services do you offer?'],
     action: {
       type: 'whatsapp' as const,
       label: 'Continue on WhatsApp with Sandeep',
@@ -161,7 +161,7 @@ export default function WhiteRabbitChat() {
     {
       id: 'init-1',
       sender: 'rabbit',
-      text: "Hi! I'm White Rabbit 🐇, your AI guide at BITnWIT Technologies.\n\nAsk me anything about our services, pricing models, project timelines, or share your idea and I'll help you plan the next steps!",
+      text: "Hi! I'm White Rabbit, your AI guide at BITnWIT Technologies.\n\nAsk me anything about our services, pricing models, project timelines, or share your idea and I'll help you plan the next steps!",
       timestamp: 'Just now',
       suggestions: INITIAL_SUGGESTIONS
     }
@@ -227,7 +227,7 @@ export default function WhiteRabbitChat() {
       {
         id: `init-${Date.now()}`,
         sender: 'rabbit',
-        text: "Conversation refreshed! 🐇 How can I assist you with your project today?",
+        text: "Conversation refreshed. How can I assist you with your project today?",
         timestamp: 'Just now',
         suggestions: INITIAL_SUGGESTIONS
       }

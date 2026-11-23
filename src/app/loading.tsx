@@ -3,10 +3,6 @@ import Image from 'next/image';
 export default function Loading() {
   return (
     <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#03081a]/92 backdrop-blur-xl select-none">
-      {/* Subtle Ambient Radial Lighting */}
-      <div className="pointer-events-none absolute h-72 w-72 rounded-full bg-rabbit/25 blur-[100px]" />
-      <div className="pointer-events-none absolute h-56 w-56 rounded-full bg-signal/20 blur-[90px]" />
-
       {/* Central Face Loader Container */}
       <div className="relative flex flex-col items-center">
         {/* Spinning Radiant Halo Ring around Face */}

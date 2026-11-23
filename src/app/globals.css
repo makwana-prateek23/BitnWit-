@@ -430,18 +430,7 @@ label {
   filter: saturate(1.12) contrast(1.04); 
 }
 
-/* Ambient Blobs */
-.hero-shell {
-  position: relative;
-  isolation: isolate;
-  overflow: visible;
-}
-
-.mascot-image {
-  position: relative;
-  z-index: 1;
-}
-
+/* Marquee */
 .marquee-track {
   animation: marquee 28s linear infinite;
 }
@@ -453,21 +442,6 @@ label {
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, var(--neu-accent-purple), #F5C84C, #FF790E);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradient-x 6s ease infinite;
-}
-
-@keyframes gradient-x {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* Page Navigation Loader */

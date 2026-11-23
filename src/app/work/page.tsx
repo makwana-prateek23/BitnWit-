@@ -27,12 +27,12 @@ export default function WorkPage() {
             <NeuBadge color="purple" variant="recessed" pulseDot>
               Selected Work &amp; Portfolio
             </NeuBadge>
-            <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08]">
-              Problems solved. Systems shipped. <span className="text-gradient">Value created.</span>
+            <h1 className="font-display hero-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08]">
+              Problems solved. Systems shipped. <span className="text-neu-purple">Value created.</span>
             </h1>
           </div>
           <p className="text-base sm:text-lg 2xl:text-xl leading-relaxed text-neu-textSec">
-            Representative case studies across product development, web platforms, AI workflows, and custom engineering. Each one starts with a clear operational challenge—not a predetermined deliverable.
+            Representative case studies across product development, web platforms, AI workflows, and custom engineering. Each one starts with a clear operational challenge, not a predetermined deliverable.
           </p>
         </section>
 
@@ -110,7 +110,7 @@ export default function WorkPage() {
               <NeuBadge color="green" variant="recessed" pulseDot>
                 Stellar Sprint Velocity
               </NeuBadge>
-              <h2 className="text-3xl 2xl:text-4xl font-extrabold text-neu-text">
+              <h2 className="text-3xl 2xl:text-4xl font-bold text-neu-text">
                 Your technical challenge could be next.
               </h2>
               <p className="text-sm sm:text-base text-neu-textSec max-w-xl leading-relaxed">
@@ -119,7 +119,7 @@ export default function WorkPage() {
               <div className="pt-3">
                 <Link href="/contact">
                   <NeuButton variant="purple" size="lg">
-                    Discuss Your Project →
+                    Discuss Your Project
                   </NeuButton>
                 </Link>
               </div>

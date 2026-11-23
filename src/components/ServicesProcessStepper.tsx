@@ -115,18 +115,12 @@ export default function ServicesProcessStepper() {
 
   return (
     <section className="relative overflow-hidden rounded-[2.5rem] border border-[#E8E2D8] bg-[#FAF8F5] p-6 sm:p-10 lg:p-14 shadow-sm">
-      {/* Background Accent */}
-      <div
-        className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-[#4A101A]/5 blur-[100px]"
-        aria-hidden="true"
-      />
-
       {/* Section Header */}
       <div className="max-w-3xl">
         <div className="inline-flex items-center gap-2 rounded-full border border-[#4A101A]/15 bg-[#4A101A]/5 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#4A101A]">
           <span>Disciplined Engineering Rhythm</span>
         </div>
-        <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl">
+        <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
           Four stages. Zero guesswork.
         </h2>
         <p className="mt-3 text-base sm:text-lg leading-relaxed text-slate-600">

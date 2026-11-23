@@ -105,14 +105,14 @@ export default function ServicesPage() {
                 BITnWIT Core Disciplines
               </NeuBadge>
 
-              <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08] text-neu-text">
+              <h1 className="font-display hero-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08] text-neu-text">
                 Engineering precision. <br />
-                <span className="text-gradient">Creative clarity.</span>
+                <span className="text-neu-purple">Creative clarity.</span>
               </h1>
 
               <p className="max-w-xl text-base sm:text-lg 2xl:text-xl leading-relaxed text-neu-textSec">
                 We design and ship high-performance digital products, practical AI workflows, modern web platforms,
-                and targeted growth systems—delivered through milestone-backed sprints.
+                and targeted growth systems, delivered through milestone-backed sprints.
               </p>
 
               {/* CTAs */}
@@ -125,7 +125,7 @@ export default function ServicesPage() {
 
                 <Link href="/contact">
                   <NeuButton variant="default" size="lg">
-                    Start a Project Brief →
+                    Start a Project Brief
                   </NeuButton>
                 </Link>
               </div>
@@ -162,7 +162,7 @@ export default function ServicesPage() {
             <NeuBadge color="yellow" variant="recessed">
               Sprint Catalog
             </NeuBadge>
-            <h2 className="text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+            <h2 className="text-3xl font-bold sm:text-4xl text-neu-text tracking-tight">
               All Eight Disciplines &amp; Deliverables
             </h2>
             <p className="text-base text-neu-textSec">
@@ -234,7 +234,7 @@ export default function ServicesPage() {
                   {/* Footer Action */}
                   <div className="mt-6 pt-4 border-t border-neu-border flex items-center justify-between">
                     <span className="text-xs font-bold text-neu-textSec">
-                      ⏱ {meta.turnaround}
+                      Turnaround: {meta.turnaround}
                     </span>
                     <Link
                       href={`/services/${service.slug}`}
@@ -256,7 +256,7 @@ export default function ServicesPage() {
             <NeuBadge color="purple" variant="recessed">
               Sprint Execution
             </NeuBadge>
-            <h2 className="text-3xl font-extrabold sm:text-4xl text-neu-text">
+            <h2 className="text-3xl font-bold sm:text-4xl text-neu-text">
               How our service sprints run from start to handoff
             </h2>
           </div>
@@ -273,13 +273,13 @@ export default function ServicesPage() {
               <NeuBadge color="yellow" variant="recessed">
                 Proof of Delivery
               </NeuBadge>
-              <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+              <h2 className="mt-2 text-3xl font-bold sm:text-4xl text-neu-text tracking-tight">
                 Featured Case Studies
               </h2>
             </div>
             <Link href="/work">
               <NeuButton variant="default" size="sm">
-                View All Case Studies →
+                View All Case Studies
               </NeuButton>
             </Link>
           </div>
@@ -329,7 +329,7 @@ export default function ServicesPage() {
             <NeuBadge color="purple" variant="recessed">
               Sprint FAQs
             </NeuBadge>
-            <h2 className="text-3xl font-extrabold sm:text-4xl text-neu-text">
+            <h2 className="text-3xl font-bold sm:text-4xl text-neu-text">
               Frequently Asked Questions About Our Sprints
             </h2>
           </div>
@@ -345,7 +345,7 @@ export default function ServicesPage() {
             Ready to Sprint
           </NeuBadge>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-neu-text tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-neu-text tracking-tight">
             Need a custom technical roadmap?
           </h2>
 
@@ -366,7 +366,7 @@ export default function ServicesPage() {
 
             <Link href="/contact">
               <NeuButton variant="default" size="lg">
-                Submit Online Brief →
+                Submit Online Brief
               </NeuButton>
             </Link>
           </div>

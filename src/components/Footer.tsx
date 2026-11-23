@@ -63,9 +63,6 @@ export default function Footer() {
 
   return (
     <footer className="relative mt-20 overflow-hidden bg-[#141522] text-[#F5F5FA] border-t border-white/5 transition-colors duration-300">
-      {/* Subtle Ambient Glow Behind Footer */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-neu-purple/15 blur-[120px]" aria-hidden="true" />
-
       <div className="relative mx-auto w-full max-w-[1720px] px-6 pb-14 pt-16 sm:px-8 lg:px-12 2xl:px-16">
         {/* MAIN 4-COLUMN NEUMORPHIC GRID */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12 2xl:gap-16">

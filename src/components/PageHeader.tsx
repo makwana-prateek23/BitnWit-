@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import GlassHero from './ui/GlassHero';
-import ShimmerBadge from './ui/ShimmerBadge';
+import NeuSurface from './ui/NeuSurface';
+import NeuBadge from './ui/NeuBadge';
 
 interface PageHeaderProps {
   eyebrow: string;
@@ -13,15 +13,23 @@ interface PageHeaderProps {
 
 export default function PageHeader({ eyebrow, title, description, actions }: PageHeaderProps) {
   return (
-    <GlassHero
-      badge={
-        <ShimmerBadge pulseDot pulseColor="bg-rabbit" className="text-xs font-bold uppercase tracking-[0.25em]">
-          {eyebrow}
-        </ShimmerBadge>
-      }
-      title={title}
-      description={description}
-      actions={actions}
-    />
+    <NeuSurface variant="raised" className="rounded-[2.5rem] p-8 sm:p-12 lg:p-16 space-y-6">
+      <NeuBadge color="purple" variant="recessed" pulseDot>
+        {eyebrow}
+      </NeuBadge>
+      <h1 className="font-display hero-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-neu-text leading-[1.08]">
+        {title}
+      </h1>
+      {description && (
+        <p className="max-w-2xl text-base sm:text-lg text-neu-textSec leading-relaxed">
+          {description}
+        </p>
+      )}
+      {actions && (
+        <div className="flex flex-wrap items-center gap-4 pt-2">
+          {actions}
+        </div>
+      )}
+    </NeuSurface>
   );
 }

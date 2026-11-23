@@ -27,8 +27,8 @@ export default function BlogPage() {
             Editorial &amp; Engineering Insights
           </NeuBadge>
 
-          <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08] max-w-4xl">
-            Insights for smarter <span className="text-gradient">digital growth.</span>
+          <h1 className="font-display hero-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl text-neu-text leading-[1.08] max-w-4xl">
+            Insights for smarter <span className="text-neu-purple">digital growth.</span>
           </h1>
 
           <p className="max-w-2xl text-base sm:text-lg 2xl:text-xl text-neu-textSec leading-relaxed">

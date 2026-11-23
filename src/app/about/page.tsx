@@ -55,18 +55,18 @@ export default function AboutPage() {
               About BITnWIT Technologies
             </NeuBadge>
 
-            <h1 className="font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-neu-text leading-[1.1]">
-              A digital engineering partner built for <span className="text-gradient">forward motion.</span>
+            <h1 className="font-display hero-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-neu-text leading-[1.1]">
+              A digital engineering partner built for <span className="text-neu-purple">forward motion.</span>
             </h1>
 
             <p className="text-lg lg:text-xl text-neu-textSec leading-relaxed max-w-2xl">
-              BITnWIT combines product strategy, design systems, software engineering, and practical AI automation. Headquartered in India and working with founders and growing teams globally—from first concept to launch and scale.
+              BITnWIT combines product strategy, design systems, software engineering, and practical AI automation. Headquartered in India and working with founders and growing teams globally, from first concept to launch and scale.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link href="/contact">
                 <NeuButton variant="purple" size="lg">
-                  Work With Us →
+                  Work With Us
                 </NeuButton>
               </Link>
               <Link href="/work">
@@ -103,7 +103,7 @@ export default function AboutPage() {
             <NeuBadge color="maroon" variant="recessed">
               Why Choose BITnWIT
             </NeuBadge>
-            <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+            <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-neu-text tracking-tight">
               Small enough to care. Experienced enough to deliver.
             </h2>
           </div>
@@ -127,7 +127,7 @@ export default function AboutPage() {
             <NeuBadge color="purple" variant="recessed">
               Our Methodology
             </NeuBadge>
-            <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+            <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-neu-text tracking-tight">
               One transparent process from discovery to outcome.
             </h2>
           </div>
@@ -152,7 +152,7 @@ export default function AboutPage() {
               <NeuBadge color="yellow" variant="recessed">
                 Engineering Leadership
               </NeuBadge>
-              <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl text-neu-text tracking-tight">
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-neu-text tracking-tight">
                 The practitioners behind the work.
               </h2>
             </div>
@@ -164,7 +164,7 @@ export default function AboutPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {team.map((person) => (
               <NeuCard key={person.name} variant="raised" className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-                <div className="h-16 w-16 rounded-2xl neu-recessed flex items-center justify-center text-xl font-extrabold text-neu-purple shrink-0">
+                <div className="h-16 w-16 rounded-2xl neu-recessed flex items-center justify-center text-xl font-bold text-neu-purple shrink-0">
                   {person.initials}
                 </div>
 
@@ -199,7 +199,7 @@ export default function AboutPage() {
             <NeuBadge color="green" variant="recessed">
               Pan-India • Global-Ready
             </NeuBadge>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-neu-text">
+            <h2 className="text-3xl sm:text-4xl font-bold text-neu-text">
               Great software engineering does not depend on a pin code.
             </h2>
           </div>
@@ -209,14 +209,17 @@ export default function AboutPage() {
               Our remote-first delivery model supports client teams across India and international markets. Clear asynchronous updates, daily communication on private Slack or WhatsApp channels, and weekly milestone staging reviews ensure you are never in the dark.
             </p>
             <div className="flex flex-wrap gap-2 pt-2">
-              <span className="px-3 py-1 rounded-lg neu-raised text-xs font-bold text-neu-text">
-                ✓ Async Pull Requests
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg neu-raised text-xs font-bold text-neu-text">
+                <AiOutlineCheckCircle className="text-neu-purple" size={14} />
+                Async Pull Requests
               </span>
-              <span className="px-3 py-1 rounded-lg neu-raised text-xs font-bold text-neu-text">
-                ✓ Timezone Overlap Hours
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg neu-raised text-xs font-bold text-neu-text">
+                <AiOutlineCheckCircle className="text-neu-purple" size={14} />
+                Timezone Overlap Hours
               </span>
-              <span className="px-3 py-1 rounded-lg neu-raised text-xs font-bold text-neu-text">
-                ✓ Staging Previews on Vercel
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg neu-raised text-xs font-bold text-neu-text">
+                <AiOutlineCheckCircle className="text-neu-purple" size={14} />
+                Staging Previews on Vercel
               </span>
             </div>
           </div>

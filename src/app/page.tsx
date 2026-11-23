@@ -741,8 +741,8 @@ export default function HomePage() {
               Available for New Sprints
             </NeuBadge>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neu-text tracking-tight">
-              Ready to build something <span className="text-gradient">remarkable</span>?
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neu-text tracking-tight">
+              Ready to build something <span className="text-neu-purple">remarkable</span>?
             </h2>
 
             <p className="text-base sm:text-lg text-neu-textSec leading-relaxed">

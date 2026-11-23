@@ -45,7 +45,7 @@ const serviceVisuals: Record<
   'ai-integration': {
     src: '/services/ai-integration-v2.png',
     alt: 'White Rabbit mascot integrating AI and automation into digital workflows',
-    caption: 'AI-powered integration for smarter software'
+    caption: 'Intelligent automation for modern software platforms'
   }
 };
 
