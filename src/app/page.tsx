@@ -22,11 +22,9 @@ import NeuSurface from '../components/ui/NeuSurface';
 import NeuButton from '../components/ui/NeuButton';
 import NeuCard from '../components/ui/NeuCard';
 import NeuBadge from '../components/ui/NeuBadge';
-import FlipText from '../components/ui/FlipText';
 import ExpandableBentoGrid from '../components/ui/ExpandableBentoGrid';
 import ServicesFaqAccordion from '../components/ServicesFaqAccordion';
 import NeuTiltCard from '../components/ui/NeuTiltCard';
-import InteractiveHeroGrid from '../components/ui/InteractiveHeroGrid';
 import { projects } from '../data/content';
 
 interface MinimalService {
@@ -88,14 +86,14 @@ const allServices: MinimalService[] = [
 ];
 
 const marqueeItems = [
-  '⚡ Next.js 14 & React 18',
-  '🚀 Flutter & React Native Apps',
-  '🤖 AI Assistants & Agents',
-  '🎨 Neumorphic Design Systems',
-  '🔒 Enterprise Node & Python APIs',
-  '📈 Conversion & SEO Architecture',
-  '⚡ Sub-Second Core Web Vitals',
-  '🎯 2-Week Sprint Deliverables'
+  'Next.js 14 & React 18',
+  'Flutter & React Native Apps',
+  'AI Assistants & Workflows',
+  'Neumorphic Design Systems',
+  'Enterprise Node & Python APIs',
+  'Conversion Architecture',
+  'Sub-Second Performance',
+  'Two-Week Sprints'
 ];
 
 const process = [
@@ -179,26 +177,18 @@ export default function HomePage() {
     <main className="min-h-screen px-4 py-8 sm:px-8 lg:px-12 2xl:px-16 lg:py-12 transition-colors duration-300">
       <div className="mx-auto w-full max-w-[1720px] space-y-20 lg:space-y-28 2xl:space-y-36">
 
-        {/* ------------------------------------------------------------- 1. PREMIUM NEUMORPHIC HERO */}
-        <section className="relative neu-raised rounded-[2.5rem] 2xl:rounded-[3.5rem] p-7 sm:p-10 lg:p-16 2xl:p-20 grid lg:grid-cols-[1.18fr_.82fr] lg:items-center gap-10 overflow-hidden">
-          {/* Interactive Cursor-Reactive Background Particles */}
-          <InteractiveHeroGrid />
-
-          <div className="hero-blob hero-blob-blue" aria-hidden="true" />
-          <div className="hero-blob hero-blob-red" aria-hidden="true" />
-
+        {/* ------------------------------------------------------------- 1. UNSLOPPED SCULPTED HERO */}
+        <section className="relative neu-raised rounded-[2rem] 2xl:rounded-[2.5rem] p-8 sm:p-12 lg:p-16 2xl:p-20 grid lg:grid-cols-[1.18fr_.82fr] lg:items-center gap-10 lg:gap-14 overflow-hidden">
           <Reveal direction="right" className="relative z-10">
-            <NeuBadge color="purple" variant="recessed" pulseDot>
-              BITnWIT • Engineering &amp; AI Studio
-            </NeuBadge>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-neu-purple">
+              BITnWIT Studio • Engineering &amp; AI
+            </p>
 
-            <h1 className="mt-6 font-display hero-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.08] text-neu-text">
-              We <FlipText words={['engineer', 'architect', 'build']} />. We <FlipText words={['solve', 'strategize', 'think']} />.
-              <br />
-              We <FlipText words={['design', 'polish', 'create']} />. We <FlipText words={['scale', 'accelerate', 'grow']} />.
+            <h1 className="mt-4 font-display hero-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl leading-[1.1] text-neu-text">
+              Engineering digital products with precision, craft, and speed
             </h1>
 
-            <p className="mt-6 max-w-xl 2xl:max-w-2xl text-lg lg:text-xl leading-relaxed text-neu-textSec">
+            <p className="mt-5 max-w-xl 2xl:max-w-2xl text-lg lg:text-xl leading-relaxed text-neu-textSec">
               A modern digital engineering studio for web and mobile development, practical AI workflows, UI/UX systems, and conversion-focused growth.
             </p>
 
@@ -228,53 +218,41 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          {/* Hero Visual: Bitty Mascot in 3D Dynamic Tilt Plate */}
+          {/* Hero Visual: Bitty Mascot in Tactile Neumorphic Plate */}
           <Reveal direction="left" delay={0.1} className="relative z-10">
-            <NeuTiltCard maxTilt={8} scale={1.02} elevation="raised-lg" className="p-7 sm:p-9 rounded-[2rem] text-center relative overflow-hidden">
+            <NeuTiltCard maxTilt={6} scale={1.01} elevation="raised-lg" className="p-6 sm:p-8 rounded-2xl text-center relative overflow-hidden">
               <div className="flex items-center justify-between border-b border-neu-border pb-4">
                 <div className="flex items-center gap-3">
                   <RabbitMark size={28} />
                   <div className="text-left">
                     <p className="text-xs uppercase tracking-wider font-bold text-neu-purple">AI Guide</p>
-                    <p className="text-base font-extrabold text-neu-text">Bitty the Rabbit</p>
+                    <p className="text-base font-bold text-neu-text">Bitty the Rabbit</p>
                   </div>
                 </div>
-                <NeuBadge color="green" variant="recessed" pulseDot>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full neu-recessed text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   Online
-                </NeuBadge>
+                </div>
               </div>
 
-              <div className="py-5 relative flex flex-col items-center justify-center">
+              <div className="py-6 relative flex flex-col items-center justify-center">
                 <MascotImage
-                  size={260}
-                  className="mx-auto drop-shadow-2xl"
+                  size={240}
+                  className="mx-auto"
                 />
-                <span className="mt-2 text-[11px] font-bold uppercase tracking-wider text-neu-purple inline-flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-neu-purple animate-pulse" />
-                  Boop Bitty • Watch the cursor
+                <span className="mt-3 text-[11px] font-medium tracking-wide text-neu-textSec">
+                  Interactive guide • Tracks cursor &amp; responds to clicks
                 </span>
               </div>
 
-              <div className="p-4 rounded-xl neu-recessed text-left space-y-2 transition-all duration-200 hover:neu-raised">
-                <p className="text-xs font-semibold text-neu-text">
-                  "Ready to build? Tell me your goals, budget, or timeline and I'll outline an actionable sprint roadmap!"
+              <div className="p-4 rounded-xl neu-recessed text-left space-y-2 transition-all duration-200">
+                <p className="text-xs font-medium text-neu-text leading-relaxed">
+                  "Ready to build? Share your goals, budget, or timeline and I'll outline an actionable sprint roadmap."
                 </p>
                 <TalkToRabbitButton className="text-xs font-bold text-neu-purple hover:underline inline-flex items-center gap-1">
                   <span>Chat with Bitty</span>
                   <AiOutlineArrowRight size={12} />
                 </TalkToRabbitButton>
-              </div>
-
-              {/* Dynamic Floating Badges */}
-              <div className="floating-chip absolute -top-3 left-6 hidden sm:block">
-                <NeuBadge color="yellow" variant="raised">
-                  ⚡ 2-Week Sprints
-                </NeuBadge>
-              </div>
-              <div className="floating-chip delay-1 absolute -bottom-3 right-6 hidden sm:block">
-                <NeuBadge color="purple" variant="raised">
-                  🎯 Guaranteed Code Quality
-                </NeuBadge>
               </div>
             </NeuTiltCard>
           </Reveal>

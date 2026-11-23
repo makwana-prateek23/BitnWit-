@@ -87,3 +87,14 @@ All font scales use responsive fluid CSS `clamp()` tokens:
    - Visible `:focus-visible` rings with brand purple outline.
    - Reduced motion CSS media queries honored globally.
 4. **Resilient Dual Theme (R-34)**: Both light and dark Neumorphic themes are complete, verified, and toggle seamlessly without style breaks.
+
+---
+
+## 7. Unslop Direction Definition (Damir Sokolovsky / heydamir)
+
+- **Product**: Modern software engineering and digital product studio building web applications, mobile platforms, and AI workflows for ambitious companies worldwide.
+- **Character**: Exact, tactile, architectural (no generic fluff).
+- **World**: Sculpted porcelain and obsidian physical surfaces, hairlines, and authentic engineering craft.
+- **Moments**: The interactive cursor-tracking Bitty mascot with real-time vector spectacles and reactive expressions, plus live interactive code steppers and verified case deliverables.
+- **Signature**: Tactile Neumorphic elevation physics paired with Bitty the Rabbit AI guide.
+
