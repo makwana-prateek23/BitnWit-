@@ -232,7 +232,7 @@ export default function AdminLeadsPage() {
             placeholder="Search leads by name, email, phone or company..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+            className="w-full pl-10 pr-4 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
           />
         </div>
 
@@ -242,7 +242,7 @@ export default function AdminLeadsPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+            className="px-3 py-2 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
           >
             <option value="ALL">All Statuses ({totalCount})</option>
             {Object.keys(statusConfig).map((st) => (
@@ -256,7 +256,7 @@ export default function AdminLeadsPage() {
           <select
             value={serviceFilter}
             onChange={(e) => setServiceFilter(e.target.value)}
-            className="px-3 py-2 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+            className="px-3 py-2 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
           >
             {serviceOptions.map((srv) => (
               <option key={srv} value={srv}>
@@ -278,7 +278,7 @@ export default function AdminLeadsPage() {
           <button
             type="button"
             onClick={() => setShowCreateModal(true)}
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#FF790E] hover:bg-[#e66c0b] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#E5001C] hover:bg-[#c70018] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all"
           >
             <FiPlus className="w-3.5 h-3.5" />
             <span>Add Lead</span>
@@ -305,7 +305,7 @@ export default function AdminLeadsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-[#F8F7FA] border-b border-slate-200/80 text-slate-500 font-semibold uppercase tracking-wider">
+                <tr className="bg-[#FCEBE5] border-b border-slate-200/80 text-slate-500 font-semibold uppercase tracking-wider">
                   <th className="py-3 px-4">Contact & Client</th>
                   <th className="py-3 px-4">Service & Budget</th>
                   <th className="py-3 px-4">Source</th>
@@ -390,7 +390,7 @@ export default function AdminLeadsPage() {
                         <button
                           type="button"
                           onClick={() => setSelectedLead(lead)}
-                          className="p-1.5 rounded-lg text-[#7025B9] hover:bg-purple-50 transition-colors"
+                          className="p-1.5 rounded-lg text-[#1E3C65] hover:bg-purple-50 transition-colors"
                           title="Open CRM Drawer"
                         >
                           <FiEdit className="w-4 h-4" />
@@ -423,12 +423,12 @@ export default function AdminLeadsPage() {
 
           <div className="relative w-full max-w-xl bg-white h-full shadow-2xl z-10 flex flex-col overflow-y-auto animate-in slide-in-from-right duration-200">
             {/* Drawer Header */}
-            <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-[#F8F7FA]">
+            <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-[#FCEBE5]">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-purple-700 font-mono">
                   CRM Detail File • ID #{selectedLead.id.slice(-6)}
                 </span>
-                <h2 className="text-xl font-bold text-[#271044] font-display mt-0.5">
+                <h2 className="text-xl font-bold text-[#1E3C65] font-display mt-0.5">
                   {selectedLead.fullName}
                 </h2>
                 {selectedLead.companyName && (
@@ -448,7 +448,7 @@ export default function AdminLeadsPage() {
               {/* Status and Assignment Quick Controls */}
               <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-purple-50/50 border border-purple-100">
                 <div>
-                  <label className="block text-[11px] font-semibold text-[#271044] mb-1">
+                  <label className="block text-[11px] font-semibold text-[#1E3C65] mb-1">
                     Pipeline Status
                   </label>
                   <select
@@ -469,7 +469,7 @@ export default function AdminLeadsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-semibold text-[#271044] mb-1">
+                  <label className="block text-[11px] font-semibold text-[#1E3C65] mb-1">
                     Assignee
                   </label>
                   <input
@@ -547,7 +547,7 @@ export default function AdminLeadsPage() {
               <div className="space-y-3 pt-4 border-t border-slate-100">
                 <div className="flex items-center justify-between">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                    <FiMessageSquare className="w-3.5 h-3.5 text-[#7025B9]" />
+                    <FiMessageSquare className="w-3.5 h-3.5 text-[#1E3C65]" />
                     Internal CRM Notes ({selectedLead.notes?.length || 0})
                   </h4>
                 </div>
@@ -581,12 +581,12 @@ export default function AdminLeadsPage() {
                     placeholder="Add an internal follow-up note..."
                     value={newNoteContent}
                     onChange={(e) => setNewNoteContent(e.target.value)}
-                    className="flex-1 px-3 py-2 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="flex-1 px-3 py-2 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                   <button
                     type="submit"
                     disabled={isSubmittingNote || !newNoteContent.trim()}
-                    className="px-3 py-2 bg-[#7025B9] text-white rounded-xl text-xs font-semibold hover:bg-[#271044] transition-colors disabled:opacity-50 flex items-center gap-1"
+                    className="px-3 py-2 bg-[#1E3C65] text-white rounded-xl text-xs font-semibold hover:bg-[#1E3C65] transition-colors disabled:opacity-50 flex items-center gap-1"
                   >
                     <FiSend className="w-3.5 h-3.5" />
                     <span>Post</span>
@@ -608,7 +608,7 @@ export default function AdminLeadsPage() {
               <button
                 type="button"
                 onClick={() => setSelectedLead(null)}
-                className="px-4 py-2 bg-[#271044] text-white rounded-xl text-xs font-semibold hover:bg-[#7025B9] transition-colors"
+                className="px-4 py-2 bg-[#1E3C65] text-white rounded-xl text-xs font-semibold hover:bg-[#1E3C65] transition-colors"
               >
                 Close File
               </button>
@@ -622,7 +622,7 @@ export default function AdminLeadsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-              <h3 className="text-lg font-bold text-[#271044] font-display">
+              <h3 className="text-lg font-bold text-[#1E3C65] font-display">
                 Create New Client Lead
               </h3>
               <button
@@ -635,7 +635,7 @@ export default function AdminLeadsPage() {
 
             <form onSubmit={handleCreateLead} className="mt-5 space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Full Name *
                 </label>
                 <input
@@ -646,13 +646,13 @@ export default function AdminLeadsPage() {
                   onChange={(e) =>
                     setNewLeadForm({ ...newLeadForm, fullName: e.target.value })
                   }
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Email Address
                   </label>
                   <input
@@ -662,11 +662,11 @@ export default function AdminLeadsPage() {
                     onChange={(e) =>
                       setNewLeadForm({ ...newLeadForm, email: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Phone / WhatsApp
                   </label>
                   <input
@@ -676,14 +676,14 @@ export default function AdminLeadsPage() {
                     onChange={(e) =>
                       setNewLeadForm({ ...newLeadForm, phone: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Company Name
                   </label>
                   <input
@@ -693,11 +693,11 @@ export default function AdminLeadsPage() {
                     onChange={(e) =>
                       setNewLeadForm({ ...newLeadForm, companyName: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Service Interested
                   </label>
                   <select
@@ -705,7 +705,7 @@ export default function AdminLeadsPage() {
                     onChange={(e) =>
                       setNewLeadForm({ ...newLeadForm, interestedService: e.target.value })
                     }
-                    className="w-full px-3 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   >
                     {serviceOptions.filter((s) => s !== 'All Services').map((srv) => (
                       <option key={srv} value={srv}>
@@ -718,7 +718,7 @@ export default function AdminLeadsPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Budget Range
                   </label>
                   <input
@@ -728,11 +728,11 @@ export default function AdminLeadsPage() {
                     onChange={(e) =>
                       setNewLeadForm({ ...newLeadForm, projectBudget: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Initial Status
                   </label>
                   <select
@@ -743,7 +743,7 @@ export default function AdminLeadsPage() {
                         status: e.target.value as LeadStatus,
                       })
                     }
-                    className="w-full px-3 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   >
                     {Object.keys(statusConfig).map((st) => (
                       <option key={st} value={st}>
@@ -755,7 +755,7 @@ export default function AdminLeadsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Project Notes / Requirements
                 </label>
                 <textarea
@@ -765,7 +765,7 @@ export default function AdminLeadsPage() {
                   onChange={(e) =>
                     setNewLeadForm({ ...newLeadForm, message: e.target.value })
                   }
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
@@ -779,7 +779,7 @@ export default function AdminLeadsPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-[#FF790E] hover:bg-[#e66c0b] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
+                  className="px-5 py-2.5 rounded-xl bg-[#E5001C] hover:bg-[#c70018] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
                 >
                   Create Lead
                 </button>

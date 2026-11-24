@@ -50,60 +50,60 @@ export const serviceTheme: Record<
   }
 > = {
   web: {
-    bg: 'bg-sky-500/10',
-    border: 'border-sky-500/20',
-    text: 'text-sky-600',
-    glow: 'group-hover:shadow-sky-500/20',
-    accent: 'from-sky-500 to-blue-600'
+    bg: 'bg-navy/10',
+    border: 'border-navy/20',
+    text: 'text-navy',
+    glow: 'group-hover:border-navy/40',
+    accent: 'bg-navy'
   },
   app: {
-    bg: 'bg-indigo-500/10',
-    border: 'border-indigo-500/20',
-    text: 'text-indigo-600',
-    glow: 'group-hover:shadow-indigo-500/20',
-    accent: 'from-indigo-500 to-purple-600'
+    bg: 'bg-navy/10',
+    border: 'border-navy/20',
+    text: 'text-navy',
+    glow: 'group-hover:border-navy/40',
+    accent: 'bg-navy'
   },
   ai: {
-    bg: 'bg-purple-500/10',
-    border: 'border-purple-500/20',
-    text: 'text-purple-600',
-    glow: 'group-hover:shadow-purple-500/20',
-    accent: 'from-purple-500 to-pink-600'
+    bg: 'bg-navy/10',
+    border: 'border-navy/20',
+    text: 'text-navy',
+    glow: 'group-hover:border-navy/40',
+    accent: 'bg-navy'
   },
   marketing: {
-    bg: 'bg-rose-500/10',
-    border: 'border-rose-500/20',
-    text: 'text-rose-600',
-    glow: 'group-hover:shadow-rose-500/20',
-    accent: 'from-rose-500 to-orange-500'
+    bg: 'bg-navy/10',
+    border: 'border-navy/20',
+    text: 'text-navy',
+    glow: 'group-hover:border-navy/40',
+    accent: 'bg-navy'
   },
   design: {
-    bg: 'bg-fuchsia-500/10',
-    border: 'border-fuchsia-500/20',
-    text: 'text-fuchsia-600',
-    glow: 'group-hover:shadow-fuchsia-500/20',
-    accent: 'from-fuchsia-500 to-purple-600'
+    bg: 'bg-navy/10',
+    border: 'border-navy/20',
+    text: 'text-navy',
+    glow: 'group-hover:border-navy/40',
+    accent: 'bg-navy'
   },
   seo: {
-    bg: 'bg-emerald-500/10',
-    border: 'border-emerald-500/20',
-    text: 'text-emerald-600',
-    glow: 'group-hover:shadow-emerald-500/20',
-    accent: 'from-emerald-500 to-teal-600'
+    bg: 'bg-navy/10',
+    border: 'border-navy/20',
+    text: 'text-navy',
+    glow: 'group-hover:border-navy/40',
+    accent: 'bg-navy'
   },
   code: {
-    bg: 'bg-slate-500/10',
-    border: 'border-slate-500/20',
-    text: 'text-slate-800',
-    glow: 'group-hover:shadow-slate-500/20',
-    accent: 'from-slate-700 to-slate-900'
+    bg: 'bg-navy/10',
+    border: 'border-navy/20',
+    text: 'text-navy',
+    glow: 'group-hover:border-navy/40',
+    accent: 'bg-navy'
   },
   branding: {
-    bg: 'bg-amber-500/10',
-    border: 'border-amber-500/20',
-    text: 'text-amber-600',
-    glow: 'group-hover:shadow-amber-500/20',
-    accent: 'from-amber-500 to-orange-600'
+    bg: 'bg-navy/10',
+    border: 'border-navy/20',
+    text: 'text-navy',
+    glow: 'group-hover:border-navy/40',
+    accent: 'bg-navy'
   }
 };
 

@@ -141,7 +141,7 @@ export default function AdminHeader({
           {newLeadsCount > 0 && (
             <Link
               href="/admin/leads"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl neu-recessed text-xs font-bold text-orange-600 dark:text-orange-400 hover:neu-raised transition-all"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl neu-recessed text-xs font-bold text-red hover:neu-raised transition-all"
             >
               <FiBell size={13} className="animate-bounce" />
               <span>{newLeadsCount} New</span>

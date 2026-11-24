@@ -139,10 +139,10 @@ export default function AdminProfilePage() {
     <div className="space-y-8 animate-in fade-in duration-200">
       {/* Top Banner */}
       <div className="bg-white p-5 rounded-3xl border border-purple-100/70 shadow-sm">
-        <h2 className="text-base font-bold text-[#271044] font-display">
+        <h2 className="text-base font-bold text-[#1E3C65] font-display">
           Administrative Account & Security
         </h2>
-        <p className="text-xs text-[#77717F]">
+        <p className="text-xs text-[#4A586E]">
           Manage authentication credentials, profile identifiers, and active session cryptographic security
         </p>
       </div>
@@ -151,7 +151,7 @@ export default function AdminProfilePage() {
         {/* Profile Card */}
         <div className="bg-white p-6 rounded-3xl border border-purple-100/70 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#271044] to-[#7025B9] p-1 flex items-center justify-center shadow-md">
+            <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#1E3C65] to-[#1E3C65] p-1 flex items-center justify-center shadow-md">
               <Image
                 src="/bitty-mascot.png"
                 alt="Admin Profile"
@@ -167,7 +167,7 @@ export default function AdminProfilePage() {
               </h3>
               <p className="text-xs text-slate-500 font-mono">{profile?.email}</p>
               <div className="mt-1 flex items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-50 text-[#7025B9] border border-purple-100">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-50 text-[#1E3C65] border border-purple-100">
                   {profile?.role}
                 </span>
                 <span className="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
@@ -180,7 +180,7 @@ export default function AdminProfilePage() {
 
           <form onSubmit={handleUpdateName} className="space-y-4 pt-4 border-t border-slate-100">
             <div>
-              <label className="block text-xs font-semibold text-[#271044] mb-1">
+              <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                 Display Name
               </label>
               <div className="flex gap-2">
@@ -189,12 +189,12 @@ export default function AdminProfilePage() {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="flex-1 px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="flex-1 px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
                 <button
                   type="submit"
                   disabled={savingName || name === profile?.name}
-                  className="px-4 py-2.5 bg-[#7025B9] hover:bg-[#271044] text-white rounded-xl text-xs font-semibold disabled:opacity-50 transition-colors"
+                  className="px-4 py-2.5 bg-[#1E3C65] hover:bg-[#1E3C65] text-white rounded-xl text-xs font-semibold disabled:opacity-50 transition-colors"
                 >
                   {savingName ? 'Saving...' : 'Update'}
                 </button>
@@ -251,8 +251,8 @@ export default function AdminProfilePage() {
         {/* Password Security Card */}
         <div className="bg-white p-6 rounded-3xl border border-purple-100/70 shadow-sm space-y-6">
           <div className="flex items-center gap-2 pb-3 border-b border-slate-100">
-            <FiKey className="w-4 h-4 text-[#7025B9]" />
-            <h3 className="text-sm font-bold text-[#271044] font-display">
+            <FiKey className="w-4 h-4 text-[#1E3C65]" />
+            <h3 className="text-sm font-bold text-[#1E3C65] font-display">
               Change Security Password
             </h3>
           </div>
@@ -273,7 +273,7 @@ export default function AdminProfilePage() {
 
           <form onSubmit={handleChangePassword} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-[#271044] mb-1">
+              <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                 Current Password *
               </label>
               <div className="relative">
@@ -283,7 +283,7 @@ export default function AdminProfilePage() {
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
                   placeholder="Enter current password"
-                  className="w-full px-3.5 pr-10 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 pr-10 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
                 <button
                   type="button"
@@ -296,7 +296,7 @@ export default function AdminProfilePage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#271044] mb-1">
+              <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                 New Password (min 8 chars) *
               </label>
               <div className="relative">
@@ -306,7 +306,7 @@ export default function AdminProfilePage() {
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="••••••••••••"
-                  className="w-full px-3.5 pr-10 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 pr-10 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
                 <button
                   type="button"
@@ -319,7 +319,7 @@ export default function AdminProfilePage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#271044] mb-1">
+              <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                 Confirm New Password *
               </label>
               <input
@@ -328,14 +328,14 @@ export default function AdminProfilePage() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
               />
             </div>
 
             <button
               type="submit"
               disabled={changingPassword}
-              className="w-full mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#FF790E] to-[#FF933B] hover:from-[#e66c0b] hover:to-[#FF790E] text-white text-xs font-semibold shadow-md shadow-orange-500/20 disabled:opacity-50 transition-all"
+              className="w-full mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#E5001C] to-[#FF001E] hover:from-[#c70018] hover:to-[#E5001C] text-white text-xs font-semibold shadow-md shadow-orange-500/20 disabled:opacity-50 transition-all"
             >
               <span>{changingPassword ? 'Updating Security...' : 'Update Password'}</span>
             </button>

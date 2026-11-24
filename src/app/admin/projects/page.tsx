@@ -190,10 +190,10 @@ export default function AdminProjectsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-purple-100/70 shadow-sm">
         <div className="flex flex-wrap items-center gap-3">
           <div>
-            <h2 className="text-base font-bold text-[#271044] font-display">
+            <h2 className="text-base font-bold text-[#1E3C65] font-display">
               Portfolio & Case Studies ({projects.length})
             </h2>
-            <p className="text-xs text-[#77717F]">
+            <p className="text-xs text-[#4A586E]">
               Visual showcase of client deliverables, tech stacks, and live applications
             </p>
           </div>
@@ -202,7 +202,7 @@ export default function AdminProjectsPage() {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-3 py-1.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 ml-0 sm:ml-4"
+            className="px-3 py-1.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 ml-0 sm:ml-4"
           >
             {categories.map((c) => (
               <option key={c} value={c}>
@@ -214,7 +214,7 @@ export default function AdminProjectsPage() {
 
         <button
           onClick={openCreateModal}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#FF790E] hover:bg-[#e66c0b] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all self-start sm:self-auto"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#E5001C] hover:bg-[#c70018] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all self-start sm:self-auto"
         >
           <FiPlus className="w-4 h-4" />
           <span>Add New Project</span>
@@ -249,11 +249,11 @@ export default function AdminProjectsPage() {
 
                   {/* Top Badges */}
                   <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#7025B9] text-white shadow-sm">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#1E3C65] text-white shadow-sm">
                       {proj.category}
                     </span>
                     {proj.isFeatured && (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#FFB51B] text-[#171225] flex items-center gap-1 shadow-sm">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#E5001C] text-white flex items-center gap-1 shadow-sm">
                         <FiStar className="w-3 h-3 fill-current" />
                         Featured
                       </span>
@@ -286,7 +286,7 @@ export default function AdminProjectsPage() {
 
                 {/* Card Body */}
                 <div className="p-5 space-y-3">
-                  <p className="text-xs text-[#77717F] leading-relaxed line-clamp-2">
+                  <p className="text-xs text-[#4A586E] leading-relaxed line-clamp-2">
                     {proj.shortDescription || proj.summary}
                   </p>
 
@@ -295,7 +295,7 @@ export default function AdminProjectsPage() {
                     {(proj.technologiesUsed || proj.servicesTags || []).map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-0.5 rounded-md bg-[#F8F7FA] text-slate-700 border border-slate-200 text-[10px] font-mono"
+                        className="px-2 py-0.5 rounded-md bg-[#FCEBE5] text-slate-700 border border-slate-200 text-[10px] font-mono"
                       >
                         {tech}
                       </span>
@@ -305,7 +305,7 @@ export default function AdminProjectsPage() {
               </div>
 
               {/* Card Footer */}
-              <div className="p-4 bg-[#F8F7FA] border-t border-slate-100 flex items-center justify-between text-xs">
+              <div className="p-4 bg-[#FCEBE5] border-t border-slate-100 flex items-center justify-between text-xs">
                 {/* Featured Toggle */}
                 <button
                   type="button"
@@ -333,7 +333,7 @@ export default function AdminProjectsPage() {
                   )}
                   <button
                     onClick={() => openEditModal(proj)}
-                    className="p-1.5 rounded-lg text-[#7025B9] hover:bg-purple-100/60 transition-colors"
+                    className="p-1.5 rounded-lg text-[#1E3C65] hover:bg-purple-100/60 transition-colors"
                     title="Edit Project"
                   >
                     <FiEdit className="w-4 h-4" />
@@ -357,7 +357,7 @@ export default function AdminProjectsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-              <h3 className="text-lg font-bold text-[#271044] font-display">
+              <h3 className="text-lg font-bold text-[#1E3C65] font-display">
                 {editingProject ? `Edit Project: ${editingProject.title}` : 'Add Portfolio Project'}
               </h3>
               <button
@@ -371,7 +371,7 @@ export default function AdminProjectsPage() {
             <form onSubmit={handleSave} className="mt-5 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Project Title *
                   </label>
                   <input
@@ -387,12 +387,12 @@ export default function AdminProjectsPage() {
                         slug: editingProject ? form.slug : title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
                       });
                     }}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     URL Slug *
                   </label>
                   <input
@@ -401,14 +401,14 @@ export default function AdminProjectsPage() {
                     placeholder="e.g. resume-iq"
                     value={form.slug}
                     onChange={(e) => setForm({ ...form, slug: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Client Name
                   </label>
                   <input
@@ -416,12 +416,12 @@ export default function AdminProjectsPage() {
                     placeholder="Client or In-House"
                     value={form.clientName}
                     onChange={(e) => setForm({ ...form, clientName: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Category
                   </label>
                   <input
@@ -429,13 +429,13 @@ export default function AdminProjectsPage() {
                     placeholder="Web App, Mobile App, AI Integration..."
                     value={form.category}
                     onChange={(e) => setForm({ ...form, category: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Short Summary *
                 </label>
                 <textarea
@@ -444,12 +444,12 @@ export default function AdminProjectsPage() {
                   placeholder="High-level solution overview and business impact..."
                   value={form.shortDescription}
                   onChange={(e) => setForm({ ...form, shortDescription: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Detailed Case Study Breakdown
                 </label>
                 <textarea
@@ -457,13 +457,13 @@ export default function AdminProjectsPage() {
                   placeholder="Architectural challenges, solutions implemented, benchmarks achieved..."
                   value={form.detailedDescription}
                   onChange={(e) => setForm({ ...form, detailedDescription: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Cover Image URL
                   </label>
                   <input
@@ -471,12 +471,12 @@ export default function AdminProjectsPage() {
                     placeholder="/work-resume-iq.png"
                     value={form.coverImageUrl}
                     onChange={(e) => setForm({ ...form, coverImageUrl: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Live Demo / Project URL
                   </label>
                   <input
@@ -484,13 +484,13 @@ export default function AdminProjectsPage() {
                     placeholder="https://client-project.com"
                     value={form.projectUrl}
                     onChange={(e) => setForm({ ...form, projectUrl: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Technologies Used (comma-separated)
                 </label>
                 <input
@@ -498,13 +498,13 @@ export default function AdminProjectsPage() {
                   placeholder="Next.js, TypeScript, PostgreSQL, Tailwind CSS"
                   value={form.technologiesUsed}
                   onChange={(e) => setForm({ ...form, technologiesUsed: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Publication Status
                   </label>
                   <select
@@ -515,7 +515,7 @@ export default function AdminProjectsPage() {
                         publicationStatus: e.target.value as 'PUBLISHED' | 'DRAFT' | 'ARCHIVED',
                       })
                     }
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   >
                     <option value="PUBLISHED">Published</option>
                     <option value="DRAFT">Draft</option>
@@ -529,9 +529,9 @@ export default function AdminProjectsPage() {
                       type="checkbox"
                       checked={form.isFeatured}
                       onChange={(e) => setForm({ ...form, isFeatured: e.target.checked })}
-                      className="w-4 h-4 rounded text-[#7025B9] focus:ring-[#7025B9] border-slate-300"
+                      className="w-4 h-4 rounded text-[#1E3C65] focus:ring-[#1E3C65] border-slate-300"
                     />
-                    <span className="text-xs font-semibold text-[#271044]">
+                    <span className="text-xs font-semibold text-[#1E3C65]">
                       Feature on Homepage Spotlight
                     </span>
                   </label>
@@ -548,7 +548,7 @@ export default function AdminProjectsPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-[#FF790E] hover:bg-[#e66c0b] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
+                  className="px-5 py-2.5 rounded-xl bg-[#E5001C] hover:bg-[#c70018] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
                 >
                   {editingProject ? 'Save Changes' : 'Create Project'}
                 </button>

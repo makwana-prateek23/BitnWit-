@@ -8,11 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ink: '#061B49',
-        rabbit: '#7025B9',
-        signal: '#FF790E',
-        cloud: '#F7F5FB',
-        line: '#E8E2F0',
+        ink: '#010313',
+        cream: '#FCEBE5',
+        navy: '#1E3C65',
+        red: {
+          DEFAULT: '#E5001C',
+          accent: '#FF001E',
+        },
+        rabbit: '#1E3C65',
+        signal: '#E5001C',
+        cloud: '#FCEBE5',
+        line: 'rgba(30, 60, 101, 0.14)',
         // Neumorphism Palette Tokens
         neu: {
           bg: 'var(--neu-bg)',
@@ -20,7 +26,7 @@ module.exports = {
           surfaceSec: 'var(--neu-surface-sec)',
           text: 'var(--neu-text)',
           textSec: 'var(--neu-text-sec)',
-          yellow: '#F5C84C',
+          yellow: '#1E3C65',
           purple: 'var(--neu-accent-purple)',
           maroon: 'var(--neu-accent-maroon)',
         }

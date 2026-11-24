@@ -65,10 +65,10 @@ export default function AdminAnalyticsPage() {
     <div className="space-y-8 animate-in fade-in duration-200">
       {/* Overview Header */}
       <div className="bg-white p-5 rounded-3xl border border-purple-100/70 shadow-sm">
-        <h2 className="text-base font-bold text-[#271044] font-display">
+        <h2 className="text-base font-bold text-[#1E3C65] font-display">
           Inquiry Telemetry & Conversion Analytics
         </h2>
-        <p className="text-xs text-[#77717F]">
+        <p className="text-xs text-[#4A586E]">
           Verified engagement performance derived from CRM records and inbound communications
         </p>
       </div>
@@ -76,23 +76,23 @@ export default function AdminAnalyticsPage() {
       {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white p-5 rounded-2xl border border-purple-100/70 shadow-sm">
-          <span className="text-xs font-semibold text-[#77717F]">Total Leads Received</span>
-          <div className="text-2xl sm:text-3xl font-bold text-[#271044] mt-2 font-display">
+          <span className="text-xs font-semibold text-[#4A586E]">Total Leads Received</span>
+          <div className="text-2xl sm:text-3xl font-bold text-[#1E3C65] mt-2 font-display">
             {metrics.totalLeads}
           </div>
           <p className="text-[11px] text-slate-500 mt-1">Direct inquiries logged</p>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-purple-100/70 shadow-sm">
-          <span className="text-xs font-semibold text-[#77717F]">This Month Inflow</span>
-          <div className="text-2xl sm:text-3xl font-bold text-[#FF790E] mt-2 font-display">
+          <span className="text-xs font-semibold text-[#4A586E]">This Month Inflow</span>
+          <div className="text-2xl sm:text-3xl font-bold text-[#E5001C] mt-2 font-display">
             {metrics.thisMonthCount}
           </div>
           <p className="text-[11px] text-slate-500 mt-1">Calendar month submissions</p>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-purple-100/70 shadow-sm">
-          <span className="text-xs font-semibold text-[#77717F]">Deals Converted</span>
+          <span className="text-xs font-semibold text-[#4A586E]">Deals Converted</span>
           <div className="text-2xl sm:text-3xl font-bold text-emerald-600 mt-2 font-display">
             {metrics.convertedCount}
           </div>
@@ -100,8 +100,8 @@ export default function AdminAnalyticsPage() {
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-purple-100/70 shadow-sm">
-          <span className="text-xs font-semibold text-[#77717F]">Inquiry Conversion Rate</span>
-          <div className="text-2xl sm:text-3xl font-bold text-[#7025B9] mt-2 font-display">
+          <span className="text-xs font-semibold text-[#4A586E]">Inquiry Conversion Rate</span>
+          <div className="text-2xl sm:text-3xl font-bold text-[#1E3C65] mt-2 font-display">
             {metrics.conversionRate}%
           </div>
           <p className="text-[11px] text-slate-500 mt-1">Lead-to-client conversion</p>
@@ -113,12 +113,12 @@ export default function AdminAnalyticsPage() {
         <div className="bg-white p-6 rounded-3xl border border-purple-100/70 shadow-sm space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div>
-              <h3 className="text-sm font-bold text-[#271044] font-display">
+              <h3 className="text-sm font-bold text-[#1E3C65] font-display">
                 Most Requested Service Offerings
               </h3>
-              <p className="text-xs text-[#77717F]">Client demand breakdown across core capabilities</p>
+              <p className="text-xs text-[#4A586E]">Client demand breakdown across core capabilities</p>
             </div>
-            <FiBarChart2 className="w-4 h-4 text-[#7025B9]" />
+            <FiBarChart2 className="w-4 h-4 text-[#1E3C65]" />
           </div>
 
           <div className="space-y-3 pt-2">
@@ -134,7 +134,7 @@ export default function AdminAnalyticsPage() {
                     <div className="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden">
                       <div
                         style={{ width: `${percent}%` }}
-                        className="h-full rounded-full bg-gradient-to-r from-[#7025B9] to-[#FF790E]"
+                        className="h-full rounded-full bg-gradient-to-r from-[#1E3C65] to-[#E5001C]"
                       />
                     </div>
                   </div>
@@ -150,18 +150,18 @@ export default function AdminAnalyticsPage() {
         <div className="bg-white p-6 rounded-3xl border border-purple-100/70 shadow-sm space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div>
-              <h3 className="text-sm font-bold text-[#271044] font-display">
+              <h3 className="text-sm font-bold text-[#1E3C65] font-display">
                 Inbound Lead Channel Preferences
               </h3>
-              <p className="text-xs text-[#77717F]">How potential clients initiate contact with BITnWit</p>
+              <p className="text-xs text-[#4A586E]">How potential clients initiate contact with BITnWit</p>
             </div>
-            <FiPieChart className="w-4 h-4 text-[#FF790E]" />
+            <FiPieChart className="w-4 h-4 text-[#E5001C]" />
           </div>
 
           <div className="space-y-4 pt-2">
             {data?.channelPreferences && data.channelPreferences.length > 0 ? (
               data.channelPreferences.map((ch) => (
-                <div key={ch.channel} className="p-3.5 rounded-2xl bg-[#F8F7FA] border border-slate-200/60 flex items-center justify-between">
+                <div key={ch.channel} className="p-3.5 rounded-2xl bg-[#FCEBE5] border border-slate-200/60 flex items-center justify-between">
                   <div>
                     <div className="text-xs font-bold text-slate-900 capitalize">
                       {ch.channel.toLowerCase()} Channel
@@ -169,7 +169,7 @@ export default function AdminAnalyticsPage() {
                     <div className="text-[11px] text-slate-500">{ch.count} direct submissions</div>
                   </div>
                   <div className="text-right">
-                    <span className="text-sm font-bold text-[#7025B9] font-mono">{ch.percent}%</span>
+                    <span className="text-sm font-bold text-[#1E3C65] font-mono">{ch.percent}%</span>
                     <div className="text-[10px] text-slate-400">of total volume</div>
                   </div>
                 </div>
@@ -184,20 +184,20 @@ export default function AdminAnalyticsPage() {
       {/* Google Analytics 4 & Tag Manager Integration Guide */}
       <div className="bg-white p-6 rounded-3xl border border-purple-100/70 shadow-sm space-y-4">
         <div className="flex items-center gap-2 pb-3 border-b border-slate-100">
-          <FiCode className="w-4 h-4 text-[#7025B9]" />
-          <h3 className="text-sm font-bold text-[#271044] font-display">
+          <FiCode className="w-4 h-4 text-[#1E3C65]" />
+          <h3 className="text-sm font-bold text-[#1E3C65] font-display">
             External Telemetry: Google Analytics 4 (GA4) Integration Guide
           </h3>
         </div>
 
-        <p className="text-xs text-[#77717F] leading-relaxed">
+        <p className="text-xs text-[#4A586E] leading-relaxed">
           To track real-time website visitors, page bounce rates, geographical traffic, and device breakdowns, integrate Google Analytics 4:
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
           <div className="p-4 rounded-2xl bg-purple-50/60 border border-purple-100 space-y-2">
-            <h4 className="font-bold text-[#271044] flex items-center gap-1.5">
-              <span className="w-5 h-5 rounded-full bg-[#7025B9] text-white flex items-center justify-center text-[10px]">1</span>
+            <h4 className="font-bold text-[#1E3C65] flex items-center gap-1.5">
+              <span className="w-5 h-5 rounded-full bg-[#1E3C65] text-white flex items-center justify-center text-[10px]">1</span>
               Add Environment Variable in Vercel
             </h4>
             <p className="text-slate-600 leading-relaxed">
@@ -209,8 +209,8 @@ export default function AdminAnalyticsPage() {
           </div>
 
           <div className="p-4 rounded-2xl bg-orange-50/60 border border-orange-100 space-y-2">
-            <h4 className="font-bold text-[#271044] flex items-center gap-1.5">
-              <span className="w-5 h-5 rounded-full bg-[#FF790E] text-white flex items-center justify-center text-[10px]">2</span>
+            <h4 className="font-bold text-[#1E3C65] flex items-center gap-1.5">
+              <span className="w-5 h-5 rounded-full bg-[#E5001C] text-white flex items-center justify-center text-[10px]">2</span>
               Public Sitemap & Google Search Console
             </h4>
             <p className="text-slate-600 leading-relaxed">
@@ -221,7 +221,7 @@ export default function AdminAnalyticsPage() {
                 href="/sitemap.xml"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#7025B9] hover:underline font-mono text-[11px] flex items-center gap-1"
+                className="text-[#1E3C65] hover:underline font-mono text-[11px] flex items-center gap-1"
               >
                 <span>https://www.bitnwit.com/sitemap.xml</span>
                 <FiExternalLink className="w-3 h-3" />
@@ -230,7 +230,7 @@ export default function AdminAnalyticsPage() {
                 href="/robots.txt"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#7025B9] hover:underline font-mono text-[11px] flex items-center gap-1"
+                className="text-[#1E3C65] hover:underline font-mono text-[11px] flex items-center gap-1"
               >
                 <span>https://www.bitnwit.com/robots.txt</span>
                 <FiExternalLink className="w-3 h-3" />

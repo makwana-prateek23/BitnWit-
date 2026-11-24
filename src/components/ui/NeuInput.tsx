@@ -37,13 +37,13 @@ export default function NeuInput({
         )}
         <input
           id={inputId}
-          className={`w-full rounded-xl neu-recessed px-4 py-3 text-sm text-neu-text placeholder:text-neu-textSec/60 focus:outline-none focus:ring-2 focus:ring-neu-purple transition-all duration-200 ${
+          className={`w-full rounded-xl neu-recessed px-4 py-3 text-sm text-neu-text placeholder:text-neu-textSec/60 focus:outline-none focus:ring-2 focus:ring-navy dark:focus:ring-red transition-all duration-200 ${
             icon ? 'pl-10' : ''
-          } ${error ? '!ring-2 !ring-red-500' : ''} ${className}`}
+          } ${error ? '!ring-2 !ring-red' : ''} ${className}`}
           {...props}
         />
       </div>
-      {error && <span className="text-xs font-semibold text-red-500">{error}</span>}
+      {error && <span className="text-xs font-semibold text-red">{error}</span>}
       {helperText && !error && <span className="text-xs text-neu-textSec">{helperText}</span>}
     </div>
   );

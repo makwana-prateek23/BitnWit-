@@ -34,7 +34,7 @@ export default function RabbitMark({ size = 48, className = '', badge = true }: 
 
   return (
     <div
-      className={`flex items-center justify-center rounded-3xl bg-rabbit text-white ${className}`}
+      className={`flex items-center justify-center rounded-3xl bg-navy text-white ${className}`}
       style={{ width: size * 1.4, height: size * 1.4 }}
     >
       {icon}

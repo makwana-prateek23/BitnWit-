@@ -125,10 +125,10 @@ export default function AdminMediaPage() {
       <div className="bg-white p-6 rounded-3xl border border-purple-100/70 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h2 className="text-base font-bold text-[#271044] font-display">
+            <h2 className="text-base font-bold text-[#1E3C65] font-display">
               Media Asset Repository ({files.length} Assets)
             </h2>
-            <p className="text-xs text-[#77717F]">
+            <p className="text-xs text-[#4A586E]">
               Centralized storage for company branding, mascot files, and web assets
             </p>
           </div>
@@ -140,7 +140,7 @@ export default function AdminMediaPage() {
               <select
                 value={uploadFolder}
                 onChange={(e) => setUploadFolder(e.target.value as MediaFolder)}
-                className="px-3 py-1.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs font-semibold text-slate-800"
+                className="px-3 py-1.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs font-semibold text-slate-800"
               >
                 {folders
                   .filter((f) => f.key !== 'ALL')
@@ -153,7 +153,7 @@ export default function AdminMediaPage() {
             </div>
 
             {/* Direct Upload Button */}
-            <label className="inline-flex items-center gap-2 px-4 py-2 bg-[#FF790E] hover:bg-[#e66c0b] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 cursor-pointer transition-all">
+            <label className="inline-flex items-center gap-2 px-4 py-2 bg-[#E5001C] hover:bg-[#c70018] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 cursor-pointer transition-all">
               <FiUploadCloud className="w-4 h-4" />
               <span>{uploading ? 'Uploading...' : 'Upload Media Asset'}</span>
               <input
@@ -178,8 +178,8 @@ export default function AdminMediaPage() {
                 onClick={() => setSelectedFolder(f.key)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                   selectedFolder === f.key
-                    ? 'bg-[#7025B9] text-white shadow-sm'
-                    : 'bg-[#F8F7FA] text-slate-600 hover:bg-slate-100 border border-slate-200/60'
+                    ? 'bg-[#1E3C65] text-white shadow-sm'
+                    : 'bg-[#FCEBE5] text-slate-600 hover:bg-slate-100 border border-slate-200/60'
                 }`}
               >
                 {f.label}
@@ -195,7 +195,7 @@ export default function AdminMediaPage() {
               placeholder="Search filename..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-3 py-1.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+              className="w-full pl-9 pr-3 py-1.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
             />
           </div>
         </div>
@@ -223,7 +223,7 @@ export default function AdminMediaPage() {
                 className="bg-white rounded-2xl border border-purple-100/70 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col justify-between group"
               >
                 {/* Media Preview Box */}
-                <div className="relative h-32 w-full bg-[#F8F7FA] flex items-center justify-center p-2 overflow-hidden border-b border-slate-100">
+                <div className="relative h-32 w-full bg-[#FCEBE5] flex items-center justify-center p-2 overflow-hidden border-b border-slate-100">
                   {isImage ? (
                     <img
                       src={file.url || file.fileUrl}
@@ -254,7 +254,7 @@ export default function AdminMediaPage() {
                       type="button"
                       onClick={() => handleCopyUrl(file.url || file.fileUrl || '', file.id)}
                       className={`inline-flex items-center gap-1 text-[11px] font-semibold transition-colors ${
-                        isCopied ? 'text-emerald-600' : 'text-[#7025B9] hover:underline'
+                        isCopied ? 'text-emerald-600' : 'text-[#1E3C65] hover:underline'
                       }`}
                       title="Copy Public URL"
                     >

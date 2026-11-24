@@ -122,7 +122,7 @@ export default function AdminSidebar({
               </div>
 
               {showBadge && (
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 text-[10px] font-extrabold text-white shadow-sm">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-red text-[10px] font-extrabold text-white shadow-sm">
                   {newLeadsCount}
                 </span>
               )}

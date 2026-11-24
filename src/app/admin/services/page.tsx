@@ -167,17 +167,17 @@ export default function AdminServicesPage() {
       {/* Header Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-purple-100/70 shadow-sm">
         <div>
-          <h2 className="text-base font-bold text-[#271044] font-display">
+          <h2 className="text-base font-bold text-[#1E3C65] font-display">
             Active Agency Services ({services.length})
           </h2>
-          <p className="text-xs text-[#77717F]">
+          <p className="text-xs text-[#4A586E]">
             Manage published solutions, descriptions, and deliverables for client websites
           </p>
         </div>
 
         <button
           onClick={openCreateModal}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#FF790E] hover:bg-[#e66c0b] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all self-start sm:self-auto"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#E5001C] hover:bg-[#c70018] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all self-start sm:self-auto"
         >
           <FiPlus className="w-4 h-4" />
           <span>Add New Service</span>
@@ -206,7 +206,7 @@ export default function AdminServicesPage() {
             >
               {/* Card Top & Image */}
               <div>
-                <div className="relative h-44 w-full bg-gradient-to-br from-[#271044] to-[#7025B9] overflow-hidden p-4 flex items-center justify-center">
+                <div className="relative h-44 w-full bg-gradient-to-br from-[#1E3C65] to-[#1E3C65] overflow-hidden p-4 flex items-center justify-center">
                   {srv.coverImageUrl ? (
                     <img
                       src={srv.coverImageUrl}
@@ -246,10 +246,10 @@ export default function AdminServicesPage() {
 
                 {/* Card Content */}
                 <div className="p-6">
-                  <h3 className="text-base font-bold text-[#271044] font-display">
+                  <h3 className="text-base font-bold text-[#1E3C65] font-display">
                     {srv.title}
                   </h3>
-                  <p className="mt-2 text-xs text-[#77717F] leading-relaxed line-clamp-3">
+                  <p className="mt-2 text-xs text-[#4A586E] leading-relaxed line-clamp-3">
                     {srv.shortDescription}
                   </p>
 
@@ -275,7 +275,7 @@ export default function AdminServicesPage() {
               </div>
 
               {/* Card Footer Actions */}
-              <div className="p-4 bg-[#F8F7FA] border-t border-slate-100 flex items-center justify-between">
+              <div className="p-4 bg-[#FCEBE5] border-t border-slate-100 flex items-center justify-between">
                 <button
                   type="button"
                   onClick={() => handleTogglePublish(srv)}
@@ -301,7 +301,7 @@ export default function AdminServicesPage() {
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => openEditModal(srv)}
-                    className="p-2 rounded-xl text-[#7025B9] hover:bg-purple-100/60 transition-colors"
+                    className="p-2 rounded-xl text-[#1E3C65] hover:bg-purple-100/60 transition-colors"
                     title="Edit Service"
                   >
                     <FiEdit className="w-4 h-4" />
@@ -325,7 +325,7 @@ export default function AdminServicesPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-              <h3 className="text-lg font-bold text-[#271044] font-display">
+              <h3 className="text-lg font-bold text-[#1E3C65] font-display">
                 {editingService ? `Edit Service: ${editingService.title}` : 'Add New Service Offering'}
               </h3>
               <button
@@ -339,7 +339,7 @@ export default function AdminServicesPage() {
             <form onSubmit={handleSave} className="mt-5 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Service Title *
                   </label>
                   <input
@@ -355,12 +355,12 @@ export default function AdminServicesPage() {
                         slug: editingService ? form.slug : title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
                       });
                     }}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     URL Slug *
                   </label>
                   <input
@@ -369,13 +369,13 @@ export default function AdminServicesPage() {
                     placeholder="e.g. web-development"
                     value={form.slug}
                     onChange={(e) => setForm({ ...form, slug: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Short Description (Card Summary) *
                 </label>
                 <textarea
@@ -384,12 +384,12 @@ export default function AdminServicesPage() {
                   placeholder="Concise overview of what this service delivers..."
                   value={form.shortDescription}
                   onChange={(e) => setForm({ ...form, shortDescription: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Detailed Description (Public Page Detail)
                 </label>
                 <textarea
@@ -397,13 +397,13 @@ export default function AdminServicesPage() {
                   placeholder="Comprehensive technical breakdown, approach, and methodologies..."
                   value={form.detailedDescription}
                   onChange={(e) => setForm({ ...form, detailedDescription: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Cover / Graphic Path
                   </label>
                   <input
@@ -411,25 +411,25 @@ export default function AdminServicesPage() {
                     placeholder="/services/web-development.png"
                     value={form.coverImageUrl}
                     onChange={(e) => setForm({ ...form, coverImageUrl: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Display Sort Order
                   </label>
                   <input
                     type="number"
                     value={form.displayOrder}
                     onChange={(e) => setForm({ ...form, displayOrder: parseInt(e.target.value, 10) || 0 })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Deliverables (comma-separated)
                 </label>
                 <input
@@ -437,12 +437,12 @@ export default function AdminServicesPage() {
                   placeholder="Next.js App, Mobile App, API Integration, Admin Dashboard"
                   value={form.deliverables}
                   onChange={(e) => setForm({ ...form, deliverables: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Key Benefits (comma-separated)
                 </label>
                 <input
@@ -450,7 +450,7 @@ export default function AdminServicesPage() {
                   placeholder="Fast turnaround, 99.9% uptime, Full source code ownership"
                   value={form.benefits}
                   onChange={(e) => setForm({ ...form, benefits: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
@@ -460,9 +460,9 @@ export default function AdminServicesPage() {
                     type="checkbox"
                     checked={form.isPublished}
                     onChange={(e) => setForm({ ...form, isPublished: e.target.checked })}
-                    className="w-4 h-4 rounded text-[#7025B9] focus:ring-[#7025B9] border-slate-300"
+                    className="w-4 h-4 rounded text-[#1E3C65] focus:ring-[#1E3C65] border-slate-300"
                   />
-                  <span className="text-xs font-medium text-[#271044]">
+                  <span className="text-xs font-medium text-[#1E3C65]">
                     Publish live on public BITnWit website
                   </span>
                 </label>
@@ -478,7 +478,7 @@ export default function AdminServicesPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-[#FF790E] hover:bg-[#e66c0b] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
+                  className="px-5 py-2.5 rounded-xl bg-[#E5001C] hover:bg-[#c70018] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
                 >
                   {editingService ? 'Save Changes' : 'Create Service'}
                 </button>

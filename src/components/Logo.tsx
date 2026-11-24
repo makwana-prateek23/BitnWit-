@@ -12,8 +12,8 @@ export default function Logo({ withTagline = false, className = '' }: LogoProps)
       <Image src="/bitnwit-logo-transparent.png" alt="BITnWIT" width={1919} height={820} priority className="h-10 w-auto object-contain object-left" />
       {withTagline && (
         <span className="mt-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-slate-500">
-          Innovate <span className="text-rabbit">• Build</span>{' '}
-          <span className="text-signal">• Solve</span>
+          Innovate <span className="text-navy">• Build</span>{' '}
+          <span className="text-red">• Solve</span>
         </span>
       )}
     </Link>

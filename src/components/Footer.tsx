@@ -62,7 +62,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative mt-20 overflow-hidden bg-[#141522] text-[#F5F5FA] border-t border-white/5 transition-colors duration-300">
+    <footer className="relative mt-20 overflow-hidden bg-[#010313] text-[#FCEBE5] border-t border-white/10 transition-colors duration-300">
       <div className="relative mx-auto w-full max-w-[1720px] px-6 pb-14 pt-16 sm:px-8 lg:px-12 2xl:px-16">
         {/* MAIN 4-COLUMN NEUMORPHIC GRID */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12 2xl:gap-16">
@@ -79,9 +79,9 @@ export default function Footer() {
                 />
               </Link>
 
-              <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-neu-purple">
-                Innovate <span className="text-white">• Build</span>{' '}
-                <span className="text-[#FF790E]">• Solve</span>
+              <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-white">
+                Innovate <span className="text-white/60">• Build</span>{' '}
+                <span className="text-red">• Solve</span>
               </p>
 
               <p className="mt-3 max-w-md text-xs sm:text-sm leading-relaxed text-slate-400">
@@ -129,7 +129,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-400 transition-all duration-200 hover:-translate-y-1 hover:border-neu-purple/50 hover:bg-neu-purple/20 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-400 transition-all duration-200 hover:-translate-y-1 hover:border-navy hover:bg-navy/30 hover:text-white"
                 >
                   <Icon size={16} />
                 </a>
@@ -151,9 +151,9 @@ export default function Footer() {
                   >
                     <span className="relative">
                       {link.label}
-                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-neu-purple transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-red transition-all duration-300 group-hover:w-full" />
                     </span>
-                    <AiOutlineArrowRight className="text-[10px] opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-neu-purple" />
+                    <AiOutlineArrowRight className="text-[10px] opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-red" />
                   </Link>
                 </li>
               ))}
@@ -174,9 +174,9 @@ export default function Footer() {
                   >
                     <span className="relative">
                       {link.label}
-                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#FF790E] transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-red transition-all duration-300 group-hover:w-full" />
                     </span>
-                    <AiOutlineArrowRight className="text-[10px] opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#FF790E]" />
+                    <AiOutlineArrowRight className="text-[10px] opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-red" />
                   </Link>
                 </li>
               ))}
@@ -198,7 +198,7 @@ export default function Footer() {
                     >
                       <span className="relative">
                         {link.label}
-                        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-neu-purple transition-all duration-300 group-hover:w-full" />
+                        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-red transition-all duration-300 group-hover:w-full" />
                       </span>
                     </Link>
                   </li>
@@ -208,8 +208,8 @@ export default function Footer() {
 
             {/* AI Assistant Quick Trigger */}
             <div className="mt-6 pt-5 border-t border-white/10">
-              <TalkToRabbitButton className="group inline-flex items-center gap-1.5 text-xs font-bold text-purple-300 transition-colors hover:text-white">
-                <LuSparkles size={13} className="text-neu-purple group-hover:scale-110 transition-transform" />
+              <TalkToRabbitButton className="group inline-flex items-center gap-1.5 text-xs font-bold text-slate-200 transition-colors hover:text-white">
+                <LuSparkles size={13} className="text-red group-hover:scale-110 transition-transform" />
                 <span>Talk to White Rabbit</span>
               </TalkToRabbitButton>
             </div>

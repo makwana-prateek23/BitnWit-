@@ -38,11 +38,11 @@ export default function NeuThemeToggle({ className = '', showLabel = false }: Ne
         aria-checked={isDark}
         aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
         onClick={toggleTheme}
-        className="relative inline-flex h-9 w-16 shrink-0 cursor-pointer items-center rounded-full neu-recessed p-1 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neu-purple"
+        className="relative inline-flex h-9 w-16 shrink-0 cursor-pointer items-center rounded-full neu-recessed p-1 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-navy dark:focus:ring-red"
       >
         <span
           className={`flex h-7 w-7 items-center justify-center rounded-full neu-raised transition-transform duration-300 ${
-            isDark ? 'translate-x-7 text-neu-yellow' : 'translate-x-0 text-amber-500'
+            isDark ? 'translate-x-7 text-white' : 'translate-x-0 text-navy'
           }`}
         >
           {isDark ? <FiMoon size={14} /> : <FiSun size={14} />}

@@ -25,12 +25,12 @@ export default function NeuBadge({
   children,
 }: NeuBadgeProps) {
   const colorStyles = {
-    default: 'text-neu-text border-neu-border',
-    purple: 'text-neu-purple border-neu-purple/30',
-    yellow: 'text-amber-700 dark:text-amber-300 border-amber-300/40',
-    maroon: 'text-[#642E42] dark:text-[#A95B73] border-[#642E42]/30',
+    default: 'text-navy border-navy/20 dark:text-cream dark:border-cream/20',
+    purple: 'text-navy border-navy/30 dark:text-cream dark:border-cream/30',
+    yellow: 'text-navy border-navy/25 dark:text-cream dark:border-cream/25',
+    maroon: 'text-navy border-navy/25 dark:text-cream dark:border-cream/25',
     green: 'text-emerald-700 dark:text-emerald-400 border-emerald-300/30',
-    orange: 'text-orange-700 dark:text-orange-400 border-orange-300/30',
+    orange: 'text-red border-red/30',
   }[color];
 
   const variantStyles = {
@@ -45,12 +45,12 @@ export default function NeuBadge({
   }[size];
 
   const defaultDotColor = {
-    default: 'bg-neu-purple',
-    purple: 'bg-neu-purple',
-    yellow: 'bg-neu-yellow',
-    maroon: 'bg-[#642E42] dark:bg-[#A95B73]',
+    default: 'bg-red',
+    purple: 'bg-red',
+    yellow: 'bg-navy',
+    maroon: 'bg-navy',
     green: 'bg-emerald-500',
-    orange: 'bg-orange-500',
+    orange: 'bg-red',
   }[color];
 
   return (

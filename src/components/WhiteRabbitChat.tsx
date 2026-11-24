@@ -252,7 +252,7 @@ export default function WhiteRabbitChat() {
             type="button"
             onClick={() => setIsOpen(true)}
             aria-label="Open White Rabbit AI Assistant"
-            className="group relative flex items-center gap-3 rounded-full border border-purple-300/60 bg-gradient-to-r from-ink via-[#4b1473] to-rabbit py-2.5 pl-3 pr-5 text-white shadow-2xl shadow-purple-900/40 transition-all duration-300 hover:scale-105 hover:shadow-purple-900/60 focus:outline-none focus:ring-4 focus:ring-rabbit/30"
+            className="group relative flex items-center gap-3 rounded-full border border-navy/30 bg-navy py-2.5 pl-3 pr-5 text-white shadow-2xl shadow-black/30 transition-all duration-300 hover:scale-105 hover:bg-[#152a47] focus:outline-none focus:ring-4 focus:ring-navy/30"
           >
             <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-white/60 bg-white shadow-md">
               <Image
@@ -266,11 +266,11 @@ export default function WhiteRabbitChat() {
             </span>
             <div className="text-left">
               <p className="text-xs font-bold leading-tight tracking-wide text-white">White Rabbit AI</p>
-              <p className="text-[10px] font-medium text-purple-200">Online • Ask anything</p>
+              <p className="text-[10px] font-medium text-cream/80">Online • Ask anything</p>
             </div>
             <span className="absolute -top-1.5 -right-1.5 flex h-3.5 w-3.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
-              <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-signal" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red opacity-75" />
+              <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-red" />
             </span>
           </button>
         </motion.div>
@@ -291,7 +291,7 @@ export default function WhiteRabbitChat() {
             }`}
           >
             {/* Header */}
-            <div className="flex h-16 items-center justify-between border-b border-slate-100 bg-gradient-to-r from-ink via-[#380e57] to-rabbit px-4 text-white">
+            <div className="flex h-16 items-center justify-between border-b border-white/10 bg-navy px-4 text-white">
               <div
                 className="flex cursor-pointer items-center gap-3"
                 onClick={() => isMinimized && setIsMinimized(false)}
@@ -309,11 +309,11 @@ export default function WhiteRabbitChat() {
                 <div>
                   <h3 className="text-sm font-bold tracking-tight text-white flex items-center gap-1.5">
                     White Rabbit AI
-                    <span className="rounded-full bg-rabbit/40 px-2 py-0.5 text-[9px] font-semibold text-purple-200 uppercase tracking-wider">
+                    <span className="rounded-full bg-white/15 px-2 py-0.5 text-[9px] font-semibold text-cream uppercase tracking-wider">
                       Guide
                     </span>
                   </h3>
-                  <p className="text-[11px] text-purple-200">BITnWIT Interactive Assistant</p>
+                  <p className="text-[11px] text-cream/80">BITnWIT Interactive Assistant</p>
                 </div>
               </div>
 
@@ -323,7 +323,7 @@ export default function WhiteRabbitChat() {
                   onClick={resetChat}
                   title="Reset conversation"
                   aria-label="Reset conversation"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-purple-200 transition hover:bg-white/10 hover:text-white"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-cream/80 transition hover:bg-white/10 hover:text-white"
                 >
                   <AiOutlineReload size={14} />
                 </button>
@@ -332,7 +332,7 @@ export default function WhiteRabbitChat() {
                   onClick={() => setIsMinimized((v) => !v)}
                   title={isMinimized ? 'Expand' : 'Minimize'}
                   aria-label={isMinimized ? 'Expand chat' : 'Minimize chat'}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-purple-200 transition hover:bg-white/10 hover:text-white"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-cream/80 transition hover:bg-white/10 hover:text-white"
                 >
                   <AiOutlineMinus size={14} />
                 </button>
@@ -341,7 +341,7 @@ export default function WhiteRabbitChat() {
                   onClick={() => setIsOpen(false)}
                   title="Close chat"
                   aria-label="Close chat"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-purple-200 transition hover:bg-white/10 hover:text-white"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-cream/80 transition hover:bg-white/10 hover:text-white"
                 >
                   <AiOutlineClose size={16} />
                 </button>
@@ -361,7 +361,7 @@ export default function WhiteRabbitChat() {
                       <div
                         className={`max-w-[85%] rounded-2xl p-3.5 shadow-sm leading-relaxed ${
                           msg.sender === 'user'
-                            ? 'rounded-tr-xs bg-rabbit text-white'
+                            ? 'rounded-tr-xs bg-navy text-white'
                             : 'rounded-tl-xs border border-slate-200/80 bg-white text-ink'
                         }`}
                       >
@@ -393,7 +393,7 @@ export default function WhiteRabbitChat() {
                               key={suggestion}
                               type="button"
                               onClick={() => handleSend(suggestion)}
-                              className="rounded-full border border-purple-200 bg-white px-3 py-1 text-xs font-semibold text-rabbit shadow-xs transition hover:border-rabbit hover:bg-purple-50 active:scale-95 text-left"
+                              className="rounded-full border border-navy/20 bg-white px-3 py-1 text-xs font-semibold text-navy shadow-xs transition hover:border-navy hover:bg-cream/40 active:scale-95 text-left"
                             >
                               {suggestion}
                             </button>
@@ -406,9 +406,9 @@ export default function WhiteRabbitChat() {
                   {/* Typing Indicator */}
                   {isTyping && (
                     <div className="flex items-center gap-1.5 rounded-2xl rounded-tl-xs border border-slate-200 bg-white px-4 py-3 shadow-sm w-fit">
-                      <span className="h-2 w-2 animate-bounce rounded-full bg-rabbit [animation-delay:-0.3s]" />
-                      <span className="h-2 w-2 animate-bounce rounded-full bg-rabbit [animation-delay:-0.15s]" />
-                      <span className="h-2 w-2 animate-bounce rounded-full bg-rabbit" />
+                      <span className="h-2 w-2 animate-bounce rounded-full bg-navy [animation-delay:-0.3s]" />
+                      <span className="h-2 w-2 animate-bounce rounded-full bg-navy [animation-delay:-0.15s]" />
+                      <span className="h-2 w-2 animate-bounce rounded-full bg-navy" />
                       <span className="ml-1 text-xs text-slate-400">White Rabbit is typing…</span>
                     </div>
                   )}
@@ -430,7 +430,7 @@ export default function WhiteRabbitChat() {
                     </a>
                     <a
                       href="tel:+918949728810"
-                      className="flex items-center gap-1 font-semibold text-rabbit hover:underline"
+                      className="flex items-center gap-1 font-semibold text-navy hover:underline"
                     >
                       <AiOutlinePhone size={13} /> Call
                     </a>
@@ -451,13 +451,13 @@ export default function WhiteRabbitChat() {
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       placeholder="Ask White Rabbit about services, timelines, pricing…"
-                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-2.5 pl-4 pr-11 text-xs sm:text-sm text-ink outline-none transition placeholder:text-slate-400 focus:border-rabbit focus:bg-white focus:ring-2 focus:ring-rabbit/20"
+                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-2.5 pl-4 pr-11 text-xs sm:text-sm text-ink outline-none transition placeholder:text-slate-400 focus:border-navy focus:bg-white focus:ring-2 focus:ring-navy/20"
                     />
                     <button
                       type="submit"
                       disabled={!input.trim()}
                       aria-label="Send message"
-                      className="absolute right-1.5 flex h-8 w-8 items-center justify-center rounded-xl bg-rabbit text-white transition hover:bg-purple-800 disabled:cursor-not-allowed disabled:opacity-40"
+                      className="absolute right-1.5 flex h-8 w-8 items-center justify-center rounded-xl bg-red text-white transition hover:bg-[#c70018] disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       <AiOutlineSend size={14} />
                     </button>

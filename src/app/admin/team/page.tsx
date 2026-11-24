@@ -161,17 +161,17 @@ export default function AdminTeamPage() {
       {/* Header Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-purple-100/70 shadow-sm">
         <div>
-          <h2 className="text-base font-bold text-[#271044] font-display">
+          <h2 className="text-base font-bold text-[#1E3C65] font-display">
             Staff & Team Management ({members.length} Members)
           </h2>
-          <p className="text-xs text-[#77717F]">
+          <p className="text-xs text-[#4A586E]">
             Configure administrative permissions, staff roles, and public leadership profiles
           </p>
         </div>
 
         <button
           onClick={openCreateModal}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#FF790E] hover:bg-[#e66c0b] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all self-start sm:self-auto"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#E5001C] hover:bg-[#c70018] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all self-start sm:self-auto"
         >
           <FiPlus className="w-4 h-4" />
           <span>Add Team Member</span>
@@ -197,7 +197,7 @@ export default function AdminTeamPage() {
               <div>
                 {/* Profile Header */}
                 <div className="flex items-center gap-3.5 mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#271044] to-[#7025B9] p-0.5 overflow-hidden shrink-0 shadow-sm">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1E3C65] to-[#1E3C65] p-0.5 overflow-hidden shrink-0 shadow-sm">
                     <img
                       src={m.profileImageUrl || '/bitty-mascot.png'}
                       alt={m.fullName}
@@ -209,7 +209,7 @@ export default function AdminTeamPage() {
                     <h3 className="text-sm font-bold text-slate-900 truncate font-display">
                       {m.fullName}
                     </h3>
-                    <p className="text-xs text-[#7025B9] font-medium truncate">
+                    <p className="text-xs text-[#1E3C65] font-medium truncate">
                       {m.designation}
                     </p>
                     <span className="text-[10px] text-slate-400 font-mono">
@@ -219,7 +219,7 @@ export default function AdminTeamPage() {
                 </div>
 
                 {/* Bio snippet */}
-                <p className="text-xs text-[#77717F] leading-relaxed line-clamp-2">
+                <p className="text-xs text-[#4A586E] leading-relaxed line-clamp-2">
                   {m.bio || 'Core member of the BITnWit engineering and product delivery team.'}
                 </p>
 
@@ -291,7 +291,7 @@ export default function AdminTeamPage() {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => openEditModal(m)}
-                    className="p-1.5 rounded-lg text-[#7025B9] hover:bg-purple-50 transition-colors"
+                    className="p-1.5 rounded-lg text-[#1E3C65] hover:bg-purple-50 transition-colors"
                     title="Edit Member"
                   >
                     <FiEdit className="w-4 h-4" />
@@ -315,7 +315,7 @@ export default function AdminTeamPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-              <h3 className="text-lg font-bold text-[#271044] font-display">
+              <h3 className="text-lg font-bold text-[#1E3C65] font-display">
                 {editingMember ? 'Edit Staff Profile' : 'Add Team Member'}
               </h3>
               <button
@@ -328,7 +328,7 @@ export default function AdminTeamPage() {
 
             <form onSubmit={handleSave} className="mt-5 space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Full Name *
                 </label>
                 <input
@@ -337,13 +337,13 @@ export default function AdminTeamPage() {
                   placeholder="e.g. Prateek Makwana"
                   value={form.fullName}
                   onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Designation *
                   </label>
                   <input
@@ -352,11 +352,11 @@ export default function AdminTeamPage() {
                     placeholder="e.g. Founder & Tech Lead"
                     value={form.designation}
                     onChange={(e) => setForm({ ...form, designation: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Department
                   </label>
                   <input
@@ -364,13 +364,13 @@ export default function AdminTeamPage() {
                     placeholder="e.g. Engineering"
                     value={form.department}
                     onChange={(e) => setForm({ ...form, department: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Admin Access Permission
                 </label>
                 <select
@@ -381,7 +381,7 @@ export default function AdminTeamPage() {
                       adminAccessRole: e.target.value as AdminRole | 'NONE',
                     })
                   }
-                  className="w-full px-3 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 >
                   <option value="NONE">No Portal Access (Public Team Only)</option>
                   <option value="EDITOR">Editor (Can edit blogs & portfolio)</option>
@@ -391,7 +391,7 @@ export default function AdminTeamPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Bio / Responsibilities
                 </label>
                 <textarea
@@ -399,13 +399,13 @@ export default function AdminTeamPage() {
                   placeholder="Professional background and technical leadership focus..."
                   value={form.bio}
                   onChange={(e) => setForm({ ...form, bio: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
               <div className="grid grid-cols-3 gap-2">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     LinkedIn
                   </label>
                   <input
@@ -413,11 +413,11 @@ export default function AdminTeamPage() {
                     placeholder="https://..."
                     value={form.linkedin}
                     onChange={(e) => setForm({ ...form, linkedin: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900"
+                    className="w-full px-3 py-2 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     GitHub
                   </label>
                   <input
@@ -425,11 +425,11 @@ export default function AdminTeamPage() {
                     placeholder="https://..."
                     value={form.github}
                     onChange={(e) => setForm({ ...form, github: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900"
+                    className="w-full px-3 py-2 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Twitter / X
                   </label>
                   <input
@@ -437,7 +437,7 @@ export default function AdminTeamPage() {
                     placeholder="https://..."
                     value={form.twitter}
                     onChange={(e) => setForm({ ...form, twitter: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900"
+                    className="w-full px-3 py-2 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900"
                   />
                 </div>
               </div>
@@ -448,9 +448,9 @@ export default function AdminTeamPage() {
                     type="checkbox"
                     checked={form.isVisibleOnWebsite}
                     onChange={(e) => setForm({ ...form, isVisibleOnWebsite: e.target.checked })}
-                    className="w-4 h-4 rounded text-[#7025B9] focus:ring-[#7025B9] border-slate-300"
+                    className="w-4 h-4 rounded text-[#1E3C65] focus:ring-[#1E3C65] border-slate-300"
                   />
-                  <span className="text-xs font-semibold text-[#271044]">
+                  <span className="text-xs font-semibold text-[#1E3C65]">
                     Visible on Public About Page
                   </span>
                 </label>
@@ -460,9 +460,9 @@ export default function AdminTeamPage() {
                     type="checkbox"
                     checked={form.isActive}
                     onChange={(e) => setForm({ ...form, isActive: e.target.checked })}
-                    className="w-4 h-4 rounded text-[#7025B9] focus:ring-[#7025B9] border-slate-300"
+                    className="w-4 h-4 rounded text-[#1E3C65] focus:ring-[#1E3C65] border-slate-300"
                   />
-                  <span className="text-xs font-semibold text-[#271044]">
+                  <span className="text-xs font-semibold text-[#1E3C65]">
                     Active Employee Status
                   </span>
                 </label>
@@ -478,7 +478,7 @@ export default function AdminTeamPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-[#FF790E] hover:bg-[#e66c0b] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
+                  className="px-5 py-2.5 rounded-xl bg-[#E5001C] hover:bg-[#c70018] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
                 >
                   {editingMember ? 'Save Changes' : 'Add Team Member'}
                 </button>

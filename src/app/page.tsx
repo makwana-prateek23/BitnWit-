@@ -293,7 +293,7 @@ export default function HomePage() {
 
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
             <NeuTiltCard maxTilt={5} scale={1.02} elevation="raised" className="p-6 sm:p-7 space-y-3">
-              <div className="h-10 w-10 rounded-xl neu-recessed flex items-center justify-center text-neu-purple font-bold">
+              <div className="h-10 w-10 rounded-xl neu-recessed flex items-center justify-center text-navy font-bold">
                 01
               </div>
               <h3 className="text-lg font-bold text-neu-text">Direct Engineering Access</h3>
@@ -303,7 +303,7 @@ export default function HomePage() {
             </NeuTiltCard>
 
             <NeuTiltCard maxTilt={5} scale={1.02} elevation="raised" className="p-6 sm:p-7 space-y-3">
-              <div className="h-10 w-10 rounded-xl neu-recessed flex items-center justify-center text-neu-yellow font-bold">
+              <div className="h-10 w-10 rounded-xl neu-recessed flex items-center justify-center text-navy font-bold">
                 02
               </div>
               <h3 className="text-lg font-bold text-neu-text">Sub-Second Performance</h3>
@@ -313,7 +313,7 @@ export default function HomePage() {
             </NeuTiltCard>
 
             <NeuTiltCard maxTilt={5} scale={1.02} elevation="raised" className="p-6 sm:p-7 space-y-3">
-              <div className="h-10 w-10 rounded-xl neu-recessed flex items-center justify-center text-[#FF790E] font-bold">
+              <div className="h-10 w-10 rounded-xl neu-recessed flex items-center justify-center text-navy font-bold">
                 03
               </div>
               <h3 className="text-lg font-bold text-neu-text">Practical AI Workflows</h3>
@@ -323,7 +323,7 @@ export default function HomePage() {
             </NeuTiltCard>
 
             <NeuTiltCard maxTilt={5} scale={1.02} elevation="raised" className="p-6 sm:p-7 space-y-3">
-              <div className="h-10 w-10 rounded-xl neu-recessed flex items-center justify-center text-emerald-500 font-bold">
+              <div className="h-10 w-10 rounded-xl neu-recessed flex items-center justify-center text-navy font-bold">
                 04
               </div>
               <h3 className="text-lg font-bold text-neu-text">Transparent Milestones</h3>
@@ -369,11 +369,11 @@ export default function HomePage() {
                     className="flex h-full flex-col justify-between p-6 sm:p-8"
                   >
                     <div>
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl neu-recessed text-neu-purple group-hover:text-neu-yellow group-hover:shadow-[0_0_20px_rgba(139,124,246,0.35)] transition-all duration-300">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl neu-recessed text-navy group-hover:text-red transition-all duration-300">
                         <ServiceIcon name={service.icon} size={24} />
                       </div>
 
-                      <h3 className="mt-5 text-lg font-bold text-neu-text group-hover:text-neu-purple transition-colors">
+                      <h3 className="mt-5 text-lg font-bold text-neu-text group-hover:text-navy transition-colors">
                         {service.title}
                       </h3>
 
@@ -383,7 +383,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="mt-6 flex items-center justify-between border-t border-neu-border pt-4">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-neu-textSec group-hover:text-neu-purple transition-colors">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-neu-textSec group-hover:text-navy transition-colors">
                         <span>Explore Service</span>
                         <AiOutlineArrowRight size={13} className="transition-transform group-hover:translate-x-1.5" />
                       </span>
@@ -516,10 +516,10 @@ export default function HomePage() {
               <Reveal key={step.title} delay={i * 0.08}>
                 <NeuTiltCard maxTilt={6} scale={1.025} elevation="raised" className="text-center h-full flex flex-col items-center justify-between p-6 sm:p-8">
                   <div className="flex flex-col items-center">
-                    <div className="h-14 w-14 rounded-2xl neu-recessed flex items-center justify-center text-neu-purple group-hover:text-neu-yellow transition-colors">
+                    <div className="h-14 w-14 rounded-2xl neu-recessed flex items-center justify-center text-navy group-hover:text-red transition-colors">
                       <step.icon size={24} />
                     </div>
-                    <span className="mt-4 text-xs font-mono font-bold uppercase tracking-widest text-neu-purple">
+                    <span className="mt-4 text-xs font-mono font-bold uppercase tracking-widest text-navy">
                       Step 0{i + 1}
                     </span>
                     <h3 className="mt-1 text-lg font-bold text-neu-text">{step.title}</h3>
@@ -538,7 +538,7 @@ export default function HomePage() {
           <Reveal className="neu-recessed rounded-[2.5rem] p-8 sm:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat) => (
               <div key={stat.label} className="space-y-2 group cursor-default">
-                <Counter value={stat.value} suffix={stat.suffix} className="text-4xl sm:text-5xl font-extrabold text-neu-purple transition-transform duration-300 group-hover:scale-110" />
+                <Counter value={stat.value} suffix={stat.suffix} className="text-4xl sm:text-5xl font-extrabold text-navy transition-transform duration-300 group-hover:scale-110" />
                 <p className="text-xs uppercase tracking-wider font-bold text-neu-textSec">
                   {stat.label}
                 </p>
@@ -550,7 +550,7 @@ export default function HomePage() {
             {differentiators.map((diff, i) => (
               <Reveal key={diff.title} delay={i * 0.06}>
                 <NeuTiltCard maxTilt={6} scale={1.025} elevation="raised" className="h-full p-6 sm:p-7 space-y-3">
-                  <div className="h-11 w-11 rounded-xl neu-recessed flex items-center justify-center text-neu-purple">
+                  <div className="h-11 w-11 rounded-xl neu-recessed flex items-center justify-center text-navy">
                     <diff.icon size={20} />
                   </div>
                   <h3 className="text-base font-bold text-neu-text">{diff.title}</h3>
@@ -587,7 +587,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <Link href="/clients" className="inline-flex items-center gap-2 text-sm font-bold text-neu-purple hover:underline">
+              <Link href="/clients" className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:underline">
                 <span>View Collaboration Models</span>
                 <AiOutlineArrowRight size={14} />
               </Link>
@@ -620,7 +620,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-bold text-neu-purple hover:underline">
+              <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:underline">
                 <span>Check Sprint Availability</span>
                 <AiOutlineArrowRight size={14} />
               </Link>
@@ -646,9 +646,9 @@ export default function HomePage() {
             {techStack.map((tech) => (
               <span
                 key={tech.name}
-                className="px-4 py-2.5 rounded-xl neu-raised text-xs font-bold text-neu-text inline-flex items-center gap-2 transition-all duration-200 hover:-translate-y-1 hover:shadow-neu-raised-lg hover:text-neu-purple cursor-default"
+                className="px-4 py-2.5 rounded-xl neu-raised text-xs font-bold text-neu-text inline-flex items-center gap-2 transition-all duration-200 hover:-translate-y-1 hover:shadow-neu-raised-lg hover:text-navy cursor-default"
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-neu-purple" />
+                <span className="h-1.5 w-1.5 rounded-full bg-navy" />
                 <span>{tech.name}</span>
                 <span className="text-neu-textSec/60 font-normal">({tech.category})</span>
               </span>
@@ -675,7 +675,7 @@ export default function HomePage() {
               <Reveal key={t.name} delay={i * 0.08}>
                 <NeuTiltCard maxTilt={5} scale={1.02} elevation="raised" className="h-full flex flex-col justify-between p-6 sm:p-8 space-y-4">
                   <div>
-                    <div className="flex items-center gap-1 text-amber-500 mb-3">
+                    <div className="flex items-center gap-1 text-red mb-3">
                       {[...Array(t.rating)].map((_, idx) => (
                         <AiFillStar key={idx} size={16} />
                       ))}
@@ -686,7 +686,7 @@ export default function HomePage() {
                   </div>
 
                   <div className="border-t border-neu-border pt-4 flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-full neu-recessed flex items-center justify-center font-bold text-xs text-neu-purple">
+                    <div className="h-9 w-9 rounded-full neu-recessed flex items-center justify-center font-bold text-xs text-navy">
                       {t.name.slice(0, 2).toUpperCase()}
                     </div>
                     <div>
@@ -723,9 +723,6 @@ export default function HomePage() {
 
         {/* ------------------------------------------------------------- 15. FINAL CONVERSION BANNER */}
         <Reveal className="relative overflow-hidden rounded-[2.5rem] 2xl:rounded-[3.5rem] neu-raised-lg p-10 sm:p-16 text-center">
-          <div className="hero-blob hero-blob-blue opacity-30" aria-hidden="true" />
-          <div className="hero-blob hero-blob-red opacity-20" aria-hidden="true" />
-
           <div className="relative z-10 max-w-3xl mx-auto space-y-6">
             <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl neu-raised p-2 text-center transition-transform duration-300 hover:scale-110 hover:shadow-neu-raised-lg cursor-pointer">
               <Image
@@ -742,7 +739,7 @@ export default function HomePage() {
             </NeuBadge>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neu-text tracking-tight">
-              Ready to build something <span className="text-neu-purple">remarkable</span>?
+              Ready to build something <span className="text-red">remarkable</span>?
             </h2>
 
             <p className="text-base sm:text-lg text-neu-textSec leading-relaxed">

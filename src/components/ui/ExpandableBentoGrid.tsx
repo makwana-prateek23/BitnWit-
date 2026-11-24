@@ -48,9 +48,9 @@ const bentoItems: BentoItem[] = [
     stats: '< 180ms',
     statsLabel: 'Median inference latency',
     tags: ['Custom RAG', 'Multi-Agent Routing', 'Enterprise Guardrails', 'LangChain / Vercel AI'],
-    icon: <AiOutlineRobot className="text-2xl text-neu-purple" />,
+    icon: <AiOutlineRobot className="text-2xl text-navy" />,
     colSpan: 'md:col-span-2 lg:col-span-2',
-    accentColor: '#9A8AFF',
+    accentColor: '#1E3C65',
     details: {
       overview:
         'We engineer practical production AI implementations rather than shallow demo wrappers. Our systems connect directly to your relational databases, vector embeddings, and internal APIs with stringent safety boundaries.',
@@ -72,9 +72,9 @@ const bentoItems: BentoItem[] = [
     stats: '99/100',
     statsLabel: 'Lighthouse mobile score',
     tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Vercel Edge'],
-    icon: <AiOutlineThunderbolt className="text-2xl text-amber-500" />,
+    icon: <AiOutlineThunderbolt className="text-2xl text-red" />,
     colSpan: 'md:col-span-1 lg:col-span-1',
-    accentColor: '#F5C84C',
+    accentColor: '#E5001C',
     details: {
       overview:
         'Every millisecond of latency costs conversions. We build with aggressive edge caching, optimized dynamic fonts, responsive fluid typography, and zero hydration layout shifts.',
@@ -96,9 +96,9 @@ const bentoItems: BentoItem[] = [
     stats: '60 FPS',
     statsLabel: 'Sustained frame rendering',
     tags: ['React Native', 'Flutter', 'Offline-First SQLite', 'Store Compliance'],
-    icon: <AiOutlineMobile className="text-2xl text-emerald-500" />,
+    icon: <AiOutlineMobile className="text-2xl text-navy" />,
     colSpan: 'md:col-span-1 lg:col-span-1',
-    accentColor: '#10B981',
+    accentColor: '#1E3C65',
     details: {
       overview:
         'Launch on both Apple App Store and Google Play from a single clean codebase. Built with native performance bridges and validated on real device test matrices.',
@@ -120,9 +120,9 @@ const bentoItems: BentoItem[] = [
     stats: '99.99%',
     statsLabel: 'Uptime reliability design',
     tags: ['Node.js / Go', 'PostgreSQL', 'Redis BullMQ', 'Docker / K8s'],
-    icon: <AiOutlineCode className="text-2xl text-blue-500" />,
+    icon: <AiOutlineCode className="text-2xl text-navy" />,
     colSpan: 'md:col-span-2 lg:col-span-2',
-    accentColor: '#3B82F6',
+    accentColor: '#1E3C65',
     details: {
       overview:
         'Architectures structured to handle traffic spikes without degraded database locks or dropped transactions. Comprehensive idempotency, automated backups, and rate-limiting.',
@@ -144,9 +144,9 @@ const bentoItems: BentoItem[] = [
     stats: '3.4x',
     statsLabel: 'Average conversion lift',
     tags: ['Schema.org', 'GA4 Server GTM', 'Search Console', 'Technical SEO'],
-    icon: <AiOutlineBarChart className="text-2xl text-rose-500" />,
+    icon: <AiOutlineBarChart className="text-2xl text-navy" />,
     colSpan: 'md:col-span-3 lg:col-span-3',
-    accentColor: '#F43F5E',
+    accentColor: '#1E3C65',
     details: {
       overview:
         'Traffic without conversion is vanity. We instrument granular funnel tracking, implement structured semantic JSON-LD metadata for rich snippets, and eliminate crawl bottlenecks.',
@@ -202,7 +202,7 @@ export default function ExpandableBentoGrid() {
               </div>
 
               {/* Title & Description */}
-              <h3 className="mt-6 text-xl font-bold tracking-tight text-neu-text group-hover:text-neu-purple transition-colors sm:text-2xl">
+              <h3 className="mt-6 text-xl font-bold tracking-tight text-neu-text group-hover:text-navy transition-colors sm:text-2xl">
                 {item.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-neu-textSec sm:text-base">
@@ -224,7 +224,7 @@ export default function ExpandableBentoGrid() {
 
             {/* Bottom Row Action */}
             <div className="mt-8 flex items-center justify-between border-t border-neu-border pt-4 text-xs font-semibold text-neu-textSec">
-              <span className="inline-flex items-center gap-1.5 transition-colors group-hover:text-neu-purple">
+              <span className="inline-flex items-center gap-1.5 transition-colors group-hover:text-navy">
                 <span>Click to view sprint deliverables & architecture</span>
                 <AiOutlineArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
               </span>
@@ -283,13 +283,13 @@ export default function ExpandableBentoGrid() {
 
                 {/* Deliverables List */}
                 <div className="mt-6 rounded-2xl neu-recessed p-5 sm:p-6 space-y-3">
-                  <div className="text-xs font-bold uppercase tracking-wider text-neu-purple">
+                  <div className="text-xs font-bold uppercase tracking-wider text-navy">
                     Verified Deliverables
                   </div>
                   <ul className="space-y-2.5">
                     {activeItem.details.deliverables.map((d, idx) => (
                       <li key={idx} className="flex items-start gap-2.5 text-sm text-neu-text">
-                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-neu-purple text-[10px] text-white">
+                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-navy text-[10px] text-white">
                           <AiOutlineCheck />
                         </span>
                         <span>{d}</span>

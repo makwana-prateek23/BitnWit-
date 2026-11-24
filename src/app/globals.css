@@ -1,29 +1,35 @@
 :root {
   color-scheme: light;
-  --color-ink: #252638;
-  --color-blue: #0874d1;
-  --color-red: #ff5a0a;
-  --color-purple: #8B7CF6;
-  --color-cloud: #E9EAF0;
-  --color-line: #D5D8E2;
+  --color-ink: #010313;
+  --color-cream: #FCEBE5;
+  --color-navy: #1E3C65;
+  --color-red: #E5001C;
+  --color-red-accent: #FF001E;
+  --color-white: #FFFFFF;
 
-  /* Master Neumorphic Tokens (Light) */
-  --neu-bg: #E9EAF0;
-  --neu-surface: #E9EAF0;
-  --neu-surface-sec: #F2F3F7;
-  --neu-text: #252638;
-  --neu-text-sec: #525468;
-  --neu-accent-purple: #8B7CF6;
-  --neu-accent-maroon: #642E42;
-  --neu-accent-yellow: #F5C84C;
-  --neu-border: rgba(255, 255, 255, 0.65);
-  --neu-border-subtle: rgba(163, 177, 198, 0.25);
+  /* Legacy tokens mapped strictly to palette */
+  --color-blue: #1E3C65;
+  --color-purple: #1E3C65;
+  --color-cloud: #FCEBE5;
+  --color-line: rgba(30, 60, 101, 0.14);
 
-  --neu-shadow-raised: -8px -8px 18px rgba(255, 255, 255, 0.85), 8px 8px 18px rgba(163, 177, 198, 0.55);
-  --neu-shadow-raised-sm: -4px -4px 10px rgba(255, 255, 255, 0.85), 4px 4px 10px rgba(163, 177, 198, 0.45);
-  --neu-shadow-raised-lg: -12px -12px 28px rgba(255, 255, 255, 0.9), 12px 12px 28px rgba(163, 177, 198, 0.65);
-  --neu-shadow-pressed: inset 5px 5px 10px rgba(163, 177, 198, 0.45), inset -5px -5px 10px rgba(255, 255, 255, 0.8);
-  --neu-shadow-recessed: inset 3px 3px 6px rgba(163, 177, 198, 0.5), inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+  /* Master Neumorphic Tokens (Light: Cream Background #FCEBE5) */
+  --neu-bg: #FCEBE5;
+  --neu-surface: #FCEBE5;
+  --neu-surface-sec: #F5DFD8;
+  --neu-text: #010313;
+  --neu-text-sec: #1E3C65;
+  --neu-accent-purple: #1E3C65;
+  --neu-accent-maroon: #1E3C65;
+  --neu-accent-yellow: #E5001C;
+  --neu-border: rgba(30, 60, 101, 0.14);
+  --neu-border-subtle: rgba(30, 60, 101, 0.08);
+
+  --neu-shadow-raised: -6px -6px 14px rgba(255, 255, 255, 0.9), 6px 6px 14px rgba(30, 60, 101, 0.12);
+  --neu-shadow-raised-sm: -3px -3px 8px rgba(255, 255, 255, 0.9), 3px 3px 8px rgba(30, 60, 101, 0.1);
+  --neu-shadow-raised-lg: -10px -10px 24px rgba(255, 255, 255, 0.95), 10px 10px 24px rgba(30, 60, 101, 0.16);
+  --neu-shadow-pressed: inset 4px 4px 8px rgba(30, 60, 101, 0.12), inset -4px -4px 8px rgba(255, 255, 255, 0.85);
+  --neu-shadow-recessed: inset 2px 2px 5px rgba(30, 60, 101, 0.12), inset -2px -2px 5px rgba(255, 255, 255, 0.9);
 
   /* Responsive Fluid Type Scales using CSS clamp() */
   --text-hero: clamp(2.35rem, 5.2vw + 0.8rem, 4.5rem);
@@ -38,27 +44,32 @@
 
 .dark {
   color-scheme: dark;
-  --color-ink: #F5F5FA;
-  --color-cloud: #191A24;
-  --color-line: #2B2E40;
+  --color-ink: #010313;
+  --color-cream: #FCEBE5;
+  --color-navy: #1E3C65;
+  --color-red: #E5001C;
+  --color-red-accent: #FF001E;
+  --color-white: #FFFFFF;
+  --color-cloud: #010313;
+  --color-line: rgba(252, 235, 229, 0.12);
 
-  /* Master Neumorphic Tokens (Dark) */
-  --neu-bg: #191A24;
-  --neu-surface: #202230;
-  --neu-surface-sec: #26293A;
-  --neu-text: #F5F5FA;
-  --neu-text-sec: #A4A6B7;
-  --neu-accent-purple: #9A8AFF;
-  --neu-accent-maroon: #A95B73;
-  --neu-accent-yellow: #F5C84C;
-  --neu-border: rgba(255, 255, 255, 0.08);
-  --neu-border-subtle: rgba(45, 48, 66, 0.4);
+  /* Master Neumorphic Tokens (Dark: Ink Background #010313) */
+  --neu-bg: #010313;
+  --neu-surface: #0a0e21;
+  --neu-surface-sec: #121833;
+  --neu-text: #FFFFFF;
+  --neu-text-sec: #FCEBE5;
+  --neu-accent-purple: #FCEBE5;
+  --neu-accent-maroon: #1E3C65;
+  --neu-accent-yellow: #E5001C;
+  --neu-border: rgba(252, 235, 229, 0.12);
+  --neu-border-subtle: rgba(252, 235, 229, 0.06);
 
-  --neu-shadow-raised: -6px -6px 16px rgba(45, 48, 66, 0.6), 6px 6px 16px rgba(14, 15, 22, 0.85);
-  --neu-shadow-raised-sm: -3px -3px 8px rgba(45, 48, 66, 0.5), 3px 3px 8px rgba(14, 15, 22, 0.8);
-  --neu-shadow-raised-lg: -10px -10px 24px rgba(45, 48, 66, 0.7), 10px 10px 24px rgba(14, 15, 22, 0.9);
-  --neu-shadow-pressed: inset 4px 4px 8px rgba(14, 15, 22, 0.9), inset -4px -4px 8px rgba(45, 48, 66, 0.5);
-  --neu-shadow-recessed: inset 3px 3px 6px rgba(14, 15, 22, 0.95), inset -3px -3px 6px rgba(45, 48, 66, 0.45);
+  --neu-shadow-raised: -6px -6px 16px rgba(30, 60, 101, 0.25), 6px 6px 16px rgba(0, 0, 0, 0.7);
+  --neu-shadow-raised-sm: -3px -3px 8px rgba(30, 60, 101, 0.2), 3px 3px 8px rgba(0, 0, 0, 0.6);
+  --neu-shadow-raised-lg: -10px -10px 24px rgba(30, 60, 101, 0.3), 10px 10px 24px rgba(0, 0, 0, 0.8);
+  --neu-shadow-pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.7), inset -4px -4px 8px rgba(30, 60, 101, 0.2);
+  --neu-shadow-recessed: inset 3px 3px 6px rgba(0, 0, 0, 0.8), inset -3px -3px 6px rgba(30, 60, 101, 0.15);
 }
 
 @tailwind base;
@@ -121,7 +132,11 @@ textarea:disabled {
 
 /* R-32: Visible Focus Rings */
 :focus-visible {
-  outline: 2px solid var(--neu-accent-purple);
+  outline: 2px solid var(--color-navy);
+  outline-offset: 3px;
+}
+.dark :focus-visible {
+  outline: 2px solid var(--color-red);
   outline-offset: 3px;
 }
 
@@ -137,16 +152,25 @@ textarea:disabled {
   }
 }
 
-/* Headings base */
+/* Headings base: Navy on light, White on dark */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color: var(--neu-text);
+  color: var(--color-navy);
   font-family: var(--font-primary), ui-sans-serif, system-ui, sans-serif;
   text-wrap: balance;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #FFFFFF;
 }
 
 /* Hero headings: Sora, weight 700-800 */
@@ -284,7 +308,12 @@ label {
 }
 
 ::selection {
-  background: rgba(139, 124, 246, 0.3);
+  background: rgba(30, 60, 101, 0.2);
+  color: #010313;
+}
+.dark ::selection {
+  background: rgba(229, 0, 28, 0.3);
+  color: #FFFFFF;
 }
 
 ::-webkit-scrollbar {
@@ -295,12 +324,12 @@ label {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(163, 177, 198, 0.45);
+  background: rgba(30, 60, 101, 0.3);
   border-radius: 999px;
   border: 2px solid var(--neu-bg);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neu-accent-purple);
+  background: var(--color-navy);
 }
 
 /* ================================================================= */
@@ -409,7 +438,7 @@ label {
 
 .glass-dark {
   position: relative;
-  background: linear-gradient(135deg, rgba(20, 22, 34, 0.95) 0%, rgba(14, 15, 24, 0.98) 100%);
+  background: var(--color-ink);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--neu-shadow-raised);
 }

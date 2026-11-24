@@ -152,10 +152,10 @@ export default function AdminSeoPage() {
       {/* Top Controls Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-purple-100/70 shadow-sm">
         <div>
-          <h2 className="text-base font-bold text-[#271044] font-display">
+          <h2 className="text-base font-bold text-[#1E3C65] font-display">
             Search Engine & Social Metadata
           </h2>
-          <p className="text-xs text-[#77717F]">
+          <p className="text-xs text-[#4A586E]">
             Optimize SERP rankings, search snippets, OpenGraph previews, and indexing instructions
           </p>
         </div>
@@ -172,7 +172,7 @@ export default function AdminSeoPage() {
             type="button"
             onClick={handleSave}
             disabled={saving}
-            className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[#FF790E] hover:bg-[#e66c0b] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[#E5001C] hover:bg-[#c70018] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all disabled:opacity-50"
           >
             <FiSave className="w-4 h-4" />
             <span>{saving ? 'Saving...' : 'Save Page SEO'}</span>
@@ -189,7 +189,7 @@ export default function AdminSeoPage() {
             onClick={() => handleSelectRoute(p.route)}
             className={`px-4 py-2 rounded-2xl text-xs font-semibold transition-all ${
               selectedRoute === p.route
-                ? 'bg-[#7025B9] text-white shadow-md shadow-purple-950/20'
+                ? 'bg-[#1E3C65] text-white shadow-md shadow-purple-950/20'
                 : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200/80'
             }`}
           >
@@ -208,7 +208,7 @@ export default function AdminSeoPage() {
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-semibold text-[#271044]">
+                <label className="text-xs font-semibold text-[#1E3C65]">
                   Page Meta Title *
                 </label>
                 <span className="text-[10px] font-mono text-slate-400">
@@ -220,13 +220,13 @@ export default function AdminSeoPage() {
                 required
                 value={form.pageTitle}
                 onChange={(e) => setForm({ ...form, pageTitle: e.target.value })}
-                className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
               />
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-semibold text-[#271044]">
+                <label className="text-xs font-semibold text-[#1E3C65]">
                   Meta Description *
                 </label>
                 <span className="text-[10px] font-mono text-slate-400">
@@ -238,31 +238,31 @@ export default function AdminSeoPage() {
                 required
                 value={form.metaDescription}
                 onChange={(e) => setForm({ ...form, metaDescription: e.target.value })}
-                className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#271044] mb-1">
+              <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                 Focus Keywords (comma-separated)
               </label>
               <input
                 type="text"
                 value={form.focusKeywords}
                 onChange={(e) => setForm({ ...form, focusKeywords: e.target.value })}
-                className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#271044] mb-1">
+              <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                 Canonical URL
               </label>
               <input
                 type="url"
                 value={form.canonicalUrl}
                 onChange={(e) => setForm({ ...form, canonicalUrl: e.target.value })}
-                className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
               />
             </div>
 
@@ -288,38 +288,38 @@ export default function AdminSeoPage() {
             </h3>
 
             <div>
-              <label className="block text-xs font-semibold text-[#271044] mb-1">
+              <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                 OG Social Title
               </label>
               <input
                 type="text"
                 value={form.ogTitle}
                 onChange={(e) => setForm({ ...form, ogTitle: e.target.value })}
-                className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#271044] mb-1">
+              <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                 OG Social Description
               </label>
               <textarea
                 rows={2}
                 value={form.ogDescription}
                 onChange={(e) => setForm({ ...form, ogDescription: e.target.value })}
-                className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#271044] mb-1">
+              <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                 OG Social Image URL
               </label>
               <input
                 type="text"
                 value={form.ogImageUrl}
                 onChange={(e) => setForm({ ...form, ogImageUrl: e.target.value })}
-                className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
               />
             </div>
           </div>
@@ -334,26 +334,26 @@ export default function AdminSeoPage() {
               <span>Google Desktop SERP Simulation</span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-[#F8F9FA] border border-slate-200 space-y-1 font-sans">
-              <div className="flex items-center gap-2 text-xs text-[#202124]">
-                <div className="w-4 h-4 rounded-full bg-[#271044] text-[9px] text-white flex items-center justify-center font-bold">
+            <div className="p-4 rounded-2xl bg-[#FCEBE5] border border-slate-200 space-y-1 font-sans">
+              <div className="flex items-center gap-2 text-xs text-[#010313]">
+                <div className="w-4 h-4 rounded-full bg-[#1E3C65] text-[9px] text-white flex items-center justify-center font-bold">
                   B
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[12px] font-medium leading-none text-[#202124]">
+                  <span className="text-[12px] font-medium leading-none text-[#010313]">
                     BITnWit Technologies
                   </span>
-                  <span className="text-[11px] text-[#4d5156] leading-none mt-0.5">
+                  <span className="text-[11px] text-[#1E3C65] leading-none mt-0.5">
                     {form.canonicalUrl}
                   </span>
                 </div>
               </div>
 
-              <div className="text-base text-[#1a0dab] font-medium hover:underline cursor-pointer pt-1 line-clamp-1">
+              <div className="text-base text-[#1E3C65] font-medium hover:underline cursor-pointer pt-1 line-clamp-1">
                 {form.pageTitle || 'Title not set'}
               </div>
 
-              <div className="text-xs text-[#4d5156] leading-relaxed line-clamp-2">
+              <div className="text-xs text-[#4A586E] leading-relaxed line-clamp-2">
                 {form.metaDescription || 'No description configured.'}
               </div>
             </div>
@@ -379,7 +379,7 @@ export default function AdminSeoPage() {
                 )}
               </div>
 
-              <div className="p-4 space-y-1 bg-[#F8F7FA]">
+              <div className="p-4 space-y-1 bg-[#FCEBE5]">
                 <span className="text-[10px] uppercase font-mono text-slate-500">
                   bitnwit.com
                 </span>

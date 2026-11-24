@@ -176,14 +176,14 @@ export default function AdminBlogsPage() {
               placeholder="Search articles by title or category..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+              className="w-full pl-10 pr-4 py-2 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
             />
           </div>
 
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700"
+            className="px-3 py-2 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700"
           >
             <option value="ALL">All Statuses ({posts.length})</option>
             <option value="PUBLISHED">Published</option>
@@ -194,7 +194,7 @@ export default function AdminBlogsPage() {
 
         <button
           onClick={openCreateModal}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#FF790E] hover:bg-[#e66c0b] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all self-start sm:self-auto"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#E5001C] hover:bg-[#c70018] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all self-start sm:self-auto"
         >
           <FiPlus className="w-4 h-4" />
           <span>Write Article</span>
@@ -215,7 +215,7 @@ export default function AdminBlogsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-[#F8F7FA] border-b border-slate-200/80 text-slate-500 font-semibold uppercase tracking-wider">
+                <tr className="bg-[#FCEBE5] border-b border-slate-200/80 text-slate-500 font-semibold uppercase tracking-wider">
                   <th className="py-3 px-4">Article</th>
                   <th className="py-3 px-4">Category & Tags</th>
                   <th className="py-3 px-4">Author</th>
@@ -276,7 +276,7 @@ export default function AdminBlogsPage() {
                       </a>
                       <button
                         onClick={() => openEditModal(post)}
-                        className="p-1.5 rounded-lg text-[#7025B9] hover:bg-purple-50 inline-block"
+                        className="p-1.5 rounded-lg text-[#1E3C65] hover:bg-purple-50 inline-block"
                         title="Edit Article"
                       >
                         <FiEdit className="w-4 h-4" />
@@ -302,7 +302,7 @@ export default function AdminBlogsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-3xl w-full shadow-2xl border border-slate-100 relative max-h-[92vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-              <h3 className="text-lg font-bold text-[#271044] font-display">
+              <h3 className="text-lg font-bold text-[#1E3C65] font-display">
                 {editingPost ? `Edit Article: ${editingPost.title}` : 'Compose New Article'}
               </h3>
               <button
@@ -320,7 +320,7 @@ export default function AdminBlogsPage() {
                 onClick={() => setActiveTab('content')}
                 className={`py-2 px-4 border-b-2 transition-colors ${
                   activeTab === 'content'
-                    ? 'border-[#7025B9] text-[#7025B9]'
+                    ? 'border-[#1E3C65] text-[#1E3C65]'
                     : 'border-transparent text-slate-500 hover:text-slate-900'
                 }`}
               >
@@ -331,7 +331,7 @@ export default function AdminBlogsPage() {
                 onClick={() => setActiveTab('seo')}
                 className={`py-2 px-4 border-b-2 transition-colors ${
                   activeTab === 'seo'
-                    ? 'border-[#7025B9] text-[#7025B9]'
+                    ? 'border-[#1E3C65] text-[#1E3C65]'
                     : 'border-transparent text-slate-500 hover:text-slate-900'
                 }`}
               >
@@ -342,7 +342,7 @@ export default function AdminBlogsPage() {
                 onClick={() => setActiveTab('preview')}
                 className={`py-2 px-4 border-b-2 transition-colors ${
                   activeTab === 'preview'
-                    ? 'border-[#7025B9] text-[#7025B9]'
+                    ? 'border-[#1E3C65] text-[#1E3C65]'
                     : 'border-transparent text-slate-500 hover:text-slate-900'
                 }`}
               >
@@ -355,7 +355,7 @@ export default function AdminBlogsPage() {
                 <>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-[#271044] mb-1">
+                      <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                         Post Title *
                       </label>
                       <input
@@ -371,12 +371,12 @@ export default function AdminBlogsPage() {
                             slug: editingPost ? form.slug : title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
                           });
                         }}
-                        className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                        className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-[#271044] mb-1">
+                      <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                         URL Slug *
                       </label>
                       <input
@@ -385,38 +385,38 @@ export default function AdminBlogsPage() {
                         placeholder="e.g. scaling-nextjs-14"
                         value={form.slug}
                         onChange={(e) => setForm({ ...form, slug: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                        className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-3 gap-3">
                     <div>
-                      <label className="block text-xs font-semibold text-[#271044] mb-1">
+                      <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                         Category
                       </label>
                       <input
                         type="text"
                         value={form.category}
                         onChange={(e) => setForm({ ...form, category: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                        className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-[#271044] mb-1">
+                      <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                         Author Name
                       </label>
                       <input
                         type="text"
                         value={form.authorName}
                         onChange={(e) => setForm({ ...form, authorName: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                        className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-[#271044] mb-1">
+                      <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                         Publication Status
                       </label>
                       <select
@@ -427,7 +427,7 @@ export default function AdminBlogsPage() {
                             status: e.target.value as 'PUBLISHED' | 'DRAFT' | 'SCHEDULED',
                           })
                         }
-                        className="w-full px-3 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                        className="w-full px-3 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                       >
                         <option value="PUBLISHED">Published</option>
                         <option value="DRAFT">Draft</option>
@@ -437,7 +437,7 @@ export default function AdminBlogsPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#271044] mb-1">
+                    <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                       Short Excerpt (Teaser) *
                     </label>
                     <textarea
@@ -446,12 +446,12 @@ export default function AdminBlogsPage() {
                       placeholder="Summary snippet displayed on blog index..."
                       value={form.excerpt}
                       onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                      className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#271044] mb-1">
+                    <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                       Article Body (Markdown) *
                     </label>
                     <textarea
@@ -460,7 +460,7 @@ export default function AdminBlogsPage() {
                       placeholder="Write your article in standard markdown (# Headings, **bold**, code blocks)..."
                       value={form.content}
                       onChange={(e) => setForm({ ...form, content: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                      className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 font-mono focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                     />
                   </div>
                 </>
@@ -469,7 +469,7 @@ export default function AdminBlogsPage() {
               {activeTab === 'seo' && (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[#271044] mb-1">
+                    <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                       Meta Title (Google SERP Title)
                     </label>
                     <input
@@ -477,12 +477,12 @@ export default function AdminBlogsPage() {
                       placeholder="60 characters recommended"
                       value={form.metaTitle}
                       onChange={(e) => setForm({ ...form, metaTitle: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                      className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#271044] mb-1">
+                    <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                       Meta Description (Search Snippet)
                     </label>
                     <textarea
@@ -490,26 +490,26 @@ export default function AdminBlogsPage() {
                       placeholder="150-160 characters recommended description for search engines..."
                       value={form.metaDescription}
                       onChange={(e) => setForm({ ...form, metaDescription: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                      className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#271044] mb-1">
+                    <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                       Cover / OG Social Image
                     </label>
                     <input
                       type="text"
                       value={form.coverImageUrl}
                       onChange={(e) => setForm({ ...form, coverImageUrl: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                      className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                     />
                   </div>
                 </div>
               )}
 
               {activeTab === 'preview' && (
-                <div className="p-6 rounded-2xl bg-[#F8F7FA] border border-slate-200 min-h-[300px] prose prose-sm max-w-none">
+                <div className="p-6 rounded-2xl bg-[#FCEBE5] border border-slate-200 min-h-[300px] prose prose-sm max-w-none">
                   <h1>{form.title || 'Untitled Article'}</h1>
                   <p className="lead italic text-slate-600">{form.excerpt}</p>
                   <hr />
@@ -529,7 +529,7 @@ export default function AdminBlogsPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-[#FF790E] hover:bg-[#e66c0b] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
+                  className="px-5 py-2.5 rounded-xl bg-[#E5001C] hover:bg-[#c70018] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
                 >
                   {editingPost ? 'Save Changes' : 'Publish Article'}
                 </button>

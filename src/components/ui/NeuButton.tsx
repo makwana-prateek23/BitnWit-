@@ -36,23 +36,23 @@ export default function NeuButton({
 
   const variantStyles = {
     default: active
-      ? 'neu-pressed text-neu-purple'
-      : 'neu-raised text-neu-text hover:text-neu-purple hover:-translate-y-0.5 hover:shadow-neu-raised-lg active:translate-y-0 active:shadow-neu-pressed',
+      ? 'neu-pressed text-navy'
+      : 'neu-raised text-neu-text hover:text-navy hover:-translate-y-0.5 hover:shadow-neu-raised-lg active:translate-y-0 active:shadow-neu-pressed',
     purple: active
-      ? 'bg-gradient-to-r from-neu-purple to-purple-600 text-white shadow-inner'
-      : 'bg-gradient-to-r from-neu-purple to-purple-600 text-white shadow-md hover:brightness-110 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-neu-purple/30 active:translate-y-0 active:shadow-inner',
+      ? 'bg-[#b30016] text-white shadow-inner'
+      : 'bg-[#E5001C] text-white shadow-md hover:bg-[#c70018] hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-inner',
     yellow: active
-      ? 'bg-neu-yellow text-slate-900 shadow-inner'
-      : 'bg-neu-yellow text-slate-900 shadow-md hover:brightness-105 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-neu-yellow/30 active:translate-y-0 active:shadow-inner',
+      ? 'bg-[#152a47] text-white shadow-inner'
+      : 'bg-[#1E3C65] text-white shadow-md hover:bg-[#152a47] hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-inner',
     maroon: active
-      ? 'bg-[#642E42] text-white shadow-inner'
-      : 'bg-[#642E42] text-white shadow-md hover:brightness-110 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#642E42]/30 active:translate-y-0 active:shadow-inner',
+      ? 'bg-[#152a47] text-white shadow-inner'
+      : 'bg-[#1E3C65] text-white shadow-md hover:bg-[#152a47] hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-inner',
     danger: active
-      ? 'bg-red-600 text-white shadow-inner'
-      : 'bg-red-500 text-white shadow-md hover:bg-red-600 hover:-translate-y-0.5 active:translate-y-0 active:shadow-inner',
+      ? 'bg-[#b30016] text-white shadow-inner'
+      : 'bg-[#E5001C] text-white shadow-md hover:bg-[#c70018] hover:-translate-y-0.5 active:translate-y-0 active:shadow-inner',
     ghost: active
-      ? 'neu-pressed text-neu-purple'
-      : 'bg-transparent text-neu-text hover:bg-neu-surfaceSec hover:-translate-y-0.5 active:translate-y-0 active:neu-pressed',
+      ? 'neu-pressed text-navy'
+      : 'bg-transparent text-neu-text hover:bg-black/5 dark:hover:bg-white/5 hover:-translate-y-0.5 active:translate-y-0 active:neu-pressed',
   }[variant];
 
   return (
@@ -61,11 +61,6 @@ export default function NeuButton({
       disabled={disabled || loading}
       {...props}
     >
-      {/* Dynamic Specular Sheen Sweep on Cursor Hover */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
-      />
 
       {loading ? (
         <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />

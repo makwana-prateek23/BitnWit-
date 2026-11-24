@@ -154,17 +154,17 @@ export default function AdminTestimonialsPage() {
       {/* Controls Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-purple-100/70 shadow-sm">
         <div>
-          <h2 className="text-base font-bold text-[#271044] font-display">
+          <h2 className="text-base font-bold text-[#1E3C65] font-display">
             Client Reviews & Testimonials ({testimonials.length})
           </h2>
-          <p className="text-xs text-[#77717F]">
+          <p className="text-xs text-[#4A586E]">
             Manage client social proof, 5-star ratings, and featured homepage endorsements
           </p>
         </div>
 
         <button
           onClick={openCreateModal}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#FF790E] hover:bg-[#e66c0b] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all self-start sm:self-auto"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#E5001C] hover:bg-[#c70018] text-white rounded-xl text-xs font-semibold shadow-md shadow-orange-500/20 transition-all self-start sm:self-auto"
         >
           <FiPlus className="w-4 h-4" />
           <span>Add Testimonial</span>
@@ -190,12 +190,12 @@ export default function AdminTestimonialsPage() {
               <div>
                 {/* Rating Stars & Badges */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-1 text-[#FFB51B]">
+                  <div className="flex items-center gap-1 text-[#E5001C]">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <FiStar
                         key={i}
                         className={`w-4 h-4 ${
-                          i < item.rating ? 'fill-current text-[#FFB51B]' : 'text-slate-200'
+                          i < item.rating ? 'fill-current text-[#E5001C]' : 'text-slate-200'
                         }`}
                       />
                     ))}
@@ -203,7 +203,7 @@ export default function AdminTestimonialsPage() {
 
                   <div className="flex items-center gap-1.5">
                     {item.isFeaturedOnHomepage && (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-50 text-[#7025B9] border border-purple-100">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-50 text-[#1E3C65] border border-purple-100">
                         Homepage
                       </span>
                     )}
@@ -235,7 +235,7 @@ export default function AdminTestimonialsPage() {
               {/* Client Info & Actions */}
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-[#271044] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-[#1E3C65] text-white flex items-center justify-center font-bold text-xs shrink-0">
                     {item.clientName.charAt(0)}
                   </div>
                   <div className="min-w-0">
@@ -263,7 +263,7 @@ export default function AdminTestimonialsPage() {
                   </button>
                   <button
                     onClick={() => openEditModal(item)}
-                    className="p-1.5 rounded-lg text-[#7025B9] hover:bg-purple-50 transition-colors"
+                    className="p-1.5 rounded-lg text-[#1E3C65] hover:bg-purple-50 transition-colors"
                     title="Edit Review"
                   >
                     <FiEdit className="w-4 h-4" />
@@ -287,7 +287,7 @@ export default function AdminTestimonialsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-100 relative max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-              <h3 className="text-lg font-bold text-[#271044] font-display">
+              <h3 className="text-lg font-bold text-[#1E3C65] font-display">
                 {editingItem ? 'Edit Client Testimonial' : 'Add Client Review'}
               </h3>
               <button
@@ -300,7 +300,7 @@ export default function AdminTestimonialsPage() {
 
             <form onSubmit={handleSave} className="mt-5 space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Client Full Name *
                 </label>
                 <input
@@ -309,13 +309,13 @@ export default function AdminTestimonialsPage() {
                   placeholder="e.g. Anand Sharma"
                   value={form.clientName}
                   onChange={(e) => setForm({ ...form, clientName: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Designation
                   </label>
                   <input
@@ -323,11 +323,11 @@ export default function AdminTestimonialsPage() {
                     placeholder="e.g. Chief Executive Officer"
                     value={form.clientDesignation}
                     onChange={(e) => setForm({ ...form, clientDesignation: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Company Name
                   </label>
                   <input
@@ -335,14 +335,14 @@ export default function AdminTestimonialsPage() {
                     placeholder="e.g. Nexa Logistics"
                     value={form.companyName}
                     onChange={(e) => setForm({ ...form, companyName: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Service Provided
                   </label>
                   <input
@@ -350,17 +350,17 @@ export default function AdminTestimonialsPage() {
                     placeholder="e.g. Web Development"
                     value={form.serviceProvided}
                     onChange={(e) => setForm({ ...form, serviceProvided: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#271044] mb-1">
+                  <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                     Rating (1-5 Stars)
                   </label>
                   <select
                     value={form.rating}
                     onChange={(e) => setForm({ ...form, rating: Number(e.target.value) })}
-                    className="w-full px-3 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                    className="w-full px-3 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                   >
                     <option value={5}>⭐⭐⭐⭐⭐ (5 Stars)</option>
                     <option value={4}>⭐⭐⭐⭐ (4 Stars)</option>
@@ -372,7 +372,7 @@ export default function AdminTestimonialsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#271044] mb-1">
+                <label className="block text-xs font-semibold text-[#1E3C65] mb-1">
                   Testimonial / Review Text *
                 </label>
                 <textarea
@@ -381,7 +381,7 @@ export default function AdminTestimonialsPage() {
                   placeholder="Detail client feedback regarding engineering quality, timeline, and results..."
                   value={form.reviewText}
                   onChange={(e) => setForm({ ...form, reviewText: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-[#F8F7FA] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#7025B9]"
+                  className="w-full px-3.5 py-2.5 bg-[#FCEBE5] border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E3C65]"
                 />
               </div>
 
@@ -391,9 +391,9 @@ export default function AdminTestimonialsPage() {
                     type="checkbox"
                     checked={form.isFeaturedOnHomepage}
                     onChange={(e) => setForm({ ...form, isFeaturedOnHomepage: e.target.checked })}
-                    className="w-4 h-4 rounded text-[#7025B9] focus:ring-[#7025B9] border-slate-300"
+                    className="w-4 h-4 rounded text-[#1E3C65] focus:ring-[#1E3C65] border-slate-300"
                   />
-                  <span className="text-xs font-semibold text-[#271044]">
+                  <span className="text-xs font-semibold text-[#1E3C65]">
                     Feature on Homepage Testimonial Carousel
                   </span>
                 </label>
@@ -409,7 +409,7 @@ export default function AdminTestimonialsPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-[#FF790E] hover:bg-[#e66c0b] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
+                  className="px-5 py-2.5 rounded-xl bg-[#E5001C] hover:bg-[#c70018] text-white text-xs font-semibold shadow-md shadow-orange-500/20"
                 >
                   {editingItem ? 'Save Changes' : 'Add Testimonial'}
                 </button>

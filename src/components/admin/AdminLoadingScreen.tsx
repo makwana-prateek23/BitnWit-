@@ -14,7 +14,7 @@ export default function AdminLoadingScreen({
   return (
     <div
       className={`flex flex-col items-center justify-center p-8 text-center ${
-        fullScreen ? 'min-h-screen bg-[#F8F7FA]' : 'min-h-[360px]'
+        fullScreen ? 'min-h-screen bg-cream' : 'min-h-[360px]'
       }`}
     >
       <div className="relative w-20 h-20 mb-4 animate-bounce">
@@ -28,11 +28,11 @@ export default function AdminLoadingScreen({
         />
       </div>
 
-      <div className="w-40 h-1.5 bg-purple-100 rounded-full overflow-hidden mb-3">
-        <div className="w-full h-full bg-gradient-to-r from-[#7025B9] to-[#FF790E] rounded-full animate-pulse" />
+      <div className="w-40 h-1.5 bg-navy/15 rounded-full overflow-hidden mb-3">
+        <div className="w-full h-full bg-red rounded-full animate-pulse" />
       </div>
 
-      <p className="text-xs font-semibold text-[#271044] tracking-wide uppercase font-mono">
+      <p className="text-xs font-semibold text-navy tracking-wide uppercase font-mono">
         {message}
       </p>
     </div>
